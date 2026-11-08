@@ -1,3 +1,4 @@
+import { CreatorPreferences } from '../../src/components/CreatorPreferences';
 import React from 'react';
 import { View, Alert, Pressable } from 'react-native';
 import { router } from 'expo-router';
@@ -110,13 +111,14 @@ export default function Profile() {
         </Label>
         <Button title="Gestisci visibilità" secondary onPress={() => router.push('/settings')} />
       </Card>
+      <CreatorPreferences userId={user.id} />
       <Title style={{ fontSize: 22 }}>Le tue creazioni</Title>
       {q.isPending ? (
         <Loading />
       ) : q.error ? (
         <ErrorState error={q.error} retry={() => void q.refetch()} />
       ) : q.data.length ? (
-        <MediaGrid items={q.data} />
+        <MediaGrid items={q.data} showOrigins />
       ) : (
         <Empty
           title="La prima creazione sarà tua."

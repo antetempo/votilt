@@ -11,11 +11,16 @@ export type Category = {
   reference_label: string;
   requires_url: boolean;
   allowed_kinds?: string[];
+  path?: string[];
+  aliases?: string[];
+  terminal?: boolean;
+  isFollowing?: boolean;
 };
 export type MediaItem = {
   id: string;
   title: string;
   caption: string;
+  tags?: string[];
   kind: 'photo' | 'illustration' | 'ai_art' | 'ai_tool';
   provenance: string;
   status: string;
@@ -26,6 +31,10 @@ export type MediaItem = {
   mediaUrl: string;
   categoryId: string;
   categoryTitle: string;
+  categoryPath?: string[];
+  creatorSupport?: number;
+  originSupport?: number;
+  voteModel?: string;
   support?: number;
   rating?: number;
   matches?: number;

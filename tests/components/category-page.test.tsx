@@ -2,6 +2,10 @@ import React from 'react';
 import { render } from '@testing-library/react-native';
 import CategoryPage from '../../app/category/[id]';
 const mockRanking = jest.fn();
+jest.mock('../../src/lib/session', () => ({ useSession: () => ({ user: { id: 'viewer' } }) }));
+jest.mock('../../src/hooks/useAction', () => ({
+  useAction: () => ({ busy: false, run: jest.fn() }),
+}));
 jest.mock('expo-router', () => ({
   useLocalSearchParams: () => ({ id: 'leaf' }),
   Stack: { Screen: () => null },

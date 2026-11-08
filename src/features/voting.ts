@@ -51,9 +51,16 @@ export async function votingOperation(
 }
 export async function invalidateVoting() {
   await Promise.all(
-    ['champions', 'ranking', 'category-rankings', 'history', 'feed', 'daily', 'duel'].map((key) =>
-      queryClient.invalidateQueries({ queryKey: [key] }),
-    ),
+    [
+      'champions',
+      'ranking',
+      'category-rankings',
+      'history',
+      'feed',
+      'daily',
+      'duel',
+      'profile',
+    ].map((key) => queryClient.invalidateQueries({ queryKey: [key] })),
   );
 }
 export function useVoting() {

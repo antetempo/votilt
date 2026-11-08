@@ -2,35 +2,34 @@
 
 ## Current Focus
 
-Fabrizio · 8 novembre 2026: revisione creator/catalogo autorizzata in automatico fino a build e installazione Android. Il precedente gate preventivo sul piano è revocato. Piano autorevole [creator e catalogo](../docs/votilt-creator-catalog-plan.md); [ledger approvazioni](../docs/VOTILT_APPROVAL_LEDGER.md). Prove tecniche PASS rendono pronta da verificare una fase; approvazione finale solo dell’utente.
+Fabrizio · 8 novembre 2026: **revisione creator/catalogo pronta da verificare**. Implementazione, prove reali, build e installazione Android completate. Approvazione finale di Fabrizio non registrata. Piano autorevole [creator/catalogo](../docs/votilt-creator-catalog-plan.md), [ledger](../docs/VOTILT_APPROVAL_LEDGER.md). Sessione consolidata [[04-creator-catalogo-android]].
 
-Gerarchia completa [Markdown](../docs/research/catalogo-editoriale/GERARCHIA_COMPLETA.md), JSON/CSV e conteggi: BOZZA, 36 aree, 1216 foglie, profondità 5; 270 foglie news. Copia utente sotto Documents/Codex/2026-11-08/realtime-voice-chat/outputs/. Ricerca hashtag documentata con limiti d’accesso e nessun volume inventato. Non ancora importata al checkpoint di consolidamento. Decisione [[creator-per-foglia]]: cuore elegge autore per foglia, origine immagine, follow persona/categoria distinti, classificazione chiaramente visibile. Catalogo editoriale senza proposte utenti. Nessuna nuova immagine generata per questo piano; fase grafica esplicita da eseguire.
+Regole correnti [[categoria-unica-selezionabile]] e [[tag-liberi-proposte-editoriali]]: una categoria per immagine, anche ramo/radice; preferenza al creator nella categoria esatta, nessun rollup. Stessa persona senza voto/TILT aggiuntivo, origine tracciata; follow persona/categoria distinti. Tag/descrizione liberi, suggerimenti lessicali, autore sceglie; nessuna riclassificazione automatica. Proposte editoriali con revisione umana, video e territori sono rollout successivi. Illustrazione decorativa scartata esclusa.
+
+Gerarchia [completa](../docs/research/catalogo-editoriale/GERARCHIA_COMPLETA.md): **36 radici, 211 rami, 1216 foglie, 1427 nodi**, profondità 5, 270 foglie news. Applicata al DB, tutti i nodi selezionabili. Catalogo precedente conservato. Fonti/tag social con limiti dichiarati. Copia utente in Documents/Codex/2026-11-08/realtime-voice-chat/outputs/.
 
 ## Next Steps
 
-1. Eseguire commit e push già autorizzati di README, revisioni Android, piano e memory bank su antetempo/votilt; verificare hash remoto, nessun deploy.
-2. Proseguire F1–F8 dal piano: catalogo profondo, grafica/immagini, motore creator, ricerca/upload, follow, profili e classifiche; test host e prova Android prima di dichiarare pronto.
-3. Alla ripresa verificare runtime/APK e seguire [README](../README.md); provare il prodotto e raccogliere il feedback di Fabrizio.
-4. Se richiesto, curare fotografie REAL con provenienza verificata per il quiz; nessuna AI deve essere etichettata REAL.
-5. Prima di distribuzione esterna, affrontare [readiness](../docs/RELEASE_READINESS.md) e [[stato-consegna-e-debito]]: HTTPS/firma, segreti/backup, moderazione, dipendenze, telefono/TalkBack, misure prestazioni e contesa del lock globale.
+1. Fabrizio: provare la build installata e dare il riscontro di prodotto; trigger prossimo uso dell’app. Prove tecniche PASS non equivalgono ad approvazione umana.
+2. Completare la pubblicazione Git già autorizzata della nuova consegna e registrare hash remoto nella [ricevuta](../docs/evidence/github-publication.json). Nessun deploy.
+3. Fabrizio: dare disposizione sui tre punti del diario precedentemente segnalati, ancora pendenti; trigger prossimo riscontro. Nessuna chiusura dedotta automaticamente.
+4. Su richiesta di estendere il prodotto: pianificare separatamente proposte editoriali, video e territori con dati volontari; quiz solo dopo dataset REAL con provenienza verificata.
+5. Prima di distribuzione esterna: affrontare [readiness](../docs/RELEASE_READINESS.md), [[creator-catalog-delivery]] e debito lock globale; misure di contesa/performance, telefono/TalkBack, HTTPS/firma, backup/moderazione e dipendenze.
 
-Disposizioni diario chieste a Fabrizio, ancora pendenti; nessuna chiusura umana registrata.
 ## Stato verificato
 
-Revisioni precedenti [Classifiche](../docs/votilt-rankings-plan.md) e [navigazione](../docs/votilt-navigation-plan.md): 106 unit/componenti, 46 integrazioni HTTP/PG, typecheck/lint/format PASS; 8 percorsi Android navigazione e 5 Classifiche su build rispettive. Il nuovo modello creator deve essere testato separatamente. Storiche 31 prove Android non rieseguite integralmente. Fonte [TEST_REPORT](../docs/TEST_REPORT.md).
-
-Brandbook MD/HTML/PDF, 23 icone, palette conservati. Runtime precedente: 41 foglie, 123 immagini (111 AI dichiarate + 12 tool card). APK autonomo già installato per revisioni precedenti, non ancora aggiornato per creator/catalogo. Sessione consolidata [[03-creator-catalogo]], immutabile; successive prove in current-session.
+120 unit/componenti in 21 suite, 46 integrazioni generali + 9 creator, typecheck/lint/format PASS. Migrazione demo con backup/rerun e bootstrap fresco/rerun PASS, credenziali esistenti invariate. **11 percorsi Android PASS sulla build corrente**; installata, aperta su Classifiche, dimensioni/font ripristinati. APK SHA-256 69c1827ec1b1be1138e3c558731e96d2ed4c846680458ebef1b107dd0f85f45e. Otto segreti locali assenti dal bundle. [TEST_REPORT](../docs/TEST_REPORT.md), [[creator-catalog-migration]]. Prove precedenti 31+5+8 restano storiche su altre build.
 
 ## Runtime e repository
 
-Checkout C:/APP/AI/VOTILT, unico worktree, main/upstream origin/main. Commit iniziale a0d85bf7240beb73f18406b99ed494a167984816 già pushato su repository privato https://github.com/antetempo/votilt.git. Nuovo commit/push autorizzato, da registrare soltanto dopo esecuzione. API 4317, PostgreSQL dedicato 55432, adb reverse; verificare processi prima della prova. Credenziali soltanto .local/. Docker vietato. Nessuna modifica ad altri progetti o credenziali.
+Checkout C:/APP/AI/VOTILT, unico worktree, main/upstream origin/main. Repository **pubblico** https://github.com/antetempo/votilt.git per scelta esplicita, autore antetempo <antetempo@gmail.com>. Iniziale a0d85bf e successivo e9d78ab pushati/verificati. Stato pubblicazione corrente nella ricevuta; dettagli [[repository-github-public]]. API 4317, PostgreSQL dedicato 55432, AVD Medium_Phone_API_36.1/emulator-5554, adb reverse; verificare processi alla ripresa. APK autonomo senza Metro. Credenziali soltanto .local/. Docker vietato, servizio 5432 e altri progetti intatti.
 
 ## Blockers
 
-Nessuno per sviluppo locale. Quiz pubblico senza dataset REAL resta disabilitato. Territori senza dati adeguati restano progetto, senza classifiche geografiche simulate. Prestazioni e hardening in [readiness](../docs/RELEASE_READINESS.md), [[stato-consegna-e-debito]].
+Nessuno per la demo locale. Quiz senza dataset REAL disabilitato. Nessun campionato geografico simulato; hardening e misure prima di distribuzione esterna, non dichiarati eseguiti.
 
 ## Recent Deploys
 
-Nessun deploy applicativo/store. Commit iniziale e push GitHub completati; pubblicazione successiva in corso di preparazione.
+Nessun deploy applicativo/store. Commit/push sorgenti su GitHub autorizzati; ricevuta effettiva separata dalle prove Android.
 
 > 🧑‍💻 Ultimo aggiornamento memory bank: **Fabrizio** · 2026-11-08

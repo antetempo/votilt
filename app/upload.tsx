@@ -14,13 +14,24 @@ import { queryClient, useSession } from '../src/lib/session';
 import { colors as c } from '../src/theme/tokens';
 import type { Category } from '../src/types/domain';
 import { normalizeReferenceUrl } from '../src/utils/references';
-import { findCategoryMatches } from '../src/utils/categoryPolicy';
+import { suggestCategories, categoryPath } from '../src/utils/categories';
 import { useUploadSelection } from '../src/features/uploadSelection';
 export default function Upload() {
   const { user } = useSession();
   const [uri, setUri] = useState('');
   const [title, setTitle] = useState('');
   const [caption, setCaption] = useState('');
+  const [tagText, setTagText] = useState('');
+  const tags = [
+    ...new Set(
+      tagText
+        .split(/[,\n]/)
+        .map((tag) => tag.trim().replace(/^#+/, '').normalize('NFKC').toLowerCase())
+        .filter(Boolean),
+    ),
+  ];
+  const validTags =
+    tags.length <= 20 && tags.every((tag) => tag.length <= 40 && /^[\p{L}\p{N} _-]+$/u.test(tag));
   const [kind, setKind] = useState('illustration');
   const [selected, setSelected] = useState<string[]>([]);
   const [rights, setRights] = useState(false);
@@ -39,9 +50,7 @@ export default function Upload() {
         if (!state.categoryId) return;
         const cat = cats.data?.find((x) => x.id === state.categoryId);
         if (!cat) return;
-        setSelected((previous) =>
-          previous.includes(cat.id) ? previous : [...previous.slice(0, 2), cat.id],
-        );
+        setSelected((previous) => (previous.includes(cat.id) ? previous : [cat.id]));
         if (cat.allowed_kinds && !cat.allowed_kinds.includes(kind)) setKind(cat.allowed_kinds[0]);
         setSearch('');
         setShowPicker(false);
@@ -49,11 +58,10 @@ export default function Upload() {
       }),
     [cats.data, kind],
   );
-  const available = cats.data?.filter((x) => x.depth === 4) || [];
-  const categoryResults = search.trim()
-    ? findCategoryMatches(search, available)
-        .map((match) => available.find((x) => x.id === match.id)!)
-        .filter(Boolean)
+  const available = cats.data || [];
+  const suggestionText = search.trim() || [title, caption, ...tags].join(' ').trim();
+  const categoryResults = suggestionText
+    ? suggestCategories(suggestionText, available, 12)
     : available.slice(0, 6);
   const selectedCategories = selected
     .map((id) => cats.data?.find((x) => x.id === id))
@@ -113,13 +121,15 @@ export default function Upload() {
       title.trim().length < 1 ||
       !validReferences ||
       !rights ||
-      !consent
+      !consent ||
+      !validTags ||
+      selected.length !== 1
     )
       return;
     sending.current = true;
     setBusy(true);
     const expectedToken = getToken();
-    const key = JSON.stringify({ uri, title, caption, kind, selected, metadata });
+    const key = JSON.stringify({ uri, title, caption, tags, kind, selected, metadata });
     if (operation.current?.key !== key) operation.current = { key, id: Crypto.randomUUID() };
     try {
       setProgress('Prepariamo l’immagine…');
@@ -134,6 +144,7 @@ export default function Upload() {
           clientOperationId: operation.current.id,
           title,
           caption,
+          tags,
           kind,
           categoryIds: selected,
           rights,
@@ -240,10 +251,42 @@ export default function Upload() {
           />
         ))}
       </View>
+      <Input
+        label="Descrizione · facoltativa"
+        value={caption}
+        onChangeText={setCaption}
+        maxLength={400}
+        multiline
+      />
+      <Input
+        label="Tag liberi · separati da virgole"
+        placeholder="bonsai, piante, giardinaggio"
+        value={tagText}
+        onChangeText={setTagText}
+        multiline
+        maxLength={820}
+      />
+      {!validTags && (
+        <Label style={{ color: c.pink }}>
+          Fino a 20 tag di 40 caratteri, con lettere, numeri, spazi, trattini o underscore.
+        </Label>
+      )}
+      <Button
+        secondary
+        title="Suggerisci una categoria da descrizione e tag"
+        onPress={() => {
+          setSearch('');
+          setShowPicker(true);
+        }}
+      />
+      <Label style={{ fontSize: 11, color: c.muted }}>
+        Suggerimenti da parole chiave e sinonimi. Scegli tu la categoria; i tag non cambiano
+        categorie o voti.
+      </Label>
       {showPicker && (
         <>
           <Input
-            label={`Categorie · ${selected.length}/3`}
+            label={`Categoria unica · ${selected.length}/1`}
             value={search}
             onChangeText={setSearch}
             placeholder="Cerca una categoria"
@@ -252,18 +295,12 @@ export default function Upload() {
             {categoryResults.map((x) => (
               <Chip
                 key={x.id}
-                title={x.title}
+                title={categoryPath(x, available).join(' › ')}
                 selected={selected.includes(x.id)}
                 onPress={() => {
                   if (selected.length === 0 && x.allowed_kinds && !x.allowed_kinds.includes(kind))
                     setKind(x.allowed_kinds[0]);
-                  setSelected((a) =>
-                    a.includes(x.id)
-                      ? a.filter((id) => id !== x.id)
-                      : a.length < 3
-                        ? [...a, x.id]
-                        : a,
-                  );
+                  setSelected((a) => (a.includes(x.id) ? a.filter((id) => id !== x.id) : [x.id]));
                   setSearch('');
                   setShowPicker(false);
                 }}
@@ -273,24 +310,12 @@ export default function Upload() {
           <Label style={{ fontSize: 11, color: c.muted }}>
             {categoryResults.length
               ? 'Scegli una categoria esistente.'
-              : 'Nessuna corrispondenza. Puoi proporre una nuova categoria.'}
+              : 'Nessuna corrispondenza. Prova un sinonimo o un ramo più ampio.'}
           </Label>
-          <Button
-            title="Non c’è? Crea una categoria"
-            secondary
-            icon="category"
-            onPress={() =>
-              router.push({ pathname: '/suggest', params: { title: search, from: 'upload' } })
-            }
-          />
         </>
       )}
-      {!showPicker && selected.length < 3 && (
-        <Button
-          title="Aggiungi un’altra categoria · facoltativo"
-          secondary
-          onPress={() => setShowPicker(true)}
-        />
+      {!showPicker && selected.length === 0 && (
+        <Button title="Scegli la categoria" secondary onPress={() => setShowPicker(true)} />
       )}
       <Label style={{ color: c.cyan }}>2. Dacci il riferimento giusto</Label>
       <Input
@@ -330,13 +355,6 @@ export default function Upload() {
           )}
         </View>
       ))}
-      <Input
-        label="Didascalia · facoltativa"
-        value={caption}
-        onChangeText={setCaption}
-        maxLength={400}
-        multiline
-      />
       {[
         { text: 'Ho il diritto di pubblicare questo contenuto.', value: rights, set: setRights },
         {
@@ -363,6 +381,8 @@ export default function Upload() {
         title="Invia per la revisione"
         busy={busy}
         disabled={
+          !validTags ||
+          selected.length !== 1 ||
           !uri ||
           title.trim().length < 1 ||
           !selected.length ||

@@ -7,7 +7,11 @@ import { catalog, stableId, generateArt, aiAssets, toolCatalog } from './generat
 
 const config = JSON.parse(readFileSync('.local/runtime.json', 'utf8').replace(/^\uFEFF/, ''));
 if (process.env.VOTILT_DATABASE) {
-  if (!['votilt', 'votilt_test', 'votilt_bootstrap_test'].includes(process.env.VOTILT_DATABASE))
+  if (
+    !['votilt', 'votilt_test', 'votilt_bootstrap_test', 'votilt_creator_bootstrap_test'].includes(
+      process.env.VOTILT_DATABASE,
+    )
+  )
     throw Error('Database non consentito');
   config.database = process.env.VOTILT_DATABASE;
 }
@@ -292,15 +296,15 @@ try {
       [stableId(`demo-report:${i}`), a, stableId(`content:${catalog[i][3]}:1`)],
     );
   await db.query(
-    "INSERT INTO public.daily_challenges SELECT d::date,(SELECT id FROM public.categories WHERE depth=4 AND status='published' ORDER BY md5(id::text||d::date::text) LIMIT 1) FROM generate_series(current_date-1,current_date+90,interval '1 day')d ON CONFLICT DO NOTHING",
+    "INSERT INTO public.daily_challenges SELECT d::date,(SELECT id FROM public.categories WHERE status='published' AND EXISTS(SELECT 1 FROM public.content_categories cc JOIN public.content_items c ON c.id=cc.content_id WHERE cc.category_id=categories.id AND cc.status='approved' AND c.moderation_status='approved' AND c.visibility='public') ORDER BY md5(id::text||d::date::text) LIMIT 1) FROM generate_series(current_date-1,current_date+90,interval '1 day')d ON CONFLICT DO NOTHING",
   );
   await db.query(
-    `INSERT INTO public.ranking_snapshots SELECT (now() AT TIME ZONE 'UTC')::date,s.category_id,s.champion_content_id,count(*) FROM public.vote_slots s WHERE champion_content_id IS NOT NULL GROUP BY s.category_id,s.champion_content_id ON CONFLICT DO NOTHING`,
+    `INSERT INTO public.creator_ranking_snapshots SELECT (now() AT TIME ZONE 'UTC')::date,s.category_id,c.author_id,count(*) FROM public.vote_slots s JOIN public.content_items c ON c.id=s.champion_content_id WHERE s.champion_content_id IS NOT NULL GROUP BY s.category_id,c.author_id ON CONFLICT DO NOTHING`,
   );
   await db.query('COMMIT');
   const counts = (
     await db.query(
-      `SELECT (SELECT count(*) FROM public.categories WHERE depth=4 AND status='published') published_leaves,(SELECT count(*) FROM public.content_items WHERE moderation_status='approved') approved,(SELECT count(*) FROM public.vote_slots WHERE champion_content_id IS NOT NULL) champions`,
+      `SELECT (SELECT count(*) FROM public.categories cat WHERE cat.status='published' AND NOT EXISTS(SELECT 1 FROM public.categories child WHERE child.parent_id=cat.id AND child.status='published')) published_leaves,(SELECT count(*) FROM public.content_items WHERE moderation_status='approved') approved,(SELECT count(*) FROM public.vote_slots WHERE champion_content_id IS NOT NULL) champions`,
     )
   ).rows[0];
   console.log(

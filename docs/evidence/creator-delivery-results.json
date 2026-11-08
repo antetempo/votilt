@@ -1,0 +1,24 @@
+{
+  "date": "2026-11-08T18:35:45.643Z",
+  "status": "PASS",
+  "catalog": {
+    "nodes": 1427,
+    "leaves": 1216,
+    "roots": 36,
+    "maxDepth": 5
+  },
+  "schemaSnapshots": 6,
+  "localLinks": 110,
+  "mediaAssets": 12,
+  "mediaHashes": "PASS",
+  "apkSha256": "69c1827ec1b1be1138e3c558731e96d2ed4c846680458ebef1b107dd0f85f45e",
+  "unit": 120,
+  "integration": 55,
+  "android": 11,
+  "scannedRepositoryFiles": 553,
+  "checkedLocalSecrets": 8,
+  "secretFindings": 0,
+  "immutableSessions": "01–03 unchanged",
+  "memoryBankAuthor": "Fabrizio",
+  "scope": "Local Android; no application deployment"
+}

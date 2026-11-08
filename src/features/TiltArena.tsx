@@ -237,7 +237,9 @@ function TiltCard({
         testID={`tilt-${side.toLowerCase()}`}
         accessibilityRole="button"
         accessibilityLabel={`${index === 0 ? 'Mantieni' : 'Scegli'} ${item.title}`}
-        accessibilityHint="Conferma questa immagine come tuo like nella categoria"
+        accessibilityHint={
+          'Conferma il creator @' + item.handle + ' nella categoria ' + item.categoryTitle
+        }
         accessibilityState={{ disabled: busy, selected: chosen, busy: busy && chosen }}
         disabled={busy}
         onPress={() => onPick(side)}
@@ -268,6 +270,17 @@ function TiltCard({
           ) : (
             <Icon name={confirmed && chosen ? 'check' : 'heart'} size={22} color={c.text} />
           )}
+        </View>
+        <View
+          pointerEvents="none"
+          style={{ position: 'absolute', left: 10, right: 10, bottom: 10, gap: 2 }}
+        >
+          <Label numberOfLines={1} style={{ color: c.text, fontSize: 13 }}>
+            @{item.handle}
+          </Label>
+          <Label numberOfLines={2} style={{ color: '#E5DFED', fontSize: 10 }}>
+            {item.categoryTitle}
+          </Label>
         </View>
       </Pressable>
     </Animated.View>

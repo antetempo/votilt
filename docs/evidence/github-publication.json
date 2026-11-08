@@ -1,0 +1,10 @@
+{
+  "date": "2026-11-08T18:33:21.586Z",
+  "status": "IN_PROGRESS",
+  "repository": "https://github.com/antetempo/votilt",
+  "visibility": "public",
+  "branch": "main",
+  "authorEmail": "antetempo@gmail.com",
+  "previousVerifiedCommit": "e9d78ab0923928e64648986e2ebf801e6eccac13",
+  "notes": "Consegna creator/catalogo pronta; sostituire con ricevuta solo dopo confronto hash remoto. Nessun deploy."
+}

@@ -1,20 +1,35 @@
 import pg from 'pg';
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 
 // Canonical complete schema and upgrade snapshot share exactly the same source.
-const schema = ['server/schema-core.sql', 'server/api.sql']
+const schema = [
+  'server/schema-core.sql',
+  'server/api.sql',
+  'server/creator-api.sql',
+  'migrations/migrate_categories_editorial_catalog.sql',
+]
   .map((file) => readFileSync(file, 'utf8'))
   .join('\n');
-writeFileSync('schema.sql', schema);
+function writeSnapshot(file) {
+  // Repeated migrations must not reopen unchanged snapshots for writing. Windows
+  // readers/indexers can hold these files; the database still runs every time.
+  if (!existsSync(file) || readFileSync(file, 'utf8') !== schema) writeFileSync(file, schema);
+}
+writeSnapshot('schema.sql');
 mkdirSync('migrations', { recursive: true });
-writeFileSync('migrations/migrate_votilt_initial.sql', schema);
-writeFileSync('migrations/migrate_content_metadata_required.sql', schema);
-writeFileSync('migrations/migrate_categories_rankings_and_policy.sql', schema);
-writeFileSync('migrations/migrate_categories_leader_previews.sql', schema);
+writeSnapshot('migrations/migrate_votilt_initial.sql');
+writeSnapshot('migrations/migrate_content_metadata_required.sql');
+writeSnapshot('migrations/migrate_categories_rankings_and_policy.sql');
+writeSnapshot('migrations/migrate_categories_leader_previews.sql');
+writeSnapshot('migrations/migrate_creators_single_category.sql');
 
 const config = JSON.parse(readFileSync('.local/runtime.json', 'utf8').replace(/^\uFEFF/, ''));
 if (process.env.VOTILT_DATABASE) {
-  if (!['votilt', 'votilt_test', 'votilt_bootstrap_test'].includes(process.env.VOTILT_DATABASE))
+  if (
+    !['votilt', 'votilt_test', 'votilt_bootstrap_test', 'votilt_creator_bootstrap_test'].includes(
+      process.env.VOTILT_DATABASE,
+    )
+  )
     throw new Error('Target non consentito');
   config.database = process.env.VOTILT_DATABASE;
 }

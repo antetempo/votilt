@@ -61,6 +61,7 @@ const actions = new Set([
   'interests',
   'profile_update',
   'follow_toggle',
+  'category_follow',
   'friend_request',
   'friend_answer',
   'block',
@@ -154,6 +155,7 @@ const inputSchemas: Record<string, z.ZodType> = {
     reduceMotion: z.boolean().optional(),
   }),
   follow_toggle: z.object({ userId: uuid, following: z.boolean().optional() }),
+  category_follow: z.object({ categoryId: uuid, following: z.boolean() }),
   friend_request: z.object({ userId: uuid }),
   block: z.object({ userId: uuid }),
   friend_answer: z.object({ requestId: uuid, accept: z.boolean() }),
@@ -176,9 +178,22 @@ const uploadSchema = z.object({
   clientOperationId: uuid,
   title: z.string().trim().min(1).max(80),
   caption: z.string().max(400),
+  tags: z
+    .array(
+      z
+        .string()
+        .trim()
+        .min(1)
+        .max(40)
+        .regex(/^[\p{L}\p{N} _-]+$/u)
+        .transform((value) => value.normalize('NFKC').toLowerCase()),
+    )
+    .max(20)
+    .default([])
+    .transform((values) => [...new Set(values)]),
   kind: z.enum(['photo', 'illustration', 'ai_art', 'ai_tool']),
   provenance: z.enum(['original_illustration', 'ai_generated', 'unknown']),
-  categoryIds: z.array(uuid).min(1).max(3),
+  categoryIds: z.array(uuid).length(1),
   rights: z.literal(true),
   adultConsent: z.literal(true),
   metadata: z.record(
@@ -217,7 +232,7 @@ export async function createApp(
     if (e.code === '22P02' || e.code === '23514' || e.code === '23503')
       return reply.code(400).send({ code: 'INVALID_INPUT', message: 'Controlla i dati inseriti.' });
     const known =
-      /^(AUTH_REQUIRED|FORBIDDEN|[A-Z_]+(?:UNAVAILABLE|PRIVATE|REQUIRED|EXPIRED|SUPERSEDED|STALE|REUSE|RESERVED|NOT_FOUND)|INVALID_[A-Z_]+|CATEGORY_NOT_LEAF|BLOCKED_CONTENT|RATE_LIMITED)$/;
+      /^(AUTH_REQUIRED|FORBIDDEN|EDITORIAL_CATALOG_ONLY|[A-Z_]+(?:UNAVAILABLE|PRIVATE|REQUIRED|EXPIRED|SUPERSEDED|STALE|REUSE|RESERVED|NOT_FOUND)|INVALID_[A-Z_]+|CATEGORY_NOT_LEAF|BLOCKED_CONTENT|RATE_LIMITED)$/;
     if (known.test(e.message))
       return reply
         .code(e.message === 'AUTH_REQUIRED' ? 401 : e.message === 'FORBIDDEN' ? 403 : 409)

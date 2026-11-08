@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS public.user_roles (
 );
 CREATE TABLE IF NOT EXISTS public.categories (
  id uuid PRIMARY KEY, parent_id uuid REFERENCES public.categories ON DELETE RESTRICT,
- depth integer NOT NULL CHECK(depth BETWEEN 1 AND 4), slug text NOT NULL, title text NOT NULL,
+ depth integer NOT NULL CHECK(depth BETWEEN 1 AND 32), slug text NOT NULL, title text NOT NULL,
  description text NOT NULL DEFAULT '', icon text NOT NULL DEFAULT 'sparkles', sort_order integer NOT NULL DEFAULT 0,
  status text NOT NULL DEFAULT 'published' CHECK(status IN ('published','draft','archived')),
  reference_kind text NOT NULL DEFAULT 'name' CHECK(reference_kind IN ('name','person','website','place','tool')),
@@ -184,6 +184,37 @@ ALTER TABLE public.categories ADD COLUMN IF NOT EXISTS allowed_kinds text[] NOT 
 ALTER TABLE public.content_items DROP CONSTRAINT IF EXISTS content_items_title_check;
 ALTER TABLE public.content_items ADD CONSTRAINT content_items_title_check CHECK(length(title) BETWEEN 1 AND 80);
 
+ALTER TABLE public.categories DROP CONSTRAINT IF EXISTS categories_depth_check;
+ALTER TABLE public.categories ADD CONSTRAINT categories_depth_check CHECK(depth BETWEEN 1 AND 32);
+ALTER TABLE public.categories ADD COLUMN IF NOT EXISTS aliases text[] NOT NULL DEFAULT ARRAY[]::text[];
+ALTER TABLE public.vote_slots ADD COLUMN IF NOT EXISTS origin_content_id uuid REFERENCES public.content_items ON DELETE SET NULL;
+ALTER TABLE public.content_items ADD COLUMN IF NOT EXISTS tags text[] NOT NULL DEFAULT ARRAY[]::text[] CHECK(cardinality(tags)<=20);
+CREATE TABLE IF NOT EXISTS public.category_follows (
+ user_id uuid REFERENCES public.profiles ON DELETE CASCADE, category_id uuid REFERENCES public.categories ON DELETE CASCADE,
+ PRIMARY KEY(user_id,category_id)
+);
+CREATE TABLE IF NOT EXISTS public.creator_duel_ratings (
+ category_id uuid REFERENCES public.categories, author_id uuid REFERENCES public.profiles ON DELETE CASCADE,
+ rating numeric NOT NULL DEFAULT 1500, matches integer NOT NULL DEFAULT 0 CHECK(matches>=0),
+ wins integer NOT NULL DEFAULT 0 CHECK(wins>=0), losses integer NOT NULL DEFAULT 0 CHECK(losses>=0),
+ PRIMARY KEY(category_id,author_id), CHECK(matches=wins+losses)
+);
+CREATE TABLE IF NOT EXISTS public.creator_rating_events (
+ duel_id uuid PRIMARY KEY REFERENCES public.tilt_duels ON DELETE CASCADE, user_id uuid REFERENCES public.profiles ON DELETE SET NULL,
+ category_id uuid REFERENCES public.categories, winner_id uuid, loser_id uuid, rated boolean NOT NULL,
+ formula_version text NOT NULL DEFAULT 'creator-elo-1500-k32-v1', old_winner numeric, new_winner numeric, old_loser numeric, new_loser numeric,
+ created_at timestamptz NOT NULL DEFAULT now()
+);
+CREATE TABLE IF NOT EXISTS public.creator_ranking_snapshots (
+ date_utc date, category_id uuid REFERENCES public.categories, author_id uuid REFERENCES public.profiles ON DELETE CASCADE,
+ support integer NOT NULL CHECK(support>=0), PRIMARY KEY(date_utc,category_id,author_id)
+);
+CREATE TABLE IF NOT EXISTS private.model_migrations (name text PRIMARY KEY, applied_at timestamptz NOT NULL DEFAULT now());
+CREATE TABLE IF NOT EXISTS private.legacy_membership_archive (
+ content_id uuid, category_id uuid, membership jsonb NOT NULL, archived_at timestamptz NOT NULL DEFAULT now(),
+ PRIMARY KEY(content_id,category_id)
+);
+
 CREATE OR REPLACE FUNCTION api.uid() RETURNS uuid LANGUAGE sql STABLE AS $$ SELECT nullif(current_setting('app.user_id',true),'')::uuid $$;
 CREATE OR REPLACE FUNCTION api.is_mod() RETURNS boolean LANGUAGE sql STABLE SECURITY DEFINER SET search_path=public,pg_temp AS $$
  SELECT EXISTS(SELECT 1 FROM public.user_roles WHERE user_id=api.uid() AND role IN ('admin','moderator')) $$;
@@ -209,7 +240,7 @@ CREATE OR REPLACE FUNCTION api.content_json(cid uuid, cat uuid DEFAULT NULL) RET
 
 CREATE OR REPLACE FUNCTION api.validate_candidate(cid uuid,cat uuid) RETURNS void LANGUAGE plpgsql SECURITY DEFINER SET search_path=public,pg_temp AS $$
 BEGIN
- IF NOT EXISTS(SELECT 1 FROM public.categories WHERE id=cat AND depth=4 AND status='published') THEN RAISE EXCEPTION 'CATEGORY_NOT_LEAF'; END IF;
+ IF NOT EXISTS(SELECT 1 FROM public.categories WHERE id=cat AND status='published') THEN RAISE EXCEPTION 'CATEGORY_NOT_LEAF'; END IF;
  IF NOT EXISTS(SELECT 1 FROM public.content_items c JOIN public.content_categories cc ON cc.content_id=c.id
    JOIN public.profiles p ON p.id=c.author_id WHERE c.id=cid AND cc.category_id=cat AND cc.status='approved'
    AND c.moderation_status='approved' AND NOT p.suspended) THEN RAISE EXCEPTION 'CONTENT_UNAVAILABLE'; END IF;
@@ -223,7 +254,7 @@ CREATE OR REPLACE FUNCTION api.vote(p jsonb, action_name text) RETURNS jsonb LAN
 DECLARE
  u uuid:=api.uid(); op uuid:=(p->>'clientOperationId')::uuid; cat uuid; cid uuid; did uuid;
  slot public.vote_slots; duel public.tilt_duels; receipt public.operation_receipts; result jsonb; winner uuid; loser uuid;
- win_rating numeric; lose_rating numeric; delta numeric; is_rated boolean; changed boolean;
+ win_rating numeric; lose_rating numeric; delta numeric; is_rated boolean; changed boolean; win_author uuid; lose_author uuid;
 BEGIN
  IF u IS NULL OR NOT EXISTS(SELECT 1 FROM public.profiles WHERE id=u AND NOT suspended) THEN RAISE EXCEPTION 'AUTH_REQUIRED'; END IF;
  IF op IS NULL THEN RAISE EXCEPTION 'INVALID_INPUT'; END IF;
@@ -231,7 +262,7 @@ BEGIN
  -- All vote/moderation/block/deletion mutations acquire this lock before row locks.
  PERFORM pg_advisory_xact_lock(8815001);
  IF NOT EXISTS(SELECT 1 FROM public.profiles WHERE id=u AND NOT suspended) THEN RAISE EXCEPTION 'AUTH_REQUIRED'; END IF;
- SELECT * INTO receipt FROM public.operation_receipts WHERE user_id=u AND operation_id=op AND action=action_name;
+ SELECT * INTO receipt FROM public.operation_receipts WHERE user_id=u AND operation_id=op AND action=action_name||':creator-v1';
  IF FOUND THEN
    IF receipt.fingerprint<>md5(p::text) THEN RAISE EXCEPTION 'IDEMPOTENCY_KEY_REUSE'; END IF;
    RETURN receipt.result_json;
@@ -242,10 +273,10 @@ BEGIN
    INSERT INTO public.vote_slots(user_id,category_id) VALUES(u,cat) ON CONFLICT DO NOTHING;
    SELECT * INTO slot FROM public.vote_slots WHERE user_id=u AND category_id=cat FOR UPDATE;
    IF slot.champion_content_id IS NULL THEN
-     UPDATE public.vote_slots SET champion_content_id=cid,version=version+1,updated_at=now() WHERE user_id=u AND category_id=cat RETURNING * INTO slot;
+     UPDATE public.vote_slots SET champion_content_id=cid,origin_content_id=cid,version=version+1,updated_at=now() WHERE user_id=u AND category_id=cat RETURNING * INTO slot;
      INSERT INTO public.vote_events(user_id,category_id,kind,new_content_id) VALUES(u,cat,'initial',cid);
      result:=jsonb_build_object('kind','INITIAL_VOTE','championId',cid,'slotVersion',slot.version);
-   ELSIF slot.champion_content_id=cid THEN
+   ELSIF (SELECT author_id FROM public.content_items WHERE id=slot.champion_content_id)=(SELECT author_id FROM public.content_items WHERE id=cid) THEN
      result:=jsonb_build_object('kind','ALREADY_CHAMPION','championId',cid,'slotVersion',slot.version);
    ELSE
      PERFORM api.validate_candidate(slot.champion_content_id,cat);
@@ -276,23 +307,26 @@ BEGIN
      winner:=CASE WHEN changed THEN duel.challenger_id ELSE duel.incumbent_id END;
      loser:=CASE WHEN changed THEN duel.incumbent_id ELSE duel.challenger_id END;
      IF changed THEN
-       UPDATE public.vote_slots SET champion_content_id=winner,version=version+1,updated_at=now() WHERE user_id=u AND category_id=cat RETURNING * INTO slot;
+       UPDATE public.vote_slots SET champion_content_id=winner,origin_content_id=winner,version=version+1,updated_at=now() WHERE user_id=u AND category_id=cat RETURNING * INTO slot;
      END IF;
      INSERT INTO public.vote_events(user_id,category_id,kind,old_content_id,new_content_id,duel_id)
        VALUES(u,cat,CASE WHEN changed THEN 'transfer' ELSE 'confirmed' END,duel.incumbent_id,winner,did);
-     INSERT INTO public.duel_ratings(category_id,content_id) VALUES(cat,winner),(cat,loser) ON CONFLICT DO NOTHING;
-     PERFORM content_id FROM public.duel_ratings WHERE category_id=cat AND content_id IN(winner,loser) ORDER BY content_id FOR UPDATE;
-     SELECT rating INTO win_rating FROM public.duel_ratings WHERE category_id=cat AND content_id=winner;
-     SELECT rating INTO lose_rating FROM public.duel_ratings WHERE category_id=cat AND content_id=loser;
-     is_rated:=NOT EXISTS(SELECT 1 FROM public.rating_events WHERE user_id=u AND category_id=cat AND rated AND created_at>now()-interval '24 hours'
-       AND least(winner_id,loser_id)=least(winner,loser) AND greatest(winner_id,loser_id)=greatest(winner,loser));
+     SELECT author_id INTO win_author FROM public.content_items WHERE id=winner;
+     SELECT author_id INTO lose_author FROM public.content_items WHERE id=loser;
+     IF win_author=lose_author THEN RAISE EXCEPTION 'DUEL_STALE'; END IF;
+     INSERT INTO public.creator_duel_ratings(category_id,author_id) VALUES(cat,win_author),(cat,lose_author) ON CONFLICT DO NOTHING;
+     PERFORM author_id FROM public.creator_duel_ratings WHERE category_id=cat AND author_id IN(win_author,lose_author) ORDER BY author_id FOR UPDATE;
+     SELECT rating INTO win_rating FROM public.creator_duel_ratings WHERE category_id=cat AND author_id=win_author;
+     SELECT rating INTO lose_rating FROM public.creator_duel_ratings WHERE category_id=cat AND author_id=lose_author;
+     is_rated:=NOT EXISTS(SELECT 1 FROM public.creator_rating_events WHERE user_id=u AND category_id=cat AND rated AND created_at>now()-interval '24 hours'
+       AND least(winner_id,loser_id)=least(win_author,lose_author) AND greatest(winner_id,loser_id)=greatest(win_author,lose_author));
      delta:=CASE WHEN is_rated THEN 32*(1-1/(1+power(10::numeric,(lose_rating-win_rating)/400))) ELSE 0 END;
      IF is_rated THEN
-       UPDATE public.duel_ratings SET rating=rating+delta,matches=matches+1,wins=wins+1 WHERE category_id=cat AND content_id=winner;
-       UPDATE public.duel_ratings SET rating=rating-delta,matches=matches+1,losses=losses+1 WHERE category_id=cat AND content_id=loser;
+       UPDATE public.creator_duel_ratings SET rating=rating+delta,matches=matches+1,wins=wins+1 WHERE category_id=cat AND author_id=win_author;
+       UPDATE public.creator_duel_ratings SET rating=rating-delta,matches=matches+1,losses=losses+1 WHERE category_id=cat AND author_id=lose_author;
      END IF;
-     INSERT INTO public.rating_events(duel_id,user_id,category_id,winner_id,loser_id,rated,old_winner,new_winner,old_loser,new_loser)
-       VALUES(did,u,cat,winner,loser,is_rated,win_rating,win_rating+delta,lose_rating,lose_rating-delta);
+     INSERT INTO public.creator_rating_events(duel_id,user_id,category_id,winner_id,loser_id,rated,old_winner,new_winner,old_loser,new_loser)
+       VALUES(did,u,cat,win_author,lose_author,is_rated,win_rating,win_rating+delta,lose_rating,lose_rating-delta);
      UPDATE public.tilt_duels SET status='resolved',winner_side=p->>'winnerSide',resolved_at=now() WHERE id=did;
      UPDATE public.tilt_duels SET status='superseded' WHERE user_id=u AND category_id=cat AND status='pending';
      result:=jsonb_build_object('kind','TILT_RESOLVED','duelId',did,'categoryId',cat,'winnerContentId',winner,
@@ -300,7 +334,7 @@ BEGIN
    END IF;
  ELSE RAISE EXCEPTION 'INVALID_ACTION'; END IF;
  result:=result||jsonb_build_object('receiptId',op);
- INSERT INTO public.operation_receipts VALUES(u,op,action_name,md5(p::text),result,now());
+ INSERT INTO public.operation_receipts VALUES(u,op,action_name||':creator-v1',md5(p::text),result,now());
  RETURN result;
 END $$;
 

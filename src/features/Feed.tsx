@@ -136,8 +136,9 @@ export function Feed({
             onViewableItemsChanged={onViewable}
             renderItem={({ item, index }) => {
               const current =
-                champions.data?.some((x) => x.categoryId === item.categoryId && x.id === item.id) ||
-                false;
+                champions.data?.some(
+                  (x) => x.categoryId === item.categoryId && x.authorId === item.authorId,
+                ) || false;
               return (
                 <View style={{ height, backgroundColor: c.bg }}>
                   <Image
@@ -262,18 +263,37 @@ export function Feed({
                         </Pressable>
                       </View>
                     )}
+                    {!!item.tags?.length && (
+                      <Label numberOfLines={2} style={{ color: c.cyan, fontSize: 11 }}>
+                        {item.tags.map((tag) => '#' + tag).join('  ')}
+                      </Label>
+                    )}
                     <Pressable
                       accessibilityRole="button"
                       accessibilityLabel={'Categoria ' + item.categoryTitle}
+                      accessibilityHint={item.categoryPath?.join(' › ')}
                       onPress={() =>
                         router.push({ pathname: '/category/[id]', params: { id: item.categoryId } })
                       }
                       style={{ flexDirection: 'row', alignItems: 'center', gap: 5, minHeight: 32 }}
                     >
                       <Icon name="category" size={15} color={c.cyan} />
-                      <Label numberOfLines={1} style={{ fontSize: 12, fontFamily: f.semibold }}>
-                        {item.categoryTitle}
-                      </Label>
+                      <View style={{ flex: 1, gap: 2 }}>
+                        <Label
+                          numberOfLines={1}
+                          style={{ fontSize: 13, fontFamily: f.semibold, color: c.cyan }}
+                        >
+                          {item.categoryTitle}
+                        </Label>
+                        {!!item.categoryPath?.length && (
+                          <Label
+                            numberOfLines={2}
+                            style={{ fontSize: 10, lineHeight: 14, color: '#DDD6E9' }}
+                          >
+                            {item.categoryPath.join(' › ')}
+                          </Label>
+                        )}
+                      </View>
                       <Icon name="chevron" size={12} />
                     </Pressable>
                   </View>

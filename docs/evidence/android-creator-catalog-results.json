@@ -1,0 +1,52 @@
+{
+  "date": "2026-11-08T18:28:54.112Z",
+  "status": "PASS",
+  "apkSha256": "69c1827ec1b1be1138e3c558731e96d2ed4c846680458ebef1b107dd0f85f45e",
+  "catalogVersion": "2026-11-v1",
+  "results": [
+    {
+      "flow": "A01 ricerca testuale e percorso completo senza selettore illustrato",
+      "status": "PASS"
+    },
+    {
+      "flow": "A02 categoria intermedia con classifica diretta e follow persistito",
+      "status": "PASS"
+    },
+    {
+      "flow": "A03 cuore elegge il creator e resta selezionato sulle sue altre foto",
+      "status": "PASS"
+    },
+    {
+      "flow": "A04 creator diverso apre TILT e cambio tab annulla senza trasferimento",
+      "status": "PASS"
+    },
+    {
+      "flow": "A05 scelta nel TILT trasferisce una sola preferenza al creator",
+      "status": "PASS"
+    },
+    {
+      "flow": "A06 follow libero del creator distinto dalla preferenza",
+      "status": "PASS"
+    },
+    {
+      "flow": "A07 Seguiti contiene la categoria seguita senza duplicati",
+      "status": "PASS"
+    },
+    {
+      "flow": "A08 profilo con preferenze vere, percorso e badge di posizione corrente",
+      "status": "PASS"
+    },
+    {
+      "flow": "A09 upload Android: galleria, descrizione, tag e una categoria intermedia",
+      "status": "PASS"
+    },
+    {
+      "flow": "A10 ricerca e categoria intermedia su schermo piccolo con caratteri 130%",
+      "status": "PASS"
+    },
+    {
+      "flow": "A11 proposte categorie rinviate, senza creazione pubblica automatica",
+      "status": "PASS"
+    }
+  ]
+}

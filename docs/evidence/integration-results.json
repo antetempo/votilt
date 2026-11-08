@@ -1,5 +1,5 @@
 {
-  "date": "2026-11-08T17:26:52.654Z",
+  "date": "2026-11-08T18:34:31.226Z",
   "database": "votilt_test",
   "results": [
     {
@@ -51,7 +51,7 @@
       "status": "PASS"
     },
     {
-      "id": "T12 nodo non foglia respinto",
+      "id": "T12 categoria madre non assegnata al contenuto respinta",
       "status": "PASS"
     },
     {
@@ -95,7 +95,7 @@
       "status": "PASS"
     },
     {
-      "id": "T24 stessa immagine due foglie, slot indipendenti",
+      "id": "T24 categoria unica e nessuna propagazione ad altra categoria",
       "status": "PASS"
     },
     {
@@ -135,7 +135,7 @@
       "status": "PASS"
     },
     {
-      "id": "Membership pending non perde nome o link via dettaglio, ricerca o RLS",
+      "id": "Associazione storica rifiutata non perde nome o link via dettaglio, ricerca o RLS",
       "status": "PASS"
     },
     {
@@ -155,7 +155,7 @@
       "status": "PASS"
     },
     {
-      "id": "Proposta categoria con metadato approvata solo dal moderatore",
+      "id": "Proposte successive separate: creazione pubblica disattivata anche per moderatore",
       "status": "PASS"
     },
     {
@@ -183,7 +183,7 @@
       "status": "PASS"
     },
     {
-      "id": "Controllo categorie esteso, duplicati pubblici e proposte concorrenti bloccati",
+      "id": "Catalogo pubblicato mantiene percorsi e nodi intermedi selezionabili",
       "status": "PASS"
     }
   ]

@@ -34,7 +34,7 @@ export default function AiUniverse() {
   });
   const leaves = q.data?.filter(
     (x) =>
-      x.depth === 4 &&
+      x.terminal !== false &&
       (() => {
         let node: Category | undefined = x;
         let parentTitle = '';

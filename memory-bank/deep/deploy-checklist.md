@@ -2,6 +2,7 @@
 title: Checklist DB e avvio locale
 type: deep
 status: active
+superseded_by: creator-catalog-migration
 date: 2026-11-06
 tags: [database, migrations, local-runtime]
 ---

@@ -1,3 +1,4 @@
+import { CreatorPreferences } from '../../src/components/CreatorPreferences';
 import React from 'react';
 import { Alert } from 'react-native';
 import { Stack, router, useLocalSearchParams } from 'expo-router';
@@ -52,6 +53,7 @@ export default function Person() {
       <Label>
         {p.contentCount} creazioni approvate · {p.followerCount} follower
       </Label>
+      <CreatorPreferences userId={id} />
       {id !== user?.id && (
         <>
           <Button

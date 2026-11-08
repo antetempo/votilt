@@ -16,6 +16,7 @@ export type CategoryLeaderboard = {
   path: string[];
   voteCount: number;
   contentCount: number;
+  suggested?: boolean;
   leader: (MediaItem & { support: number; position: 1 }) | null;
 };
 
@@ -50,11 +51,15 @@ export function Rankings() {
         contentContainerStyle={{ padding: 24, paddingTop: 0, paddingBottom: 40, gap: 16 }}
       >
         <Label style={{ fontFamily: f.semibold, fontSize: 18 }}>
-          {term ? 'Categorie trovate' : 'Al primo posto'}
+          {term
+            ? q.data?.some((item) => item.suggested)
+              ? 'Categorie suggerite'
+              : 'Categorie trovate'
+            : 'Al primo posto'}
         </Label>
         {!term && (
           <Label style={{ color: c.muted, fontSize: 13 }}>
-            Le immagini più scelte nelle loro categorie.
+            I creator più scelti, attraverso le loro immagini.
           </Label>
         )}
         {q.isPending ? (
@@ -67,7 +72,7 @@ export function Rankings() {
             body={
               term
                 ? 'Prova il nome della categoria o di un ramo.'
-                : 'Cerca una categoria e scegli la tua prima immagine.'
+                : 'Cerca una categoria e scegli il tuo creator preferito.'
             }
           />
         ) : term ? (

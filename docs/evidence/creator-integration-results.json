@@ -1,0 +1,42 @@
+{
+  "date": "2026-11-08T18:34:38.424Z",
+  "database": "votilt_test",
+  "results": [
+    {
+      "id": "C01 ramo intermedio votabile e nessun rollup alla radice",
+      "status": "PASS"
+    },
+    {
+      "id": "C02 due foto stesso creator, venti richieste concorrenti, una preferenza e origine stabile",
+      "status": "PASS"
+    },
+    {
+      "id": "C03 classifiche creator deduplicate e annullamento TILT senza trasferimento",
+      "status": "PASS"
+    },
+    {
+      "id": "C04 trasferimento concorrente idempotente ed Elo creator separato dallo storico immagini",
+      "status": "PASS"
+    },
+    {
+      "id": "C05 follow categoria e persona distinti dal voto, Seguiti reale senza duplicati",
+      "status": "PASS"
+    },
+    {
+      "id": "C06 upload unico sulla madre, tag liberi validati e persistenti, nessuna classificazione automatica",
+      "status": "PASS"
+    },
+    {
+      "id": "C07 ritiro origine mantiene autore con immagine eleggibile, senza creare nuova preferenza",
+      "status": "PASS"
+    },
+    {
+      "id": "C08 stessa persona in due categorie vale due preferenze, non un rollup o doppio voto immagine",
+      "status": "PASS"
+    },
+    {
+      "id": "C09 cancellazione autore revoca preferenze di tutte le immagini e non cambia creator automaticamente",
+      "status": "PASS"
+    }
+  ]
+}

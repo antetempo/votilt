@@ -55,7 +55,13 @@ export async function waitFor(text, timeout = 25000) {
   throw new Error(`Android UI did not show: ${text}`);
 }
 export async function tap(text) {
-  const node = await waitFor(text);
+  let node = await waitFor(text);
+  const deadline = Date.now() + 25000;
+  while (node.enabled === 'false' && Date.now() < deadline) {
+    await pause(300);
+    node = await waitFor(text);
+  }
+  if (node.enabled === 'false') throw Error('Android control disabled: ' + text);
   const coords = node.bounds?.match(/\d+/g)?.map(Number);
   if (!coords || coords.length !== 4) throw new Error('Missing Android bounds');
   command([
@@ -83,7 +89,7 @@ export async function fill(label, value) {
   await pause(300);
   command(['shell', 'input', 'keycombination', '113', '29']);
   command(['shell', 'input', 'keyevent', '67']);
-  if (!/^[a-zA-Z0-9_@.!+ -]+$/.test(value))
+  if (!/^[a-zA-Z0-9_@.!+, -]+$/.test(value))
     throw new Error('Test input not supported by the driver');
   command(['shell', 'input', 'text', value.replaceAll(' ', '%s')]);
   command(['shell', 'input', 'keyevent', '4']);

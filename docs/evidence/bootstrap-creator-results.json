@@ -1,0 +1,17 @@
+{
+  "date": "2026-11-08T17:57:08.983Z",
+  "status": "PASS",
+  "freshDatabase": true,
+  "counts": {
+    "leaves": 1257,
+    "approved": 123,
+    "pending": 12,
+    "rejected": 3,
+    "hidden": 2,
+    "champions": 192,
+    "users": 6
+  },
+  "idempotent": true,
+  "passwordsUnchanged": true,
+  "database": "votilt_creator_bootstrap_test"
+}

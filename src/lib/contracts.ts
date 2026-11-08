@@ -23,6 +23,7 @@ export const mediaContract = z
     id,
     title: z.string(),
     caption: z.string(),
+    tags: z.array(z.string().min(1).max(40)).max(20).optional(),
     kind: z.enum(['photo', 'illustration', 'ai_art', 'ai_tool']),
     provenance: z.string(),
     status: z.string(),
@@ -32,18 +33,26 @@ export const mediaContract = z
     mediaUrl: z.string().regex(/^\/media\/[a-f0-9-]+$/),
     categoryId: id.nullable(),
     categoryTitle: z.string().nullable(),
+    categoryPath: z.array(z.string()).optional(),
+    creatorSupport: z.number().int().nonnegative().optional(),
+    originSupport: z.number().int().nonnegative().optional(),
+    voteModel: z.literal('creator-v1').optional(),
   })
   .passthrough();
 const categoryContract = z
   .object({
     id,
     parent_id: id.nullable(),
-    depth: z.number().int().min(1).max(4),
+    depth: z.number().int().min(1).max(32),
     title: z.string(),
     slug: z.string(),
     reference_kind: z.enum(['name', 'person', 'website', 'place', 'tool']),
     reference_label: z.string(),
     requires_url: z.boolean(),
+    path: z.array(z.string()).optional(),
+    aliases: z.array(z.string()).optional(),
+    terminal: z.boolean().optional(),
+    isFollowing: z.boolean().optional(),
   })
   .passthrough();
 const version = z.number().int().nonnegative();

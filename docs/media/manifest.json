@@ -78,6 +78,67 @@
       "sha256": "e438d8dc978a9b8f9e3ab289ebb20b6763d88caa6cd6a10714af0cf045b02fb6",
       "bytes": 11934748,
       "transformations": "none"
+    },
+    {
+      "path": "docs/media/creator-search.png",
+      "title": "Ricerca Bonsai con percorso completo",
+      "provenance": "android_screenshot",
+      "capturedOn": "2026-11-08",
+      "source": "docs/evidence/android/75-catalog-bonsai-text-search.png",
+      "sourceAvailability": "local_qa_capture_ignored_by_git",
+      "apkSha256": "69c1827ec1b1be1138e3c558731e96d2ed4c846680458ebef1b107dd0f85f45e",
+      "sha256": "c62ea9b158158c8c2d0e69a90709e0d3ee52b3ff9ea765af802da418f6b08c05",
+      "bytes": 117988,
+      "transformations": "none",
+      "notes": "Account e preferenze di collaudo; contenuti AI dichiarati. Il badge mostra una posizione corrente nella demo, non un premio o una certificazione."
+    },
+    {
+      "path": "docs/media/creator-category.png",
+      "title": "Classifica diretta di una categoria intermedia e follow",
+      "provenance": "android_screenshot",
+      "capturedOn": "2026-11-08",
+      "source": "docs/evidence/android/77-intermediate-category-follow.png",
+      "sourceAvailability": "local_qa_capture_ignored_by_git",
+      "apkSha256": "69c1827ec1b1be1138e3c558731e96d2ed4c846680458ebef1b107dd0f85f45e",
+      "sha256": "c0c937a4885a5dda4cf123f8606979730f4792554ebd6ca9ada994e0776d69ab",
+      "bytes": 297724,
+      "transformations": "none",
+      "notes": "Account e preferenze di collaudo; contenuti AI dichiarati. Il badge mostra una posizione corrente nella demo, non un premio o una certificazione."
+    },
+    {
+      "path": "docs/media/creator-profile.png",
+      "title": "Profilo, preferenze reali e posizione corrente",
+      "provenance": "android_screenshot",
+      "capturedOn": "2026-11-08",
+      "source": "docs/evidence/android/81-creator-profile-badge.png",
+      "sourceAvailability": "local_qa_capture_ignored_by_git",
+      "apkSha256": "69c1827ec1b1be1138e3c558731e96d2ed4c846680458ebef1b107dd0f85f45e",
+      "sha256": "a3270d804119c5cbcb312aeca479f6661652f89baeca3feb7d91c47ca9d74517",
+      "bytes": 198369,
+      "transformations": "none",
+      "notes": "Account e preferenze di collaudo; contenuti AI dichiarati. Il badge mostra una posizione corrente nella demo, non un premio o una certificazione."
+    },
+    {
+      "path": "docs/media/creator-upload.png",
+      "title": "Upload nativo con descrizione e tag liberi",
+      "provenance": "android_screenshot",
+      "capturedOn": "2026-11-08",
+      "source": "docs/evidence/android/82-native-upload-single-category-tags.png",
+      "sourceAvailability": "local_qa_capture_ignored_by_git",
+      "apkSha256": "69c1827ec1b1be1138e3c558731e96d2ed4c846680458ebef1b107dd0f85f45e",
+      "sha256": "f667609226da71d70ca04fc139be83dfb9239d66fa5ef172edfa9c848874a7c8",
+      "bytes": 243539,
+      "transformations": "none",
+      "notes": "Account e preferenze di collaudo; contenuti AI dichiarati. Il badge mostra una posizione corrente nella demo, non un premio o una certificazione."
+    },
+    {
+      "path": "docs/media/creator-badges.svg",
+      "title": "Legenda delle quattro forme di posizione",
+      "provenance": "original_vector_design",
+      "author": "antetempo",
+      "createdOn": "2026-11-08",
+      "sha256": "764f80f20cb8cd525e9ddd1f3f50152b818d32d928aa423b2fa3a912612929fe",
+      "notes": "Esempi grafici esplicitamente indicati, non risultati attribuiti a persone. Nessuna illustrazione decorativa del catalogo."
     }
   ]
 }

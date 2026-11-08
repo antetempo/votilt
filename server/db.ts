@@ -1,6 +1,8 @@
 import pg from 'pg';
 import { runtime } from './config.ts';
 import { sampleFeed, type FeedCandidate } from '../src/utils/domain.ts';
+import { suggestCategories } from '../src/utils/categories.ts';
+import type { Category } from '../src/types/domain.ts';
 import {
   checkCategory,
   type CategoryCandidate,
@@ -48,6 +50,13 @@ export async function rpc<T = unknown>(
   input: Record<string, unknown> = {},
 ): Promise<T> {
   return transaction(userId, async (client) => {
+    if (action === 'suggest_category' || action === 'moderate_suggestion')
+      throw new Error('EDITORIAL_CATALOG_ONLY');
+    if (action === 'follow_toggle' || action === 'category_follow') {
+      for (const key of feedOrders.keys()) {
+        if (JSON.parse(key)[0] === userId) feedOrders.delete(key);
+      }
+    }
     if (
       action === 'category_check' ||
       action === 'suggest_category' ||
@@ -83,7 +92,11 @@ export async function rpc<T = unknown>(
     if (action === 'feed') {
       const key = JSON.stringify([userId, input.mode, input.categoryId, input.seed]);
       let cached = feedOrders.get(key);
-      if (!cached || Date.now() - cached.at > 3600000) {
+      if (
+        !cached ||
+        (input.mode === 'following' && !input.offset) ||
+        Date.now() - cached.at > 3600000
+      ) {
         const candidates = (
           await client.query('SELECT api.feed_candidates($1::jsonb) result', [
             JSON.stringify(input),
@@ -109,6 +122,29 @@ export async function rpc<T = unknown>(
         items,
         nextOffset: offset + limit < cached.items.length ? offset + limit : null,
       } as T;
+    }
+    if (action === 'category_rankings' && String(input.query || '').trim()) {
+      const exact = (
+        await client.query("SELECT api.dispatch('category_rankings',$1::jsonb) result", [
+          JSON.stringify(input),
+        ])
+      ).rows[0].result;
+      if (exact.length) return exact as T;
+      const categories = (
+        await client.query("SELECT api.dispatch('categories','{}'::jsonb) result")
+      ).rows[0].result as Category[];
+      const candidateIds = suggestCategories(String(input.query), categories, 50).map(
+        (category) => category.id,
+      );
+      if (!candidateIds.length) return [] as T;
+      const suggested = (
+        await client.query("SELECT api.dispatch('category_rankings',$1::jsonb) result", [
+          JSON.stringify({ ...input, candidateIds }),
+        ])
+      ).rows[0].result as { id: string }[];
+      return suggested
+        .sort((a, b) => candidateIds.indexOf(a.id) - candidateIds.indexOf(b.id))
+        .map((item) => ({ ...item, suggested: true })) as T;
     }
     const { rows } = await client.query('SELECT api.dispatch($1, $2::jsonb) AS result', [
       action,

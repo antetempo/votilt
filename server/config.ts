@@ -16,7 +16,11 @@ export const runtime = JSON.parse(
 };
 export const mediaRoot = path.join(root, '.local/media');
 if (process.env.VOTILT_DATABASE) {
-  if (!['votilt', 'votilt_test', 'votilt_bootstrap_test'].includes(process.env.VOTILT_DATABASE))
+  if (
+    !['votilt', 'votilt_test', 'votilt_bootstrap_test', 'votilt_creator_bootstrap_test'].includes(
+      process.env.VOTILT_DATABASE,
+    )
+  )
     throw new Error('Database locale non consentito.');
   runtime.database = process.env.VOTILT_DATABASE;
 }

@@ -1,6 +1,6 @@
-import React, { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react';
+import React, { createContext, useCallback, useContext, useRef, useState } from 'react';
 import { Alert } from 'react-native';
-import { router, type Href } from 'expo-router';
+import { router, useFocusEffect, type Href } from 'expo-router';
 
 type Guard = () => Promise<boolean>;
 const NavigationContext = createContext<{
@@ -45,5 +45,7 @@ export function useAppNavigation() {
 
 export function useAppNavigationGuard(guard: Guard) {
   const register = useAppNavigation()?.register;
-  useEffect(() => register?.(guard), [register, guard]);
+  // Stack screens can stay mounted behind a tab. Only the focused screen may
+  // intercept navigation; a cancelled background TILT must never trap the app.
+  useFocusEffect(useCallback(() => register?.(guard), [register, guard]));
 }

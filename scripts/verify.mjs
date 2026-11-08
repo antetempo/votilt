@@ -9,6 +9,7 @@ const steps = [
     ['test', '--', '--silent', '--json', '--outputFile=docs/evidence/unit-results.json'],
   ],
   ['integration', ['run', 'test:integration']],
+  ['creator integration', ['exec', 'tsx', 'tests/integration/creator.test.ts']],
 ];
 const results = [];
 for (const [name, args] of steps) {

@@ -2,7 +2,11 @@ import pg from 'pg';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
 import assert from 'node:assert/strict';
-const env = { ...process.env, VOTILT_DATABASE: 'votilt_bootstrap_test' };
+const database =
+  process.env.VOTILT_BOOTSTRAP_FRESH === '1'
+    ? 'votilt_creator_bootstrap_test'
+    : 'votilt_bootstrap_test';
+const env = { ...process.env, VOTILT_DATABASE: database };
 function run(args) {
   const r = spawnSync(process.execPath, args, {
     env,
@@ -17,25 +21,24 @@ assert.equal(config.host, '127.0.0.1');
 assert.equal(config.port, 55432);
 const admin = new pg.Client({ ...config, database: 'postgres' });
 await admin.connect();
-const wasEmpty = !(
-  await admin.query("SELECT 1 FROM pg_database WHERE datname='votilt_bootstrap_test'")
-).rowCount;
+const wasEmpty = !(await admin.query('SELECT 1 FROM pg_database WHERE datname=$1', [database]))
+  .rowCount;
 await admin.end();
 run(['scripts/migrate.mjs']);
 run(['--import', 'tsx', 'scripts/seed.ts']);
-const db = new pg.Client({ ...config, database: 'votilt_bootstrap_test' });
+const db = new pg.Client({ ...config, database });
 await db.connect();
 async function snapshot() {
   return (
     await db.query(
-      "SELECT (SELECT count(*)::int FROM public.categories WHERE depth=4 AND status='published') leaves,(SELECT count(*)::int FROM public.content_items WHERE moderation_status='approved') approved,(SELECT count(*)::int FROM public.content_items WHERE moderation_status='pending_review') pending,(SELECT count(*)::int FROM public.content_items WHERE moderation_status='rejected') rejected,(SELECT count(*)::int FROM public.content_items WHERE moderation_status='hidden') hidden,(SELECT count(*)::int FROM public.vote_slots WHERE champion_content_id IS NOT NULL) champions,(SELECT count(*)::int FROM public.profiles) users",
+      "SELECT (SELECT count(*)::int FROM public.categories cat WHERE cat.status='published' AND NOT EXISTS(SELECT 1 FROM public.categories child WHERE child.parent_id=cat.id AND child.status='published')) leaves,(SELECT count(*)::int FROM public.content_items WHERE moderation_status='approved') approved,(SELECT count(*)::int FROM public.content_items WHERE moderation_status='pending_review') pending,(SELECT count(*)::int FROM public.content_items WHERE moderation_status='rejected') rejected,(SELECT count(*)::int FROM public.content_items WHERE moderation_status='hidden') hidden,(SELECT count(*)::int FROM public.vote_slots WHERE champion_content_id IS NOT NULL) champions,(SELECT count(*)::int FROM public.profiles) users",
     )
   ).rows[0];
 }
 try {
   const first = await snapshot();
   assert.deepEqual(first, {
-    leaves: 41,
+    leaves: 1257,
     approved: 123,
     pending: 12,
     rejected: 3,
@@ -60,12 +63,14 @@ try {
     counts: first,
     idempotent: true,
     passwordsUnchanged: true,
-    database: 'votilt_bootstrap_test',
+    database,
   };
   writeFileSync(
-    wasEmpty
-      ? 'docs/evidence/bootstrap-results.json'
-      : 'docs/evidence/bootstrap-rerun-results.json',
+    database === 'votilt_creator_bootstrap_test'
+      ? 'docs/evidence/bootstrap-creator-results.json'
+      : wasEmpty
+        ? 'docs/evidence/bootstrap-results.json'
+        : 'docs/evidence/bootstrap-rerun-results.json',
     JSON.stringify(result, null, 2),
   );
   console.log(result);

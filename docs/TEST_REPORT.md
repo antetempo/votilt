@@ -1,5 +1,26 @@
 # Test report · VOTILT
 
+## Revisione creator/catalogo · 8 novembre 2026
+
+**Pronta da verificare su Android locale.** Una categoria per immagine, anche radice/intermedia; cuore al creator nella categoria esatta, nessun rollup. Stesso autore senza nuovo voto/TILT, origine conservata; follow persona e categoria separati. Ricerca con percorsi/sinonimi/vicinanza lessicale, descrizione e tag liberi; profili e classifiche per autore con posizioni correnti reali. Nuovo catalogo: 36 radici, 211 rami, 1216 foglie, 1427 nodi selezionabili, profondità massima 5.
+
+| Prova attuale | Risultato | Evidenza |
+|---|---|---|
+| Typecheck, lint, format; 120 unit/componenti in 21 suite | PASS | [Regressione](evidence/verify-results.json) |
+| 46 integrazioni HTTP/PG generali + 9 creator | PASS | [Generali](evidence/integration-results.json), [creator](evidence/creator-integration-results.json) |
+| Migrazione demo con backup e rerun | PASS | [Migrazione](evidence/creator-migration-results.json): 144 contenuti, 6 account e 201 slot conservati al momento della migrazione; 17 associazioni multiple normalizzate, storico conservato |
+| Bootstrap fresco + seed ripetuto | PASS | [Bootstrap](evidence/bootstrap-creator-results.json): 1257 foglie incluse le 41 precedenti, 123 approvati, 192 preferenze e 6 account; credenziali invariate al rerun |
+| Build autonoma e installazione emulatore | PASS | [Build](../output/build-info.json); APK SHA-256 69c1827ec1b1be1138e3c558731e96d2ed4c846680458ebef1b107dd0f85f45e |
+| 11 percorsi Android sull’APK corrente | PASS | [Android creator/catalogo](evidence/android-creator-catalog-results.json): ricerca/percorso, categoria intermedia/follow, stesso creator, TILT annulla/risolve, follow persona, Seguiti, profilo/badge, upload galleria, schermo piccolo/font 130%, proposte rinviate |
+
+La QA aggiunge contenuti e preferenze reali di collaudo tramite API/UI; i conteggi della migrazione sono una fotografia precedente, non la dimensione attuale del runtime. Nessuna password esistente cambiata. Archivio immagini e categorie precedenti preservato; pubblicati non riclassificati nel nuovo catalogo.
+
+Correzioni emerse dal collaudo: dettaglio profilo ora espandibile/filtrabile per mantenere Follow accessibile; guardie e back TILT registrati solo quando la schermata ha focus, evitando il blocco delle tab successive; daily sceglie categorie con contenuti pubblici eleggibili. Schema canonico, migrazioni idempotenti e [checklist](../memory-bank/deep/creator-catalog-migration.md) allineati.
+
+App installata e aperta su Classifiche; dimensioni e font ripristinati. **Approvazione finale di Fabrizio non registrata.** Territori, video e workflow completo proposte editoriali sono rollout successivi. L’illustrazione decorativa scartata non è integrata. Repository **pubblico** per scelta dell’utente; autore commit **antetempo@gmail.com**, account **antetempo**. Commit iniziale a0d85bf e successivo e9d78ab già pushati/verificati; la nuova consegna viene registrata nella [ricevuta Git](evidence/github-publication.json) dopo il push. Nessun deploy applicativo/store.
+
+[Piano corrente](votilt-creator-catalog-plan.md) · [Gerarchia completa](research/catalogo-editoriale/GERARCHIA_COMPLETA.md) · [Ledger](VOTILT_APPROVAL_LEDGER.md). Le sezioni sotto sono **storico di revisioni precedenti**, con prove e limiti riferiti alle rispettive build.
+
 Data finale: 2026-11-06T19:41:07.271Z. Windows, Node 24.14.0, PostgreSQL 18.3 nativo dedicato, Expo 58.0.23, React Native 0.88.1. AVD Medium_Phone_API_36.1, emulator-5554. Nessun Docker, nessun deploy.
 
 | Prova eseguita | Comando/procedura | Esito e prova |

@@ -23,7 +23,7 @@ for (const row of rows) {
       if (!nodes.has(current)) nodes.set(current, {
         id, name: full[i], path: current, depth: i + 1,
         parentPath: i ? full.slice(0, i).join(' > ') : null,
-        terminal: i === full.length - 1, aliases: [],
+        terminal: i === full.length - 1, publishable: true, aliases: [],
       });
       else if (nodes.get(current).terminal !== (i === full.length - 1)) {
         throw new Error(`Nodo usato sia come ramo sia come foglia: ${current}`);
@@ -38,7 +38,6 @@ const aliases = {
   'FPS tattici': ['tactical FPS', 'sparatutto tattici'],
   'FPS arena': ['arena shooter'],
   'Motociclismo': ['moto', 'motorbike'],
-  'Café racer': ['cafe racer', 'café-racer'],
   'Baggers custom': ['bagger'],
   'Fitness e allenamento': ['palestra', 'workout', 'gym'],
   'Amicizia e vita sociale': ['amici', 'friends'],
@@ -87,17 +86,24 @@ const stats = {
   leavesByRoot: Object.fromEntries(all.filter((node) => node.depth === 1).map((root) =>
     [root.name, leaves.filter((leaf) => leaf.path.startsWith(root.name + ' > ')).length])),
 };
+const migrationPath = path.resolve(dir, '../../evidence/creator-migration-results.json');
+const applied = fs.existsSync(migrationPath) && JSON.parse(fs.readFileSync(migrationPath,'utf8')).editorialNodes === stats.nodes;
+const androidPath = path.resolve(dir, '../../evidence/android-creator-catalog-results.json');
+const androidVerified = fs.existsSync(androidPath) && JSON.parse(fs.readFileSync(androidPath,'utf8')).status === 'PASS';
 const lines = [
   '# VOTILT — gerarchia editoriale completa della bozza v0.2', '',
-  '**BOZZA IN LAVORAZIONE · 8 novembre 2026 · non importata nell’app.**', '',
+  applied ? `**CANDIDATO DI RILASCIO · 8 novembre 2026 · catalogo applicato al database locale; ${androidVerified ? 'build Android verificata' : 'prova della nuova build Android in corso'}. Approvazione finale di Fabrizio non registrata.**` : '**BOZZA IN LAVORAZIONE · 8 novembre 2026 · non importata nell’app.**', '',
   '**Revisione trasversale v0.2:** riscritti tutti i domini usando interessi, comunità, discipline e ambiti editoriali riconoscibili. Le frasi da didascalia della v0.1 non sono foglie competitive: “angoli d’ombra in giardino” è sostituito dal tema “Piante da ombra”; famiglia e amicizia restano aree proprie senza duplicare ogni attività “in famiglia”. La profondità e il numero di figli variano secondo il dominio. La bozza v0.1 è conservata come storico e non è il catalogo da importare.', '',
   'Questo documento contiene tutti i rami e tutte le foglie attualmente progettati. È una proposta editoriale originale, non una promessa di coprire ogni contenuto possibile. I conteggi descrivono questa bozza; non misurano la domanda degli utenti o la qualità della classificazione.', '',
   `**Conteggi misurati:** ${stats.roots} aree principali, ${stats.branches} rami complessivi (incluse le radici), ${stats.leaves} foglie, ${stats.nodes} nodi; profondità massima ${stats.maxDepth}.`, '',
-  '**Legenda:** `[RAMO]` raggruppa argomenti; `[FOGLIA]` è una destinazione finale proposta per i contenuti e la preferenza per il creator. Ogni riga riporta il percorso completo. I sinonimi indicati sono aiuti alla ricerca, non categorie aggiuntive.', '',
+  '**Regola aggiornata:** ogni immagine può essere pubblicata in **UNA SOLA categoria**, scegliendo liberamente anche un ramo intermedio o una radice. Il cuore riconosce il creator nella categoria assegnata, senza propagare voti, preferenze o badge agli antenati. Il breadcrumb descrive il contesto; non assegna categorie aggiuntive.', '',
+  '**Descrizione e tag liberi:** aiutano la ricerca e i suggerimenti da nomi, sinonimi e parole chiave; non creano categorie, non aggiungono slot e non riclassificano automaticamente i contenuti pubblicati. L’autore decide. Le proposte di nuove categorie sono previste in un rollout successivo, in una coda separata con approvazione editoriale umana; nessuna pubblicazione automatica da AI.', '',
+  '**Selezione nell’app:** ricerca testuale, nomi e percorsi leggibili. L’illustrazione decorativa generata è stata scartata dall’utente e non viene usata nell’app, nel selettore o come copertina del catalogo.', '',
+  '**Legenda:** `[RAMO]` ha sottocategorie; `[FOGLIA]` non ne ha. **Entrambi sono selezionabili e hanno una classifica diretta propria.** Ogni riga riporta il percorso completo. Una vista di scoperta dei discendenti deve essere distinta dalla classifica diretta del ramo. I sinonimi aiutano la ricerca e non aggiungono slot.', '',
   '## Criterio di copertura', '',
   'La copertura include vita quotidiana, amicizia, famiglia, divertimento, espressione personale, mare e costumi, danza, sport, gaming di nicchia, moto custom, arti, cultura, informazione, scienza, lavoro e hobby. Il criterio evita di ridurre i social a contenuti professionali: mette insieme relazione, intrattenimento, identità, creatività, apprendimento e interessi specialistici. Non moltiplica automaticamente ogni tema per tono, provenienza AI, luogo o formato: questi possono essere attributi separati.', '',
   'Rami e foglie richiedono ancora revisione semantica: sovrapposizioni, sinonimi mancanti, granularità e confrontabilità delle immagini. Un badge segnala preferenze della comunità, non competenza certificata o verità scientifica. Famiglia e minori richiedono tutela della privacy; costumi e danza in contesti ordinari non sono automaticamente contenuti sessuali. I contenuti espliciti o non consensuali restano esclusi.', '',
-  'Gli ID nei dati riutilizzabili sono identificatori di bozza derivati dal percorso: prima dell’importazione serve un registro stabile e una migrazione verificata. Il database attuale limita la profondità a quattro livelli: questa bozza non è direttamente importabile senza adeguamento. Nessuna nuova immagine è stata generata per questa bozza; la produzione grafica è una fase distinta.', '',
+  'Gli ID `draft-*` nei dati di ricerca identificano la bozza. Il registro operativo `data/editorial-catalog.json` contiene gli UUID persistenti usati dalla migrazione; rinominare un argomento deve conservarne l’UUID. Il nuovo modello supera il precedente limite fisso di quattro livelli. I contenuti pubblicati nel catalogo iniziale mantengono le categorie esistenti: non sono stati riclassificati automaticamente nel nuovo albero. La grafica funzionale usa il brand e le forme dei badge, senza l’illustrazione decorativa scartata.', '',
   '## Fonti e limiti', '',
   '- [W3C SKOS](https://www.w3.org/TR/skos-reference/): concetti, etichette alternative e relazioni gerarchiche. La struttura proposta è nostra, non una tassonomia W3C.',
   '- [IAB Content Taxonomy](https://iabtechlab.com/standards/content-taxonomy/): riferimento per ampiezza tematica; pensato per classificazione contestuale pubblicitaria, non per voti ai creator.',
@@ -112,8 +118,8 @@ lines.splice(lines.length - 2, 0, '## Revisione news e linguaggio social', '',
   `L’area Informazione e vita civica contiene ora **${stats.leavesByRoot['Informazione e vita civica']} foglie**: politica italiana, esteri/geopolitica, economia/finanza, cronaca/giustizia, società/diritti, salute/sanità, ambiente, attualità scientifica, cultura e religioni. Le condizioni di moderazione sono separate dai nomi pubblici.`, '',
   socialNotes.replace(/^# /, '### '), '');
 for (const node of all) {
-  if (node.depth === 1) lines.push(`### ${node.name}`, '');
-  lines.push(`- **[${node.terminal ? 'FOGLIA' : 'RAMO'}]** ${node.path}${node.aliases.length ? ` — Sinonimi: ${node.aliases.join(', ')}` : ''}`);
+  if (node.depth === 1) lines.push(`### ${node.name} — ${stats.leavesByRoot[node.name]} foglie`, '');
+  lines.push(`${'  '.repeat(node.depth-1)}- **[${node.terminal ? 'FOGLIA' : 'RAMO'}]** ${node.path}${node.aliases.length ? ` — Sinonimi: ${node.aliases.join(', ')}` : ''}`);
 }
 lines.push('', '## Dati riutilizzabili', '',
   '- `catalogo.v0.2.json`: tutti i nodi, parentela, tipo ramo/foglia e sinonimi.',
@@ -123,7 +129,7 @@ lines.push('', '## Dati riutilizzabili', '',
 const md = lines.join('\n');
 fs.writeFileSync(path.join(dir, 'GERARCHIA_COMPLETA.md'), md);
 fs.writeFileSync(path.join(dir, 'catalogo.v0.2.json'), JSON.stringify({
-  version: '0.2-draft', status: 'BOZZA_IN_LAVORAZIONE', generatedAt: '2026-11-08',
+  version: '0.2-draft', status: applied ? 'CANDIDATO_DI_RILASCIO' : 'BOZZA_IN_LAVORAZIONE', generatedAt: '2026-11-08',
   stats, nodes: all,
 }, null, 2) + '\n');
 fs.writeFileSync(path.join(dir, 'conteggi.json'), JSON.stringify(stats, null, 2) + '\n');

@@ -10,9 +10,11 @@ import { Icon } from './Icon';
 export function MediaGrid({
   items,
   champions = false,
+  showOrigins = false,
 }: {
   items: MediaItem[];
   champions?: boolean;
+  showOrigins?: boolean;
 }) {
   return (
     <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 12 }}>
@@ -49,6 +51,16 @@ export function MediaGrid({
           <Label numberOfLines={2} style={{ fontFamily: f.semibold, fontSize: 13 }}>
             {champions ? x.categoryTitle : x.title}
           </Label>
+          {!!x.categoryPath?.length && (
+            <Label numberOfLines={2} style={{ fontSize: 10, lineHeight: 14, color: c.cyan }}>
+              {x.categoryPath.join(' › ')}
+            </Label>
+          )}
+          {showOrigins && x.originSupport !== undefined && (
+            <Label style={{ fontSize: 10, color: c.muted }}>
+              {x.originSupport} preferenze originate qui
+            </Label>
+          )}
           {!champions && (
             <Label style={{ fontSize: 10, color: c.muted }}>
               {{

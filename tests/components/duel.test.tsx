@@ -8,6 +8,8 @@ const mockRefetch = jest.fn();
 jest.mock('expo-router', () => ({
   router: { back: jest.fn(), replace: jest.fn() },
   useLocalSearchParams: () => ({ id: 'duel' }),
+  useFocusEffect: (effect: () => void) =>
+    jest.requireActual<typeof React>('react').useEffect(effect, [effect]),
 }));
 jest.mock('../../src/lib/session', () => ({
   useSession: () => ({

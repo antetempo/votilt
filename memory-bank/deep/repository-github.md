@@ -2,6 +2,7 @@
 title: Repository GitHub, commit iniziale e documentazione visuale
 type: deep
 status: active
+superseded_by: repository-github-public
 date: 2026-11-08
 author: Fabrizio
 tags: [github, repository, documentation, readme, handoff]

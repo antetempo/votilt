@@ -97,6 +97,7 @@ const root = randomUUID(),
   otherCat = randomUUID();
 let A: Account, B: Account, M: Account, C: Account, D: Account;
 let content: string[] = [];
+let fixtureAuthors: string[] = [];
 let opInitial: string;
 let duel: string;
 let receipt: Vote;
@@ -136,6 +137,7 @@ try {
       'INSERT INTO public.categories(id,parent_id,depth,slug,title) VALUES($1,$2,$3,$4,$5)',
       [id, parent, depth, `test-${id}`, 'Categoria test isolata'],
     );
+  fixtureAuthors = [M.user.id, A.user.id, C.user.id, M.user.id, B.user.id];
   content = Array.from({ length: 5 }, () => randomUUID());
   for (const [i, id] of content.entries()) {
     const bytes = await sharp({
@@ -147,7 +149,7 @@ try {
     writeFileSync(`.local/media/${id}.jpg`, bytes);
     await db.query(
       `INSERT INTO public.content_items(id,author_id,kind,title,media_path,moderation_status,rights_attested,adult_consent) VALUES($1,$2,'illustration','Fixture isolata',$3,$4,true,true)`,
-      [id, i === 4 ? B.user.id : M.user.id, `${id}.jpg`, i === 3 ? 'pending_review' : 'approved'],
+      [id, fixtureAuthors[i], `${id}.jpg`, i === 3 ? 'pending_review' : 'approved'],
     );
     await db.query(
       'INSERT INTO public.content_categories(content_id,category_id,status) VALUES($1,$2,$3)',
@@ -191,8 +193,8 @@ try {
     await call(A, 'cancel_tilt', { duelId: duel, clientOperationId: randomUUID() });
     assert.equal((await slot(A.user.id)).champion_content_id, content[0]);
     assert.equal(
-      (await db.query('SELECT count(*) FROM public.rating_events WHERE duel_id=$1', [duel])).rows[0]
-        .count,
+      (await db.query('SELECT count(*) FROM public.creator_rating_events WHERE duel_id=$1', [duel]))
+        .rows[0].count,
       '0',
     );
   });
@@ -209,7 +211,7 @@ try {
     assert.equal(
       (
         await db.query(
-          'SELECT rating FROM public.duel_ratings WHERE category_id=$1 AND content_id=$2',
+          'SELECT rating FROM public.creator_duel_ratings WHERE category_id=$1 AND author_id=(SELECT author_id FROM public.content_items WHERE id=$2)',
           [cat, content[0]],
         )
       ).rows[0].rating,
@@ -231,8 +233,8 @@ try {
     );
     values.forEach((x) => assert.deepEqual(x, receipt));
     assert.equal(
-      (await db.query('SELECT count(*) FROM public.rating_events WHERE duel_id=$1', [duel])).rows[0]
-        .count,
+      (await db.query('SELECT count(*) FROM public.creator_rating_events WHERE duel_id=$1', [duel]))
+        .rows[0].count,
       '1',
     );
   });
@@ -272,9 +274,9 @@ try {
   await check('T11 pending respinto', async () => {
     await fails(A, 'vote_intent', input(content[3]), ['CONTENT_UNAVAILABLE']);
   });
-  await check('T12 nodo non foglia respinto', async () => {
+  await check('T12 categoria madre non assegnata al contenuto respinta', async () => {
     await fails(A, 'vote_intent', { ...input(content[0]), categoryId: root }, [
-      'CATEGORY_NOT_LEAF',
+      'CONTENT_UNAVAILABLE',
     ]);
   });
   await check('T13 membership diversa respinta', async () => {
@@ -385,7 +387,9 @@ try {
     );
   });
   await check('T20 cooldown non impedisce preferenza', async () => {
-    const rows = await db.query('SELECT rated FROM public.rating_events WHERE duel_id=$1', [duel]);
+    const rows = await db.query('SELECT rated FROM public.creator_rating_events WHERE duel_id=$1', [
+      duel,
+    ]);
     assert.equal(rows.rows[0].rated, false);
     assert.equal(receipt.didChampionChange, true);
   });
@@ -436,25 +440,25 @@ try {
     );
     await fails(D, 'me', {}, ['AUTH_REQUIRED']);
   });
-  await check('T24 stessa immagine due foglie, slot indipendenti', async () => {
-    await db.query('INSERT INTO public.content_categories(content_id,category_id) VALUES($1,$2)', [
-      content[0],
-      otherCat,
+  await check('T24 categoria unica e nessuna propagazione ad altra categoria', async () => {
+    await assert.rejects(
+      db.query('INSERT INTO public.content_categories(content_id,category_id) VALUES($1,$2)', [
+        content[0],
+        otherCat,
+      ]),
+      (e: any) => e.code === '23505',
+    );
+    await fails(A, 'vote_intent', { ...input(content[0]), categoryId: otherCat }, [
+      'CONTENT_UNAVAILABLE',
     ]);
-    await db.query('INSERT INTO public.content_metadata VALUES($1,$2,$3,NULL)', [
-      content[0],
-      otherCat,
-      'Soggetto test in seconda foglia',
-    ]);
-    await call(A, 'vote_intent', { ...input(content[0]), categoryId: otherCat });
     assert.equal(
       (
         await db.query(
-          'SELECT champion_content_id FROM public.vote_slots WHERE user_id=$1 AND category_id=$2',
+          'SELECT count(*)::int n FROM public.vote_slots WHERE user_id=$1 AND category_id=$2 AND champion_content_id IS NOT NULL',
           [A.user.id, otherCat],
         )
-      ).rows[0].champion_content_id,
-      content[0],
+      ).rows[0].n,
+      0,
     );
   });
   await check('T26 scadenza respinta', async () => {
@@ -735,55 +739,58 @@ try {
       assert.ok(!social.people.some((x: any) => x.id === A.user.id));
     },
   );
-  await check('Membership pending non perde nome o link via dettaglio, ricerca o RLS', async () => {
-    const hiddenCat = randomUUID();
-    await db.query(
-      "INSERT INTO public.categories(id,parent_id,depth,slug,title,reference_kind,requires_url) VALUES($1,$2,4,$3,'Categoria pending test','website',true)",
-      [hiddenCat, sub, `pending-${hiddenCat}`],
-    );
-    await db.query("INSERT INTO public.content_categories VALUES($1,$2,'pending')", [
-      content[2],
-      hiddenCat,
-    ]);
-    await db.query(
-      "INSERT INTO public.content_metadata VALUES($1,$2,'UnreleasedSecretName','https://review-only.example')",
-      [content[2], hiddenCat],
-    );
-    await fails(B, 'content', { contentId: content[2], categoryId: hiddenCat }, [
-      'CONTENT_UNAVAILABLE',
-    ]);
-    assert.equal((await call(null, 'search', { query: 'UnreleasedSecretName' })).length, 0);
-    const publicDetail = await call(B, 'content', { contentId: content[2], categoryId: cat });
-    assert.ok(!JSON.stringify(publicDetail).includes('UnreleasedSecretName'));
-    assert.equal(
-      (await call(M, 'content', { contentId: content[2], categoryId: hiddenCat })).reference.name,
-      'UnreleasedSecretName',
-    );
-    const { transaction } = await import('../../server/db.ts');
-    await transaction(B.user.id, async (limited) => {
-      assert.equal(
-        (
-          await limited.query(
-            'SELECT * FROM public.content_metadata WHERE content_id=$1 AND category_id=$2',
-            [content[2], hiddenCat],
-          )
-        ).rowCount,
-        0,
+  await check(
+    'Associazione storica rifiutata non perde nome o link via dettaglio, ricerca o RLS',
+    async () => {
+      const hiddenCat = randomUUID();
+      await db.query(
+        "INSERT INTO public.categories(id,parent_id,depth,slug,title,reference_kind,requires_url) VALUES($1,$2,4,$3,'Categoria pending test','website',true)",
+        [hiddenCat, sub, `pending-${hiddenCat}`],
       );
-    });
-    await db.query("INSERT INTO public.content_categories VALUES($1,$2,'pending')", [
-      content[3],
-      hiddenCat,
-    ]);
-    await db.query(
-      "INSERT INTO public.content_metadata VALUES($1,$2,'Secondo riferimento QA','https://second-review.example')",
-      [content[3], hiddenCat],
-    );
-    const queue = await call(M, 'moderation');
-    const item = queue.contents.find((x: any) => x.id === content[3]);
-    assert.equal(item.references.length, 2);
-    assert.ok(item.references.some((x: any) => x.url === 'https://second-review.example'));
-  });
+      await db.query("INSERT INTO public.content_categories VALUES($1,$2,'rejected')", [
+        content[2],
+        hiddenCat,
+      ]);
+      await db.query(
+        "INSERT INTO public.content_metadata VALUES($1,$2,'UnreleasedSecretName','https://review-only.example')",
+        [content[2], hiddenCat],
+      );
+      await fails(B, 'content', { contentId: content[2], categoryId: hiddenCat }, [
+        'CONTENT_UNAVAILABLE',
+      ]);
+      assert.equal((await call(null, 'search', { query: 'UnreleasedSecretName' })).length, 0);
+      const publicDetail = await call(A, 'content', { contentId: content[2], categoryId: cat });
+      assert.ok(!JSON.stringify(publicDetail).includes('UnreleasedSecretName'));
+      assert.equal(
+        (await call(M, 'content', { contentId: content[2], categoryId: hiddenCat })).reference.name,
+        'UnreleasedSecretName',
+      );
+      const { transaction } = await import('../../server/db.ts');
+      await transaction(A.user.id, async (limited) => {
+        assert.equal(
+          (
+            await limited.query(
+              'SELECT * FROM public.content_metadata WHERE content_id=$1 AND category_id=$2',
+              [content[2], hiddenCat],
+            )
+          ).rowCount,
+          0,
+        );
+      });
+      await db.query("INSERT INTO public.content_categories VALUES($1,$2,'rejected')", [
+        content[3],
+        hiddenCat,
+      ]);
+      await db.query(
+        "INSERT INTO public.content_metadata VALUES($1,$2,'Secondo riferimento QA','https://second-review.example')",
+        [content[3], hiddenCat],
+      );
+      const queue = await call(M, 'moderation');
+      const item = queue.contents.find((x: any) => x.id === content[3]);
+      assert.equal(item.references.length, 2);
+      assert.ok(item.references.some((x: any) => x.url === 'https://second-review.example'));
+    },
+  );
   await check('Kind incompatibile rifiutato dal voto, tool usa lo stesso motore', async () => {
     await db.query("UPDATE public.content_items SET kind='ai_tool' WHERE id=$1", [content[0]]);
     try {
@@ -802,7 +809,7 @@ try {
     for (const [index, id] of tools.entries()) {
       await db.query(
         "INSERT INTO public.content_items(id,author_id,kind,title,media_path,moderation_status) VALUES($1,$2,'ai_tool','Tool fixture',$3,'approved')",
-        [id, M.user.id, `${id}.jpg`],
+        [id, fixtureAuthors[index], `${id}.jpg`],
       );
       await db.query("INSERT INTO public.content_categories VALUES($1,$2,'approved')", [
         id,
@@ -960,10 +967,10 @@ try {
       "INSERT INTO public.categories(id,parent_id,depth,slug,title) VALUES($1,$2,4,$3,'Ranking QA')",
       [leaf, sub, `rank-${leaf}`],
     );
-    for (const id of ids) {
+    for (const [index, id] of ids.entries()) {
       await db.query(
         "INSERT INTO public.content_items(id,author_id,kind,title,media_path,moderation_status) VALUES($1,$2,'illustration','Ranking fixture',$3,'approved')",
-        [id, M.user.id, `${id}.jpg`],
+        [id, fixtureAuthors[index], `${id}.jpg`],
       );
       await db.query("INSERT INTO public.content_categories VALUES($1,$2,'approved')", [id, leaf]);
       await db.query("INSERT INTO public.content_metadata VALUES($1,$2,'Nome ranking',NULL)", [
@@ -997,8 +1004,8 @@ try {
       true,
     );
     await db.query(
-      "INSERT INTO public.ranking_snapshots VALUES((now() AT TIME ZONE 'UTC')::date-7,$1,$2,0),((now() AT TIME ZONE 'UTC')::date-7,$1,$3,2)",
-      [leaf, ...ids],
+      "INSERT INTO public.creator_ranking_snapshots VALUES((now() AT TIME ZONE 'UTC')::date-7,$1,$2,0),((now() AT TIME ZONE 'UTC')::date-7,$1,$3,2)",
+      [leaf, ...fixtureAuthors.slice(0, 2)],
     );
     const trend = await call(B, 'ranking', { categoryId: leaf, metric: 'trend' });
     assert.equal(trend.insufficientHistory, false);
@@ -1006,34 +1013,24 @@ try {
     assert.equal(trend.items[0].trend, 1);
     assert.equal(trend.items[1].trend, -1);
   });
-  await check('Proposta categoria con metadato approvata solo dal moderatore', async () => {
-    const title = `Siti QA ${randomUUID().slice(0, 6)}`;
-    await call(A, 'suggest_category', {
-      parentId: sub,
-      title,
-      description:
-        'Categoria dimostrativa per verificare la revisione dei riferimenti di siti web e la pubblicazione controllata.',
-      examples: ['Portale A', 'Portale B', 'Portale C'],
-      referenceKind: 'website',
-    });
-    const own = await call(A, 'my_suggestions');
-    const s = own.find((x: any) => x.title === title);
-    assert.ok(s);
-    await fails(
-      A,
-      'moderate_suggestion',
-      { suggestionId: s.id, decision: 'approved', reason: 'Test' },
-      ['FORBIDDEN'],
-    );
-    await call(M, 'moderate_suggestion', {
-      suggestionId: s.id,
-      decision: 'approved',
-      reason: 'QA categoria valida',
-    });
-    const leaf = (await call(null, 'categories')).find((x: any) => x.title === title);
-    assert.equal(leaf.requires_url, true);
-    assert.equal(leaf.reference_kind, 'website');
-  });
+  await check(
+    'Proposte successive separate: creazione pubblica disattivata anche per moderatore',
+    async () => {
+      const p = {
+        parentId: sub,
+        title: 'Nuovo argomento',
+        description: 'Una proposta editoriale di test sufficientemente lunga.',
+        examples: [],
+      };
+      await fails(A, 'suggest_category', p, ['EDITORIAL_CATALOG_ONLY']);
+      await fails(
+        M,
+        'moderate_suggestion',
+        { suggestionId: randomUUID(), decision: 'approved', reason: 'Test editoriale' },
+        ['EDITORIAL_CATALOG_ONLY'],
+      );
+    },
+  );
   await check('Notifiche lette/eliminate solo dal destinatario', async () => {
     const id = randomUUID();
     await db.query(
@@ -1255,7 +1252,7 @@ try {
       for (const [i, id] of ids.entries()) {
         await db.query(
           "INSERT INTO public.content_items(id,author_id,kind,title,media_path,moderation_status) VALUES($1,$2,'illustration','UX immagine',$3,'approved')",
-          [id, M.user.id, id + '.jpg'],
+          [id, fixtureAuthors[i], id + '.jpg'],
         );
         await db.query("INSERT INTO public.content_categories VALUES($1,$2,'approved')", [id, a]);
         await db.query('INSERT INTO public.content_metadata VALUES($1,$2,$3,NULL)', [
@@ -1319,7 +1316,12 @@ try {
       const tie = (await call(B, 'category_rankings', { query: 'UX categoria votata' })).find(
         (x: any) => x.id === a,
       );
-      assert.equal(tie.leader.id, ids[1]);
+      assert.ok(ids.includes(tie.leader.id));
+      assert.ok(
+        (await call(B, 'ranking', { categoryId: a, metric: 'popular' })).items.every(
+          (x: any) => x.position === 1,
+        ),
+      );
       assert.deepEqual(
         tie.leader,
         (await call(B, 'ranking', { categoryId: a, metric: 'popular' })).items[0],
@@ -1338,6 +1340,7 @@ try {
         [a, ids[1]],
       );
       await call(viewer, 'block', { userId: M.user.id });
+      await call(viewer, 'block', { userId: A.user.id });
       const blocked = (
         await call(viewer, 'category_rankings', { query: 'UX categoria votata' })
       ).find((x: any) => x.id === a);
@@ -1346,77 +1349,13 @@ try {
       assert.equal(blocked.voteCount, 0);
     },
   );
-  await check(
-    'Controllo categorie esteso, duplicati pubblici e proposte concorrenti bloccati',
-    async () => {
-      const published = (await call(B, 'categories')).find((x: any) => x.id === cat);
-      const existing = await call(B, 'category_check', { title: published.title.toUpperCase() });
-      assert.equal(existing.allowed, false);
-      assert.ok(
-        existing.matches.some(
-          (x: any) => x.title.toUpperCase() === published.title.toUpperCase() && x.duplicate,
-        ),
-      );
-      await fails(null, 'category_check', { title: 'Categoria valida' }, ['AUTH_REQUIRED']);
-      const normal = {
-        parentId: sub,
-        title: published.title.toUpperCase(),
-        description: 'Una descrizione valida per una categoria.',
-        examples: [],
-        referenceKind: 'name',
-      };
-      await fails(B, 'suggest_category', normal, ['CATEGORY_EXISTS']);
-      await fails(B, 'suggest_category', { ...normal, title: 'c.a.z.z.o categoria' }, [
-        'INAPPROPRIATE_CATEGORY',
-      ]);
-      await fails(
-        B,
-        'suggest_category',
-        { ...normal, title: 'Paesaggi splendidi unici', examples: ['minorenni molto sexy'] },
-        ['INAPPROPRIATE_CATEGORY'],
-      );
-      const title = 'Cascate di quarzo ' + randomUUID().slice(0, 8);
-      const proposal = { ...normal, title };
-      const responses = await Promise.all([
-        http('/rpc/suggest_category', proposal, A.token),
-        http('/rpc/suggest_category', proposal, B.token),
-      ]);
-      assert.equal(responses.filter((x) => x.status === 200).length, 1);
-      assert.equal(responses.filter((x) => x.data.code === 'CATEGORY_EXISTS').length, 1);
-      const pending = (
-        await db.query(
-          "SELECT * FROM public.category_suggestions WHERE title=$1 AND status='pending'",
-          [title],
-        )
-      ).rows;
-      assert.equal(pending.length, 1);
-      const loser = pending[0].proposer_id === A.user.id ? B : A;
-      const privateCheck = await call(loser, 'category_check', { title });
-      assert.equal(privateCheck.pendingDuplicate, true);
-      assert.ok(!privateCheck.matches.some((x: any) => x.id === pending[0].id));
-      const collision = randomUUID();
-      await db.query(
-        'INSERT INTO public.categories(id,parent_id,depth,slug,title) VALUES($1,$2,4,$3,$4)',
-        [collision, sub, 'collision-' + collision, title],
-      );
-      await fails(
-        M,
-        'moderate_suggestion',
-        {
-          suggestionId: pending[0].id,
-          decision: 'approved',
-          reason: 'Controllo duplicato sotto lock',
-        },
-        ['CATEGORY_EXISTS'],
-      );
-      await db.query("UPDATE public.categories SET status='archived' WHERE id=$1", [collision]);
-      await call(M, 'moderate_suggestion', {
-        suggestionId: pending[0].id,
-        decision: 'approved',
-        reason: 'Categoria verificata',
-      });
-    },
-  );
+  await check('Catalogo pubblicato mantiene percorsi e nodi intermedi selezionabili', async () => {
+    const categories = await call(B, 'categories');
+    const middle = categories.find((x: any) => x.title === 'Giardinaggio');
+    assert.ok(middle && !middle.terminal && middle.path.includes('Casa e giardino'));
+    const fps = await call(B, 'category_rankings', { query: 'sparatutto in prima persona' });
+    assert.ok(fps.some((x: any) => x.title === 'FPS tattici'));
+  });
 } finally {
   mkdirSync('docs/evidence', { recursive: true });
   writeFileSync(

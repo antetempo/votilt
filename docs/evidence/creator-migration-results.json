@@ -1,0 +1,23 @@
+{
+  "date": "2026-11-08T17:58:59.654Z",
+  "status": "PASS",
+  "target": "votilt on 127.0.0.1:55432",
+  "backupCreated": true,
+  "before": {
+    "contents": 144,
+    "profiles": 6,
+    "preferences": 201,
+    "categories": 116
+  },
+  "after": {
+    "contents": 144,
+    "profiles": 6,
+    "preferences": 201,
+    "categories": 1543
+  },
+  "multipleMembershipConflicts": 17,
+  "credentialsUnchanged": true,
+  "idempotent": true,
+  "editorialNodes": 1427,
+  "legacyCategoriesPreserved": 116
+}

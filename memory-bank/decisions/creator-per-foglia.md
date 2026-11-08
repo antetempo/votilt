@@ -2,6 +2,7 @@
 title: Creator preferito per foglia e classificazione visibile
 type: decision
 status: active
+superseded_by: categoria-unica-selezionabile
 date: 2026-11-08
 author: Fabrizio
 tags: [creator, catalogo, categorie, prodotto, follow]

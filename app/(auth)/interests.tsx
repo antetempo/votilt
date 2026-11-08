@@ -44,7 +44,7 @@ export default function Interests() {
               {q.data
                 .filter(
                   (c) =>
-                    c.depth === 4 &&
+                    c.depth === 2 &&
                     (() => {
                       let p: Category | undefined = c;
                       while (p?.parent_id) p = q.data.find((x) => x.id === p?.parent_id);

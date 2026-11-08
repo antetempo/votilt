@@ -18,23 +18,48 @@
   <a href="#documentazione">Documentazione</a>
 </p>
 
-> **Stato: demo locale Android.** Sorgenti nel repository privato [antetempo/votilt](https://github.com/antetempo/votilt), commit iniziale [`a0d85bf`](https://github.com/antetempo/votilt/commit/a0d85bf7240beb73f18406b99ed494a167984816). Backend e database girano sul PC. Nessun deploy applicativo o rilascio store; Docker escluso.
+> **Stato: demo locale Android.** Sorgenti nel repository pubblico [antetempo/votilt](https://github.com/antetempo/votilt), commit iniziale [`a0d85bf`](https://github.com/antetempo/votilt/commit/a0d85bf7240beb73f18406b99ed494a167984816). Backend e database girano sul PC. Nessun deploy applicativo o rilascio store; Docker escluso.
 
 ## Il progetto
 
 VOTILT è un social game visuale in italiano, pensato per adulti: scopri immagini, costruisci le tue preferenze per categoria e confrontale con quelle degli amici che hanno scelto di condividerle.
 
-Il feed mette al centro il contenuto. Scorrere non assegna voti: un **like** sceglie il tuo preferito in una categoria. Se ti piace un’altra immagine della stessa categoria, entra in scena **TILT**: due carte animate, una scelta. Il risultato aggiorna la tua preferenza e le classifiche attraverso il server.
+Il feed mette al centro le immagini. Un **cuore preferisce il creator** nella categoria assegnata al contenuto. Altre foto dello stesso autore non aggiungono preferenze; un autore diverso nella stessa categoria apre **TILT**. Il server salva la scelta e aggiorna le classifiche.
 
 ### Come funziona un TILT
 
 | 01 · Scopri | 02 · Scegli | 03 · Vai in TILT |
 |---|---|---|
-| Scorri il feed o esplora una categoria. | Il primo like diventa il tuo campione nella categoria. | Un nuovo like nella stessa categoria apre il confronto: tocca una delle due immagini. |
+| Scorri il feed o esplora una categoria. | Il primo cuore sceglie il creator nella categoria. | Un cuore a un creator diverso nella stessa categoria apre il confronto. |
 
-Hai **un solo campione per categoria foglia**. Puoi confermarlo o sostituirlo; X e Indietro annullano il confronto. La conferma arriva dopo il salvataggio del server, anche quando ripeti un tocco o riprendi un’operazione interrotta.
+Hai **un creator preferito per categoria selezionata**. Ogni immagine ha una categoria unica, anche intermedia o radice; voti e badge non risalgono agli antenati. Puoi confermarlo o sostituirlo; X e Indietro annullano il confronto. La conferma arriva dopo il salvataggio del server, anche quando ripeti un tocco o riprendi un’operazione interrotta.
+
+## Creator, catalogo e tag · revisione 8 novembre
+
+Ricerca testuale con sinonimi, percorsi e piccoli errori di battitura; categoria visibile nel contenuto; descrizione e tag liberi durante il caricamento. Follow persona e categoria distinti dal cuore, feed Seguiti reale. Profili con preferenze ricevute e dettaglio per categoria/contenuto d’origine; classifica con una voce per creator e badge di posizione corrente. Nessun campionato geografico simulato. Video e proposte editoriali restano fasi successive.
+
+[Piano aggiornato](docs/votilt-creator-catalog-plan.md) · [Gerarchia completa](docs/research/catalogo-editoriale/GERARCHIA_COMPLETA.md) · [Verifiche e approvazioni](docs/VOTILT_APPROVAL_LEDGER.md).
 
 ## Dentro l’app
+
+### Creator e categorie: build verificata l’8 novembre
+
+<table>
+  <tr><th width="50%">Cerca un interesse, leggi il percorso</th><th width="50%">Segui anche una categoria intermedia</th></tr>
+  <tr><td><a href="docs/media/creator-search.png"><img src="docs/media/creator-search.png" alt="Ricerca Bonsai: Casa e giardino, Giardinaggio, Bonsai" width="280"></a></td><td><a href="docs/media/creator-category.png"><img src="docs/media/creator-category.png" alt="Categoria Ritratto: preferenze dirette ai creator, follow e classifica" width="280"></a></td></tr>
+  <tr><th>Preferenze al creator e posizione attuale</th><th>Descrizione e tag liberi nell’upload</th></tr>
+  <tr><td><a href="docs/media/creator-profile.png"><img src="docs/media/creator-profile.png" alt="Profilo Zora con preferenze per categoria, breadcrumb e badge corrente" width="280"></a></td><td><a href="docs/media/creator-upload.png"><img src="docs/media/creator-upload.png" alt="Upload Android dalla galleria con descrizione, tag e dichiarazioni di pubblicazione" width="280"></a></td></tr>
+</table>
+
+Schermate effettive dell’APK corrente: **11 percorsi Android PASS**, compresi foto dalla galleria, una sola categoria anche intermedia, cuore/TILT fra creator, follow e caratteri al 130%. Account e dati sono di collaudo; le immagini sintetiche sono dichiarate AI. [Report Android](docs/evidence/android-creator-catalog-results.json) · [Provenienza e hash dei media](docs/media/manifest.json).
+
+![Legenda delle forme: primo oro circolare, secondo argento arrotondato, terzo bronzo a rombo, posizioni 4–100 ciano](docs/media/creator-badges.svg)
+
+La legenda è un esempio grafico. Nell’app un badge indica la **posizione corrente nella categoria esatta**, con preferenze positive e almeno due creator sostenuti; gli ex aequo restano tali. Non certifica competenze. Questa soglia è una regola minima di presentazione, da valutare nel pilot.
+
+### Prima demo: archivio visivo
+
+Le schermate seguenti documentano la prima demo del 6 novembre e sono conservate come storico.
 
 <table>
   <tr>
@@ -63,10 +88,10 @@ Schermate reali catturate dall’emulatore Android nel collaudo del **6 novembre
 | **Feed** | Per te, Seguiti e Scopri; scorrimento verticale, like e dettaglio del contenuto. |
 | **Esplora** | Catalogo gerarchico, ricerca di nomi e riferimenti, AI Universe con AI Art e AI Tools. |
 | **TILT** | Confronto tra il tuo campione e uno sfidante della stessa categoria; scelta, annullamento e retry sicuro. |
-| **Classifiche** | Immagini al primo posto, ricerca diretta delle foglie e classifica aperta subito. Toccando una riga scorri le immagini dall’elemento scelto, nell’ordine Like/Duelli/Trend selezionato. |
+| **Classifiche** | Creator in testa attraverso le loro immagini; ricerca di ogni categoria e percorso. Classifica diretta con Preferenze, Duelli e Trend, una voce per autore. Toccando una riga scorri le immagini dall’elemento scelto. |
 | **Social** | Profili, follow, amicizie, Taste Match, Friends Battle e notifiche in-app. Amicizia e consenso al confronto sono distinti. |
 | **Pubblica** | Simbolo centrale nella barra; caricamento JPEG/PNG/WebP fino a 8 MB, categoria, nome e riferimento richiesto. |
-| **Moderazione** | Revisione dei contenuti e delle categorie, segnalazioni, blocco, ripristino e sospensione secondo i permessi. |
+| **Moderazione** | Revisione contenuti, segnalazioni, blocco, ripristino e sospensione. Proposte nuove categorie in rollout successivo con approvazione umana. |
 | **Privacy** | Visibilità dei campioni, consenso al confronto, gestione dei propri contenuti e cancellazione account. |
 
 <details>
@@ -80,7 +105,7 @@ Schermate reali catturate dall’emulatore Android nel collaudo del **6 novembre
   </tr>
 </table>
 
-Una proposta di categoria viene controllata per testo e duplicati, poi sottoposta a revisione. Tornando alla categoria suggerita, la bozza resta disponibile. La schermata di pubblicazione contiene dati fittizi di collaudo.
+Queste immagini appartengono al prototipo precedente. Il modulo attuale usa una sola categoria esistente e tag liberi. Le nuove proposte editoriali saranno gestite in un rollout successivo con revisione umana; il vecchio form e la pubblicazione tramite API sono disattivati.
 
 </details>
 
@@ -100,7 +125,7 @@ La procedura seguente è per **Windows e PowerShell**, ambiente verificato del p
 
 | Prerequisito | Configurazione usata nel collaudo |
 |---|---|
-| Git e accesso GitHub | Account con accesso al repository privato. |
+| Git e accesso GitHub | Clone pubblico; account antetempo per i push autorizzati. |
 | Node.js e npm | Node 24.14.0, npm 11.9.0; dipendenze fissate da `package-lock.json`. |
 | PostgreSQL nativo | PostgreSQL 18, binari in `C:\Program Files\PostgreSQL\18\bin`. |
 | Android Studio e JDK | JDK 21 incluso in Android Studio; Android SDK e Platform Tools. |
@@ -133,7 +158,9 @@ npm run seed
 
 Il setup crea un **cluster PostgreSQL dedicato** in `.local/postgres` sulla porta **55432**. Non utilizza il servizio PostgreSQL eventualmente presente su 5432. Configurazione, credenziali e media privati restano in `.local/`, esclusa da Git. Migrazioni e seed possono essere ripetuti; il seed conserva credenziali e preferenze esistenti.
 
-Il catalogo base comprende **41 categorie foglia e 123 candidati distinti**: 111 immagini AI dichiarate e 12 copertine originali per tool. Comprende anche sei utenti fittizi e contenuti negli stati di moderazione. Il seed prepara gli asset locali inclusi nel progetto; non chiama un generatore AI remoto.
+Il nuovo catalogo editoriale contiene **1.427 categorie selezionabili**: 36 radici, 211 rami complessivi e 1.216 foglie, fino a cinque livelli. [Leggi tutta la gerarchia](docs/research/catalogo-editoriale/GERARCHIA_COMPLETA.md). Categorie e contenuti della demo precedente sono conservati, senza riclassificazione automatica.
+
+Il catalogo iniziale comprende **41 foglie e 123 contenuti distinti**: 111 immagini AI dichiarate e 12 copertine originali per tool. Comprende anche sei utenti fittizi e contenuti negli stati di moderazione. Il seed prepara gli asset locali inclusi nel progetto; non chiama un generatore AI remoto.
 
 ### 3. Avvia il backend
 
@@ -200,8 +227,8 @@ Apri localmente **`.local/demo-credentials.json`** per copiare email e password,
 Puoi anche registrare un account normale dall’app; la registrazione non concede privilegi da moderatore.
 
 1. Accedi con Nova e apri una categoria da Esplora.
-2. Metti like a un’immagine. Se non avevi un campione in quella categoria, diventa il primo.
-3. Metti like a un’altra immagine della **stessa categoria**: si apre TILT.
+2. Metti cuore a un’immagine: preferisci il suo creator nella categoria assegnata.
+3. Un’altra foto dello stesso creator mantiene la preferenza; un autore diverso nella **stessa categoria** apre TILT.
 4. Tocca una carta per scegliere, oppure X per annullare. Controlla poi la classifica della categoria.
 5. Per provare la pubblicazione, usa il simbolo centrale e completa i metadati richiesti. Il contenuto entra in revisione; Team VOTILT può approvarlo.
 
@@ -243,7 +270,7 @@ flowchart LR
 | Media | File privati, validazione dei byte, normalizzazione con sharp e rimozione EXIF. |
 | Collaudo | Jest / Testing Library, HTTP e PostgreSQL reali, ADB e UI Automator su Android. |
 
-Il motore mantiene uno slot per utente/foglia. Le operazioni hanno ID e ricevute idempotenti; i retry non duplicano il supporto o l’Elo. Il protocollo di lock è condiviso con moderazione, blocco e cancellazione. I like attivi, l’Elo e il trend sono metriche distinte. La lettura offline usa una cache legata alla sessione; i voti offline non vengono accodati automaticamente.
+Il motore mantiene uno slot per utente/categoria esatta. Le operazioni hanno ID e ricevute idempotenti; i retry non duplicano il supporto o l’Elo. Il protocollo di lock è condiviso con moderazione, blocco e cancellazione. I like attivi, l’Elo e il trend sono metriche distinte. La lettura offline usa una cache legata alla sessione; i voti offline non vengono accodati automaticamente.
 
 ### Mappa del repository
 
@@ -264,7 +291,7 @@ output/               Metadati di build; APK solo locale e ignorato
 
 ## Test e prove
 
-**Regressione eseguita l’8 novembre 2026:** typecheck, lint e formattazione PASS; **106 test unit/componenti in 17 suite e 46 integrazioni HTTP/PostgreSQL PASS**. Audit asset: 123 hash distinti, formato 800 × 1200 e nessun EXIF. I **31 controlli Android** storici risalgono al 6 novembre: includono prove di fasi diverse, non una nuova esecuzione completa dopo ogni modifica. La revisione delle classifiche ha un [report Android dedicato](docs/evidence/android-rankings-results.json).
+**Revisione creator/catalogo dell’8 novembre 2026:** typecheck, lint e formattazione PASS; **120 test unit/componenti in 21 suite, 46 integrazioni generali e 9 dedicate al modello creator PASS**. **11 percorsi Android PASS sull’APK corrente**, compilato e installato sull’emulatore. Migrazione della demo e bootstrap fresco/rerun PASS, senza cambiare credenziali esistenti. [Rapporto completo](docs/TEST_REPORT.md). Le 31 prove iniziali, cinque Classifiche e otto navigazione sono evidenze storiche su build precedenti; non sono sommate alle prove della build attuale.
 
 | Verifica | Comando |
 |---|---|
@@ -272,7 +299,9 @@ output/               Metadati di build; APK solo locale e ignorato
 | Solo unit/componenti | `npm test` |
 | Solo integrazione HTTP/PG | `npm run test:integration` |
 | Diagnostica ambiente, dispositivo e API | `npm run doctor` |
-| Feed, like, classifiche, proposte categorie sull’APK | `npm run test:e2e` |
+| Creator, tag, categorie intermedie, follow e profilo sull’APK attuale | `node scripts/android-creator-catalog-e2e.mjs` |
+| Integrazioni specifiche creator | `npx tsx tests/integration/creator.test.ts` |
+| Percorso demo storico | `npm run test:e2e` (interfaccia precedente; consultare lo script) |
 | TILT dinamico | `node scripts/android-tilt-e2e.mjs` |
 | Anteprime dei primi posti e ricerca diretta delle foglie | `node scripts/android-rankings-e2e.mjs` |
 | Classifica diretta, scorrimento e barra persistente | `node scripts/android-navigation-e2e.mjs` |
@@ -281,7 +310,7 @@ output/               Metadati di build; APK solo locale e ignorato
 | Social e confronto consensuale | `node scripts/android-social-e2e.mjs` |
 | Integrità e provenienza del catalogo | `node scripts/audit-assets.mjs` |
 
-Le integrazioni usano **`votilt_test`**, separato dalla demo. I percorsi Android richiedono backend, dati demo e un dispositivo pronto; interagiscono con account fittizi e possono cambiarne le preferenze. Il percorso `test:e2e` installa l’APK standalone; i driver creator/social storici usano anche il client di sviluppo: consultarne i prerequisiti prima di eseguirli.
+Le integrazioni usano **`votilt_test`**, separato dalla demo. I percorsi Android richiedono backend, dati demo e un dispositivo pronto; interagiscono con account fittizi e possono cambiarne le preferenze. Il nuovo driver creator/catalogo verifica la build standalone installata e conserva immagini QA chiaramente denominate. I driver vecchi descrivono interfacce storiche e non sostituiscono questo controllo. Il percorso `test:e2e` installa l’APK standalone; i driver creator/social storici usano anche il client di sviluppo: consultarne i prerequisiti prima di eseguirli.
 
 I report JSON sono in [`docs/evidence/`](docs/evidence/). Le acquisizioni Android grezze restano locali in `docs/evidence/android/`; la selezione verificata per GitHub è in [`docs/media/`](docs/media/). [Rapporto prove](docs/TEST_REPORT.md) · [Matrice di accettazione](docs/ACCEPTANCE_MATRIX.md).
 
@@ -316,7 +345,7 @@ Non è installata un’automazione per gli snapshot. Il trend mostra **“Dati i
 
 ## Provenienza, privacy e limiti
 
-Ogni contenuto richiede categoria, nome e riferimento fondamentale: per una persona il nome; per un sito/tool anche il link. Il server valida ogni associazione, fino a tre categorie. I personaggi e i luoghi sintetici del catalogo sono esempi immaginari. [Manifesto del catalogo](assets/seed-media/manifest.json) · [Metadati](docs/CONTENT_METADATA.md) · [Moderazione categorie](docs/CATEGORY_MODERATION.md).
+Ogni contenuto richiede categoria, nome e riferimento fondamentale: per una persona il nome; per un sito/tool anche il link. Il server ammette una sola categoria per contenuto, anche intermedia, e valida nome/link/tipo. Descrizione e tag liberi persistono; suggerimenti lessicali sulle categorie esistenti, con scelta dell’autore. I personaggi e i luoghi sintetici del catalogo sono esempi immaginari. [Manifesto del catalogo](assets/seed-media/manifest.json) · [Metadati](docs/CONTENT_METADATA.md) · [Moderazione categorie](docs/CATEGORY_MODERATION.md).
 
 La demo include controllo permessi sul server, storage privato, SecureStore sul dispositivo, RLS, rate limit e moderazione. Le dichiarazioni di maggiore età, diritti e consenso non equivalgono a una verifica certa dell’identità. Non esporre l’API HTTP locale su Internet.
 
@@ -333,7 +362,7 @@ La demo include controllo permessi sul server, storage privato, SecureStore sul 
 | Qualità e rilascio | [Test report](docs/TEST_REPORT.md), [accettazione](docs/ACCEPTANCE_MATRIX.md), [readiness](docs/RELEASE_READINESS.md) |
 | Ripresa del lavoro | [Contesto corrente](memory-bank/activeContext.md), [cronologia](memory-bank/progress.md) |
 
-Le decisioni successive dell’utente prevalgono sulla specifica originale: **Android nativo, PostgreSQL locale e niente Docker**. Il repository è privato; non è dichiarata una licenza open source.
+Le decisioni successive dell’utente prevalgono sulla specifica originale: **Android nativo, PostgreSQL locale e niente Docker**. Il repository è pubblico per scelta esplicita di Fabrizio dell’8 novembre 2026; non è dichiarata una licenza open source.
 
 ---
 

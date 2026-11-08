@@ -1,0 +1,11 @@
+{
+  "date": "2026-11-08T18:36:17.280Z",
+  "status": "PASS",
+  "renderer": "GitHub Markdown API (gfm, antetempo/votilt)",
+  "currentScreenshots": 4,
+  "functionalBadgeLegend": true,
+  "htmlTables": "PASS",
+  "remoteBeforeCommit": "e9d78ab0923928e64648986e2ebf801e6eccac13",
+  "repositoryVisibility": "public",
+  "authenticatedLogin": "antetempo"
+}

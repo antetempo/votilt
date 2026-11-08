@@ -6,6 +6,7 @@ import { useSession } from '../lib/session';
 import { useAction } from '../hooks/useAction';
 import type { MediaItem } from '../types/domain';
 import { colors as c } from '../theme/tokens';
+import { Label } from './ui';
 
 export function MediaActions({
   item,
@@ -32,7 +33,7 @@ export function MediaActions({
   const withdraw = () =>
     Alert.alert(
       'Ritirare il contenuto?',
-      'I campioni attivi collegati saranno invalidati. Questa azione non elegge sostituti.',
+      'La preferenza per il creator resta se ha altre immagini disponibili nella stessa categoria. Altrimenti viene ritirata.',
       [
         { text: 'Annulla', style: 'cancel' },
         {
@@ -49,6 +50,9 @@ export function MediaActions({
         testID="feed-like"
         accessibilityRole="button"
         accessibilityLabel={current ? 'Ti piace' : 'Mi piace'}
+        accessibilityHint={
+          'Preferisci il creator @' + item.handle + ' nella categoria ' + item.categoryTitle
+        }
         accessibilityState={{
           selected: current,
           disabled: disabled || busy || item.status !== 'approved',
@@ -66,6 +70,17 @@ export function MediaActions({
           <Icon name="heart" size={30} color={current ? c.pink : c.text} />
         )}
       </Pressable>
+      {item.creatorSupport !== undefined && (
+        <View style={{ alignItems: 'center' }}>
+          <Label
+            accessibilityLabel={item.creatorSupport + ' preferenze al creator in questa categoria'}
+            style={{ fontSize: 11, textAlign: 'center', color: c.text }}
+          >
+            {item.creatorSupport}
+          </Label>
+          <Label style={{ fontSize: 8, color: c.muted }}>al creator</Label>
+        </View>
+      )}
       <Action
         name="share"
         label="Condividi"

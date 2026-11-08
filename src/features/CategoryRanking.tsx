@@ -8,6 +8,7 @@ import { rpc, mediaSource } from '../lib/api';
 import { useSession } from '../lib/session';
 import type { MediaItem } from '../types/domain';
 import { colors as c, fonts as f } from '../theme/tokens';
+import { PositionBadge } from '../components/PositionBadge';
 export function CategoryRanking({
   categoryId,
   query = '',
@@ -20,22 +21,25 @@ export function CategoryRanking({
   const q = useQuery({
     queryKey: ['ranking', categoryId, metric, query, user?.id],
     queryFn: () =>
-      rpc<{ items: (MediaItem & { position: number })[]; insufficientHistory: boolean }>(
-        'ranking',
-        { categoryId, metric, query },
-      ),
+      rpc<{
+        items: (MediaItem & { position: number; participants?: number })[];
+        insufficientHistory: boolean;
+      }>('ranking', { categoryId, metric, query }),
   });
   return (
     <View style={{ gap: 14 }}>
       <View style={{ flexDirection: 'row', gap: 8, flexWrap: 'wrap' }}>
         {[
-          ['popular', 'Like'],
+          ['popular', 'Preferenze'],
           ['elo', 'Duelli'],
           ['trend', 'Trend 7g'],
         ].map(([key, title]) => (
           <Chip key={key} title={title} selected={metric === key} onPress={() => setMetric(key)} />
         ))}
       </View>
+      <Label style={{ color: c.muted, fontSize: 11 }}>
+        Una voce per creator. A parità di punteggio la posizione è ex aequo.
+      </Label>
       {q.isPending ? (
         <Loading />
       ) : q.error ? (
@@ -80,9 +84,20 @@ export function CategoryRanking({
             />
             <View style={{ flex: 1, gap: 5 }}>
               <Label numberOfLines={2} style={{ fontSize: 14, fontFamily: f.semibold }}>
+                {x.displayName || x.handle}
+              </Label>
+              <Label numberOfLines={1} style={{ fontSize: 11, color: c.muted }}>
                 {x.title}
               </Label>
               <Label style={{ fontSize: 11, color: c.muted }}>@{x.handle}</Label>
+              {metric === 'popular' && (
+                <PositionBadge
+                  position={x.position}
+                  category={x.categoryTitle}
+                  support={x.support}
+                  participants={x.participants}
+                />
+              )}
             </View>
             <View style={{ alignItems: 'flex-end', gap: 3 }}>
               <Label style={{ fontSize: 16, fontFamily: f.semibold }}>
@@ -93,7 +108,7 @@ export function CategoryRanking({
                     : x.support}
               </Label>
               <Label style={{ fontSize: 10, color: c.muted }}>
-                {metric === 'elo' ? 'Elo' : metric === 'trend' ? 'netti' : 'like'}
+                {metric === 'elo' ? 'Elo creator' : metric === 'trend' ? 'nette' : 'preferenze'}
               </Label>
             </View>
           </Pressable>

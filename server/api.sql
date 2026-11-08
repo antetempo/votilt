@@ -8,16 +8,6 @@ BEGIN
  INSERT INTO public.user_roles(user_id) VALUES(p_id);
 END $$;
 
-CREATE OR REPLACE FUNCTION api.invalidate_content(cid uuid) RETURNS void LANGUAGE plpgsql SECURITY DEFINER SET search_path=public,pg_temp AS $$
-BEGIN
- PERFORM pg_advisory_xact_lock(8815001);
- PERFORM user_id FROM public.vote_slots WHERE champion_content_id=cid ORDER BY user_id,category_id FOR UPDATE;
- INSERT INTO public.vote_events(user_id,category_id,kind,old_content_id)
- SELECT user_id,category_id,'invalidated',cid FROM public.vote_slots WHERE champion_content_id=cid;
- UPDATE public.vote_slots SET champion_content_id=NULL,version=version+1,updated_at=now() WHERE champion_content_id=cid;
- UPDATE public.tilt_duels SET status='stale' WHERE status='pending' AND (incumbent_id=cid OR challenger_id=cid);
-END $$;
-
 CREATE OR REPLACE FUNCTION api.can_compare(a uuid,b uuid) RETURNS boolean LANGUAGE sql STABLE SECURITY DEFINER SET search_path=public,pg_temp AS $$
  SELECT a=b OR (NOT api.blocked(a,b) AND api.friends(a,b)
  AND EXISTS(SELECT 1 FROM public.profile_settings WHERE user_id=a AND allow_comparison AND show_champions IN ('friends','public'))
@@ -31,33 +21,22 @@ DECLARE
  categories_array uuid[]; generated_content_id uuid; side text; day date:=(now() AT TIME ZONE 'UTC')::date;
 BEGIN
  IF action_name IN ('vote_intent','resolve_tilt','cancel_tilt') THEN RETURN api.vote(p,action_name); END IF;
+ IF action_name IN ('suggest_category','moderate_suggestion') THEN RAISE EXCEPTION 'EDITORIAL_CATALOG_ONLY'; END IF;
+ IF action_name='category_follow' THEN RETURN api.category_follow(p); END IF;
+ IF action_name='categories' THEN RETURN api.catalog_json(); END IF;
+ IF action_name='ranking' THEN RETURN api.creator_ranking(p); END IF;
+ IF action_name='category_rankings' THEN RETURN api.catalog_rankings(p); END IF;
  IF action_name='search' THEN
-  IF nullif(p->>'categoryId','') IS NOT NULL AND NOT EXISTS(SELECT 1 FROM public.categories WHERE id=(p->>'categoryId')::uuid AND depth=4 AND status='published') THEN RAISE EXCEPTION 'CATEGORY_NOT_LEAF'; END IF;
+  IF nullif(p->>'categoryId','') IS NOT NULL AND NOT EXISTS(SELECT 1 FROM public.categories WHERE id=(p->>'categoryId')::uuid AND status='published') THEN RAISE EXCEPTION 'CATEGORY_NOT_LEAF'; END IF;
   RETURN coalesce((SELECT jsonb_agg(x.item) FROM (SELECT api.content_json(c.id,m.category_id) item FROM public.content_metadata m JOIN public.content_items c ON c.id=m.content_id JOIN public.categories cat ON cat.id=m.category_id JOIN public.content_categories cc ON cc.content_id=m.content_id AND cc.category_id=m.category_id
-   WHERE c.moderation_status='approved' AND cc.status='approved' AND cat.status='published' AND api.can_read(c) AND (nullif(p->>'categoryId','') IS NULL OR cc.category_id=(p->>'categoryId')::uuid) AND (m.subject_name ILIKE '%'||(p->>'query')||'%' OR m.reference_url ILIKE '%'||(p->>'query')||'%') ORDER BY lower(m.subject_name),c.id LIMIT 24)x),'[]');
- ELSIF action_name='categories' THEN
-  RETURN coalesce((SELECT jsonb_agg(to_jsonb(c) ORDER BY sort_order,title) FROM public.categories c WHERE status='published'),'[]');
- ELSIF action_name='category_rankings' THEN
-  RETURN coalesce((WITH RECURSIVE paths AS (
-   SELECT id,parent_id,depth,title,description,ARRAY[title] AS path FROM public.categories WHERE parent_id IS NULL AND status='published'
-   UNION ALL SELECT c.id,c.parent_id,c.depth,c.title,c.description,paths.path||c.title FROM public.categories c JOIN paths ON c.parent_id=paths.id WHERE c.status='published' AND c.depth=paths.depth+1
-  ), selected AS (
-   SELECT cat.id,cat.title,cat.description,cat.path,count(s.user_id) AS "voteCount",count(DISTINCT c.id) AS "contentCount"
-   FROM paths cat LEFT JOIN public.content_categories cc ON cc.category_id=cat.id AND cc.status='approved'
-   LEFT JOIN public.content_items c ON c.id=cc.content_id AND c.moderation_status='approved' AND api.can_read(c)
-   LEFT JOIN public.vote_slots s ON s.category_id=cat.id AND s.champion_content_id=c.id
-   WHERE cat.depth=4 AND NOT EXISTS(SELECT 1 FROM regexp_split_to_table(trim(coalesce(p->>'query','')),'\s+') term WHERE term<>'' AND array_to_string(cat.path,' ') NOT ILIKE '%'||term||'%')
-   GROUP BY cat.id,cat.title,cat.description,cat.path
-   HAVING coalesce(p->>'query','')<>'' OR count(s.user_id)>0
-   ORDER BY count(s.user_id) DESC,cat.title,cat.id LIMIT CASE WHEN coalesce(p->>'query','')='' THEN 12 ELSE 100 END
-  ) SELECT jsonb_agg(to_jsonb(x)||jsonb_build_object('leader',CASE WHEN x."voteCount">0 THEN api.dispatch('ranking',jsonb_build_object('categoryId',x.id,'metric','popular'))->'items'->0 ELSE NULL END) ORDER BY x."voteCount" DESC,x.title,x.id) FROM selected x),'[]');
+   WHERE c.moderation_status='approved' AND cc.status='approved' AND cat.status='published' AND api.can_read(c) AND (nullif(p->>'categoryId','') IS NULL OR cc.category_id=(p->>'categoryId')::uuid) AND (m.subject_name ILIKE '%'||(p->>'query')||'%' OR m.reference_url ILIKE '%'||(p->>'query')||'%' OR c.caption ILIKE '%'||(p->>'query')||'%' OR array_to_string(c.tags,' ') ILIKE '%'||(p->>'query')||'%') ORDER BY lower(m.subject_name),c.id LIMIT 24)x),'[]');
  ELSIF action_name='feed' THEN
   RETURN jsonb_build_object('items',coalesce((SELECT jsonb_agg(x.item) FROM (
    SELECT api.content_json(c.id,cc.category_id) item FROM public.content_items c
    JOIN public.content_categories cc ON cc.content_id=c.id JOIN public.categories cat ON cat.id=cc.category_id
    WHERE c.moderation_status='approved' AND cc.status='approved' AND cat.status='published' AND api.can_read(c)
    AND (nullif(p->>'categoryId','') IS NULL OR cc.category_id=(p->>'categoryId')::uuid)
-   AND (coalesce(p->>'mode','for_you')<>'following' OR EXISTS(SELECT 1 FROM public.follows WHERE follower_id=u AND followed_id=c.author_id))
+   AND (coalesce(p->>'mode','for_you')<>'following' OR (EXISTS(SELECT 1 FROM public.follows WHERE follower_id=u AND followed_id=c.author_id) OR EXISTS(SELECT 1 FROM public.category_follows f WHERE f.user_id=u AND f.category_id=cc.category_id)))
    ORDER BY md5(c.id::text||cc.category_id::text||coalesce(p->>'seed','votilt'))
    LIMIT least(15,greatest(1,coalesce((p->>'limit')::integer,12))) OFFSET least(100000,greatest(0,coalesce((p->>'offset')::integer,0)))
   ) x),'[]'));
@@ -65,28 +44,7 @@ BEGIN
   cat:=coalesce(nullif(p->>'categoryId','')::uuid,(SELECT cc.category_id FROM public.content_categories cc JOIN public.content_items c ON c.id=cc.content_id WHERE cc.content_id=(p->>'contentId')::uuid AND (cc.status='approved' OR c.author_id=u OR api.is_mod()) ORDER BY cc.category_id LIMIT 1));
   result:=api.content_json((p->>'contentId')::uuid,cat);
   IF result IS NULL THEN RAISE EXCEPTION 'CONTENT_UNAVAILABLE'; END IF;
-  RETURN result||jsonb_build_object('categories',coalesce((SELECT jsonb_agg(jsonb_build_object('id',c.id,'title',c.title)) FROM public.content_categories cc JOIN public.categories c ON c.id=cc.category_id JOIN public.content_items author_item ON author_item.id=cc.content_id WHERE cc.content_id=(p->>'contentId')::uuid AND (cc.status='approved' OR author_item.author_id=u OR api.is_mod()) AND c.status='published'),'[]'));
- ELSIF action_name='ranking' THEN
-  cat:=(p->>'categoryId')::uuid;
-  IF NOT EXISTS(SELECT 1 FROM public.categories WHERE id=cat AND depth=4 AND status='published') THEN RAISE EXCEPTION 'CATEGORY_NOT_LEAF'; END IF;
-  IF p->>'metric'='trend' THEN
-   IF NOT EXISTS(SELECT 1 FROM public.ranking_snapshots WHERE date_utc=day-7 AND category_id=cat) THEN
-     RETURN jsonb_build_object('items','[]'::jsonb,'insufficientHistory',true); END IF;
-  END IF;
-  RETURN jsonb_build_object('items',coalesce((WITH scores AS (
-   SELECT c.id,coalesce(r.matches,0) matches,
-    CASE WHEN p->>'metric'='elo' THEN coalesce(r.rating,1500) WHEN p->>'metric'='trend' THEN count(s.user_id)-coalesce(snap.support,0) ELSE count(s.user_id) END score,
-    api.content_json(c.id,cat)||jsonb_build_object('support',count(s.user_id),'rating',coalesce(r.rating,1500),'matches',coalesce(r.matches,0),
-     'trend',count(s.user_id)-coalesce(snap.support,0)) item
-   FROM public.content_items c JOIN public.content_categories cc ON cc.content_id=c.id AND cc.category_id=cat AND cc.status='approved'
-   LEFT JOIN public.vote_slots s ON s.champion_content_id=c.id AND s.category_id=cat
-   LEFT JOIN public.duel_ratings r ON r.content_id=c.id AND r.category_id=cat
-   LEFT JOIN public.ranking_snapshots snap ON snap.content_id=c.id AND snap.category_id=cat AND snap.date_utc=day-7
-   WHERE c.moderation_status='approved' AND api.can_read(c)
-   GROUP BY c.id,r.matches,r.rating,snap.support
-  ), positions AS (SELECT scores.*,row_number() OVER(ORDER BY score DESC,matches DESC,id) position FROM scores), filtered AS (
-   SELECT positions.* FROM positions WHERE coalesce(p->>'query','')='' OR positions.item->>'title' ILIKE '%'||(p->>'query')||'%' OR positions.item->'reference'->>'url' ILIKE '%'||(p->>'query')||'%' ORDER BY positions.position LIMIT 50
-  ) SELECT jsonb_agg(filtered.item||jsonb_build_object('position',filtered.position) ORDER BY filtered.position) FROM filtered),'[]'),'insufficientHistory',false);
+  RETURN result||jsonb_build_object('categories',coalesce((SELECT jsonb_agg(jsonb_build_object('id',c.id,'title',c.title)) FROM public.content_categories cc JOIN public.categories c ON c.id=cc.category_id JOIN public.content_items author_item ON author_item.id=cc.content_id WHERE cc.content_id=(p->>'contentId')::uuid AND cc.status IN ('approved','pending') AND (cc.status='approved' OR author_item.author_id=u OR api.is_mod()) AND c.status='published'),'[]'));
  ELSIF action_name='profile' THEN
   target:=(p->>'userId')::uuid;
   IF NOT EXISTS(SELECT 1 FROM public.profiles WHERE id=target AND NOT suspended AND NOT api.blocked(u,id)
@@ -94,10 +52,10 @@ BEGIN
   SELECT to_jsonb(pr)||jsonb_build_object('isFollowing',EXISTS(SELECT 1 FROM public.follows WHERE follower_id=u AND followed_id=target),
    'isFriend',api.friends(u,target),'contentCount',(SELECT count(*) FROM public.content_items WHERE author_id=target AND moderation_status='approved'),
    'followerCount',(SELECT count(*) FROM public.follows WHERE followed_id=target)) INTO result FROM public.profiles pr WHERE id=target;
-  RETURN result;
+  RETURN result||api.creator_profile(target);
  ELSIF action_name='daily' THEN
-  SELECT d.category_id INTO cat FROM public.daily_challenges d JOIN public.categories c ON c.id=d.category_id WHERE d.date_utc=day AND c.status='published' AND c.depth=4;
-  IF cat IS NULL THEN SELECT id INTO cat FROM public.categories WHERE depth=4 AND status='published' ORDER BY md5(id::text||day::text) LIMIT 1; END IF;
+  SELECT d.category_id INTO cat FROM public.daily_challenges d JOIN public.categories c ON c.id=d.category_id WHERE d.date_utc=day AND c.status='published' AND EXISTS(SELECT 1 FROM public.content_categories cc JOIN public.content_items daily_content ON daily_content.id=cc.content_id JOIN public.profiles author ON author.id=daily_content.author_id WHERE cc.category_id=c.id AND cc.status='approved' AND daily_content.moderation_status='approved' AND daily_content.visibility='public' AND NOT author.suspended);
+  IF cat IS NULL THEN SELECT c.id INTO cat FROM public.categories c WHERE c.status='published' AND EXISTS(SELECT 1 FROM public.content_categories cc JOIN public.content_items daily_content ON daily_content.id=cc.content_id JOIN public.profiles author ON author.id=daily_content.author_id WHERE cc.category_id=c.id AND cc.status='approved' AND daily_content.moderation_status='approved' AND daily_content.visibility='public' AND NOT author.suspended) ORDER BY md5(c.id::text||day::text) LIMIT 1; END IF;
   RETURN jsonb_build_object('dateUtc',day,'categoryId',cat,'title',(SELECT title FROM public.categories WHERE id=cat));
  ELSIF action_name='quiz' THEN
   RETURN jsonb_build_object('items',coalesce((SELECT jsonb_agg(jsonb_build_object('id',id,'mediaUrl','/quiz-media/'||id))
@@ -135,7 +93,7 @@ BEGIN
  ELSIF action_name='taste_match' THEN
   target:=(p->>'userId')::uuid;
   IF NOT api.can_compare(u,target) THEN RAISE EXCEPTION 'CHAMPIONS_PRIVATE'; END IF;
-  SELECT count(*),count(*) FILTER(WHERE a.champion_content_id=b.champion_content_id) INTO n,same
+  SELECT count(*),count(*) FILTER(WHERE (SELECT author_id FROM public.content_items WHERE id=a.champion_content_id)=(SELECT author_id FROM public.content_items WHERE id=b.champion_content_id)) INTO n,same
    FROM public.vote_slots a JOIN public.vote_slots b USING(category_id) WHERE a.user_id=u AND b.user_id=target
    AND a.champion_content_id IS NOT NULL AND b.champion_content_id IS NOT NULL;
   RETURN jsonb_build_object('common',n,'same',same,'percentage',CASE WHEN n>=3 THEN round(100.0*same/n) ELSE NULL END);
@@ -247,7 +205,7 @@ BEGIN
   IF side IN ('hidden','removed','rejected') THEN PERFORM api.invalidate_content(cid); END IF;
   UPDATE public.content_items SET moderation_status=side,review_reason=coalesce(p->>'reason','Ritirato dall’autore'),
     approved_at=CASE WHEN side='approved' THEN now() ELSE approved_at END WHERE id=cid;
-  UPDATE public.content_categories SET status=CASE WHEN side='approved' THEN 'approved' ELSE status END WHERE content_id=cid;
+  UPDATE public.content_categories SET status=CASE WHEN side='approved' THEN 'approved' ELSE status END WHERE content_id=cid AND status<>'rejected';
   INSERT INTO public.moderation_actions(moderator_id,target_id,action,reason) VALUES(u,cid,side,coalesce(p->>'reason','Ritiro autore'));
   INSERT INTO public.notifications(recipient_id,type,title,entity_id) VALUES(item.author_id,'content_review',CASE WHEN side='approved' THEN 'Il tuo contenuto è stato approvato' ELSE 'Lo stato del tuo contenuto è cambiato' END,cid);
   UPDATE public.reports SET status='reviewed' WHERE content_id=cid AND status='pending';
@@ -278,7 +236,7 @@ BEGIN
  ELSIF action_name='create_battle' THEN
   target:=(p->>'userId')::uuid; cat:=(p->>'categoryId')::uuid;
   IF NOT api.can_compare(u,target) THEN RAISE EXCEPTION 'CHAMPIONS_PRIVATE'; END IF;
-  IF NOT EXISTS(SELECT 1 FROM public.categories WHERE id=cat AND depth=4 AND status='published') THEN RAISE EXCEPTION 'CATEGORY_NOT_LEAF'; END IF;
+  IF NOT EXISTS(SELECT 1 FROM public.categories WHERE id=cat AND status='published') THEN RAISE EXCEPTION 'CATEGORY_NOT_LEAF'; END IF;
   INSERT INTO public.battle_shares(creator_id,recipient_id,category_id) VALUES(u,target,cat) RETURNING id INTO generated_content_id;
   INSERT INTO public.notifications(recipient_id,type,title,entity_id) VALUES(target,'battle','Un amico ti ha invitato a una Friends Battle',generated_content_id);
   RETURN jsonb_build_object('id',generated_content_id,'url','votilt://battle/'||generated_content_id);
@@ -292,6 +250,7 @@ BEGIN
    FROM public.real_ai_answers a JOIN private.quiz_items q ON q.id=a.quiz_item_id WHERE a.user_id=u AND q.id=(p->>'quizId')::uuid);
  ELSIF action_name='delete_account' THEN
   IF p->>'confirmation' IS DISTINCT FROM 'ELIMINA' THEN RAISE EXCEPTION 'CONFIRMATION_REQUIRED'; END IF;
+  UPDATE public.content_items SET moderation_status='removed' WHERE author_id=u;
   FOR generated_content_id IN SELECT id FROM public.content_items WHERE author_id=u ORDER BY id LOOP PERFORM api.invalidate_content(generated_content_id); END LOOP;
   DELETE FROM public.profiles WHERE id=u;
  ELSIF action_name='impression' THEN
@@ -309,12 +268,14 @@ BEGIN
  PERFORM pg_advisory_xact_lock(8815001);
  IF NOT EXISTS(SELECT 1 FROM public.profiles WHERE id=u AND NOT suspended) THEN RAISE EXCEPTION 'AUTH_REQUIRED'; END IF;
  IF (SELECT count(*) FROM public.content_items WHERE author_id=u AND created_at>now()-interval '1 day')>=30 THEN RAISE EXCEPTION 'RATE_LIMITED'; END IF;
- IF jsonb_array_length(p->'categoryIds') NOT BETWEEN 1 AND 3 OR p->>'rights'<>'true' OR p->>'adultConsent'<>'true' THEN RAISE EXCEPTION 'INVALID_INPUT'; END IF;
+ IF jsonb_array_length(p->'categoryIds')<>1 OR p->>'rights'<>'true' OR p->>'adultConsent'<>'true' THEN RAISE EXCEPTION 'INVALID_INPUT'; END IF;
  IF p->>'filename'<>cid::text||'.jpg' THEN RAISE EXCEPTION 'INVALID_INPUT'; END IF;
  INSERT INTO public.content_items(id,author_id,kind,title,caption,media_path,provenance,moderation_status,rights_attested,adult_consent,byte_size,mime_type,width,height,visibility)
  VALUES(cid,u,kind_name,p->>'title',p->>'caption',p->>'filename',p->>'provenance','pending_review',true,true,(p->>'size')::integer,'image/jpeg',(p->>'width')::integer,(p->>'height')::integer,coalesce(p->>'visibility','public'));
+ IF jsonb_array_length(coalesce(p->'tags','[]'::jsonb))>20 OR EXISTS(SELECT 1 FROM jsonb_array_elements_text(coalesce(p->'tags','[]'::jsonb)) tag WHERE length(tag) NOT BETWEEN 1 AND 40 OR tag COLLATE "unicode" !~ '^[[:alnum:] _-]+$') THEN RAISE EXCEPTION 'INVALID_INPUT'; END IF;
+ UPDATE public.content_items SET tags=ARRAY(SELECT DISTINCT value FROM jsonb_array_elements_text(coalesce(p->'tags','[]'::jsonb))) WHERE id=cid;
  FOR cat IN SELECT value::uuid FROM jsonb_array_elements_text(p->'categoryIds') LOOP
-  SELECT * INTO rule FROM public.categories WHERE id=cat AND depth=4 AND status='published';
+  SELECT * INTO rule FROM public.categories WHERE id=cat AND status='published';
   IF NOT FOUND THEN RAISE EXCEPTION 'CATEGORY_NOT_LEAF'; END IF;
   IF NOT kind_name=ANY(rule.allowed_kinds) THEN RAISE EXCEPTION 'INVALID_CONTENT_KIND'; END IF;
   ref:=p->'metadata'->cat::text;
@@ -335,7 +296,7 @@ CREATE OR REPLACE FUNCTION api.feed_candidates(p jsonb) RETURNS jsonb LANGUAGE s
   FROM public.content_items c JOIN public.content_categories cc ON cc.content_id=c.id JOIN public.categories cat ON cat.id=cc.category_id
   WHERE c.moderation_status='approved' AND cc.status='approved' AND cat.status='published' AND api.can_read(c)
    AND (nullif(p->>'categoryId','') IS NULL OR cc.category_id=(p->>'categoryId')::uuid)
-   AND (coalesce(p->>'mode','for_you')<>'following' OR EXISTS(SELECT 1 FROM public.follows WHERE follower_id=api.uid() AND followed_id=c.author_id))
+   AND (coalesce(p->>'mode','for_you')<>'following' OR (EXISTS(SELECT 1 FROM public.follows WHERE follower_id=api.uid() AND followed_id=c.author_id) OR EXISTS(SELECT 1 FROM public.category_follows f WHERE f.user_id=api.uid() AND f.category_id=cc.category_id)))
   ORDER BY md5(c.id::text||cc.category_id::text||coalesce(p->>'seed','votilt')) LIMIT 600
  )x $$;
 CREATE OR REPLACE FUNCTION api.feed_items(p jsonb) RETURNS jsonb LANGUAGE sql STABLE SECURITY DEFINER SET search_path=public,pg_temp AS $$
@@ -381,6 +342,6 @@ CREATE OR REPLACE FUNCTION api.revoke_session(p_hash text) RETURNS void LANGUAGE
  DELETE FROM private.sessions WHERE token_hash=p_hash $$;
 REVOKE ALL ON FUNCTION api.revoke_session(text) FROM PUBLIC;
 CREATE OR REPLACE FUNCTION api.category_policy_context() RETURNS jsonb LANGUAGE sql STABLE SECURITY DEFINER SET search_path=public,pg_temp AS $$
- SELECT jsonb_build_object('published',coalesce((SELECT jsonb_agg(jsonb_build_object('id',id,'title',title,'status','published')) FROM public.categories WHERE depth=4 AND status='published'),'[]'),
+ SELECT jsonb_build_object('published',coalesce((SELECT jsonb_agg(jsonb_build_object('id',id,'title',title,'status','published')) FROM public.categories WHERE status='published'),'[]'),
  'pending',coalesce((SELECT jsonb_agg(jsonb_build_object('id',id,'title',title,'description',description,'examples',examples,'status','pending','proposerId',proposer_id)) FROM public.category_suggestions WHERE status='pending'),'[]')) $$;
 REVOKE ALL ON FUNCTION api.category_policy_context() FROM PUBLIC;

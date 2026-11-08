@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState, useRef } from 'react';
 import { BackHandler } from 'react-native';
-import { router, useLocalSearchParams } from 'expo-router';
+import { router, useFocusEffect, useLocalSearchParams } from 'expo-router';
 import { useQuery } from '@tanstack/react-query';
 import { useReducedMotion } from 'react-native-reanimated';
 import * as Haptics from 'expo-haptics';
@@ -49,6 +49,8 @@ export default function DuelScreen() {
       try {
         await votingOperation(user.id, 'cancel_tilt', { duelId: id });
         await invalidateVoting();
+        submitting.current = false;
+        if (mounted.current) setBusy(false);
         if (mounted.current && goBack) router.back();
         return true;
       } catch (e) {
@@ -63,17 +65,24 @@ export default function DuelScreen() {
     [user, id],
   );
   const leaveForTab = useCallback(async () => {
+    if (q.data?.status !== 'pending') return true;
     if (submitting.current) return false;
-    return q.data?.status === 'pending' ? cancel(false) : true;
+    return cancel(false);
   }, [cancel, q.data?.status]);
   useAppNavigationGuard(leaveForTab);
-  useEffect(() => {
-    const sub = BackHandler.addEventListener('hardwareBackPress', () => {
-      void cancel();
-      return true;
-    });
-    return () => sub.remove();
-  }, [cancel]);
+  useFocusEffect(
+    useCallback(() => {
+      const sub = BackHandler.addEventListener('hardwareBackPress', () => {
+        if (q.data?.status !== 'pending') {
+          router.back();
+          return true;
+        }
+        void cancel();
+        return true;
+      });
+      return () => sub.remove();
+    }, [cancel, q.data?.status]),
+  );
   const resolve = async (winnerSide: TiltSide) => {
     if (offline) {
       setError('Il tuo voto non è stato inviato. Riprova quando torni online.');
@@ -96,6 +105,7 @@ export default function DuelScreen() {
       // The success choreography starts only after the authoritative receipt.
       await new Promise((done) => setTimeout(done, reducedMotion ? 0 : 540));
       await invalidateVoting();
+      submitting.current = false;
       if (mounted.current) router.back();
     } catch (e) {
       if (mounted.current) {

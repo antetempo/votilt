@@ -1,7 +1,8 @@
 ---
 title: Consegna locale, verifiche e debito residuo
 type: deep
-status: active
+status: superseded
+superseded_by: creator-catalog-delivery
 date: 2026-11-06
 author: Fabrizio
 tags: [handoff, testing, local-runtime, debt, release]

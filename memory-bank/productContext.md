@@ -1,6 +1,6 @@
 # Product Context
 
-VOTILT aiuta adulti a scoprire preferenze visuali e confrontarle volontariamente. Lo scroll non vota; il cuore esprime un like nella categoria. Se esiste già una scelta in quella foglia, si apre un confronto simmetrico; soltanto la decisione confermata dal server può trasferire il supporto. Popolarità e forza Elo sono metriche separate.
+VOTILT aiuta adulti a scoprire preferenze visuali e confrontarle volontariamente. Lo scroll non vota; il cuore esprime un like nella categoria. Il cuore preferisce il creator nella categoria esatta, anche madre/radice, senza rollup. Altre sue foto non aggiungono voti/TILT; un autore diverso apre il confronto simmetrico. Una categoria per immagine; soltanto la decisione confermata dal server trasferisce il supporto. Follow persona e categoria separati; descrizione/tag liberi suggeriscono categorie esistenti, autore sceglie. Popolarità e forza Elo sono metriche separate.
 
 Personas: nuovo utente, utente con molti campioni, creator di contenuti originali, gruppo di amici e moderatore autorizzato. Cinque posizioni: Feed, Esplora, simbolo Pubblica senza etichetta, Classifiche, Profilo. Il TILT è la scena animata di confronto dopo un nuovo like nella stessa categoria. Upload e moderazione sono nello stesso client.
 
