@@ -51,7 +51,7 @@ export function CategoryRanking({
             accessibilityRole="button"
             accessibilityLabel={x.position + '. ' + x.title}
             onPress={() =>
-              router.push({ pathname: '/content/[id]', params: { id: x.id, categoryId } })
+              router.push({ pathname: '/content/[id]', params: { id: x.id, categoryId, metric } })
             }
             style={{
               flexDirection: 'row',

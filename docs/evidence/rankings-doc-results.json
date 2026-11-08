@@ -1,0 +1,10 @@
+{
+  "date": "2026-11-08T16:32:05.432Z",
+  "status": "PASS",
+  "localReadmeLinks": 37,
+  "mediaHashes": "PASS",
+  "sqlSnapshots": "5 identical to canonical source",
+  "githubMarkdownRerun": "NOT_RUN: noninteractive GitHub credential lookup unavailable; original morning rendering check remains in readme-results.json",
+  "androidEvidence": "android-rankings-results.json: 5 PASS",
+  "note": "No second commit or push executed."
+}

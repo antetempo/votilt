@@ -7,8 +7,10 @@ node_modules/
 android/.gradle/
 android/app/build/
 android/build/
-android/
-ios/
+/android/
+/ios/
+# Acquisizioni Android grezze locali; selezione verificata in docs/media/.
+/docs/evidence/android/
 dist/
 coverage/
 output/*.apk

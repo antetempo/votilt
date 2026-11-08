@@ -74,6 +74,8 @@ async function check(id: string, fn: () => Promise<void>) {
   } catch (e) {
     results.push({ id, status: 'FAIL', detail: (e as Error).message });
     console.error(`FAIL ${id}: ${(e as Error).message}`);
+    const frame = (e as Error).stack?.split('\n').find((line) => line.includes('api.test.ts:'));
+    if (frame) console.error(frame.trim());
   }
 }
 const password = 'Test-only-' + randomUUID();
@@ -1237,7 +1239,7 @@ try {
     assert.equal((await call(A, 'me')).id, A.user.id);
   });
   await check(
-    'Categorie piu votate reali, ricerca per categoria e posizione mantenuta',
+    'Anteprime dei primi posti, ricerca foglia/percorso, spareggi e privacy',
     async () => {
       const a = randomUUID(),
         b = randomUUID(),
@@ -1279,6 +1281,18 @@ try {
       assert.equal(active.voteCount, 3);
       assert.equal(active.contentCount, 2);
       assert.equal(empty.voteCount, 0);
+      assert.equal(empty.leader, null);
+      assert.equal(active.path.length, 4);
+      assert.equal(active.path.at(-1), 'UX categoria votata');
+      assert.equal(active.leader.id, ids[0]);
+      assert.equal(active.leader.support, 2);
+      assert.equal(active.leader.position, 1);
+      const canonical = await call(B, 'ranking', { categoryId: a, metric: 'popular' });
+      assert.deepEqual(active.leader, canonical.items[0]);
+      const byPath = await call(B, 'category_rankings', { query: 'isolata UX' });
+      assert.ok(byPath.some((x: any) => x.id === a));
+      assert.ok(byPath.some((x: any) => x.id === b));
+      assert.ok(byPath.every((x: any) => x.path.length === 4));
       assert.ok(all.indexOf(active) < all.indexOf(empty));
       const scoped = await call(B, 'search', { categoryId: a, query: 'needle' });
       assert.equal(scoped.length, 1);
@@ -1292,6 +1306,44 @@ try {
       assert.equal(filtered.items.length, 1);
       assert.equal(filtered.items[0].position, 2);
       assert.equal(filtered.items[0].support, 1);
+      const viewer = await account();
+      await call(viewer, 'vote_intent', {
+        categoryId: a,
+        contentId: ids[1],
+        clientOperationId: randomUUID(),
+      });
+      await db.query(
+        'INSERT INTO public.duel_ratings(category_id,content_id,matches,wins) VALUES($1,$2,7,7) ON CONFLICT(category_id,content_id) DO UPDATE SET matches=7,wins=7,losses=0',
+        [a, ids[1]],
+      );
+      const tie = (await call(B, 'category_rankings', { query: 'UX categoria votata' })).find(
+        (x: any) => x.id === a,
+      );
+      assert.equal(tie.leader.id, ids[1]);
+      assert.deepEqual(
+        tie.leader,
+        (await call(B, 'ranking', { categoryId: a, metric: 'popular' })).items[0],
+      );
+      await db.query(
+        "UPDATE public.content_categories SET status='pending' WHERE category_id=$1 AND content_id=$2",
+        [a, ids[1]],
+      );
+      const approvedOnly = (
+        await call(B, 'category_rankings', { query: 'UX categoria votata' })
+      ).find((x: any) => x.id === a);
+      assert.equal(approvedOnly.leader.id, ids[0]);
+      assert.equal(approvedOnly.contentCount, 1);
+      await db.query(
+        "UPDATE public.content_categories SET status='approved' WHERE category_id=$1 AND content_id=$2",
+        [a, ids[1]],
+      );
+      await call(viewer, 'block', { userId: M.user.id });
+      const blocked = (
+        await call(viewer, 'category_rankings', { query: 'UX categoria votata' })
+      ).find((x: any) => x.id === a);
+      assert.equal(blocked.leader, null);
+      assert.equal(blocked.contentCount, 0);
+      assert.equal(blocked.voteCount, 0);
     },
   );
   await check(

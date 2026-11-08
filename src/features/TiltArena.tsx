@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, Pressable, StyleSheet, View, useWindowDimensions } from 'react-native';
 import { Image } from 'expo-image';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -33,7 +33,9 @@ type Props = {
 };
 
 export function TiltArena(props: Props) {
-  const { width, height } = useWindowDimensions();
+  const window = useWindowDimensions();
+  const [bounds, setBounds] = useState<{ width: number; height: number } | null>(null);
+  const { width, height } = bounds || window;
   const insets = useSafeAreaInsets();
   const enter = useSharedValue(props.reducedMotion ? 1 : 0);
   const drift = useSharedValue(0);
@@ -77,7 +79,11 @@ export function TiltArena(props: Props) {
   const cardWidth = Math.min(width * 0.53, 280, usableHeight * 0.4);
   const cardHeight = Math.min(cardWidth * 1.65, usableHeight * 0.57);
   return (
-    <View style={s.arena} testID="tilt-arena">
+    <View
+      style={s.arena}
+      testID="tilt-arena"
+      onLayout={(event) => setBounds(event.nativeEvent.layout)}
+    >
       <LinearGradient
         colors={['#161029', c.bg, '#160C22']}
         style={StyleSheet.absoluteFill}

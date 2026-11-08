@@ -10,6 +10,7 @@ mkdirSync('migrations', { recursive: true });
 writeFileSync('migrations/migrate_votilt_initial.sql', schema);
 writeFileSync('migrations/migrate_content_metadata_required.sql', schema);
 writeFileSync('migrations/migrate_categories_rankings_and_policy.sql', schema);
+writeFileSync('migrations/migrate_categories_leader_previews.sql', schema);
 
 const config = JSON.parse(readFileSync('.local/runtime.json', 'utf8').replace(/^\uFEFF/, ''));
 if (process.env.VOTILT_DATABASE) {

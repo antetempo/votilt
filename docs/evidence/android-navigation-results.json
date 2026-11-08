@@ -1,0 +1,37 @@
+{
+  "date": "2026-11-08T16:51:19.238Z",
+  "results": [
+    {
+      "flow": "Categoria apre direttamente la classifica, senza pulsanti Immagini/Classifica, con barra persistente",
+      "status": "PASS"
+    },
+    {
+      "flow": "Tocco del secondo risultato apre il feed sulla stessa immagine con soli controlli originali",
+      "status": "PASS"
+    },
+    {
+      "flow": "Swipe verticale continua nell’ordine canonico della classifica",
+      "status": "PASS"
+    },
+    {
+      "flow": "Il simbolo originale di condivisione apre la condivisione nativa",
+      "status": "PASS"
+    },
+    {
+      "flow": "Segnalazione raggiungibile dalle opzioni; barra disponibile e ritorno diretto al Feed senza inviare report",
+      "status": "PASS"
+    },
+    {
+      "flow": "Barra persistente anche nelle impostazioni esterne alle tab",
+      "status": "PASS"
+    },
+    {
+      "flow": "Like sul cuore apre il TILT reale; cambio tab lo annulla senza cambiare il campione",
+      "status": "PASS"
+    },
+    {
+      "flow": "Classifica e scorrimento con barra e controlli accessibili a 320 dp/font 130%",
+      "status": "PASS"
+    }
+  ]
+}

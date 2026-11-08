@@ -1,13 +1,5 @@
 import React, { useRef, useState, useEffect, useCallback, useMemo } from 'react';
-import {
-  FlatList,
-  View,
-  StyleSheet,
-  Pressable,
-  Share,
-  ActivityIndicator,
-  ScrollView,
-} from 'react-native';
+import { FlatList, View, StyleSheet, Pressable, ActivityIndicator, ScrollView } from 'react-native';
 import { Image } from 'expo-image';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -15,7 +7,8 @@ import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
 import { router } from 'expo-router';
 import * as Crypto from 'expo-crypto';
 import { useReducedMotion } from 'react-native-reanimated';
-import { Button, Label, Empty, ErrorState } from '../components/ui';
+import { Button, Label, Empty, ErrorState, Chip } from '../components/ui';
+import { MediaActions } from '../components/MediaActions';
 import { Icon } from '../components/Icon';
 import { mediaSource, rpc } from '../lib/api';
 import { useSession, queryClient } from '../lib/session';
@@ -23,7 +16,21 @@ import { useVoting } from './voting';
 import { colors as c, fonts as f } from '../theme/tokens';
 import type { MediaItem } from '../types/domain';
 
-export function Feed({ categoryId }: { categoryId?: string }) {
+export function Feed({
+  categoryId,
+  providedItems,
+  initialContentId,
+  showBack = false,
+  categoryChoices,
+  onChooseCategory,
+}: {
+  categoryId?: string;
+  providedItems?: MediaItem[];
+  initialContentId?: string;
+  showBack?: boolean;
+  categoryChoices?: { id: string; title: string }[];
+  onChooseCategory?: (id: string) => void;
+}) {
   const { user, offline, refresh } = useSession();
   const insets = useSafeAreaInsets();
   const [height, setHeight] = useState(0);
@@ -43,6 +50,7 @@ export function Feed({ categoryId }: { categoryId?: string }) {
   const q = useInfiniteQuery({
     queryKey: ['feed', mode, categoryId, seed, user?.id],
     initialPageParam: 0,
+    enabled: providedItems === undefined,
     queryFn: ({ pageParam }) =>
       rpc<{ items: MediaItem[]; nextOffset: number | null }>('feed', {
         mode,
@@ -58,7 +66,10 @@ export function Feed({ categoryId }: { categoryId?: string }) {
     queryFn: () => rpc<MediaItem[]>('champions'),
     enabled: !!user,
   });
-  const items = useMemo(() => q.data?.pages.flatMap((p) => p.items) || [], [q.data]);
+  const items = useMemo(
+    () => providedItems ?? q.data?.pages.flatMap((p) => p.items) ?? [],
+    [providedItems, q.data],
+  );
   const latest = useRef({ items, user });
   useEffect(() => {
     latest.current = { items, user };
@@ -67,7 +78,7 @@ export function Feed({ categoryId }: { categoryId?: string }) {
     ({ viewableItems }: { viewableItems: { item: MediaItem; index?: number | null }[] }) => {
       const item = viewableItems[0]?.item;
       if (item) {
-        if (latest.current.user)
+        if (latest.current.user && item.status === 'approved')
           void rpc('impression', {
             contentId: item.id,
             categoryId: item.categoryId,
@@ -88,9 +99,9 @@ export function Feed({ categoryId }: { categoryId?: string }) {
       testID="feed-surface"
       onLayout={(e) => setHeight(e.nativeEvent.layout.height)}
     >
-      {q.isPending ? (
+      {providedItems === undefined && q.isPending ? (
         <ActivityIndicator color={c.purple} style={{ flex: 1 }} />
-      ) : q.error && !items.length ? (
+      ) : providedItems === undefined && q.error && !items.length ? (
         <ErrorState error={q.error} retry={() => void q.refetch()} />
       ) : !items.length ? (
         <Empty
@@ -109,11 +120,16 @@ export function Feed({ categoryId }: { categoryId?: string }) {
             decelerationRate="fast"
             showsVerticalScrollIndicator={false}
             initialNumToRender={2}
+            initialScrollIndex={Math.max(
+              0,
+              items.findIndex((item) => item.id === initialContentId),
+            )}
             maxToRenderPerBatch={3}
             windowSize={5}
             getItemLayout={(_, i) => ({ length: height, offset: height * i, index: i })}
             onEndReached={() => {
-              if (q.hasNextPage && !q.isFetchingNextPage) void q.fetchNextPage();
+              if (providedItems === undefined && q.hasNextPage && !q.isFetchingNextPage)
+                void q.fetchNextPage();
             }}
             onEndReachedThreshold={0.7}
             viewabilityConfig={{ itemVisiblePercentThreshold: 60, minimumViewTime: 1000 }}
@@ -157,70 +173,48 @@ export function Feed({ categoryId }: { categoryId?: string }) {
                       )}
                     </View>
                   )}
-                  <View style={s.actions}>
-                    <Pressable
-                      testID="feed-like"
-                      accessibilityRole="button"
-                      accessibilityLabel={current ? 'Ti piace' : 'Mi piace'}
-                      accessibilityState={{
-                        selected: current,
-                        disabled: offline || voting.busy,
-                        busy: voting.busy,
-                      }}
-                      disabled={offline || voting.busy}
-                      onPress={() => {
-                        if (!current) void voting.vote(item.categoryId, item.id);
-                      }}
-                      style={s.touch}
-                    >
-                      {voting.busy ? (
-                        <ActivityIndicator color={c.pink} />
-                      ) : (
-                        <Icon name="heart" size={30} color={current ? c.pink : c.text} />
-                      )}
-                    </Pressable>
-                    <Action
-                      name="share"
-                      label="Condividi"
-                      onPress={() =>
-                        void Share.share({
-                          message:
-                            item.title +
-                            ' · VOTILT\n' +
-                            'votilt://content/' +
-                            item.id +
-                            '?categoryId=' +
-                            item.categoryId,
-                        })
-                      }
-                    />
-                    <Action
-                      name="more"
-                      label="Altre opzioni"
-                      onPress={() => {
-                        if (!user) {
-                          router.push('/(auth)/login');
-                          return;
-                        }
-                        router.push({ pathname: '/report', params: { contentId: item.id } });
-                      }}
-                    />
-                  </View>
+                  <MediaActions
+                    item={item}
+                    current={current}
+                    busy={voting.busy}
+                    disabled={offline}
+                    onLike={() => void voting.vote(item.categoryId, item.id)}
+                  />
                   <View style={s.caption}>
                     <Pressable
                       accessibilityRole="button"
                       accessibilityLabel={'Dettaglio ' + item.title}
-                      onPress={() =>
+                      onPress={() => {
+                        if (providedItems) {
+                          setExpanded((state) => ({ ...state, [item.id]: !state[item.id] }));
+                          return;
+                        }
                         router.push({
                           pathname: '/content/[id]',
                           params: { id: item.id, categoryId: item.categoryId },
-                        })
-                      }
+                        });
+                      }}
                     >
                       <Label numberOfLines={2} style={s.name}>
                         {item.title}
                       </Label>
                     </Pressable>
+                    {providedItems && item.reference && (
+                      <Label style={{ fontSize: 11, color: c.cyan }}>
+                        {item.reference.label}: {item.reference.name}
+                      </Label>
+                    )}
+                    {providedItems && item.status !== 'approved' && (
+                      <Label style={{ fontSize: 12, color: c.cyan }}>
+                        {{
+                          pending_review: 'In revisione',
+                          rejected: 'Rifiutato',
+                          hidden: 'Non pubblico',
+                          draft: 'Bozza',
+                        }[item.status] || item.status}
+                        {item.reviewReason ? ': ' + item.reviewReason : ''}
+                      </Label>
+                    )}
                     <Pressable
                       accessibilityRole="button"
                       accessibilityLabel={'Profilo di ' + item.handle}
@@ -323,6 +317,36 @@ export function Feed({ categoryId }: { categoryId?: string }) {
           ))}
         </View>
       )}
+      {showBack && (
+        <View style={{ position: 'absolute', top: insets.top, left: 12, right: 12, gap: 8 }}>
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel="Indietro"
+            onPress={() =>
+              router.canGoBack() ? router.back() : router.replace('/(tabs)/rankings')
+            }
+            style={s.touch}
+          >
+            <Icon name="back" size={24} />
+          </Pressable>
+          {!!categoryChoices && categoryChoices.length > 1 && (
+            <ScrollView
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={{ gap: 8 }}
+            >
+              {categoryChoices.map((category) => (
+                <Chip
+                  key={category.id}
+                  title={category.title}
+                  selected={category.id === categoryId}
+                  onPress={() => onChooseCategory?.(category.id)}
+                />
+              ))}
+            </ScrollView>
+          )}
+        </View>
+      )}
       {offline && (
         <Pressable
           accessibilityRole="button"
@@ -346,18 +370,6 @@ export function Feed({ categoryId }: { categoryId?: string }) {
     </View>
   );
 }
-function Action({ name, label, onPress }: { name: string; label: string; onPress: () => void }) {
-  return (
-    <Pressable
-      accessibilityRole="button"
-      accessibilityLabel={label}
-      onPress={onPress}
-      style={s.touch}
-    >
-      <Icon name={name} size={25} />
-    </Pressable>
-  );
-}
 const s = StyleSheet.create({
   header: {
     position: 'absolute',
@@ -367,7 +379,6 @@ const s = StyleSheet.create({
     justifyContent: 'center',
     gap: 24,
   },
-  actions: { position: 'absolute', right: 8, bottom: 26, gap: 4 },
   touch: { width: 48, height: 48, alignItems: 'center', justifyContent: 'center' },
   caption: { position: 'absolute', left: 16, right: 68, bottom: 14, gap: 5 },
   name: {

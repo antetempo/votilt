@@ -24,5 +24,6 @@ Test prima del PASS: positivo, negativo, concorrenza, autenticazione reale, veri
 | Decisione | Tags | File | Stato |
 |---|---|---|---|
 | Immagini protagoniste e brand VOTILT coerente | brand, ux, icons, feed, tilt | [[brand-immagini-protagoniste]] | active |
+| Creator preferito per foglia e classificazione visibile | creator, catalogo, categorie, prodotto, follow | [[creator-per-foglia]] | active |
 | Android e backend locali senza Docker | android, architecture, local-runtime, no-docker | [[runtime-locale-senza-docker]] | active |
 <!-- /memorybank:index -->

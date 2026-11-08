@@ -1,0 +1,130 @@
+# VOTILT v0.2 — revisione trasversale per interessi riconoscibili, non didascalie.
+# News e attualità sono aggiunte da news-revision.txt. Numero di foglie variabile per dominio.
+Quotidianità > Stili di vita | Vita urbana;Vita di paese;Vita in campagna;Vita da pendolare;Vita da fuorisede;Vita in condivisione;Vita minimalista;Slow living
+Quotidianità > Organizzazione personale | Routine quotidiane;Gestione del tempo;Organizzazione domestica;Decluttering;Bullet journal;Abitudini e obiettivi personali
+Quotidianità > Esperienze personali | Diari di vita quotidiana;Cambiamenti di vita;Vita indipendente;Trasferirsi all'estero;Ritorno alla vita rurale
+Amicizia e vita sociale > Relazioni | Amicizia;Amicizie a distanza;Nuove amicizie;Socialità e incontri;Relazioni interculturali
+Amicizia e vita sociale > Attività condivise | Uscite tra amici;Vita di quartiere;Gruppi di interesse;Associazionismo ricreativo;Vita notturna;Vita universitaria
+Famiglia e affetti > Genitorialità | Gravidanza e nascita;Neogenitori;Genitorialità nella prima infanzia;Genitori di adolescenti;Educazione familiare;Genitorialità adottiva;Affido familiare
+Famiglia e affetti > Relazioni familiari | Vita di coppia;Famiglie allargate;Famiglie omogenitoriali;Nonni e nipoti;Fratelli e sorelle;Famiglie interculturali;Relazioni a distanza
+Famiglia e affetti > Vita familiare | Attività in famiglia;Tradizioni familiari;Conciliazione famiglia e lavoro;Assistenza ai familiari;Storia e memoria familiare
+Feste e ricorrenze > Eventi personali | Compleanni;Matrimoni;Unioni civili;Anniversari;Feste di laurea;Baby shower
+Feste e ricorrenze > Feste stagionali | Natale;Capodanno;Carnevale;Pasqua;Halloween;Feste di primavera;Feste del raccolto
+Feste e ricorrenze > Organizzazione eventi | Allestimenti per feste;Decorazioni per eventi;Inviti e coordinati;Party planning;Feste a tema;Cerimonie e tradizioni locali
+Umorismo e divertimento > Comicità | Comicità quotidiana;Comicità di osservazione;Parodia;Satira;Umorismo surreale;Umorismo linguistico
+Umorismo e divertimento > Creazioni umoristiche | Meme originali;Vignette;Fumetti umoristici;Caricature;Fotografia umoristica;Personaggi comici
+Umorismo e divertimento > Intrattenimento | Magia e illusionismo;Clownerie;Improvvisazione;Cabaret;Giochi di parole;Enigmi umoristici
+Ritratti ed espressione personale > Ritratto | Autoritratto;Ritratto ambientato;Ritratto in studio;Ritratto editoriale;Ritratto di coppia;Ritratto di gruppo
+Ritratti ed espressione personale > Identità ed espressione | Espressione personale;Espressione di genere;Body positivity;Rappresentazione della disabilità;Maturità e invecchiamento;Stili alternativi
+Ritratti ed espressione personale > Glamour | Ritratto glamour;Boudoir;Ritratto beauty;Ritratto fashion
+Moda e stile > Stili | Streetwear;Casual;Minimal;Vintage;Classico sartoriale;Punk;Goth;Boho;Preppy;Techwear;Modest fashion
+Moda e stile > Abbigliamento | Abbigliamento quotidiano;Abiti da cerimonia;Abbigliamento da lavoro;Moda outdoor;Moda sportiva;Moda adattiva;Moda genderless;Moda curvy
+Moda e stile > Accessori | Scarpe;Sneakers;Borse;Cappelli;Occhiali;Gioielli e bijoux;Orologi da indossare;Sciarpe e foulard
+Moda e stile > Creazione e cultura | Fashion design;Sartoria;Moda sostenibile;Second hand;Upcycling moda;Storia della moda;Costume scenico
+Bellezza e cura personale > Make-up | Trucco naturale;Trucco grafico;Trucco da sera;Trucco editoriale;Trucco teatrale;Trucco fantasy;Face painting
+Bellezza e cura personale > Capelli | Tagli e acconciature;Trecce;Capelli ricci;Colorazione dei capelli;Acconciature da cerimonia;Barbering
+Bellezza e cura personale > Cura e decorazione | Skincare;Haircare;Grooming;Nail art;Profumeria;Tatuaggi;Piercing;Body painting
+Mare e costumi > Moda mare | Costumi interi;Bikini;Tankini;Shorts da bagno;Costumi da surf;Costumi sportivi;Copricostume;Accessori da spiaggia
+Mare e costumi > Vita al mare | Cultura balneare;Vacanze al mare;Vita da spiaggia;Vita in piscina;Ritratti al mare
+Danza e movimento > Danze urbane | Hip hop dance;Breaking;Popping;Locking;House dance;Waacking;Krump;Voguing
+Danza e movimento > Danze di coppia | Salsa;Bachata;Tango argentino;Lindy hop;Kizomba;Balli da sala;Boogie woogie
+Danza e movimento > Danza di scena | Danza classica;Danza contemporanea;Modern jazz;Tip tap;Teatro danza;Danza per musical
+Danza e movimento > Culture della danza | K-pop dance;Danze popolari italiane;Danze folkloriche internazionali;Danza del ventre;Flamenco;Danze indiane;Danze africane
+Danza e movimento > Pratiche ed espressioni | Heels dance;Pole dance;Danza aerea;Danza inclusiva;Coreografia;Costumi e scenografia per la danza
+Sport e competizioni > Sport di squadra | Calcio;Calcio a cinque;Pallacanestro;Pallavolo;Rugby;Pallamano;Baseball e softball;Hockey su prato;Football americano;Cricket
+Sport e competizioni > Sport con racchetta | Tennis;Padel;Tennistavolo;Badminton;Squash
+Sport e competizioni > Atletica e resistenza | Atletica leggera;Corsa su strada;Trail running;Marcia;Triathlon;Ultramaratona
+Sport e competizioni > Sport acquatici | Nuoto;Pallanuoto;Nuoto artistico;Tuffi;Surf;Windsurf;Kitesurf;Vela;Canottaggio;Canoa e kayak;Immersione sportiva
+Sport e competizioni > Sport di montagna | Arrampicata;Alpinismo;Sci alpino;Sci di fondo;Snowboard;Scialpinismo;Ciaspole
+Sport e competizioni > Sport di combattimento | Pugilato;Judo;Karate;Taekwondo;Lotta;Jiu-jitsu brasiliano;Muay thai;MMA;Scherma
+Sport e competizioni > Sport su ruote | Ciclismo su strada;Mountain bike;BMX;Ciclocross;Skateboard;Pattinaggio a rotelle
+Sport e competizioni > Altre discipline | Ginnastica artistica;Ginnastica ritmica;Equitazione;Golf;Tiro con l'arco;Bocce;Sport paralimpici
+Fitness e allenamento > Allenamento di forza | Bodybuilding;Powerlifting;Weightlifting;Calisthenics;Kettlebell;Allenamento funzionale
+Fitness e allenamento > Allenamento e movimento | Cross training;Allenamento a circuito;Allenamento a corpo libero;Allenamento domestico;Cardio fitness;Camminata sportiva;Preparazione atletica
+Fitness e allenamento > Mobilità e benessere | Yoga;Pilates;Stretching;Mobilità articolare;Fitness adattato;Recupero sportivo
+Videogiochi e mondi virtuali > Generi > Sparatutto > FPS | FPS tattici;Arena shooter;Hero shooter;FPS narrativi;Looter shooter;FPS militari
+Videogiochi e mondi virtuali > Generi > Sparatutto | Sparatutto in terza persona;Shoot 'em up;Battle royale;Extraction shooter
+Videogiochi e mondi virtuali > Generi > Ruolo | JRPG;Action RPG;RPG a turni;RPG occidentali;MMORPG;Roguelike;Roguelite
+Videogiochi e mondi virtuali > Generi > Strategia | Strategia in tempo reale;Strategia a turni;Grand strategy;4X;Tower defense;Tattici
+Videogiochi e mondi virtuali > Generi > Azione e avventura | Platform;Metroidvania;Action adventure;Avventure grafiche;Survival;Survival horror;Stealth;Soulslike;Picchiaduro;Hack and slash
+Videogiochi e mondi virtuali > Generi > Simulazione | Simulatori di guida;Simulatori di volo;Life sim;Farming sim;Gestionale;City builder;Giochi sportivi
+Videogiochi e mondi virtuali > Generi > Altri generi | Puzzle game;Rhythm game;Visual novel;Party game;Cozy game;Sandbox;Giochi educativi
+Videogiochi e mondi virtuali > Comunità e pratica | Retrogaming;Gaming competitivo;Speedrunning;Modding;Virtual photography;Cosmetici e personalizzazione nei giochi;Realtà virtuale;Accessibilità nei videogiochi
+Giochi sociali e da tavolo > Giochi da tavolo | Eurogame;Giochi tematici;Giochi cooperativi;Giochi astratti;Giochi di deduzione;Giochi legacy;Wargame;Party game da tavolo
+Giochi sociali e da tavolo > Carte e strategia | Scacchi;Go;Bridge;Giochi di carte tradizionali;Giochi di carte collezionabili;Deckbuilding
+Giochi sociali e da tavolo > Ruolo e immaginazione | Giochi di ruolo da tavolo;Giochi di ruolo dal vivo;Worldbuilding per GDR;Game mastering;Miniature da gioco;Scenari da tavolo
+Giochi sociali e da tavolo > Enigmi e attività | Escape room;Enigmistica;Puzzle;Geocaching;Giochi investigativi;Giochi all'aperto
+Motociclismo > Moto > Custom > Stili | Café racer;Bobber;Chopper;Scrambler custom;Tracker custom;Bagger;Brat style
+Motociclismo > Moto > Segmenti | Naked;Sportive;Adventure;Enduro;Motard;Cruiser;Touring;Scooter;Moto elettriche;Moto d'epoca
+Motociclismo > Tecnica | Restauro moto;Preparazione moto;Meccanica motociclistica;Verniciatura e aerografia moto;Accessori e componenti moto
+Motociclismo > Esperienza | Mototurismo;Viaggi adventure in moto;Raduni motociclistici;Equipaggiamento moto;Cultura biker
+Auto e mobilità > Automobili | Auto sportive;Supercar;Auto classiche;Youngtimer;Fuoristrada;Auto elettriche;Auto da competizione;Tuning;Restomod
+Auto e mobilità > Tecnica e passione | Restauro auto;Meccanica auto;Car detailing;Car design;Modifiche estetiche auto;Car audio
+Auto e mobilità > Altri mezzi | Biciclette urbane;Cargo bike;Micromobilità;Camper e van;Veicoli storici;Mezzi agricoli;Treni;Aviazione;Nautica da diporto
+Viaggi e luoghi > Tipi di viaggio | Viaggi in solitaria;Viaggi zaino in spalla;Viaggi lenti;Viaggi in treno;Cicloturismo;Viaggi in camper;Viaggi accessibili;Viaggi con animali;Viaggi avventura
+Viaggi e luoghi > Destinazioni | Città d'arte;Borghi;Destinazioni di montagna;Isole;Destinazioni costiere;Deserti;Aree polari;Parchi nazionali
+Viaggi e luoghi > Esperienze | Turismo gastronomico;Turismo culturale;Turismo industriale;Cammini e pellegrinaggi;Turismo ferroviario;Turismo termale;Ospitalità rurale
+Paesaggi e natura > Ambienti | Paesaggi montani;Paesaggi marini;Paesaggi rurali;Foreste;Laghi;Fiumi;Cascate;Zone umide;Paesaggi desertici;Paesaggi vulcanici
+Paesaggi e natura > Osservazione | Birdwatching;Osservazione della fauna;Osservazione botanica;Foliage;Fenomeni meteorologici;Cielo notturno;Escursionismo naturalistico
+Animali e convivenza > Animali domestici | Cani;Gatti;Conigli;Piccoli roditori;Uccelli domestici;Pesci d'acquario;Rettili domestici
+Animali e convivenza > Cura e relazione | Educazione cinofila;Adozioni animali;Pet care;Toelettatura;Convivenza con animali;Acquariofilia;Terrariofilia
+Animali e convivenza > Mondo animale | Fauna selvatica;Animali da fattoria;Animali marini;Insetti;Conservazione animale
+Cucina e bevande > Cucine | Cucina italiana;Cucine regionali italiane;Cucina francese;Cucina spagnola;Cucina greca;Cucina mediorientale;Cucina indiana;Cucina cinese;Cucina giapponese;Cucina coreana;Cucine del Sud-est asiatico;Cucine africane;Cucina messicana;Cucine sudamericane
+Cucina e bevande > Piatti e preparazioni | Pasta;Risotti;Pizza;Pane;Pasticceria;Gelateria;Cioccolateria;Zuppe;Insalate;Street food;Conserve;Fermentazioni
+Cucina e bevande > Stili e tecniche | Cucina vegetale;Cucina senza glutine;Cucina casalinga;Cucina creativa;Meal prep;Barbecue;Cottura a bassa temperatura;Impiattamento
+Cucina e bevande > Bevande | Caffè;Tè;Matcha;Bevande analcoliche;Vino;Birra artigianale;Cocktail;Distillati
+Cucina e bevande > Cultura gastronomica | Ristorazione;Osterie e trattorie;Mercati alimentari;Prodotti del territorio;Agricoltura gastronomica;Food design
+Casa e giardino > Interior design | Arredamento contemporaneo;Arredamento classico;Arredamento vintage;Arredamento scandinavo;Arredamento industriale;Arredamento boho;Piccoli spazi;Design accessibile
+Casa e giardino > Progettazione domestica | Cucine;Bagni;Soggiorni;Camere da letto;Home office;Illuminazione;Organizzazione degli spazi;Ristrutturazione
+Casa e giardino > Giardinaggio | Orto;Bonsai;Piante da appartamento;Piante grasse;Orchidee;Rose;Giardini fioriti;Giardini naturalistici;Piante da ombra;Giardinaggio in balcone;Terrari vegetali;Idroponica
+Casa e giardino > Cura del verde | Compostaggio;Propagazione delle piante;Potatura;Irrigazione;Suolo e substrati;Giardinaggio per impollinatori
+Manualità e artigianato > Legno e metallo | Falegnameria;Intaglio;Tornitura;Ebanisteria;Lavorazione del metallo;Forgiatura;Oreficeria
+Manualità e artigianato > Terra vetro e pietra | Ceramica al tornio;Ceramica modellata;Decorazione ceramica;Mosaico;Vetro artistico;Lavorazione della pietra
+Manualità e artigianato > Tessile | Maglia;Uncinetto;Tessitura;Ricamo;Macramè;Patchwork;Cucito creativo;Feltratura
+Manualità e artigianato > Carta pelle e recupero | Origami;Papercraft;Legatoria;Scrapbooking;Pelletteria;Restauro mobili;Riparazione tessile;Riciclo creativo
+Arti visive e fotografia > Disegno e pittura | Disegno a matita;Disegno a inchiostro;Acquerello;Pittura a olio;Pittura acrilica;Pastello;Pittura astratta;Pittura figurativa
+Arti visive e fotografia > Illustrazione e stampa | Illustrazione editoriale;Illustrazione per l'infanzia;Illustrazione naturalistica;Fumetto;Manga;Collage;Incisione;Serigrafia;Calligrafia
+Arti visive e fotografia > Fotografia | Fotografia di strada;Fotografia documentaria;Fotografia di paesaggio;Fotografia naturalistica;Fotografia architettonica;Fotografia macro;Still life;Fotografia sportiva;Fotografia di eventi;Fotografia astronomica;Fotografia astratta;Fotografia subacquea
+Arti visive e fotografia > Tecniche fotografiche | Fotografia analogica;Fotografia istantanea;Fotografia in bianco e nero;Fotografia a infrarossi;Lunghe esposizioni;Light painting;Fotomontaggio;Fotografia da smartphone
+Arti visive e fotografia > Design | Graphic design;Brand design;Tipografia;Poster design;Packaging design;Information design;Product design;Motion design
+Arti visive e fotografia > Arti plastiche e spazio | Scultura;Installazione;Street art;Land art;Arte pubblica;Arte tessile;Libri d'artista
+Musica e scena dal vivo > Generi | Pop;Rock;Metal;Punk musicale;Hip hop;Jazz;Blues;Soul e R&B;Funk;Reggae;Folk;Musica classica;Musica lirica;Musica elettronica;Musica sperimentale;Musiche tradizionali
+Musica e scena dal vivo > Strumenti | Chitarra;Basso;Pianoforte;Tastiere e sintetizzatori;Batteria e percussioni;Archi;Fiati;Voce
+Musica e scena dal vivo > Creazione musicale | Composizione;Songwriting;Produzione musicale;DJing;Sound design;Home recording;Liuteria
+Musica e scena dal vivo > Cultura live | Concerti;Festival musicali;Orchestre;Cori;Band emergenti;Musica di strada;Scenografia musicale
+Cinema serie e cultura pop > Generi | Cinema drammatico;Commedia;Thriller;Horror;Fantascienza;Fantasy;Documentario;Animazione;Cinema sperimentale
+Cinema serie e cultura pop > Serie e fandom | Serie televisive;Anime;Fumetti e graphic novel;Supereroi;Fandom fantasy;Fandom fantascientifico
+Cinema serie e cultura pop > Creazione audiovisiva | Regia;Sceneggiatura;Storyboard;Scenografia;Costumi cinematografici;Trucco cinematografico;Effetti speciali;Fotografia cinematografica;Cinema indipendente
+Cinema serie e cultura pop > Cosplay | Cosplay fantasy;Cosplay fantascientifico;Cosplay da videogiochi;Cosplay da fumetti;Cosplay steampunk;Prop making;Armature cosplay;Trucco e parrucche cosplay
+Libri scrittura e lingue > Letteratura | Narrativa contemporanea;Classici;Fantasy letterario;Fantascienza letteraria;Giallo;Thriller letterario;Romanzo rosa;Romantasy;Cozy mystery;Narrativa storica;Horror letterario;Poesia;Saggistica;Letteratura per ragazzi
+Libri scrittura e lingue > Scrittura | Scrittura creativa;Racconto breve;Romanzo;Scrittura autobiografica;Scrittura poetica;Scrittura teatrale;Self publishing
+Libri scrittura e lingue > Lettura e libri | Recensioni di libri;Gruppi di lettura;Biblioteche;Librerie;Editoria indipendente;Bibliofilia;Restauro del libro
+Libri scrittura e lingue > Lingue | Apprendimento delle lingue;Traduzione;Linguistica;Etimologia;Dialetti italiani;Lingue dei segni
+Scienza e divulgazione > Scienze fisiche | Fisica;Astronomia;Astrofisica;Chimica;Scienza dei materiali;Ottica;Fisica delle particelle
+Scienza e divulgazione > Scienze della vita | Biologia;Genetica;Biologia molecolare;Microbiologia;Botanica;Zoologia;Ecologia;Biologia evoluzionistica;Neuroscienze
+Scienza e divulgazione > Terra e spazio | Geologia;Meteorologia;Climatologia;Oceanografia;Geofisica;Planetologia;Esplorazione spaziale
+Scienza e divulgazione > Matematica e metodo | Matematica;Statistica;Probabilità;Metodo scientifico;Visualizzazione dei dati;Storia della scienza;Citizen science;Comunicazione scientifica
+Scienza e divulgazione > Medicina e mente | Medicina;Anatomia;Immunologia;Farmacologia;Epidemiologia;Psicologia;Scienze cognitive;Ricerca sanitaria
+Tecnologia e maker > Informatica | Sviluppo web;Sviluppo mobile;Programmazione;Sistemi operativi;Database;Cloud computing;Reti informatiche;Cybersicurezza;Software open source
+Tecnologia e maker > Sviluppo videogiochi | Game design;Programmazione gameplay;Motori di gioco;Technical art;Grafica per videogiochi;Level design;Sviluppo indie;Game audio
+Tecnologia e maker > Hardware e progetti | Elettronica;Robotica;Stampa 3D;Modellazione 3D;Internet delle cose;Domotica;Droni;Computer e componenti;Retrocomputing
+Tecnologia e maker > Tecnologia d'uso | Smartphone;Fotocamere;Audio hi-fi;Wearable;Tecnologie assistive;Riparazione elettronica
+AI e creatività digitale > Arte generativa | Illustrazione AI;Ritratto AI;Paesaggio AI;Arte astratta AI;Personaggi AI;Architettura AI;Arte procedurale
+AI e creatività digitale > Tecniche e strumenti | Prompt design;Workflow generativi;Modelli open source;Tool AI per immagini;Tool AI per scrittura;Tool AI per musica;Tool AI per 3D;Tool AI per video
+AI e creatività digitale > AI e società | Etica dell'AI;Bias dei modelli;Provenienza dei contenuti;AI e lavoro;AI e accessibilità;Cultura dell'AI
+Storia e patrimonio > Periodi | Preistoria;Storia antica;Storia medievale;Storia moderna;Storia contemporanea
+Storia e patrimonio > Ambiti | Archeologia;Storia dell'arte;Storia militare;Storia sociale;Storia delle religioni;Storia della tecnologia;Storia locale;Genealogia
+Storia e patrimonio > Patrimonio | Musei;Archivi;Monumenti;Architettura storica;Restauro del patrimonio;Rievocazione storica;Tradizioni popolari
+Lavori e professioni > Attività e mestieri | Artigiani;Professioni creative;Professioni tecniche;Professioni sanitarie;Professioni educative;Mestieri agricoli;Ristoratori;Commercianti
+Lavori e professioni > Impresa e organizzazione | Imprenditorialità;Startup;Piccole imprese;Management;Marketing;Comunicazione;Vendite;Consulenza;Risorse umane
+Lavori e professioni > Vita lavorativa | Freelance;Smart working;Coworking;Orientamento professionale;Ricerca del lavoro;Competenze professionali;Organizzazione del lavoro
+Studio e apprendimento > Percorsi | Scuola;Università;Formazione professionale;Apprendimento permanente;Autoapprendimento
+Studio e apprendimento > Metodi e strumenti | Metodo di studio;Mappe concettuali;Appunti e sintesi;Didattica;Educazione inclusiva;Risorse educative;Edtech
+Comunità e sostenibilità > Comunità | Volontariato;Associazioni;Cooperative di comunità;Mutuo aiuto;Cittadinanza attiva;Orti comunitari
+Comunità e sostenibilità > Vita sostenibile | Riduzione dei rifiuti;Riuso;Riparazione;Consumo consapevole;Mobilità sostenibile;Abitare sostenibile;Autoproduzione
+Comunità e sostenibilità > Ambiente e azione | Conservazione della natura;Educazione ambientale;Pulizia del territorio;Comunità energetiche;Agricoltura rigenerativa
+Collezionismo e hobby > Collezioni | Numismatica;Filatelia;Orologeria;Vinili;Fumetti da collezione;Carte da collezione;Giocattoli vintage;Minerali;Memorabilia sportive
+Collezionismo e hobby > Modellismo | Modellismo ferroviario;Modellismo navale;Modellismo aeronautico;Modellismo automobilistico;Diorami;Miniature storiche;Gunpla;Radiomodellismo
+Collezionismo e hobby > Passatempi creativi | Costruzioni a mattoncini;Puzzle meccanici;Aquilonismo;Giocoleria;Hobby scientifici
+Fantasia e mondi creativi > Generi immaginativi | High fantasy;Dark fantasy;Urban fantasy;Science fantasy;Cyberpunk;Steampunk;Solarpunk;Dieselpunk;Space opera
+Fantasia e mondi creativi > Creazione di mondi | Worldbuilding;Cartografia fantastica;Creature fantastiche;Personaggi originali;Lingue inventate;Architetture immaginarie

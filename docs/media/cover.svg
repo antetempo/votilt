@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="560" viewBox="0 0 1440 560" role="img" aria-labelledby="title desc">
+  <title id="title">VOTILT — Scrolla. Scegli. Vai in TILT.</title>
+  <desc id="desc">Copertina editoriale del progetto antetempo: scoperta visuale, preferenze e duelli Android. Palette Dark Neon viola, ciano e rosa.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#171326"/><stop offset="1" stop-color="#090711"/></linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#22D3EE"/><stop offset=".45" stop-color="#A855F7"/><stop offset="1" stop-color="#FF4DA6"/></linearGradient>
+  </defs>
+  <rect width="1440" height="560" rx="28" fill="url(#bg)"/>
+  <path d="M955 0 720 560M1170 0 935 560M1385 0 1150 560" stroke="#34294C" stroke-width="1" opacity=".65"/>
+  <circle cx="1320" cy="150" r="245" fill="none" stroke="#A855F7" stroke-width="40" opacity=".08"/>
+  <circle cx="1320" cy="150" r="330" fill="none" stroke="#22D3EE" opacity=".14"/>
+  <g transform="translate(76 72) scale(.14)">
+    <path d="M220 265h150l112 333 153-333h166L540 790H405z" fill="url(#accent)"/>
+    <path d="M562 201 449 457h107l-54 192 232-314H609l83-134z" fill="#F8F6FF"/>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="244" y="118" fill="#22D3EE" font-size="16" letter-spacing="4">ANTETEMPO / ANDROID SOCIAL GAME</text>
+    <text x="76" y="310" fill="#F8F6FF" font-size="154" font-weight="800" letter-spacing="-8">VOTILT</text>
+    <path d="m82 329 617-31" stroke="#A855F7" stroke-width="7"/>
+    <text x="82" y="393" fill="#F8F6FF" font-size="34" font-weight="600">Scrolla. Scegli. Vai in TILT.</text>
+    <text x="82" y="441" fill="#A9A3BE" font-size="20">Le immagini che ami. Le preferenze che ti raccontano.</text>
+    <text x="82" y="512" fill="#A9A3BE" font-size="14" letter-spacing="2">ANDROID NATIVO</text>
+    <circle cx="278" cy="507" r="3" fill="#A855F7"/>
+    <text x="298" y="512" fill="#A9A3BE" font-size="14" letter-spacing="2">BACKEND LOCALE</text>
+    <circle cx="491" cy="507" r="3" fill="#22D3EE"/>
+    <text x="511" y="512" fill="#A9A3BE" font-size="14" letter-spacing="2">DARK NEON</text>
+    <g transform="translate(912 82)">
+      <rect width="430" height="106" rx="18" fill="#171326" stroke="#34294C"/>
+      <text x="28" y="47" fill="#22D3EE" font-size="31" font-weight="700">01</text>
+      <text x="102" y="44" fill="#F8F6FF" font-size="25" font-weight="700">SCOPRI</text>
+      <text x="102" y="76" fill="#A9A3BE" font-size="18">Lasciati fermare da un’immagine.</text>
+    </g>
+    <g transform="translate(888 220)">
+      <rect width="430" height="106" rx="18" fill="#171326" stroke="#A855F7"/>
+      <text x="28" y="47" fill="#A855F7" font-size="31" font-weight="700">02</text>
+      <text x="102" y="44" fill="#F8F6FF" font-size="25" font-weight="700">SCEGLI</text>
+      <text x="102" y="76" fill="#A9A3BE" font-size="18">Un like. Il tuo gusto, per categoria.</text>
+    </g>
+    <g transform="translate(864 358)">
+      <rect width="430" height="106" rx="18" fill="#211A35" stroke="#FF4DA6"/>
+      <text x="28" y="47" fill="#FF4DA6" font-size="31" font-weight="700">03</text>
+      <text x="102" y="44" fill="#F8F6FF" font-size="25" font-weight="700">VAI IN TILT</text>
+      <text x="102" y="76" fill="#A9A3BE" font-size="18">Due immagini. Una preferenza.</text>
+    </g>
+  </g>
+</svg>

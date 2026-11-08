@@ -89,6 +89,10 @@ export const responseContracts: Record<string, z.ZodType> = {
       description: z.string(),
       voteCount: z.number().int().nonnegative(),
       contentCount: z.number().int().nonnegative(),
+      path: z.array(z.string()).min(1),
+      leader: mediaContract
+        .extend({ support: z.number().int().positive(), position: z.literal(1) })
+        .nullable(),
     }),
   ),
   category_check: z.object({

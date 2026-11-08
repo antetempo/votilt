@@ -375,14 +375,19 @@ BEGIN
  ELSIF action_name='categories' THEN
   RETURN coalesce((SELECT jsonb_agg(to_jsonb(c) ORDER BY sort_order,title) FROM public.categories c WHERE status='published'),'[]');
  ELSIF action_name='category_rankings' THEN
-  RETURN coalesce((SELECT jsonb_agg(to_jsonb(x) ORDER BY x."voteCount" DESC,x.title,x.id) FROM (
-   SELECT cat.id,cat.title,cat.description,count(s.user_id) AS "voteCount",count(DISTINCT c.id) AS "contentCount"
-   FROM public.categories cat LEFT JOIN public.content_categories cc ON cc.category_id=cat.id AND cc.status='approved'
+  RETURN coalesce((WITH RECURSIVE paths AS (
+   SELECT id,parent_id,depth,title,description,ARRAY[title] AS path FROM public.categories WHERE parent_id IS NULL AND status='published'
+   UNION ALL SELECT c.id,c.parent_id,c.depth,c.title,c.description,paths.path||c.title FROM public.categories c JOIN paths ON c.parent_id=paths.id WHERE c.status='published' AND c.depth=paths.depth+1
+  ), selected AS (
+   SELECT cat.id,cat.title,cat.description,cat.path,count(s.user_id) AS "voteCount",count(DISTINCT c.id) AS "contentCount"
+   FROM paths cat LEFT JOIN public.content_categories cc ON cc.category_id=cat.id AND cc.status='approved'
    LEFT JOIN public.content_items c ON c.id=cc.content_id AND c.moderation_status='approved' AND api.can_read(c)
    LEFT JOIN public.vote_slots s ON s.category_id=cat.id AND s.champion_content_id=c.id
-   WHERE cat.depth=4 AND cat.status='published' AND (coalesce(p->>'query','')='' OR cat.title ILIKE '%'||(p->>'query')||'%')
-   GROUP BY cat.id ORDER BY count(s.user_id) DESC,cat.title,cat.id LIMIT 100
-  )x),'[]');
+   WHERE cat.depth=4 AND NOT EXISTS(SELECT 1 FROM regexp_split_to_table(trim(coalesce(p->>'query','')),'\s+') term WHERE term<>'' AND array_to_string(cat.path,' ') NOT ILIKE '%'||term||'%')
+   GROUP BY cat.id,cat.title,cat.description,cat.path
+   HAVING coalesce(p->>'query','')<>'' OR count(s.user_id)>0
+   ORDER BY count(s.user_id) DESC,cat.title,cat.id LIMIT CASE WHEN coalesce(p->>'query','')='' THEN 12 ELSE 100 END
+  ) SELECT jsonb_agg(to_jsonb(x)||jsonb_build_object('leader',CASE WHEN x."voteCount">0 THEN api.dispatch('ranking',jsonb_build_object('categoryId',x.id,'metric','popular'))->'items'->0 ELSE NULL END) ORDER BY x."voteCount" DESC,x.title,x.id) FROM selected x),'[]');
  ELSIF action_name='feed' THEN
   RETURN jsonb_build_object('items',coalesce((SELECT jsonb_agg(x.item) FROM (
    SELECT api.content_json(c.id,cc.category_id) item FROM public.content_items c

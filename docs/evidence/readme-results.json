@@ -1,0 +1,18 @@
+{
+  "date": "2026-11-08T10:07:57.651Z",
+  "status": "PASS",
+  "localLinks": 36,
+  "anchors": 6,
+  "npmScripts": 13,
+  "screenshots": 5,
+  "mediaAssets": 7,
+  "originalMediaHashes": "PASS",
+  "gitIgnoreBoundaries": "PASS",
+  "githubMarkdownRendering": "PASS",
+  "powershellBlocks": 8,
+  "androidRerun": "NOT_RUN: documentation and Git ignore changes; no connected device",
+  "sourceCommit": "a0d85bf7240beb73f18406b99ed494a167984816",
+  "powershellSyntax": "PASS: 8 blocks parsed, commands not executed",
+  "javaCompilation": "PASS: JDK 21 --release 8, Android 36 classpath",
+  "diffWhitespaceCheck": "PASS"
+}

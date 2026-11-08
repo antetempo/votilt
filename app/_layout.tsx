@@ -2,6 +2,9 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import React from 'react';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
+import { View } from 'react-native';
+import { BottomNavigation } from '../src/components/BottomNavigation';
+import { AppNavigationProvider } from '../src/lib/navigation';
 import { QueryClientProvider } from '@tanstack/react-query';
 import {
   useFonts,
@@ -27,30 +30,35 @@ export default function Layout() {
       <QueryClientProvider client={queryClient}>
         <SessionProvider>
           <StatusBar style="light" />
-          <Stack
-            screenOptions={{
-              animation: reducedMotion ? 'none' : 'default',
-              headerStyle: { backgroundColor: colors.bg },
-              headerTintColor: colors.text,
-              headerShadowVisible: false,
-              contentStyle: { backgroundColor: colors.bg },
-              headerBackTitle: 'Indietro',
-              headerBackImageSource: require('../assets/icons/ui/back-native.png'),
-            }}
-          >
-            <Stack.Screen name="index" options={{ headerShown: false }} />
-            <Stack.Screen name="(auth)" options={{ headerShown: false }} />
-            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-            <Stack.Screen
-              name="duel/[id]"
-              options={{
-                headerShown: false,
-                presentation: 'fullScreenModal',
-                gestureEnabled: false,
-                animation: reducedMotion ? 'none' : 'fade',
-              }}
-            />
-          </Stack>
+          <AppNavigationProvider>
+            <View style={{ flex: 1 }}>
+              <Stack
+                screenOptions={{
+                  animation: reducedMotion ? 'none' : 'default',
+                  headerStyle: { backgroundColor: colors.bg },
+                  headerTintColor: colors.text,
+                  headerShadowVisible: false,
+                  contentStyle: { backgroundColor: colors.bg },
+                  headerBackTitle: 'Indietro',
+                  headerBackImageSource: require('../assets/icons/ui/back-native.png'),
+                }}
+              >
+                <Stack.Screen name="index" options={{ headerShown: false }} />
+                <Stack.Screen name="(auth)" options={{ headerShown: false }} />
+                <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+                <Stack.Screen
+                  name="duel/[id]"
+                  options={{
+                    headerShown: false,
+                    presentation: 'card',
+                    gestureEnabled: false,
+                    animation: reducedMotion ? 'none' : 'fade',
+                  }}
+                />
+              </Stack>
+            </View>
+            <BottomNavigation />
+          </AppNavigationProvider>
         </SessionProvider>
       </QueryClientProvider>
     </GestureHandlerRootView>

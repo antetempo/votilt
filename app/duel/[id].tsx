@@ -11,6 +11,7 @@ import { TiltArena, type TiltSide } from '../../src/features/TiltArena';
 import { Button, ErrorState, Label, Loading, Screen, Title } from '../../src/components/ui';
 import type { Duel } from '../../src/types/domain';
 import { colors as c } from '../../src/theme/tokens';
+import { useAppNavigationGuard } from '../../src/lib/navigation';
 
 export default function DuelScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -35,27 +36,37 @@ export default function DuelScreen() {
     queryFn: () => rpc<Duel | null>('duel', { duelId: id }),
     enabled: !!user,
   });
-  const cancel = useCallback(async () => {
-    if (submitting.current) return;
-    if (!user) {
-      router.back();
-      return;
-    }
-    submitting.current = true;
-    setBusy(true);
-    setError('');
-    try {
-      await votingOperation(user.id, 'cancel_tilt', { duelId: id });
-      await invalidateVoting();
-      if (mounted.current) router.back();
-    } catch (e) {
-      if (mounted.current) {
-        setError((e as Error).message);
-        setBusy(false);
+  const cancel = useCallback(
+    async (goBack = true) => {
+      if (submitting.current) return false;
+      if (!user) {
+        if (goBack) router.back();
+        return true;
       }
-      submitting.current = false;
-    }
-  }, [user, id]);
+      submitting.current = true;
+      setBusy(true);
+      setError('');
+      try {
+        await votingOperation(user.id, 'cancel_tilt', { duelId: id });
+        await invalidateVoting();
+        if (mounted.current && goBack) router.back();
+        return true;
+      } catch (e) {
+        if (mounted.current) {
+          setError((e as Error).message);
+          setBusy(false);
+        }
+        submitting.current = false;
+        return false;
+      }
+    },
+    [user, id],
+  );
+  const leaveForTab = useCallback(async () => {
+    if (submitting.current) return false;
+    return q.data?.status === 'pending' ? cancel(false) : true;
+  }, [cancel, q.data?.status]);
+  useAppNavigationGuard(leaveForTab);
   useEffect(() => {
     const sub = BackHandler.addEventListener('hardwareBackPress', () => {
       void cancel();

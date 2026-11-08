@@ -1,5 +1,9 @@
 # Contratto API locale
 
+## Vetrina Classifiche · revisione 8 novembre 2026
+
+`category_rankings({query?})` restituisce `{id,title,description,path,voteCount,contentCount,leader}` per ogni foglia selezionata. `path` contiene i titoli pubblicati da radice a foglia. `leader` è il primo risultato della classifica canonica Like (`ranking`), con posizione 1 e supporti positivi, oppure null senza voti. Home: massimo 12 anteprime con preferenze; ricerca: fino a 100 foglie anche vuote, con tutte le parole richieste presenti nel percorso. Stessi spareggi, controlli di blocco, moderazione e visibilità della classifica interna. Nessun vincitore calcolato dal client.
+
 Base sviluppo `http://10.0.2.2:4317` su emulatore, host `http://127.0.0.1:4317`. APK autonomo: localhost tramite `adb reverse`. JSON; token tramite `Authorization: Bearer …`.
 
 | Metodo/rotta | Scopo |

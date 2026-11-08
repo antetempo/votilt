@@ -1,0 +1,26 @@
+{
+  "date": "2026-11-08T16:28:57.851Z",
+  "results": [
+    {
+      "flow": "Home con immagini realmente prime nelle singole foglie, senza classifica delle categorie",
+      "status": "PASS",
+      "checkedLeaders": 12
+    },
+    {
+      "flow": "Tocco della carta apre la classifica della categoria con Like, Duelli e Trend",
+      "status": "PASS"
+    },
+    {
+      "flow": "Ricerca diretta della foglia con breadcrumb e apertura senza navigare i rami",
+      "status": "PASS"
+    },
+    {
+      "flow": "Ricerca senza risultati esplicita",
+      "status": "PASS"
+    },
+    {
+      "flow": "Due colonne e ricerca accessibile con formato piccolo/font 130%",
+      "status": "PASS"
+    }
+  ]
+}

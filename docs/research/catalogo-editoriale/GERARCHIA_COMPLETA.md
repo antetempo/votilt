@@ -1,0 +1,1572 @@
+# VOTILT — gerarchia editoriale completa della bozza v0.2
+
+**BOZZA IN LAVORAZIONE · 8 novembre 2026 · non importata nell’app.**
+
+**Revisione trasversale v0.2:** riscritti tutti i domini usando interessi, comunità, discipline e ambiti editoriali riconoscibili. Le frasi da didascalia della v0.1 non sono foglie competitive: “angoli d’ombra in giardino” è sostituito dal tema “Piante da ombra”; famiglia e amicizia restano aree proprie senza duplicare ogni attività “in famiglia”. La profondità e il numero di figli variano secondo il dominio. La bozza v0.1 è conservata come storico e non è il catalogo da importare.
+
+Questo documento contiene tutti i rami e tutte le foglie attualmente progettati. È una proposta editoriale originale, non una promessa di coprire ogni contenuto possibile. I conteggi descrivono questa bozza; non misurano la domanda degli utenti o la qualità della classificazione.
+
+**Conteggi misurati:** 36 aree principali, 211 rami complessivi (incluse le radici), 1216 foglie, 1427 nodi; profondità massima 5.
+
+**Legenda:** `[RAMO]` raggruppa argomenti; `[FOGLIA]` è una destinazione finale proposta per i contenuti e la preferenza per il creator. Ogni riga riporta il percorso completo. I sinonimi indicati sono aiuti alla ricerca, non categorie aggiuntive.
+
+## Criterio di copertura
+
+La copertura include vita quotidiana, amicizia, famiglia, divertimento, espressione personale, mare e costumi, danza, sport, gaming di nicchia, moto custom, arti, cultura, informazione, scienza, lavoro e hobby. Il criterio evita di ridurre i social a contenuti professionali: mette insieme relazione, intrattenimento, identità, creatività, apprendimento e interessi specialistici. Non moltiplica automaticamente ogni tema per tono, provenienza AI, luogo o formato: questi possono essere attributi separati.
+
+Rami e foglie richiedono ancora revisione semantica: sovrapposizioni, sinonimi mancanti, granularità e confrontabilità delle immagini. Un badge segnala preferenze della comunità, non competenza certificata o verità scientifica. Famiglia e minori richiedono tutela della privacy; costumi e danza in contesti ordinari non sono automaticamente contenuti sessuali. I contenuti espliciti o non consensuali restano esclusi.
+
+Gli ID nei dati riutilizzabili sono identificatori di bozza derivati dal percorso: prima dell’importazione serve un registro stabile e una migrazione verificata. Il database attuale limita la profondità a quattro livelli: questa bozza non è direttamente importabile senza adeguamento. Nessuna nuova immagine è stata generata per questa bozza; la produzione grafica è una fase distinta.
+
+## Fonti e limiti
+
+- [W3C SKOS](https://www.w3.org/TR/skos-reference/): concetti, etichette alternative e relazioni gerarchiche. La struttura proposta è nostra, non una tassonomia W3C.
+- [IAB Content Taxonomy](https://iabtechlab.com/standards/content-taxonomy/): riferimento per ampiezza tematica; pensato per classificazione contestuale pubblicitaria, non per voti ai creator.
+- [IPTC Media Topics](https://iptc.org/standards/media-topics/): riferimento editoriale per informazione e cultura; non copiato come catalogo VOTILT.
+- [Pew Research, motivazioni Instagram, 12 giugno 2024](https://www.pewresearch.org/2024/06/12/how-instagram-users-view-experience-the-platform/): intrattenimento, relazioni e interessi condivisi sono motivazioni rilevanti nel campione statunitense; non è una ricerca sugli utenti italiani di VOTILT.
+- [Ofcom, adulti e media 2026](https://www.ofcom.org.uk/media-use-and-attitudes/media-habits-adults/adults-media-use-and-attitudes): riferimento britannico su usi e motivazioni; nessuna estrapolazione di quote alla nostra app.
+
+I nomi sotto sono una proposta editoriale, non categorie validate da uno studio rappresentativo. La revisione dovrà usare scenari e campioni di contenuti, senza chiedere all’utente di approvare ogni singola voce.
+
+## Revisione news e linguaggio social
+
+L’area Informazione e vita civica contiene ora **270 foglie**: politica italiana, esteri/geopolitica, economia/finanza, cronaca/giustizia, società/diritti, salute/sanità, ambiente, attualità scientifica, cultura e religioni. Le condizioni di moderazione sono separate dai nomi pubblici.
+
+### Hashtag e linguaggio delle comunità — ricerca verificata
+
+Ricerca web eseguita l’8 novembre 2026, su pagine pubblicamente consultabili. Campione esplorativo, non censimento dei social. Nessun acquisto API, login aggirato, raccolta massiva di profili o dati personali.
+
+Gli hashtag sono indizi di linguaggio e interessi. **Non misurano la domanda di VOTILT**. Non riportiamo volumi, crescita o popolarità degli aggregatori: valori non verificati, spesso discordanti e con metodologia non trasparente.
+
+| Esempio realmente osservato | Fonte e accesso | Trattamento editoriale |
+|---|---|---|
+| `#GameDev`, `#IndieDev`, `#Unity3d` | [Post X dello studio Sunny Valley](https://x.com/SunnyVStudio/status/2061879369950282060), 2 giugno 2026: testo presente nell’indice di ricerca; apertura diretta 403 | Alias per sviluppo videogiochi e motori; non nuove categorie duplicate per maiuscole |
+| `#TechnicalArt`, `#ProceduralArt`, `#UnityVFX` | [Post X dell’autore del tool](https://x.com/filokipatisi/status/2061334428929187960), 1 giugno 2026: testo indicizzato | Candidati pertinenti a arte tecnica/procedurale ed effetti; non prova di prevalenza |
+| `#GameDev`, `#IndieDev`, `#CyberSecurity`, `#FinTech`, `#DataPrivacy`, `#ResponsibleAI`, `#IoT` | [Documento ufficiale Twitter/X Canada 2021](https://marketing.x.com/content/dam/marketing-twitter/na/en/insights/twitter-trends-in-canada/conversation-trends-ca-feb2021.pdf) | Lessico documentato storicamente; niente dichiarazione di trend attuale. Alias dei concetti corrispondenti |
+| `#streetphotography`, `#streetphoto`, `#urbanphotography` | [Post Instagram](https://www.instagram.com/p/DaJ6BD3SMz2), 29 giugno 2026: riscontrato soltanto tramite [indice secondario Gondola](https://gondola.cc/posts/67283020-ap-foto-instagram); accesso diretto Instagram non verificato | Alias candidati, con affidabilità distinta dalla verifica diretta. Il tema fotografia di strada è confermato anche dall’autore sotto |
+| `#streetphotography`, `#streetphotographers`, `#capturestreets` | [Il fotografo descrive i propri hashtag Instagram](https://alexcoghe.com/journal/my-instagram-hashtags-for-street-photography), fonte primaria dell’autore, pagina storica | Unificare sotto fotografia di strada; escludere nomi commerciali/community specifiche come categorie universali |
+| `#GRWM`, `#OOTD` | [TikTok Newsroom, Fashion Month 2023](https://newsroom.tiktok.com/fashion-month?lang=tr-TR) e [spotlight creator](https://newsroom.tiktok.com/tiktok-creator-spotlight-ytnashaatbello?lang=en-GB) | GRWM è un formato/routine, OOTD una presentazione di outfit: alias/rinvii, non due alberi paralleli moda |
+| `#BookTok` | [TikTok Newsroom, comunità svedese 2023](https://newsroom.tiktok.com/vi-firar-vart-community-pa-over-3-miljoner-manniskor-i-hela-sverige?lang=sv-SE) | Alias della comunità libri/lettura; non una categoria riservata a una piattaforma |
+| `#bookstagram`, `#romantasy`, `#cozymysterybooks`, `#bookrecs` | [BookBub, guida agli autori aggiornata agosto 2026](https://insights.bookbub.com/bookstagram-for-authors/), editore/operatore della comunità, fonte secondaria sull’uso Instagram | Bookstagram/bookrecs come alias libri; romantasy e cozy mystery come generi editoriali candidati. Nessun conteggio ripreso |
+| `#ScreenshotSaturday` | Pagine X `/i/trending/…` reperite ma sono riassunti generati da Grok, non post originali verificati | Tenere come formato/evento candidato; **non promuovere a categoria permanente sulla sola base del riassunto AI** |
+
+## Filtri e limiti
+
+1. Normalizzare `#`, maiuscole, accenti e lingue: `cafe racer`/`café racer` rimandano al medesimo concetto, non duplicano i voti.
+2. Preferire soggetti stabili e riconoscibili: `gamedev` può aiutare a trovare sviluppo videogiochi; `viral`, `fyp`, `instagood`, `explorepage`, `likeforlike` non definiscono argomenti utili e sono esclusi dai rami.
+3. Formati, challenge, giorni/eventi, campagne e nomi di account restano distinti dai soggetti. Trend temporanei non producono automaticamente foglie permanenti.
+4. Disambiguare termini: `AI` non implica provenienza AI di tutti i contenuti della categoria; `FPS` è qui il genere videoludico, non i frame al secondo; news non equivale a contenuto verificato.
+5. X ha consentito lettura di estratti indicizzati di post, non accesso uniforme. Instagram non ha reso consultabile direttamente la pagina tag Bookstagram tentata; i candidati Instagram restano dichiarati indiretti dove necessario. Non fingiamo una scansione completa di queste piattaforme.
+6. Le parole selezionate entrano nei sinonimi o nei nuovi generi pertinenti, con fonte. L’integrazione resta editoriale: gli utenti non creano categorie.
+
+La ricerca amplia il lessico della bozza, non chiude la revisione semantica. La distribuzione iniziale di sei foglie per molti rami è un limite dell’autorialità della prima bozza, non una prova di profondità o bilanciamento; l’area news è stata riscritta con granularità e numeri variabili secondo gli argomenti.
+
+
+## Albero completo
+
+### Quotidianità
+
+- **[RAMO]** Quotidianità
+- **[RAMO]** Quotidianità > Stili di vita
+- **[FOGLIA]** Quotidianità > Stili di vita > Vita urbana
+- **[FOGLIA]** Quotidianità > Stili di vita > Vita di paese
+- **[FOGLIA]** Quotidianità > Stili di vita > Vita in campagna
+- **[FOGLIA]** Quotidianità > Stili di vita > Vita da pendolare
+- **[FOGLIA]** Quotidianità > Stili di vita > Vita da fuorisede
+- **[FOGLIA]** Quotidianità > Stili di vita > Vita in condivisione
+- **[FOGLIA]** Quotidianità > Stili di vita > Vita minimalista
+- **[FOGLIA]** Quotidianità > Stili di vita > Slow living
+- **[RAMO]** Quotidianità > Organizzazione personale
+- **[FOGLIA]** Quotidianità > Organizzazione personale > Routine quotidiane
+- **[FOGLIA]** Quotidianità > Organizzazione personale > Gestione del tempo
+- **[FOGLIA]** Quotidianità > Organizzazione personale > Organizzazione domestica
+- **[FOGLIA]** Quotidianità > Organizzazione personale > Decluttering
+- **[FOGLIA]** Quotidianità > Organizzazione personale > Bullet journal
+- **[FOGLIA]** Quotidianità > Organizzazione personale > Abitudini e obiettivi personali
+- **[RAMO]** Quotidianità > Esperienze personali
+- **[FOGLIA]** Quotidianità > Esperienze personali > Diari di vita quotidiana
+- **[FOGLIA]** Quotidianità > Esperienze personali > Cambiamenti di vita
+- **[FOGLIA]** Quotidianità > Esperienze personali > Vita indipendente
+- **[FOGLIA]** Quotidianità > Esperienze personali > Trasferirsi all'estero
+- **[FOGLIA]** Quotidianità > Esperienze personali > Ritorno alla vita rurale
+### Amicizia e vita sociale
+
+- **[RAMO]** Amicizia e vita sociale — Sinonimi: amici, friends
+- **[RAMO]** Amicizia e vita sociale > Relazioni
+- **[FOGLIA]** Amicizia e vita sociale > Relazioni > Amicizia
+- **[FOGLIA]** Amicizia e vita sociale > Relazioni > Amicizie a distanza
+- **[FOGLIA]** Amicizia e vita sociale > Relazioni > Nuove amicizie
+- **[FOGLIA]** Amicizia e vita sociale > Relazioni > Socialità e incontri
+- **[FOGLIA]** Amicizia e vita sociale > Relazioni > Relazioni interculturali
+- **[RAMO]** Amicizia e vita sociale > Attività condivise
+- **[FOGLIA]** Amicizia e vita sociale > Attività condivise > Uscite tra amici
+- **[FOGLIA]** Amicizia e vita sociale > Attività condivise > Vita di quartiere
+- **[FOGLIA]** Amicizia e vita sociale > Attività condivise > Gruppi di interesse
+- **[FOGLIA]** Amicizia e vita sociale > Attività condivise > Associazionismo ricreativo
+- **[FOGLIA]** Amicizia e vita sociale > Attività condivise > Vita notturna
+- **[FOGLIA]** Amicizia e vita sociale > Attività condivise > Vita universitaria
+### Famiglia e affetti
+
+- **[RAMO]** Famiglia e affetti — Sinonimi: family, familiari
+- **[RAMO]** Famiglia e affetti > Genitorialità
+- **[FOGLIA]** Famiglia e affetti > Genitorialità > Gravidanza e nascita
+- **[FOGLIA]** Famiglia e affetti > Genitorialità > Neogenitori
+- **[FOGLIA]** Famiglia e affetti > Genitorialità > Genitorialità nella prima infanzia
+- **[FOGLIA]** Famiglia e affetti > Genitorialità > Genitori di adolescenti
+- **[FOGLIA]** Famiglia e affetti > Genitorialità > Educazione familiare
+- **[FOGLIA]** Famiglia e affetti > Genitorialità > Genitorialità adottiva
+- **[FOGLIA]** Famiglia e affetti > Genitorialità > Affido familiare
+- **[RAMO]** Famiglia e affetti > Relazioni familiari
+- **[FOGLIA]** Famiglia e affetti > Relazioni familiari > Vita di coppia
+- **[FOGLIA]** Famiglia e affetti > Relazioni familiari > Famiglie allargate
+- **[FOGLIA]** Famiglia e affetti > Relazioni familiari > Famiglie omogenitoriali
+- **[FOGLIA]** Famiglia e affetti > Relazioni familiari > Nonni e nipoti
+- **[FOGLIA]** Famiglia e affetti > Relazioni familiari > Fratelli e sorelle
+- **[FOGLIA]** Famiglia e affetti > Relazioni familiari > Famiglie interculturali
+- **[FOGLIA]** Famiglia e affetti > Relazioni familiari > Relazioni a distanza
+- **[RAMO]** Famiglia e affetti > Vita familiare
+- **[FOGLIA]** Famiglia e affetti > Vita familiare > Attività in famiglia
+- **[FOGLIA]** Famiglia e affetti > Vita familiare > Tradizioni familiari
+- **[FOGLIA]** Famiglia e affetti > Vita familiare > Conciliazione famiglia e lavoro
+- **[FOGLIA]** Famiglia e affetti > Vita familiare > Assistenza ai familiari
+- **[FOGLIA]** Famiglia e affetti > Vita familiare > Storia e memoria familiare
+### Feste e ricorrenze
+
+- **[RAMO]** Feste e ricorrenze
+- **[RAMO]** Feste e ricorrenze > Eventi personali
+- **[FOGLIA]** Feste e ricorrenze > Eventi personali > Compleanni
+- **[FOGLIA]** Feste e ricorrenze > Eventi personali > Matrimoni
+- **[FOGLIA]** Feste e ricorrenze > Eventi personali > Unioni civili
+- **[FOGLIA]** Feste e ricorrenze > Eventi personali > Anniversari
+- **[FOGLIA]** Feste e ricorrenze > Eventi personali > Feste di laurea
+- **[FOGLIA]** Feste e ricorrenze > Eventi personali > Baby shower
+- **[RAMO]** Feste e ricorrenze > Feste stagionali
+- **[FOGLIA]** Feste e ricorrenze > Feste stagionali > Natale
+- **[FOGLIA]** Feste e ricorrenze > Feste stagionali > Capodanno
+- **[FOGLIA]** Feste e ricorrenze > Feste stagionali > Carnevale
+- **[FOGLIA]** Feste e ricorrenze > Feste stagionali > Pasqua
+- **[FOGLIA]** Feste e ricorrenze > Feste stagionali > Halloween
+- **[FOGLIA]** Feste e ricorrenze > Feste stagionali > Feste di primavera
+- **[FOGLIA]** Feste e ricorrenze > Feste stagionali > Feste del raccolto
+- **[RAMO]** Feste e ricorrenze > Organizzazione eventi
+- **[FOGLIA]** Feste e ricorrenze > Organizzazione eventi > Allestimenti per feste
+- **[FOGLIA]** Feste e ricorrenze > Organizzazione eventi > Decorazioni per eventi
+- **[FOGLIA]** Feste e ricorrenze > Organizzazione eventi > Inviti e coordinati
+- **[FOGLIA]** Feste e ricorrenze > Organizzazione eventi > Party planning
+- **[FOGLIA]** Feste e ricorrenze > Organizzazione eventi > Feste a tema
+- **[FOGLIA]** Feste e ricorrenze > Organizzazione eventi > Cerimonie e tradizioni locali
+### Umorismo e divertimento
+
+- **[RAMO]** Umorismo e divertimento
+- **[RAMO]** Umorismo e divertimento > Comicità
+- **[FOGLIA]** Umorismo e divertimento > Comicità > Comicità quotidiana
+- **[FOGLIA]** Umorismo e divertimento > Comicità > Comicità di osservazione
+- **[FOGLIA]** Umorismo e divertimento > Comicità > Parodia
+- **[FOGLIA]** Umorismo e divertimento > Comicità > Satira
+- **[FOGLIA]** Umorismo e divertimento > Comicità > Umorismo surreale
+- **[FOGLIA]** Umorismo e divertimento > Comicità > Umorismo linguistico
+- **[RAMO]** Umorismo e divertimento > Creazioni umoristiche
+- **[FOGLIA]** Umorismo e divertimento > Creazioni umoristiche > Meme originali
+- **[FOGLIA]** Umorismo e divertimento > Creazioni umoristiche > Vignette
+- **[FOGLIA]** Umorismo e divertimento > Creazioni umoristiche > Fumetti umoristici
+- **[FOGLIA]** Umorismo e divertimento > Creazioni umoristiche > Caricature
+- **[FOGLIA]** Umorismo e divertimento > Creazioni umoristiche > Fotografia umoristica
+- **[FOGLIA]** Umorismo e divertimento > Creazioni umoristiche > Personaggi comici
+- **[RAMO]** Umorismo e divertimento > Intrattenimento
+- **[FOGLIA]** Umorismo e divertimento > Intrattenimento > Magia e illusionismo
+- **[FOGLIA]** Umorismo e divertimento > Intrattenimento > Clownerie
+- **[FOGLIA]** Umorismo e divertimento > Intrattenimento > Improvvisazione
+- **[FOGLIA]** Umorismo e divertimento > Intrattenimento > Cabaret
+- **[FOGLIA]** Umorismo e divertimento > Intrattenimento > Giochi di parole
+- **[FOGLIA]** Umorismo e divertimento > Intrattenimento > Enigmi umoristici
+### Ritratti ed espressione personale
+
+- **[RAMO]** Ritratti ed espressione personale
+- **[RAMO]** Ritratti ed espressione personale > Ritratto
+- **[FOGLIA]** Ritratti ed espressione personale > Ritratto > Autoritratto
+- **[FOGLIA]** Ritratti ed espressione personale > Ritratto > Ritratto ambientato
+- **[FOGLIA]** Ritratti ed espressione personale > Ritratto > Ritratto in studio
+- **[FOGLIA]** Ritratti ed espressione personale > Ritratto > Ritratto editoriale
+- **[FOGLIA]** Ritratti ed espressione personale > Ritratto > Ritratto di coppia
+- **[FOGLIA]** Ritratti ed espressione personale > Ritratto > Ritratto di gruppo
+- **[RAMO]** Ritratti ed espressione personale > Identità ed espressione
+- **[FOGLIA]** Ritratti ed espressione personale > Identità ed espressione > Espressione personale
+- **[FOGLIA]** Ritratti ed espressione personale > Identità ed espressione > Espressione di genere
+- **[FOGLIA]** Ritratti ed espressione personale > Identità ed espressione > Body positivity
+- **[FOGLIA]** Ritratti ed espressione personale > Identità ed espressione > Rappresentazione della disabilità
+- **[FOGLIA]** Ritratti ed espressione personale > Identità ed espressione > Maturità e invecchiamento
+- **[FOGLIA]** Ritratti ed espressione personale > Identità ed espressione > Stili alternativi
+- **[RAMO]** Ritratti ed espressione personale > Glamour
+- **[FOGLIA]** Ritratti ed espressione personale > Glamour > Ritratto glamour
+- **[FOGLIA]** Ritratti ed espressione personale > Glamour > Boudoir
+- **[FOGLIA]** Ritratti ed espressione personale > Glamour > Ritratto beauty
+- **[FOGLIA]** Ritratti ed espressione personale > Glamour > Ritratto fashion
+### Moda e stile
+
+- **[RAMO]** Moda e stile — Sinonimi: fashion, outfit, ootd, outfit of the day
+- **[RAMO]** Moda e stile > Stili
+- **[FOGLIA]** Moda e stile > Stili > Streetwear
+- **[FOGLIA]** Moda e stile > Stili > Casual
+- **[FOGLIA]** Moda e stile > Stili > Minimal
+- **[FOGLIA]** Moda e stile > Stili > Vintage
+- **[FOGLIA]** Moda e stile > Stili > Classico sartoriale
+- **[FOGLIA]** Moda e stile > Stili > Punk
+- **[FOGLIA]** Moda e stile > Stili > Goth
+- **[FOGLIA]** Moda e stile > Stili > Boho
+- **[FOGLIA]** Moda e stile > Stili > Preppy
+- **[FOGLIA]** Moda e stile > Stili > Techwear
+- **[FOGLIA]** Moda e stile > Stili > Modest fashion
+- **[RAMO]** Moda e stile > Abbigliamento
+- **[FOGLIA]** Moda e stile > Abbigliamento > Abbigliamento quotidiano
+- **[FOGLIA]** Moda e stile > Abbigliamento > Abiti da cerimonia
+- **[FOGLIA]** Moda e stile > Abbigliamento > Abbigliamento da lavoro
+- **[FOGLIA]** Moda e stile > Abbigliamento > Moda outdoor
+- **[FOGLIA]** Moda e stile > Abbigliamento > Moda sportiva
+- **[FOGLIA]** Moda e stile > Abbigliamento > Moda adattiva
+- **[FOGLIA]** Moda e stile > Abbigliamento > Moda genderless
+- **[FOGLIA]** Moda e stile > Abbigliamento > Moda curvy
+- **[RAMO]** Moda e stile > Accessori
+- **[FOGLIA]** Moda e stile > Accessori > Scarpe
+- **[FOGLIA]** Moda e stile > Accessori > Sneakers
+- **[FOGLIA]** Moda e stile > Accessori > Borse
+- **[FOGLIA]** Moda e stile > Accessori > Cappelli
+- **[FOGLIA]** Moda e stile > Accessori > Occhiali
+- **[FOGLIA]** Moda e stile > Accessori > Gioielli e bijoux
+- **[FOGLIA]** Moda e stile > Accessori > Orologi da indossare
+- **[FOGLIA]** Moda e stile > Accessori > Sciarpe e foulard
+- **[RAMO]** Moda e stile > Creazione e cultura
+- **[FOGLIA]** Moda e stile > Creazione e cultura > Fashion design
+- **[FOGLIA]** Moda e stile > Creazione e cultura > Sartoria
+- **[FOGLIA]** Moda e stile > Creazione e cultura > Moda sostenibile
+- **[FOGLIA]** Moda e stile > Creazione e cultura > Second hand
+- **[FOGLIA]** Moda e stile > Creazione e cultura > Upcycling moda
+- **[FOGLIA]** Moda e stile > Creazione e cultura > Storia della moda
+- **[FOGLIA]** Moda e stile > Creazione e cultura > Costume scenico
+### Bellezza e cura personale
+
+- **[RAMO]** Bellezza e cura personale — Sinonimi: beauty, grwm, get ready with me
+- **[RAMO]** Bellezza e cura personale > Make-up
+- **[FOGLIA]** Bellezza e cura personale > Make-up > Trucco naturale
+- **[FOGLIA]** Bellezza e cura personale > Make-up > Trucco grafico
+- **[FOGLIA]** Bellezza e cura personale > Make-up > Trucco da sera
+- **[FOGLIA]** Bellezza e cura personale > Make-up > Trucco editoriale
+- **[FOGLIA]** Bellezza e cura personale > Make-up > Trucco teatrale
+- **[FOGLIA]** Bellezza e cura personale > Make-up > Trucco fantasy
+- **[FOGLIA]** Bellezza e cura personale > Make-up > Face painting
+- **[RAMO]** Bellezza e cura personale > Capelli
+- **[FOGLIA]** Bellezza e cura personale > Capelli > Tagli e acconciature
+- **[FOGLIA]** Bellezza e cura personale > Capelli > Trecce
+- **[FOGLIA]** Bellezza e cura personale > Capelli > Capelli ricci
+- **[FOGLIA]** Bellezza e cura personale > Capelli > Colorazione dei capelli
+- **[FOGLIA]** Bellezza e cura personale > Capelli > Acconciature da cerimonia
+- **[FOGLIA]** Bellezza e cura personale > Capelli > Barbering
+- **[RAMO]** Bellezza e cura personale > Cura e decorazione
+- **[FOGLIA]** Bellezza e cura personale > Cura e decorazione > Skincare
+- **[FOGLIA]** Bellezza e cura personale > Cura e decorazione > Haircare
+- **[FOGLIA]** Bellezza e cura personale > Cura e decorazione > Grooming
+- **[FOGLIA]** Bellezza e cura personale > Cura e decorazione > Nail art
+- **[FOGLIA]** Bellezza e cura personale > Cura e decorazione > Profumeria
+- **[FOGLIA]** Bellezza e cura personale > Cura e decorazione > Tatuaggi
+- **[FOGLIA]** Bellezza e cura personale > Cura e decorazione > Piercing
+- **[FOGLIA]** Bellezza e cura personale > Cura e decorazione > Body painting
+### Mare e costumi
+
+- **[RAMO]** Mare e costumi — Sinonimi: spiaggia, beach, swimwear
+- **[RAMO]** Mare e costumi > Moda mare
+- **[FOGLIA]** Mare e costumi > Moda mare > Costumi interi — Sinonimi: one piece swimsuit
+- **[FOGLIA]** Mare e costumi > Moda mare > Bikini — Sinonimi: costume due pezzi, two piece swimsuit
+- **[FOGLIA]** Mare e costumi > Moda mare > Tankini
+- **[FOGLIA]** Mare e costumi > Moda mare > Shorts da bagno
+- **[FOGLIA]** Mare e costumi > Moda mare > Costumi da surf
+- **[FOGLIA]** Mare e costumi > Moda mare > Costumi sportivi
+- **[FOGLIA]** Mare e costumi > Moda mare > Copricostume
+- **[FOGLIA]** Mare e costumi > Moda mare > Accessori da spiaggia
+- **[RAMO]** Mare e costumi > Vita al mare
+- **[FOGLIA]** Mare e costumi > Vita al mare > Cultura balneare
+- **[FOGLIA]** Mare e costumi > Vita al mare > Vacanze al mare
+- **[FOGLIA]** Mare e costumi > Vita al mare > Vita da spiaggia
+- **[FOGLIA]** Mare e costumi > Vita al mare > Vita in piscina
+- **[FOGLIA]** Mare e costumi > Vita al mare > Ritratti al mare
+### Danza e movimento
+
+- **[RAMO]** Danza e movimento — Sinonimi: ballo, dance
+- **[RAMO]** Danza e movimento > Danze urbane
+- **[FOGLIA]** Danza e movimento > Danze urbane > Hip hop dance
+- **[FOGLIA]** Danza e movimento > Danze urbane > Breaking
+- **[FOGLIA]** Danza e movimento > Danze urbane > Popping
+- **[FOGLIA]** Danza e movimento > Danze urbane > Locking
+- **[FOGLIA]** Danza e movimento > Danze urbane > House dance
+- **[FOGLIA]** Danza e movimento > Danze urbane > Waacking
+- **[FOGLIA]** Danza e movimento > Danze urbane > Krump
+- **[FOGLIA]** Danza e movimento > Danze urbane > Voguing
+- **[RAMO]** Danza e movimento > Danze di coppia
+- **[FOGLIA]** Danza e movimento > Danze di coppia > Salsa
+- **[FOGLIA]** Danza e movimento > Danze di coppia > Bachata
+- **[FOGLIA]** Danza e movimento > Danze di coppia > Tango argentino
+- **[FOGLIA]** Danza e movimento > Danze di coppia > Lindy hop
+- **[FOGLIA]** Danza e movimento > Danze di coppia > Kizomba
+- **[FOGLIA]** Danza e movimento > Danze di coppia > Balli da sala
+- **[FOGLIA]** Danza e movimento > Danze di coppia > Boogie woogie
+- **[RAMO]** Danza e movimento > Danza di scena
+- **[FOGLIA]** Danza e movimento > Danza di scena > Danza classica
+- **[FOGLIA]** Danza e movimento > Danza di scena > Danza contemporanea
+- **[FOGLIA]** Danza e movimento > Danza di scena > Modern jazz
+- **[FOGLIA]** Danza e movimento > Danza di scena > Tip tap
+- **[FOGLIA]** Danza e movimento > Danza di scena > Teatro danza
+- **[FOGLIA]** Danza e movimento > Danza di scena > Danza per musical
+- **[RAMO]** Danza e movimento > Culture della danza
+- **[FOGLIA]** Danza e movimento > Culture della danza > K-pop dance — Sinonimi: kpop, k-pop, cover dance
+- **[FOGLIA]** Danza e movimento > Culture della danza > Danze popolari italiane
+- **[FOGLIA]** Danza e movimento > Culture della danza > Danze folkloriche internazionali
+- **[FOGLIA]** Danza e movimento > Culture della danza > Danza del ventre
+- **[FOGLIA]** Danza e movimento > Culture della danza > Flamenco
+- **[FOGLIA]** Danza e movimento > Culture della danza > Danze indiane
+- **[FOGLIA]** Danza e movimento > Culture della danza > Danze africane
+- **[RAMO]** Danza e movimento > Pratiche ed espressioni
+- **[FOGLIA]** Danza e movimento > Pratiche ed espressioni > Heels dance
+- **[FOGLIA]** Danza e movimento > Pratiche ed espressioni > Pole dance
+- **[FOGLIA]** Danza e movimento > Pratiche ed espressioni > Danza aerea
+- **[FOGLIA]** Danza e movimento > Pratiche ed espressioni > Danza inclusiva
+- **[FOGLIA]** Danza e movimento > Pratiche ed espressioni > Coreografia
+- **[FOGLIA]** Danza e movimento > Pratiche ed espressioni > Costumi e scenografia per la danza
+### Sport e competizioni
+
+- **[RAMO]** Sport e competizioni
+- **[RAMO]** Sport e competizioni > Sport di squadra
+- **[FOGLIA]** Sport e competizioni > Sport di squadra > Calcio
+- **[FOGLIA]** Sport e competizioni > Sport di squadra > Calcio a cinque
+- **[FOGLIA]** Sport e competizioni > Sport di squadra > Pallacanestro
+- **[FOGLIA]** Sport e competizioni > Sport di squadra > Pallavolo
+- **[FOGLIA]** Sport e competizioni > Sport di squadra > Rugby
+- **[FOGLIA]** Sport e competizioni > Sport di squadra > Pallamano
+- **[FOGLIA]** Sport e competizioni > Sport di squadra > Baseball e softball
+- **[FOGLIA]** Sport e competizioni > Sport di squadra > Hockey su prato
+- **[FOGLIA]** Sport e competizioni > Sport di squadra > Football americano
+- **[FOGLIA]** Sport e competizioni > Sport di squadra > Cricket
+- **[RAMO]** Sport e competizioni > Sport con racchetta
+- **[FOGLIA]** Sport e competizioni > Sport con racchetta > Tennis
+- **[FOGLIA]** Sport e competizioni > Sport con racchetta > Padel
+- **[FOGLIA]** Sport e competizioni > Sport con racchetta > Tennistavolo
+- **[FOGLIA]** Sport e competizioni > Sport con racchetta > Badminton
+- **[FOGLIA]** Sport e competizioni > Sport con racchetta > Squash
+- **[RAMO]** Sport e competizioni > Atletica e resistenza
+- **[FOGLIA]** Sport e competizioni > Atletica e resistenza > Atletica leggera
+- **[FOGLIA]** Sport e competizioni > Atletica e resistenza > Corsa su strada
+- **[FOGLIA]** Sport e competizioni > Atletica e resistenza > Trail running
+- **[FOGLIA]** Sport e competizioni > Atletica e resistenza > Marcia
+- **[FOGLIA]** Sport e competizioni > Atletica e resistenza > Triathlon
+- **[FOGLIA]** Sport e competizioni > Atletica e resistenza > Ultramaratona
+- **[RAMO]** Sport e competizioni > Sport acquatici
+- **[FOGLIA]** Sport e competizioni > Sport acquatici > Nuoto
+- **[FOGLIA]** Sport e competizioni > Sport acquatici > Pallanuoto
+- **[FOGLIA]** Sport e competizioni > Sport acquatici > Nuoto artistico
+- **[FOGLIA]** Sport e competizioni > Sport acquatici > Tuffi
+- **[FOGLIA]** Sport e competizioni > Sport acquatici > Surf
+- **[FOGLIA]** Sport e competizioni > Sport acquatici > Windsurf
+- **[FOGLIA]** Sport e competizioni > Sport acquatici > Kitesurf
+- **[FOGLIA]** Sport e competizioni > Sport acquatici > Vela
+- **[FOGLIA]** Sport e competizioni > Sport acquatici > Canottaggio
+- **[FOGLIA]** Sport e competizioni > Sport acquatici > Canoa e kayak
+- **[FOGLIA]** Sport e competizioni > Sport acquatici > Immersione sportiva
+- **[RAMO]** Sport e competizioni > Sport di montagna
+- **[FOGLIA]** Sport e competizioni > Sport di montagna > Arrampicata
+- **[FOGLIA]** Sport e competizioni > Sport di montagna > Alpinismo
+- **[FOGLIA]** Sport e competizioni > Sport di montagna > Sci alpino
+- **[FOGLIA]** Sport e competizioni > Sport di montagna > Sci di fondo
+- **[FOGLIA]** Sport e competizioni > Sport di montagna > Snowboard
+- **[FOGLIA]** Sport e competizioni > Sport di montagna > Scialpinismo
+- **[FOGLIA]** Sport e competizioni > Sport di montagna > Ciaspole
+- **[RAMO]** Sport e competizioni > Sport di combattimento
+- **[FOGLIA]** Sport e competizioni > Sport di combattimento > Pugilato
+- **[FOGLIA]** Sport e competizioni > Sport di combattimento > Judo
+- **[FOGLIA]** Sport e competizioni > Sport di combattimento > Karate
+- **[FOGLIA]** Sport e competizioni > Sport di combattimento > Taekwondo
+- **[FOGLIA]** Sport e competizioni > Sport di combattimento > Lotta
+- **[FOGLIA]** Sport e competizioni > Sport di combattimento > Jiu-jitsu brasiliano
+- **[FOGLIA]** Sport e competizioni > Sport di combattimento > Muay thai
+- **[FOGLIA]** Sport e competizioni > Sport di combattimento > MMA
+- **[FOGLIA]** Sport e competizioni > Sport di combattimento > Scherma
+- **[RAMO]** Sport e competizioni > Sport su ruote
+- **[FOGLIA]** Sport e competizioni > Sport su ruote > Ciclismo su strada
+- **[FOGLIA]** Sport e competizioni > Sport su ruote > Mountain bike
+- **[FOGLIA]** Sport e competizioni > Sport su ruote > BMX
+- **[FOGLIA]** Sport e competizioni > Sport su ruote > Ciclocross
+- **[FOGLIA]** Sport e competizioni > Sport su ruote > Skateboard
+- **[FOGLIA]** Sport e competizioni > Sport su ruote > Pattinaggio a rotelle
+- **[RAMO]** Sport e competizioni > Altre discipline
+- **[FOGLIA]** Sport e competizioni > Altre discipline > Ginnastica artistica
+- **[FOGLIA]** Sport e competizioni > Altre discipline > Ginnastica ritmica
+- **[FOGLIA]** Sport e competizioni > Altre discipline > Equitazione
+- **[FOGLIA]** Sport e competizioni > Altre discipline > Golf
+- **[FOGLIA]** Sport e competizioni > Altre discipline > Tiro con l'arco
+- **[FOGLIA]** Sport e competizioni > Altre discipline > Bocce
+- **[FOGLIA]** Sport e competizioni > Altre discipline > Sport paralimpici
+### Fitness e allenamento
+
+- **[RAMO]** Fitness e allenamento — Sinonimi: palestra, workout, gym
+- **[RAMO]** Fitness e allenamento > Allenamento di forza
+- **[FOGLIA]** Fitness e allenamento > Allenamento di forza > Bodybuilding
+- **[FOGLIA]** Fitness e allenamento > Allenamento di forza > Powerlifting
+- **[FOGLIA]** Fitness e allenamento > Allenamento di forza > Weightlifting
+- **[FOGLIA]** Fitness e allenamento > Allenamento di forza > Calisthenics — Sinonimi: calistenia, street workout
+- **[FOGLIA]** Fitness e allenamento > Allenamento di forza > Kettlebell
+- **[FOGLIA]** Fitness e allenamento > Allenamento di forza > Allenamento funzionale
+- **[RAMO]** Fitness e allenamento > Allenamento e movimento
+- **[FOGLIA]** Fitness e allenamento > Allenamento e movimento > Cross training
+- **[FOGLIA]** Fitness e allenamento > Allenamento e movimento > Allenamento a circuito
+- **[FOGLIA]** Fitness e allenamento > Allenamento e movimento > Allenamento a corpo libero
+- **[FOGLIA]** Fitness e allenamento > Allenamento e movimento > Allenamento domestico
+- **[FOGLIA]** Fitness e allenamento > Allenamento e movimento > Cardio fitness
+- **[FOGLIA]** Fitness e allenamento > Allenamento e movimento > Camminata sportiva
+- **[FOGLIA]** Fitness e allenamento > Allenamento e movimento > Preparazione atletica
+- **[RAMO]** Fitness e allenamento > Mobilità e benessere
+- **[FOGLIA]** Fitness e allenamento > Mobilità e benessere > Yoga
+- **[FOGLIA]** Fitness e allenamento > Mobilità e benessere > Pilates
+- **[FOGLIA]** Fitness e allenamento > Mobilità e benessere > Stretching
+- **[FOGLIA]** Fitness e allenamento > Mobilità e benessere > Mobilità articolare
+- **[FOGLIA]** Fitness e allenamento > Mobilità e benessere > Fitness adattato
+- **[FOGLIA]** Fitness e allenamento > Mobilità e benessere > Recupero sportivo
+### Videogiochi e mondi virtuali
+
+- **[RAMO]** Videogiochi e mondi virtuali — Sinonimi: gaming, videogame
+- **[RAMO]** Videogiochi e mondi virtuali > Generi
+- **[RAMO]** Videogiochi e mondi virtuali > Generi > Sparatutto
+- **[RAMO]** Videogiochi e mondi virtuali > Generi > Sparatutto > FPS — Sinonimi: first person shooter, sparatutto in prima persona
+- **[FOGLIA]** Videogiochi e mondi virtuali > Generi > Sparatutto > FPS > FPS tattici — Sinonimi: tactical FPS, sparatutto tattici
+- **[FOGLIA]** Videogiochi e mondi virtuali > Generi > Sparatutto > FPS > Arena shooter
+- **[FOGLIA]** Videogiochi e mondi virtuali > Generi > Sparatutto > FPS > Hero shooter
+- **[FOGLIA]** Videogiochi e mondi virtuali > Generi > Sparatutto > FPS > FPS narrativi
+- **[FOGLIA]** Videogiochi e mondi virtuali > Generi > Sparatutto > FPS > Looter shooter
+- **[FOGLIA]** Videogiochi e mondi virtuali > Generi > Sparatutto > FPS > FPS militari
+- **[FOGLIA]** Videogiochi e mondi virtuali > Generi > Sparatutto > Sparatutto in terza persona
+- **[FOGLIA]** Videogiochi e mondi virtuali > Generi > Sparatutto > Shoot 'em up
+- **[FOGLIA]** Videogiochi e mondi virtuali > Generi > Sparatutto > Battle royale
+- **[FOGLIA]** Videogiochi e mondi virtuali > Generi > Sparatutto > Extraction shooter
+- **[RAMO]** Videogiochi e mondi virtuali > Generi > Ruolo
+- **[FOGLIA]** Videogiochi e mondi virtuali > Generi > Ruolo > JRPG
+- **[FOGLIA]** Videogiochi e mondi virtuali > Generi > Ruolo > Action RPG
+- **[FOGLIA]** Videogiochi e mondi virtuali > Generi > Ruolo > RPG a turni
+- **[FOGLIA]** Videogiochi e mondi virtuali > Generi > Ruolo > RPG occidentali
+- **[FOGLIA]** Videogiochi e mondi virtuali > Generi > Ruolo > MMORPG
+- **[FOGLIA]** Videogiochi e mondi virtuali > Generi > Ruolo > Roguelike
+- **[FOGLIA]** Videogiochi e mondi virtuali > Generi > Ruolo > Roguelite
+- **[RAMO]** Videogiochi e mondi virtuali > Generi > Strategia
+- **[FOGLIA]** Videogiochi e mondi virtuali > Generi > Strategia > Strategia in tempo reale
+- **[FOGLIA]** Videogiochi e mondi virtuali > Generi > Strategia > Strategia a turni
+- **[FOGLIA]** Videogiochi e mondi virtuali > Generi > Strategia > Grand strategy
+- **[FOGLIA]** Videogiochi e mondi virtuali > Generi > Strategia > 4X
+- **[FOGLIA]** Videogiochi e mondi virtuali > Generi > Strategia > Tower defense
+- **[FOGLIA]** Videogiochi e mondi virtuali > Generi > Strategia > Tattici
+- **[RAMO]** Videogiochi e mondi virtuali > Generi > Azione e avventura
+- **[FOGLIA]** Videogiochi e mondi virtuali > Generi > Azione e avventura > Platform
+- **[FOGLIA]** Videogiochi e mondi virtuali > Generi > Azione e avventura > Metroidvania
+- **[FOGLIA]** Videogiochi e mondi virtuali > Generi > Azione e avventura > Action adventure
+- **[FOGLIA]** Videogiochi e mondi virtuali > Generi > Azione e avventura > Avventure grafiche
+- **[FOGLIA]** Videogiochi e mondi virtuali > Generi > Azione e avventura > Survival
+- **[FOGLIA]** Videogiochi e mondi virtuali > Generi > Azione e avventura > Survival horror
+- **[FOGLIA]** Videogiochi e mondi virtuali > Generi > Azione e avventura > Stealth
+- **[FOGLIA]** Videogiochi e mondi virtuali > Generi > Azione e avventura > Soulslike
+- **[FOGLIA]** Videogiochi e mondi virtuali > Generi > Azione e avventura > Picchiaduro
+- **[FOGLIA]** Videogiochi e mondi virtuali > Generi > Azione e avventura > Hack and slash
+- **[RAMO]** Videogiochi e mondi virtuali > Generi > Simulazione
+- **[FOGLIA]** Videogiochi e mondi virtuali > Generi > Simulazione > Simulatori di guida
+- **[FOGLIA]** Videogiochi e mondi virtuali > Generi > Simulazione > Simulatori di volo
+- **[FOGLIA]** Videogiochi e mondi virtuali > Generi > Simulazione > Life sim
+- **[FOGLIA]** Videogiochi e mondi virtuali > Generi > Simulazione > Farming sim
+- **[FOGLIA]** Videogiochi e mondi virtuali > Generi > Simulazione > Gestionale
+- **[FOGLIA]** Videogiochi e mondi virtuali > Generi > Simulazione > City builder
+- **[FOGLIA]** Videogiochi e mondi virtuali > Generi > Simulazione > Giochi sportivi
+- **[RAMO]** Videogiochi e mondi virtuali > Generi > Altri generi
+- **[FOGLIA]** Videogiochi e mondi virtuali > Generi > Altri generi > Puzzle game
+- **[FOGLIA]** Videogiochi e mondi virtuali > Generi > Altri generi > Rhythm game
+- **[FOGLIA]** Videogiochi e mondi virtuali > Generi > Altri generi > Visual novel
+- **[FOGLIA]** Videogiochi e mondi virtuali > Generi > Altri generi > Party game
+- **[FOGLIA]** Videogiochi e mondi virtuali > Generi > Altri generi > Cozy game
+- **[FOGLIA]** Videogiochi e mondi virtuali > Generi > Altri generi > Sandbox
+- **[FOGLIA]** Videogiochi e mondi virtuali > Generi > Altri generi > Giochi educativi
+- **[RAMO]** Videogiochi e mondi virtuali > Comunità e pratica
+- **[FOGLIA]** Videogiochi e mondi virtuali > Comunità e pratica > Retrogaming
+- **[FOGLIA]** Videogiochi e mondi virtuali > Comunità e pratica > Gaming competitivo
+- **[FOGLIA]** Videogiochi e mondi virtuali > Comunità e pratica > Speedrunning
+- **[FOGLIA]** Videogiochi e mondi virtuali > Comunità e pratica > Modding
+- **[FOGLIA]** Videogiochi e mondi virtuali > Comunità e pratica > Virtual photography
+- **[FOGLIA]** Videogiochi e mondi virtuali > Comunità e pratica > Cosmetici e personalizzazione nei giochi
+- **[FOGLIA]** Videogiochi e mondi virtuali > Comunità e pratica > Realtà virtuale
+- **[FOGLIA]** Videogiochi e mondi virtuali > Comunità e pratica > Accessibilità nei videogiochi
+### Giochi sociali e da tavolo
+
+- **[RAMO]** Giochi sociali e da tavolo
+- **[RAMO]** Giochi sociali e da tavolo > Giochi da tavolo
+- **[FOGLIA]** Giochi sociali e da tavolo > Giochi da tavolo > Eurogame
+- **[FOGLIA]** Giochi sociali e da tavolo > Giochi da tavolo > Giochi tematici
+- **[FOGLIA]** Giochi sociali e da tavolo > Giochi da tavolo > Giochi cooperativi
+- **[FOGLIA]** Giochi sociali e da tavolo > Giochi da tavolo > Giochi astratti
+- **[FOGLIA]** Giochi sociali e da tavolo > Giochi da tavolo > Giochi di deduzione
+- **[FOGLIA]** Giochi sociali e da tavolo > Giochi da tavolo > Giochi legacy
+- **[FOGLIA]** Giochi sociali e da tavolo > Giochi da tavolo > Wargame
+- **[FOGLIA]** Giochi sociali e da tavolo > Giochi da tavolo > Party game da tavolo
+- **[RAMO]** Giochi sociali e da tavolo > Carte e strategia
+- **[FOGLIA]** Giochi sociali e da tavolo > Carte e strategia > Scacchi
+- **[FOGLIA]** Giochi sociali e da tavolo > Carte e strategia > Go
+- **[FOGLIA]** Giochi sociali e da tavolo > Carte e strategia > Bridge
+- **[FOGLIA]** Giochi sociali e da tavolo > Carte e strategia > Giochi di carte tradizionali
+- **[FOGLIA]** Giochi sociali e da tavolo > Carte e strategia > Giochi di carte collezionabili
+- **[FOGLIA]** Giochi sociali e da tavolo > Carte e strategia > Deckbuilding
+- **[RAMO]** Giochi sociali e da tavolo > Ruolo e immaginazione
+- **[FOGLIA]** Giochi sociali e da tavolo > Ruolo e immaginazione > Giochi di ruolo da tavolo
+- **[FOGLIA]** Giochi sociali e da tavolo > Ruolo e immaginazione > Giochi di ruolo dal vivo
+- **[FOGLIA]** Giochi sociali e da tavolo > Ruolo e immaginazione > Worldbuilding per GDR
+- **[FOGLIA]** Giochi sociali e da tavolo > Ruolo e immaginazione > Game mastering
+- **[FOGLIA]** Giochi sociali e da tavolo > Ruolo e immaginazione > Miniature da gioco
+- **[FOGLIA]** Giochi sociali e da tavolo > Ruolo e immaginazione > Scenari da tavolo
+- **[RAMO]** Giochi sociali e da tavolo > Enigmi e attività
+- **[FOGLIA]** Giochi sociali e da tavolo > Enigmi e attività > Escape room
+- **[FOGLIA]** Giochi sociali e da tavolo > Enigmi e attività > Enigmistica
+- **[FOGLIA]** Giochi sociali e da tavolo > Enigmi e attività > Puzzle
+- **[FOGLIA]** Giochi sociali e da tavolo > Enigmi e attività > Geocaching
+- **[FOGLIA]** Giochi sociali e da tavolo > Enigmi e attività > Giochi investigativi
+- **[FOGLIA]** Giochi sociali e da tavolo > Enigmi e attività > Giochi all'aperto
+### Motociclismo
+
+- **[RAMO]** Motociclismo — Sinonimi: moto, motorbike
+- **[RAMO]** Motociclismo > Moto
+- **[RAMO]** Motociclismo > Moto > Custom
+- **[RAMO]** Motociclismo > Moto > Custom > Stili
+- **[FOGLIA]** Motociclismo > Moto > Custom > Stili > Café racer — Sinonimi: caferacer, cafe racer, café-racer
+- **[FOGLIA]** Motociclismo > Moto > Custom > Stili > Bobber
+- **[FOGLIA]** Motociclismo > Moto > Custom > Stili > Chopper
+- **[FOGLIA]** Motociclismo > Moto > Custom > Stili > Scrambler custom
+- **[FOGLIA]** Motociclismo > Moto > Custom > Stili > Tracker custom
+- **[FOGLIA]** Motociclismo > Moto > Custom > Stili > Bagger
+- **[FOGLIA]** Motociclismo > Moto > Custom > Stili > Brat style
+- **[RAMO]** Motociclismo > Moto > Segmenti
+- **[FOGLIA]** Motociclismo > Moto > Segmenti > Naked
+- **[FOGLIA]** Motociclismo > Moto > Segmenti > Sportive
+- **[FOGLIA]** Motociclismo > Moto > Segmenti > Adventure
+- **[FOGLIA]** Motociclismo > Moto > Segmenti > Enduro
+- **[FOGLIA]** Motociclismo > Moto > Segmenti > Motard
+- **[FOGLIA]** Motociclismo > Moto > Segmenti > Cruiser
+- **[FOGLIA]** Motociclismo > Moto > Segmenti > Touring
+- **[FOGLIA]** Motociclismo > Moto > Segmenti > Scooter
+- **[FOGLIA]** Motociclismo > Moto > Segmenti > Moto elettriche
+- **[FOGLIA]** Motociclismo > Moto > Segmenti > Moto d'epoca
+- **[RAMO]** Motociclismo > Tecnica
+- **[FOGLIA]** Motociclismo > Tecnica > Restauro moto
+- **[FOGLIA]** Motociclismo > Tecnica > Preparazione moto
+- **[FOGLIA]** Motociclismo > Tecnica > Meccanica motociclistica
+- **[FOGLIA]** Motociclismo > Tecnica > Verniciatura e aerografia moto
+- **[FOGLIA]** Motociclismo > Tecnica > Accessori e componenti moto
+- **[RAMO]** Motociclismo > Esperienza
+- **[FOGLIA]** Motociclismo > Esperienza > Mototurismo
+- **[FOGLIA]** Motociclismo > Esperienza > Viaggi adventure in moto
+- **[FOGLIA]** Motociclismo > Esperienza > Raduni motociclistici
+- **[FOGLIA]** Motociclismo > Esperienza > Equipaggiamento moto
+- **[FOGLIA]** Motociclismo > Esperienza > Cultura biker
+### Auto e mobilità
+
+- **[RAMO]** Auto e mobilità
+- **[RAMO]** Auto e mobilità > Automobili
+- **[FOGLIA]** Auto e mobilità > Automobili > Auto sportive
+- **[FOGLIA]** Auto e mobilità > Automobili > Supercar
+- **[FOGLIA]** Auto e mobilità > Automobili > Auto classiche
+- **[FOGLIA]** Auto e mobilità > Automobili > Youngtimer
+- **[FOGLIA]** Auto e mobilità > Automobili > Fuoristrada
+- **[FOGLIA]** Auto e mobilità > Automobili > Auto elettriche
+- **[FOGLIA]** Auto e mobilità > Automobili > Auto da competizione
+- **[FOGLIA]** Auto e mobilità > Automobili > Tuning
+- **[FOGLIA]** Auto e mobilità > Automobili > Restomod
+- **[RAMO]** Auto e mobilità > Tecnica e passione
+- **[FOGLIA]** Auto e mobilità > Tecnica e passione > Restauro auto
+- **[FOGLIA]** Auto e mobilità > Tecnica e passione > Meccanica auto
+- **[FOGLIA]** Auto e mobilità > Tecnica e passione > Car detailing
+- **[FOGLIA]** Auto e mobilità > Tecnica e passione > Car design
+- **[FOGLIA]** Auto e mobilità > Tecnica e passione > Modifiche estetiche auto
+- **[FOGLIA]** Auto e mobilità > Tecnica e passione > Car audio
+- **[RAMO]** Auto e mobilità > Altri mezzi
+- **[FOGLIA]** Auto e mobilità > Altri mezzi > Biciclette urbane
+- **[FOGLIA]** Auto e mobilità > Altri mezzi > Cargo bike
+- **[FOGLIA]** Auto e mobilità > Altri mezzi > Micromobilità
+- **[FOGLIA]** Auto e mobilità > Altri mezzi > Camper e van
+- **[FOGLIA]** Auto e mobilità > Altri mezzi > Veicoli storici
+- **[FOGLIA]** Auto e mobilità > Altri mezzi > Mezzi agricoli
+- **[FOGLIA]** Auto e mobilità > Altri mezzi > Treni
+- **[FOGLIA]** Auto e mobilità > Altri mezzi > Aviazione
+- **[FOGLIA]** Auto e mobilità > Altri mezzi > Nautica da diporto
+### Viaggi e luoghi
+
+- **[RAMO]** Viaggi e luoghi
+- **[RAMO]** Viaggi e luoghi > Tipi di viaggio
+- **[FOGLIA]** Viaggi e luoghi > Tipi di viaggio > Viaggi in solitaria
+- **[FOGLIA]** Viaggi e luoghi > Tipi di viaggio > Viaggi zaino in spalla
+- **[FOGLIA]** Viaggi e luoghi > Tipi di viaggio > Viaggi lenti
+- **[FOGLIA]** Viaggi e luoghi > Tipi di viaggio > Viaggi in treno
+- **[FOGLIA]** Viaggi e luoghi > Tipi di viaggio > Cicloturismo
+- **[FOGLIA]** Viaggi e luoghi > Tipi di viaggio > Viaggi in camper
+- **[FOGLIA]** Viaggi e luoghi > Tipi di viaggio > Viaggi accessibili
+- **[FOGLIA]** Viaggi e luoghi > Tipi di viaggio > Viaggi con animali
+- **[FOGLIA]** Viaggi e luoghi > Tipi di viaggio > Viaggi avventura
+- **[RAMO]** Viaggi e luoghi > Destinazioni
+- **[FOGLIA]** Viaggi e luoghi > Destinazioni > Città d'arte
+- **[FOGLIA]** Viaggi e luoghi > Destinazioni > Borghi
+- **[FOGLIA]** Viaggi e luoghi > Destinazioni > Destinazioni di montagna
+- **[FOGLIA]** Viaggi e luoghi > Destinazioni > Isole
+- **[FOGLIA]** Viaggi e luoghi > Destinazioni > Destinazioni costiere
+- **[FOGLIA]** Viaggi e luoghi > Destinazioni > Deserti
+- **[FOGLIA]** Viaggi e luoghi > Destinazioni > Aree polari
+- **[FOGLIA]** Viaggi e luoghi > Destinazioni > Parchi nazionali
+- **[RAMO]** Viaggi e luoghi > Esperienze
+- **[FOGLIA]** Viaggi e luoghi > Esperienze > Turismo gastronomico
+- **[FOGLIA]** Viaggi e luoghi > Esperienze > Turismo culturale
+- **[FOGLIA]** Viaggi e luoghi > Esperienze > Turismo industriale
+- **[FOGLIA]** Viaggi e luoghi > Esperienze > Cammini e pellegrinaggi
+- **[FOGLIA]** Viaggi e luoghi > Esperienze > Turismo ferroviario
+- **[FOGLIA]** Viaggi e luoghi > Esperienze > Turismo termale
+- **[FOGLIA]** Viaggi e luoghi > Esperienze > Ospitalità rurale
+### Paesaggi e natura
+
+- **[RAMO]** Paesaggi e natura
+- **[RAMO]** Paesaggi e natura > Ambienti
+- **[FOGLIA]** Paesaggi e natura > Ambienti > Paesaggi montani
+- **[FOGLIA]** Paesaggi e natura > Ambienti > Paesaggi marini
+- **[FOGLIA]** Paesaggi e natura > Ambienti > Paesaggi rurali
+- **[FOGLIA]** Paesaggi e natura > Ambienti > Foreste
+- **[FOGLIA]** Paesaggi e natura > Ambienti > Laghi
+- **[FOGLIA]** Paesaggi e natura > Ambienti > Fiumi
+- **[FOGLIA]** Paesaggi e natura > Ambienti > Cascate
+- **[FOGLIA]** Paesaggi e natura > Ambienti > Zone umide
+- **[FOGLIA]** Paesaggi e natura > Ambienti > Paesaggi desertici
+- **[FOGLIA]** Paesaggi e natura > Ambienti > Paesaggi vulcanici
+- **[RAMO]** Paesaggi e natura > Osservazione
+- **[FOGLIA]** Paesaggi e natura > Osservazione > Birdwatching
+- **[FOGLIA]** Paesaggi e natura > Osservazione > Osservazione della fauna
+- **[FOGLIA]** Paesaggi e natura > Osservazione > Osservazione botanica
+- **[FOGLIA]** Paesaggi e natura > Osservazione > Foliage
+- **[FOGLIA]** Paesaggi e natura > Osservazione > Fenomeni meteorologici
+- **[FOGLIA]** Paesaggi e natura > Osservazione > Cielo notturno
+- **[FOGLIA]** Paesaggi e natura > Osservazione > Escursionismo naturalistico
+### Animali e convivenza
+
+- **[RAMO]** Animali e convivenza — Sinonimi: pets, animali domestici
+- **[RAMO]** Animali e convivenza > Animali domestici
+- **[FOGLIA]** Animali e convivenza > Animali domestici > Cani
+- **[FOGLIA]** Animali e convivenza > Animali domestici > Gatti
+- **[FOGLIA]** Animali e convivenza > Animali domestici > Conigli
+- **[FOGLIA]** Animali e convivenza > Animali domestici > Piccoli roditori
+- **[FOGLIA]** Animali e convivenza > Animali domestici > Uccelli domestici
+- **[FOGLIA]** Animali e convivenza > Animali domestici > Pesci d'acquario
+- **[FOGLIA]** Animali e convivenza > Animali domestici > Rettili domestici
+- **[RAMO]** Animali e convivenza > Cura e relazione
+- **[FOGLIA]** Animali e convivenza > Cura e relazione > Educazione cinofila
+- **[FOGLIA]** Animali e convivenza > Cura e relazione > Adozioni animali
+- **[FOGLIA]** Animali e convivenza > Cura e relazione > Pet care
+- **[FOGLIA]** Animali e convivenza > Cura e relazione > Toelettatura
+- **[FOGLIA]** Animali e convivenza > Cura e relazione > Convivenza con animali
+- **[FOGLIA]** Animali e convivenza > Cura e relazione > Acquariofilia
+- **[FOGLIA]** Animali e convivenza > Cura e relazione > Terrariofilia
+- **[RAMO]** Animali e convivenza > Mondo animale
+- **[FOGLIA]** Animali e convivenza > Mondo animale > Fauna selvatica
+- **[FOGLIA]** Animali e convivenza > Mondo animale > Animali da fattoria
+- **[FOGLIA]** Animali e convivenza > Mondo animale > Animali marini
+- **[FOGLIA]** Animali e convivenza > Mondo animale > Insetti
+- **[FOGLIA]** Animali e convivenza > Mondo animale > Conservazione animale
+### Cucina e bevande
+
+- **[RAMO]** Cucina e bevande — Sinonimi: food, cibo, cooking
+- **[RAMO]** Cucina e bevande > Cucine
+- **[FOGLIA]** Cucina e bevande > Cucine > Cucina italiana
+- **[FOGLIA]** Cucina e bevande > Cucine > Cucine regionali italiane
+- **[FOGLIA]** Cucina e bevande > Cucine > Cucina francese
+- **[FOGLIA]** Cucina e bevande > Cucine > Cucina spagnola
+- **[FOGLIA]** Cucina e bevande > Cucine > Cucina greca
+- **[FOGLIA]** Cucina e bevande > Cucine > Cucina mediorientale
+- **[FOGLIA]** Cucina e bevande > Cucine > Cucina indiana
+- **[FOGLIA]** Cucina e bevande > Cucine > Cucina cinese
+- **[FOGLIA]** Cucina e bevande > Cucine > Cucina giapponese
+- **[FOGLIA]** Cucina e bevande > Cucine > Cucina coreana
+- **[FOGLIA]** Cucina e bevande > Cucine > Cucine del Sud-est asiatico
+- **[FOGLIA]** Cucina e bevande > Cucine > Cucine africane
+- **[FOGLIA]** Cucina e bevande > Cucine > Cucina messicana
+- **[FOGLIA]** Cucina e bevande > Cucine > Cucine sudamericane
+- **[RAMO]** Cucina e bevande > Piatti e preparazioni
+- **[FOGLIA]** Cucina e bevande > Piatti e preparazioni > Pasta
+- **[FOGLIA]** Cucina e bevande > Piatti e preparazioni > Risotti
+- **[FOGLIA]** Cucina e bevande > Piatti e preparazioni > Pizza
+- **[FOGLIA]** Cucina e bevande > Piatti e preparazioni > Pane
+- **[FOGLIA]** Cucina e bevande > Piatti e preparazioni > Pasticceria
+- **[FOGLIA]** Cucina e bevande > Piatti e preparazioni > Gelateria
+- **[FOGLIA]** Cucina e bevande > Piatti e preparazioni > Cioccolateria
+- **[FOGLIA]** Cucina e bevande > Piatti e preparazioni > Zuppe
+- **[FOGLIA]** Cucina e bevande > Piatti e preparazioni > Insalate
+- **[FOGLIA]** Cucina e bevande > Piatti e preparazioni > Street food
+- **[FOGLIA]** Cucina e bevande > Piatti e preparazioni > Conserve
+- **[FOGLIA]** Cucina e bevande > Piatti e preparazioni > Fermentazioni
+- **[RAMO]** Cucina e bevande > Stili e tecniche
+- **[FOGLIA]** Cucina e bevande > Stili e tecniche > Cucina vegetale
+- **[FOGLIA]** Cucina e bevande > Stili e tecniche > Cucina senza glutine
+- **[FOGLIA]** Cucina e bevande > Stili e tecniche > Cucina casalinga
+- **[FOGLIA]** Cucina e bevande > Stili e tecniche > Cucina creativa
+- **[FOGLIA]** Cucina e bevande > Stili e tecniche > Meal prep
+- **[FOGLIA]** Cucina e bevande > Stili e tecniche > Barbecue
+- **[FOGLIA]** Cucina e bevande > Stili e tecniche > Cottura a bassa temperatura
+- **[FOGLIA]** Cucina e bevande > Stili e tecniche > Impiattamento
+- **[RAMO]** Cucina e bevande > Bevande
+- **[FOGLIA]** Cucina e bevande > Bevande > Caffè
+- **[FOGLIA]** Cucina e bevande > Bevande > Tè
+- **[FOGLIA]** Cucina e bevande > Bevande > Matcha
+- **[FOGLIA]** Cucina e bevande > Bevande > Bevande analcoliche
+- **[FOGLIA]** Cucina e bevande > Bevande > Vino
+- **[FOGLIA]** Cucina e bevande > Bevande > Birra artigianale
+- **[FOGLIA]** Cucina e bevande > Bevande > Cocktail
+- **[FOGLIA]** Cucina e bevande > Bevande > Distillati
+- **[RAMO]** Cucina e bevande > Cultura gastronomica
+- **[FOGLIA]** Cucina e bevande > Cultura gastronomica > Ristorazione
+- **[FOGLIA]** Cucina e bevande > Cultura gastronomica > Osterie e trattorie
+- **[FOGLIA]** Cucina e bevande > Cultura gastronomica > Mercati alimentari
+- **[FOGLIA]** Cucina e bevande > Cultura gastronomica > Prodotti del territorio
+- **[FOGLIA]** Cucina e bevande > Cultura gastronomica > Agricoltura gastronomica
+- **[FOGLIA]** Cucina e bevande > Cultura gastronomica > Food design
+### Casa e giardino
+
+- **[RAMO]** Casa e giardino
+- **[RAMO]** Casa e giardino > Interior design
+- **[FOGLIA]** Casa e giardino > Interior design > Arredamento contemporaneo
+- **[FOGLIA]** Casa e giardino > Interior design > Arredamento classico
+- **[FOGLIA]** Casa e giardino > Interior design > Arredamento vintage
+- **[FOGLIA]** Casa e giardino > Interior design > Arredamento scandinavo
+- **[FOGLIA]** Casa e giardino > Interior design > Arredamento industriale
+- **[FOGLIA]** Casa e giardino > Interior design > Arredamento boho
+- **[FOGLIA]** Casa e giardino > Interior design > Piccoli spazi
+- **[FOGLIA]** Casa e giardino > Interior design > Design accessibile
+- **[RAMO]** Casa e giardino > Progettazione domestica
+- **[FOGLIA]** Casa e giardino > Progettazione domestica > Cucine
+- **[FOGLIA]** Casa e giardino > Progettazione domestica > Bagni
+- **[FOGLIA]** Casa e giardino > Progettazione domestica > Soggiorni
+- **[FOGLIA]** Casa e giardino > Progettazione domestica > Camere da letto
+- **[FOGLIA]** Casa e giardino > Progettazione domestica > Home office
+- **[FOGLIA]** Casa e giardino > Progettazione domestica > Illuminazione
+- **[FOGLIA]** Casa e giardino > Progettazione domestica > Organizzazione degli spazi
+- **[FOGLIA]** Casa e giardino > Progettazione domestica > Ristrutturazione
+- **[RAMO]** Casa e giardino > Giardinaggio
+- **[FOGLIA]** Casa e giardino > Giardinaggio > Orto — Sinonimi: orto domestico, vegetable garden
+- **[FOGLIA]** Casa e giardino > Giardinaggio > Bonsai
+- **[FOGLIA]** Casa e giardino > Giardinaggio > Piante da appartamento — Sinonimi: houseplants, indoor plants
+- **[FOGLIA]** Casa e giardino > Giardinaggio > Piante grasse
+- **[FOGLIA]** Casa e giardino > Giardinaggio > Orchidee
+- **[FOGLIA]** Casa e giardino > Giardinaggio > Rose
+- **[FOGLIA]** Casa e giardino > Giardinaggio > Giardini fioriti
+- **[FOGLIA]** Casa e giardino > Giardinaggio > Giardini naturalistici
+- **[FOGLIA]** Casa e giardino > Giardinaggio > Piante da ombra
+- **[FOGLIA]** Casa e giardino > Giardinaggio > Giardinaggio in balcone
+- **[FOGLIA]** Casa e giardino > Giardinaggio > Terrari vegetali
+- **[FOGLIA]** Casa e giardino > Giardinaggio > Idroponica
+- **[RAMO]** Casa e giardino > Cura del verde
+- **[FOGLIA]** Casa e giardino > Cura del verde > Compostaggio
+- **[FOGLIA]** Casa e giardino > Cura del verde > Propagazione delle piante
+- **[FOGLIA]** Casa e giardino > Cura del verde > Potatura
+- **[FOGLIA]** Casa e giardino > Cura del verde > Irrigazione
+- **[FOGLIA]** Casa e giardino > Cura del verde > Suolo e substrati
+- **[FOGLIA]** Casa e giardino > Cura del verde > Giardinaggio per impollinatori
+### Manualità e artigianato
+
+- **[RAMO]** Manualità e artigianato — Sinonimi: fai da te, DIY, craft
+- **[RAMO]** Manualità e artigianato > Legno e metallo
+- **[FOGLIA]** Manualità e artigianato > Legno e metallo > Falegnameria
+- **[FOGLIA]** Manualità e artigianato > Legno e metallo > Intaglio
+- **[FOGLIA]** Manualità e artigianato > Legno e metallo > Tornitura
+- **[FOGLIA]** Manualità e artigianato > Legno e metallo > Ebanisteria
+- **[FOGLIA]** Manualità e artigianato > Legno e metallo > Lavorazione del metallo
+- **[FOGLIA]** Manualità e artigianato > Legno e metallo > Forgiatura
+- **[FOGLIA]** Manualità e artigianato > Legno e metallo > Oreficeria
+- **[RAMO]** Manualità e artigianato > Terra vetro e pietra
+- **[FOGLIA]** Manualità e artigianato > Terra vetro e pietra > Ceramica al tornio
+- **[FOGLIA]** Manualità e artigianato > Terra vetro e pietra > Ceramica modellata
+- **[FOGLIA]** Manualità e artigianato > Terra vetro e pietra > Decorazione ceramica
+- **[FOGLIA]** Manualità e artigianato > Terra vetro e pietra > Mosaico
+- **[FOGLIA]** Manualità e artigianato > Terra vetro e pietra > Vetro artistico
+- **[FOGLIA]** Manualità e artigianato > Terra vetro e pietra > Lavorazione della pietra
+- **[RAMO]** Manualità e artigianato > Tessile
+- **[FOGLIA]** Manualità e artigianato > Tessile > Maglia
+- **[FOGLIA]** Manualità e artigianato > Tessile > Uncinetto
+- **[FOGLIA]** Manualità e artigianato > Tessile > Tessitura
+- **[FOGLIA]** Manualità e artigianato > Tessile > Ricamo
+- **[FOGLIA]** Manualità e artigianato > Tessile > Macramè
+- **[FOGLIA]** Manualità e artigianato > Tessile > Patchwork
+- **[FOGLIA]** Manualità e artigianato > Tessile > Cucito creativo
+- **[FOGLIA]** Manualità e artigianato > Tessile > Feltratura
+- **[RAMO]** Manualità e artigianato > Carta pelle e recupero
+- **[FOGLIA]** Manualità e artigianato > Carta pelle e recupero > Origami
+- **[FOGLIA]** Manualità e artigianato > Carta pelle e recupero > Papercraft
+- **[FOGLIA]** Manualità e artigianato > Carta pelle e recupero > Legatoria
+- **[FOGLIA]** Manualità e artigianato > Carta pelle e recupero > Scrapbooking
+- **[FOGLIA]** Manualità e artigianato > Carta pelle e recupero > Pelletteria
+- **[FOGLIA]** Manualità e artigianato > Carta pelle e recupero > Restauro mobili
+- **[FOGLIA]** Manualità e artigianato > Carta pelle e recupero > Riparazione tessile
+- **[FOGLIA]** Manualità e artigianato > Carta pelle e recupero > Riciclo creativo
+### Arti visive e fotografia
+
+- **[RAMO]** Arti visive e fotografia
+- **[RAMO]** Arti visive e fotografia > Disegno e pittura
+- **[FOGLIA]** Arti visive e fotografia > Disegno e pittura > Disegno a matita
+- **[FOGLIA]** Arti visive e fotografia > Disegno e pittura > Disegno a inchiostro
+- **[FOGLIA]** Arti visive e fotografia > Disegno e pittura > Acquerello
+- **[FOGLIA]** Arti visive e fotografia > Disegno e pittura > Pittura a olio
+- **[FOGLIA]** Arti visive e fotografia > Disegno e pittura > Pittura acrilica
+- **[FOGLIA]** Arti visive e fotografia > Disegno e pittura > Pastello
+- **[FOGLIA]** Arti visive e fotografia > Disegno e pittura > Pittura astratta
+- **[FOGLIA]** Arti visive e fotografia > Disegno e pittura > Pittura figurativa
+- **[RAMO]** Arti visive e fotografia > Illustrazione e stampa
+- **[FOGLIA]** Arti visive e fotografia > Illustrazione e stampa > Illustrazione editoriale
+- **[FOGLIA]** Arti visive e fotografia > Illustrazione e stampa > Illustrazione per l'infanzia
+- **[FOGLIA]** Arti visive e fotografia > Illustrazione e stampa > Illustrazione naturalistica
+- **[FOGLIA]** Arti visive e fotografia > Illustrazione e stampa > Fumetto
+- **[FOGLIA]** Arti visive e fotografia > Illustrazione e stampa > Manga
+- **[FOGLIA]** Arti visive e fotografia > Illustrazione e stampa > Collage
+- **[FOGLIA]** Arti visive e fotografia > Illustrazione e stampa > Incisione
+- **[FOGLIA]** Arti visive e fotografia > Illustrazione e stampa > Serigrafia
+- **[FOGLIA]** Arti visive e fotografia > Illustrazione e stampa > Calligrafia
+- **[RAMO]** Arti visive e fotografia > Fotografia
+- **[FOGLIA]** Arti visive e fotografia > Fotografia > Fotografia di strada — Sinonimi: streetphotography, streetphoto, urbanphotography
+- **[FOGLIA]** Arti visive e fotografia > Fotografia > Fotografia documentaria
+- **[FOGLIA]** Arti visive e fotografia > Fotografia > Fotografia di paesaggio
+- **[FOGLIA]** Arti visive e fotografia > Fotografia > Fotografia naturalistica
+- **[FOGLIA]** Arti visive e fotografia > Fotografia > Fotografia architettonica
+- **[FOGLIA]** Arti visive e fotografia > Fotografia > Fotografia macro
+- **[FOGLIA]** Arti visive e fotografia > Fotografia > Still life
+- **[FOGLIA]** Arti visive e fotografia > Fotografia > Fotografia sportiva
+- **[FOGLIA]** Arti visive e fotografia > Fotografia > Fotografia di eventi
+- **[FOGLIA]** Arti visive e fotografia > Fotografia > Fotografia astronomica
+- **[FOGLIA]** Arti visive e fotografia > Fotografia > Fotografia astratta
+- **[FOGLIA]** Arti visive e fotografia > Fotografia > Fotografia subacquea
+- **[RAMO]** Arti visive e fotografia > Tecniche fotografiche
+- **[FOGLIA]** Arti visive e fotografia > Tecniche fotografiche > Fotografia analogica
+- **[FOGLIA]** Arti visive e fotografia > Tecniche fotografiche > Fotografia istantanea
+- **[FOGLIA]** Arti visive e fotografia > Tecniche fotografiche > Fotografia in bianco e nero
+- **[FOGLIA]** Arti visive e fotografia > Tecniche fotografiche > Fotografia a infrarossi
+- **[FOGLIA]** Arti visive e fotografia > Tecniche fotografiche > Lunghe esposizioni
+- **[FOGLIA]** Arti visive e fotografia > Tecniche fotografiche > Light painting
+- **[FOGLIA]** Arti visive e fotografia > Tecniche fotografiche > Fotomontaggio
+- **[FOGLIA]** Arti visive e fotografia > Tecniche fotografiche > Fotografia da smartphone
+- **[RAMO]** Arti visive e fotografia > Design
+- **[FOGLIA]** Arti visive e fotografia > Design > Graphic design
+- **[FOGLIA]** Arti visive e fotografia > Design > Brand design
+- **[FOGLIA]** Arti visive e fotografia > Design > Tipografia
+- **[FOGLIA]** Arti visive e fotografia > Design > Poster design
+- **[FOGLIA]** Arti visive e fotografia > Design > Packaging design
+- **[FOGLIA]** Arti visive e fotografia > Design > Information design
+- **[FOGLIA]** Arti visive e fotografia > Design > Product design
+- **[FOGLIA]** Arti visive e fotografia > Design > Motion design
+- **[RAMO]** Arti visive e fotografia > Arti plastiche e spazio
+- **[FOGLIA]** Arti visive e fotografia > Arti plastiche e spazio > Scultura
+- **[FOGLIA]** Arti visive e fotografia > Arti plastiche e spazio > Installazione
+- **[FOGLIA]** Arti visive e fotografia > Arti plastiche e spazio > Street art
+- **[FOGLIA]** Arti visive e fotografia > Arti plastiche e spazio > Land art
+- **[FOGLIA]** Arti visive e fotografia > Arti plastiche e spazio > Arte pubblica
+- **[FOGLIA]** Arti visive e fotografia > Arti plastiche e spazio > Arte tessile
+- **[FOGLIA]** Arti visive e fotografia > Arti plastiche e spazio > Libri d'artista
+### Musica e scena dal vivo
+
+- **[RAMO]** Musica e scena dal vivo
+- **[RAMO]** Musica e scena dal vivo > Generi
+- **[FOGLIA]** Musica e scena dal vivo > Generi > Pop
+- **[FOGLIA]** Musica e scena dal vivo > Generi > Rock
+- **[FOGLIA]** Musica e scena dal vivo > Generi > Metal
+- **[FOGLIA]** Musica e scena dal vivo > Generi > Punk musicale
+- **[FOGLIA]** Musica e scena dal vivo > Generi > Hip hop
+- **[FOGLIA]** Musica e scena dal vivo > Generi > Jazz
+- **[FOGLIA]** Musica e scena dal vivo > Generi > Blues
+- **[FOGLIA]** Musica e scena dal vivo > Generi > Soul e R&B
+- **[FOGLIA]** Musica e scena dal vivo > Generi > Funk
+- **[FOGLIA]** Musica e scena dal vivo > Generi > Reggae
+- **[FOGLIA]** Musica e scena dal vivo > Generi > Folk
+- **[FOGLIA]** Musica e scena dal vivo > Generi > Musica classica
+- **[FOGLIA]** Musica e scena dal vivo > Generi > Musica lirica
+- **[FOGLIA]** Musica e scena dal vivo > Generi > Musica elettronica
+- **[FOGLIA]** Musica e scena dal vivo > Generi > Musica sperimentale
+- **[FOGLIA]** Musica e scena dal vivo > Generi > Musiche tradizionali
+- **[RAMO]** Musica e scena dal vivo > Strumenti
+- **[FOGLIA]** Musica e scena dal vivo > Strumenti > Chitarra
+- **[FOGLIA]** Musica e scena dal vivo > Strumenti > Basso
+- **[FOGLIA]** Musica e scena dal vivo > Strumenti > Pianoforte
+- **[FOGLIA]** Musica e scena dal vivo > Strumenti > Tastiere e sintetizzatori
+- **[FOGLIA]** Musica e scena dal vivo > Strumenti > Batteria e percussioni
+- **[FOGLIA]** Musica e scena dal vivo > Strumenti > Archi
+- **[FOGLIA]** Musica e scena dal vivo > Strumenti > Fiati
+- **[FOGLIA]** Musica e scena dal vivo > Strumenti > Voce
+- **[RAMO]** Musica e scena dal vivo > Creazione musicale
+- **[FOGLIA]** Musica e scena dal vivo > Creazione musicale > Composizione
+- **[FOGLIA]** Musica e scena dal vivo > Creazione musicale > Songwriting
+- **[FOGLIA]** Musica e scena dal vivo > Creazione musicale > Produzione musicale
+- **[FOGLIA]** Musica e scena dal vivo > Creazione musicale > DJing
+- **[FOGLIA]** Musica e scena dal vivo > Creazione musicale > Sound design
+- **[FOGLIA]** Musica e scena dal vivo > Creazione musicale > Home recording
+- **[FOGLIA]** Musica e scena dal vivo > Creazione musicale > Liuteria
+- **[RAMO]** Musica e scena dal vivo > Cultura live
+- **[FOGLIA]** Musica e scena dal vivo > Cultura live > Concerti
+- **[FOGLIA]** Musica e scena dal vivo > Cultura live > Festival musicali
+- **[FOGLIA]** Musica e scena dal vivo > Cultura live > Orchestre
+- **[FOGLIA]** Musica e scena dal vivo > Cultura live > Cori
+- **[FOGLIA]** Musica e scena dal vivo > Cultura live > Band emergenti
+- **[FOGLIA]** Musica e scena dal vivo > Cultura live > Musica di strada
+- **[FOGLIA]** Musica e scena dal vivo > Cultura live > Scenografia musicale
+### Cinema serie e cultura pop
+
+- **[RAMO]** Cinema serie e cultura pop
+- **[RAMO]** Cinema serie e cultura pop > Generi
+- **[FOGLIA]** Cinema serie e cultura pop > Generi > Cinema drammatico
+- **[FOGLIA]** Cinema serie e cultura pop > Generi > Commedia
+- **[FOGLIA]** Cinema serie e cultura pop > Generi > Thriller
+- **[FOGLIA]** Cinema serie e cultura pop > Generi > Horror
+- **[FOGLIA]** Cinema serie e cultura pop > Generi > Fantascienza
+- **[FOGLIA]** Cinema serie e cultura pop > Generi > Fantasy
+- **[FOGLIA]** Cinema serie e cultura pop > Generi > Documentario
+- **[FOGLIA]** Cinema serie e cultura pop > Generi > Animazione
+- **[FOGLIA]** Cinema serie e cultura pop > Generi > Cinema sperimentale
+- **[RAMO]** Cinema serie e cultura pop > Serie e fandom
+- **[FOGLIA]** Cinema serie e cultura pop > Serie e fandom > Serie televisive
+- **[FOGLIA]** Cinema serie e cultura pop > Serie e fandom > Anime
+- **[FOGLIA]** Cinema serie e cultura pop > Serie e fandom > Fumetti e graphic novel
+- **[FOGLIA]** Cinema serie e cultura pop > Serie e fandom > Supereroi
+- **[FOGLIA]** Cinema serie e cultura pop > Serie e fandom > Fandom fantasy
+- **[FOGLIA]** Cinema serie e cultura pop > Serie e fandom > Fandom fantascientifico
+- **[RAMO]** Cinema serie e cultura pop > Creazione audiovisiva
+- **[FOGLIA]** Cinema serie e cultura pop > Creazione audiovisiva > Regia
+- **[FOGLIA]** Cinema serie e cultura pop > Creazione audiovisiva > Sceneggiatura
+- **[FOGLIA]** Cinema serie e cultura pop > Creazione audiovisiva > Storyboard
+- **[FOGLIA]** Cinema serie e cultura pop > Creazione audiovisiva > Scenografia
+- **[FOGLIA]** Cinema serie e cultura pop > Creazione audiovisiva > Costumi cinematografici
+- **[FOGLIA]** Cinema serie e cultura pop > Creazione audiovisiva > Trucco cinematografico
+- **[FOGLIA]** Cinema serie e cultura pop > Creazione audiovisiva > Effetti speciali
+- **[FOGLIA]** Cinema serie e cultura pop > Creazione audiovisiva > Fotografia cinematografica
+- **[FOGLIA]** Cinema serie e cultura pop > Creazione audiovisiva > Cinema indipendente
+- **[RAMO]** Cinema serie e cultura pop > Cosplay
+- **[FOGLIA]** Cinema serie e cultura pop > Cosplay > Cosplay fantasy
+- **[FOGLIA]** Cinema serie e cultura pop > Cosplay > Cosplay fantascientifico
+- **[FOGLIA]** Cinema serie e cultura pop > Cosplay > Cosplay da videogiochi
+- **[FOGLIA]** Cinema serie e cultura pop > Cosplay > Cosplay da fumetti
+- **[FOGLIA]** Cinema serie e cultura pop > Cosplay > Cosplay steampunk
+- **[FOGLIA]** Cinema serie e cultura pop > Cosplay > Prop making
+- **[FOGLIA]** Cinema serie e cultura pop > Cosplay > Armature cosplay
+- **[FOGLIA]** Cinema serie e cultura pop > Cosplay > Trucco e parrucche cosplay
+### Libri scrittura e lingue
+
+- **[RAMO]** Libri scrittura e lingue — Sinonimi: bookstagram, booktok, bookrecs, books
+- **[RAMO]** Libri scrittura e lingue > Letteratura
+- **[FOGLIA]** Libri scrittura e lingue > Letteratura > Narrativa contemporanea
+- **[FOGLIA]** Libri scrittura e lingue > Letteratura > Classici
+- **[FOGLIA]** Libri scrittura e lingue > Letteratura > Fantasy letterario
+- **[FOGLIA]** Libri scrittura e lingue > Letteratura > Fantascienza letteraria
+- **[FOGLIA]** Libri scrittura e lingue > Letteratura > Giallo
+- **[FOGLIA]** Libri scrittura e lingue > Letteratura > Thriller letterario
+- **[FOGLIA]** Libri scrittura e lingue > Letteratura > Romanzo rosa
+- **[FOGLIA]** Libri scrittura e lingue > Letteratura > Romantasy — Sinonimi: romantic fantasy
+- **[FOGLIA]** Libri scrittura e lingue > Letteratura > Cozy mystery — Sinonimi: cozymysterybooks, giallo cozy
+- **[FOGLIA]** Libri scrittura e lingue > Letteratura > Narrativa storica
+- **[FOGLIA]** Libri scrittura e lingue > Letteratura > Horror letterario
+- **[FOGLIA]** Libri scrittura e lingue > Letteratura > Poesia
+- **[FOGLIA]** Libri scrittura e lingue > Letteratura > Saggistica
+- **[FOGLIA]** Libri scrittura e lingue > Letteratura > Letteratura per ragazzi
+- **[RAMO]** Libri scrittura e lingue > Scrittura
+- **[FOGLIA]** Libri scrittura e lingue > Scrittura > Scrittura creativa
+- **[FOGLIA]** Libri scrittura e lingue > Scrittura > Racconto breve
+- **[FOGLIA]** Libri scrittura e lingue > Scrittura > Romanzo
+- **[FOGLIA]** Libri scrittura e lingue > Scrittura > Scrittura autobiografica
+- **[FOGLIA]** Libri scrittura e lingue > Scrittura > Scrittura poetica
+- **[FOGLIA]** Libri scrittura e lingue > Scrittura > Scrittura teatrale
+- **[FOGLIA]** Libri scrittura e lingue > Scrittura > Self publishing
+- **[RAMO]** Libri scrittura e lingue > Lettura e libri
+- **[FOGLIA]** Libri scrittura e lingue > Lettura e libri > Recensioni di libri
+- **[FOGLIA]** Libri scrittura e lingue > Lettura e libri > Gruppi di lettura
+- **[FOGLIA]** Libri scrittura e lingue > Lettura e libri > Biblioteche
+- **[FOGLIA]** Libri scrittura e lingue > Lettura e libri > Librerie
+- **[FOGLIA]** Libri scrittura e lingue > Lettura e libri > Editoria indipendente
+- **[FOGLIA]** Libri scrittura e lingue > Lettura e libri > Bibliofilia
+- **[FOGLIA]** Libri scrittura e lingue > Lettura e libri > Restauro del libro
+- **[RAMO]** Libri scrittura e lingue > Lingue
+- **[FOGLIA]** Libri scrittura e lingue > Lingue > Apprendimento delle lingue
+- **[FOGLIA]** Libri scrittura e lingue > Lingue > Traduzione
+- **[FOGLIA]** Libri scrittura e lingue > Lingue > Linguistica
+- **[FOGLIA]** Libri scrittura e lingue > Lingue > Etimologia
+- **[FOGLIA]** Libri scrittura e lingue > Lingue > Dialetti italiani
+- **[FOGLIA]** Libri scrittura e lingue > Lingue > Lingue dei segni
+### Scienza e divulgazione
+
+- **[RAMO]** Scienza e divulgazione
+- **[RAMO]** Scienza e divulgazione > Scienze fisiche
+- **[FOGLIA]** Scienza e divulgazione > Scienze fisiche > Fisica
+- **[FOGLIA]** Scienza e divulgazione > Scienze fisiche > Astronomia
+- **[FOGLIA]** Scienza e divulgazione > Scienze fisiche > Astrofisica
+- **[FOGLIA]** Scienza e divulgazione > Scienze fisiche > Chimica
+- **[FOGLIA]** Scienza e divulgazione > Scienze fisiche > Scienza dei materiali
+- **[FOGLIA]** Scienza e divulgazione > Scienze fisiche > Ottica
+- **[FOGLIA]** Scienza e divulgazione > Scienze fisiche > Fisica delle particelle
+- **[RAMO]** Scienza e divulgazione > Scienze della vita
+- **[FOGLIA]** Scienza e divulgazione > Scienze della vita > Biologia
+- **[FOGLIA]** Scienza e divulgazione > Scienze della vita > Genetica
+- **[FOGLIA]** Scienza e divulgazione > Scienze della vita > Biologia molecolare
+- **[FOGLIA]** Scienza e divulgazione > Scienze della vita > Microbiologia
+- **[FOGLIA]** Scienza e divulgazione > Scienze della vita > Botanica
+- **[FOGLIA]** Scienza e divulgazione > Scienze della vita > Zoologia
+- **[FOGLIA]** Scienza e divulgazione > Scienze della vita > Ecologia
+- **[FOGLIA]** Scienza e divulgazione > Scienze della vita > Biologia evoluzionistica
+- **[FOGLIA]** Scienza e divulgazione > Scienze della vita > Neuroscienze
+- **[RAMO]** Scienza e divulgazione > Terra e spazio
+- **[FOGLIA]** Scienza e divulgazione > Terra e spazio > Geologia
+- **[FOGLIA]** Scienza e divulgazione > Terra e spazio > Meteorologia
+- **[FOGLIA]** Scienza e divulgazione > Terra e spazio > Climatologia
+- **[FOGLIA]** Scienza e divulgazione > Terra e spazio > Oceanografia
+- **[FOGLIA]** Scienza e divulgazione > Terra e spazio > Geofisica
+- **[FOGLIA]** Scienza e divulgazione > Terra e spazio > Planetologia
+- **[FOGLIA]** Scienza e divulgazione > Terra e spazio > Esplorazione spaziale
+- **[RAMO]** Scienza e divulgazione > Matematica e metodo
+- **[FOGLIA]** Scienza e divulgazione > Matematica e metodo > Matematica
+- **[FOGLIA]** Scienza e divulgazione > Matematica e metodo > Statistica
+- **[FOGLIA]** Scienza e divulgazione > Matematica e metodo > Probabilità
+- **[FOGLIA]** Scienza e divulgazione > Matematica e metodo > Metodo scientifico
+- **[FOGLIA]** Scienza e divulgazione > Matematica e metodo > Visualizzazione dei dati
+- **[FOGLIA]** Scienza e divulgazione > Matematica e metodo > Storia della scienza
+- **[FOGLIA]** Scienza e divulgazione > Matematica e metodo > Citizen science
+- **[FOGLIA]** Scienza e divulgazione > Matematica e metodo > Comunicazione scientifica
+- **[RAMO]** Scienza e divulgazione > Medicina e mente
+- **[FOGLIA]** Scienza e divulgazione > Medicina e mente > Medicina
+- **[FOGLIA]** Scienza e divulgazione > Medicina e mente > Anatomia
+- **[FOGLIA]** Scienza e divulgazione > Medicina e mente > Immunologia
+- **[FOGLIA]** Scienza e divulgazione > Medicina e mente > Farmacologia
+- **[FOGLIA]** Scienza e divulgazione > Medicina e mente > Epidemiologia
+- **[FOGLIA]** Scienza e divulgazione > Medicina e mente > Psicologia
+- **[FOGLIA]** Scienza e divulgazione > Medicina e mente > Scienze cognitive
+- **[FOGLIA]** Scienza e divulgazione > Medicina e mente > Ricerca sanitaria
+### Tecnologia e maker
+
+- **[RAMO]** Tecnologia e maker — Sinonimi: tech, iot, gamedev, indiedev, unity3d
+- **[RAMO]** Tecnologia e maker > Informatica
+- **[FOGLIA]** Tecnologia e maker > Informatica > Sviluppo web
+- **[FOGLIA]** Tecnologia e maker > Informatica > Sviluppo mobile
+- **[FOGLIA]** Tecnologia e maker > Informatica > Programmazione
+- **[FOGLIA]** Tecnologia e maker > Informatica > Sistemi operativi
+- **[FOGLIA]** Tecnologia e maker > Informatica > Database
+- **[FOGLIA]** Tecnologia e maker > Informatica > Cloud computing
+- **[FOGLIA]** Tecnologia e maker > Informatica > Reti informatiche
+- **[FOGLIA]** Tecnologia e maker > Informatica > Cybersicurezza — Sinonimi: cybersecurity, cyber security
+- **[FOGLIA]** Tecnologia e maker > Informatica > Software open source
+- **[RAMO]** Tecnologia e maker > Sviluppo videogiochi — Sinonimi: gamedev, indiedev, game development
+- **[FOGLIA]** Tecnologia e maker > Sviluppo videogiochi > Game design
+- **[FOGLIA]** Tecnologia e maker > Sviluppo videogiochi > Programmazione gameplay
+- **[FOGLIA]** Tecnologia e maker > Sviluppo videogiochi > Motori di gioco — Sinonimi: unity, unity3d, unreal engine, godot
+- **[FOGLIA]** Tecnologia e maker > Sviluppo videogiochi > Technical art — Sinonimi: technicalart, unityvfx
+- **[FOGLIA]** Tecnologia e maker > Sviluppo videogiochi > Grafica per videogiochi
+- **[FOGLIA]** Tecnologia e maker > Sviluppo videogiochi > Level design
+- **[FOGLIA]** Tecnologia e maker > Sviluppo videogiochi > Sviluppo indie
+- **[FOGLIA]** Tecnologia e maker > Sviluppo videogiochi > Game audio
+- **[RAMO]** Tecnologia e maker > Hardware e progetti
+- **[FOGLIA]** Tecnologia e maker > Hardware e progetti > Elettronica
+- **[FOGLIA]** Tecnologia e maker > Hardware e progetti > Robotica
+- **[FOGLIA]** Tecnologia e maker > Hardware e progetti > Stampa 3D
+- **[FOGLIA]** Tecnologia e maker > Hardware e progetti > Modellazione 3D
+- **[FOGLIA]** Tecnologia e maker > Hardware e progetti > Internet delle cose
+- **[FOGLIA]** Tecnologia e maker > Hardware e progetti > Domotica
+- **[FOGLIA]** Tecnologia e maker > Hardware e progetti > Droni
+- **[FOGLIA]** Tecnologia e maker > Hardware e progetti > Computer e componenti
+- **[FOGLIA]** Tecnologia e maker > Hardware e progetti > Retrocomputing
+- **[RAMO]** Tecnologia e maker > Tecnologia d'uso
+- **[FOGLIA]** Tecnologia e maker > Tecnologia d'uso > Smartphone
+- **[FOGLIA]** Tecnologia e maker > Tecnologia d'uso > Fotocamere
+- **[FOGLIA]** Tecnologia e maker > Tecnologia d'uso > Audio hi-fi
+- **[FOGLIA]** Tecnologia e maker > Tecnologia d'uso > Wearable
+- **[FOGLIA]** Tecnologia e maker > Tecnologia d'uso > Tecnologie assistive
+- **[FOGLIA]** Tecnologia e maker > Tecnologia d'uso > Riparazione elettronica
+### AI e creatività digitale
+
+- **[RAMO]** AI e creatività digitale — Sinonimi: intelligenza artificiale, generative AI
+- **[RAMO]** AI e creatività digitale > Arte generativa
+- **[FOGLIA]** AI e creatività digitale > Arte generativa > Illustrazione AI
+- **[FOGLIA]** AI e creatività digitale > Arte generativa > Ritratto AI
+- **[FOGLIA]** AI e creatività digitale > Arte generativa > Paesaggio AI
+- **[FOGLIA]** AI e creatività digitale > Arte generativa > Arte astratta AI
+- **[FOGLIA]** AI e creatività digitale > Arte generativa > Personaggi AI
+- **[FOGLIA]** AI e creatività digitale > Arte generativa > Architettura AI
+- **[FOGLIA]** AI e creatività digitale > Arte generativa > Arte procedurale — Sinonimi: proceduralart, generative art
+- **[RAMO]** AI e creatività digitale > Tecniche e strumenti
+- **[FOGLIA]** AI e creatività digitale > Tecniche e strumenti > Prompt design
+- **[FOGLIA]** AI e creatività digitale > Tecniche e strumenti > Workflow generativi
+- **[FOGLIA]** AI e creatività digitale > Tecniche e strumenti > Modelli open source
+- **[FOGLIA]** AI e creatività digitale > Tecniche e strumenti > Tool AI per immagini
+- **[FOGLIA]** AI e creatività digitale > Tecniche e strumenti > Tool AI per scrittura
+- **[FOGLIA]** AI e creatività digitale > Tecniche e strumenti > Tool AI per musica
+- **[FOGLIA]** AI e creatività digitale > Tecniche e strumenti > Tool AI per 3D
+- **[FOGLIA]** AI e creatività digitale > Tecniche e strumenti > Tool AI per video
+- **[RAMO]** AI e creatività digitale > AI e società
+- **[FOGLIA]** AI e creatività digitale > AI e società > Etica dell'AI
+- **[FOGLIA]** AI e creatività digitale > AI e società > Bias dei modelli
+- **[FOGLIA]** AI e creatività digitale > AI e società > Provenienza dei contenuti
+- **[FOGLIA]** AI e creatività digitale > AI e società > AI e lavoro
+- **[FOGLIA]** AI e creatività digitale > AI e società > AI e accessibilità
+- **[FOGLIA]** AI e creatività digitale > AI e società > Cultura dell'AI
+### Storia e patrimonio
+
+- **[RAMO]** Storia e patrimonio
+- **[RAMO]** Storia e patrimonio > Periodi
+- **[FOGLIA]** Storia e patrimonio > Periodi > Preistoria
+- **[FOGLIA]** Storia e patrimonio > Periodi > Storia antica
+- **[FOGLIA]** Storia e patrimonio > Periodi > Storia medievale
+- **[FOGLIA]** Storia e patrimonio > Periodi > Storia moderna
+- **[FOGLIA]** Storia e patrimonio > Periodi > Storia contemporanea
+- **[RAMO]** Storia e patrimonio > Ambiti
+- **[FOGLIA]** Storia e patrimonio > Ambiti > Archeologia
+- **[FOGLIA]** Storia e patrimonio > Ambiti > Storia dell'arte
+- **[FOGLIA]** Storia e patrimonio > Ambiti > Storia militare
+- **[FOGLIA]** Storia e patrimonio > Ambiti > Storia sociale
+- **[FOGLIA]** Storia e patrimonio > Ambiti > Storia delle religioni
+- **[FOGLIA]** Storia e patrimonio > Ambiti > Storia della tecnologia
+- **[FOGLIA]** Storia e patrimonio > Ambiti > Storia locale
+- **[FOGLIA]** Storia e patrimonio > Ambiti > Genealogia
+- **[RAMO]** Storia e patrimonio > Patrimonio
+- **[FOGLIA]** Storia e patrimonio > Patrimonio > Musei
+- **[FOGLIA]** Storia e patrimonio > Patrimonio > Archivi
+- **[FOGLIA]** Storia e patrimonio > Patrimonio > Monumenti
+- **[FOGLIA]** Storia e patrimonio > Patrimonio > Architettura storica
+- **[FOGLIA]** Storia e patrimonio > Patrimonio > Restauro del patrimonio
+- **[FOGLIA]** Storia e patrimonio > Patrimonio > Rievocazione storica
+- **[FOGLIA]** Storia e patrimonio > Patrimonio > Tradizioni popolari
+### Lavori e professioni
+
+- **[RAMO]** Lavori e professioni
+- **[RAMO]** Lavori e professioni > Attività e mestieri
+- **[FOGLIA]** Lavori e professioni > Attività e mestieri > Artigiani
+- **[FOGLIA]** Lavori e professioni > Attività e mestieri > Professioni creative
+- **[FOGLIA]** Lavori e professioni > Attività e mestieri > Professioni tecniche
+- **[FOGLIA]** Lavori e professioni > Attività e mestieri > Professioni sanitarie
+- **[FOGLIA]** Lavori e professioni > Attività e mestieri > Professioni educative
+- **[FOGLIA]** Lavori e professioni > Attività e mestieri > Mestieri agricoli
+- **[FOGLIA]** Lavori e professioni > Attività e mestieri > Ristoratori
+- **[FOGLIA]** Lavori e professioni > Attività e mestieri > Commercianti
+- **[RAMO]** Lavori e professioni > Impresa e organizzazione
+- **[FOGLIA]** Lavori e professioni > Impresa e organizzazione > Imprenditorialità
+- **[FOGLIA]** Lavori e professioni > Impresa e organizzazione > Startup
+- **[FOGLIA]** Lavori e professioni > Impresa e organizzazione > Piccole imprese
+- **[FOGLIA]** Lavori e professioni > Impresa e organizzazione > Management
+- **[FOGLIA]** Lavori e professioni > Impresa e organizzazione > Marketing
+- **[FOGLIA]** Lavori e professioni > Impresa e organizzazione > Comunicazione
+- **[FOGLIA]** Lavori e professioni > Impresa e organizzazione > Vendite
+- **[FOGLIA]** Lavori e professioni > Impresa e organizzazione > Consulenza
+- **[FOGLIA]** Lavori e professioni > Impresa e organizzazione > Risorse umane
+- **[RAMO]** Lavori e professioni > Vita lavorativa
+- **[FOGLIA]** Lavori e professioni > Vita lavorativa > Freelance
+- **[FOGLIA]** Lavori e professioni > Vita lavorativa > Smart working
+- **[FOGLIA]** Lavori e professioni > Vita lavorativa > Coworking
+- **[FOGLIA]** Lavori e professioni > Vita lavorativa > Orientamento professionale
+- **[FOGLIA]** Lavori e professioni > Vita lavorativa > Ricerca del lavoro
+- **[FOGLIA]** Lavori e professioni > Vita lavorativa > Competenze professionali
+- **[FOGLIA]** Lavori e professioni > Vita lavorativa > Organizzazione del lavoro
+### Studio e apprendimento
+
+- **[RAMO]** Studio e apprendimento
+- **[RAMO]** Studio e apprendimento > Percorsi
+- **[FOGLIA]** Studio e apprendimento > Percorsi > Scuola
+- **[FOGLIA]** Studio e apprendimento > Percorsi > Università
+- **[FOGLIA]** Studio e apprendimento > Percorsi > Formazione professionale
+- **[FOGLIA]** Studio e apprendimento > Percorsi > Apprendimento permanente
+- **[FOGLIA]** Studio e apprendimento > Percorsi > Autoapprendimento
+- **[RAMO]** Studio e apprendimento > Metodi e strumenti
+- **[FOGLIA]** Studio e apprendimento > Metodi e strumenti > Metodo di studio
+- **[FOGLIA]** Studio e apprendimento > Metodi e strumenti > Mappe concettuali
+- **[FOGLIA]** Studio e apprendimento > Metodi e strumenti > Appunti e sintesi
+- **[FOGLIA]** Studio e apprendimento > Metodi e strumenti > Didattica
+- **[FOGLIA]** Studio e apprendimento > Metodi e strumenti > Educazione inclusiva
+- **[FOGLIA]** Studio e apprendimento > Metodi e strumenti > Risorse educative
+- **[FOGLIA]** Studio e apprendimento > Metodi e strumenti > Edtech
+### Comunità e sostenibilità
+
+- **[RAMO]** Comunità e sostenibilità
+- **[RAMO]** Comunità e sostenibilità > Comunità
+- **[FOGLIA]** Comunità e sostenibilità > Comunità > Volontariato
+- **[FOGLIA]** Comunità e sostenibilità > Comunità > Associazioni
+- **[FOGLIA]** Comunità e sostenibilità > Comunità > Cooperative di comunità
+- **[FOGLIA]** Comunità e sostenibilità > Comunità > Mutuo aiuto
+- **[FOGLIA]** Comunità e sostenibilità > Comunità > Cittadinanza attiva
+- **[FOGLIA]** Comunità e sostenibilità > Comunità > Orti comunitari
+- **[RAMO]** Comunità e sostenibilità > Vita sostenibile
+- **[FOGLIA]** Comunità e sostenibilità > Vita sostenibile > Riduzione dei rifiuti
+- **[FOGLIA]** Comunità e sostenibilità > Vita sostenibile > Riuso
+- **[FOGLIA]** Comunità e sostenibilità > Vita sostenibile > Riparazione
+- **[FOGLIA]** Comunità e sostenibilità > Vita sostenibile > Consumo consapevole
+- **[FOGLIA]** Comunità e sostenibilità > Vita sostenibile > Mobilità sostenibile
+- **[FOGLIA]** Comunità e sostenibilità > Vita sostenibile > Abitare sostenibile
+- **[FOGLIA]** Comunità e sostenibilità > Vita sostenibile > Autoproduzione
+- **[RAMO]** Comunità e sostenibilità > Ambiente e azione
+- **[FOGLIA]** Comunità e sostenibilità > Ambiente e azione > Conservazione della natura
+- **[FOGLIA]** Comunità e sostenibilità > Ambiente e azione > Educazione ambientale
+- **[FOGLIA]** Comunità e sostenibilità > Ambiente e azione > Pulizia del territorio
+- **[FOGLIA]** Comunità e sostenibilità > Ambiente e azione > Comunità energetiche
+- **[FOGLIA]** Comunità e sostenibilità > Ambiente e azione > Agricoltura rigenerativa
+### Collezionismo e hobby
+
+- **[RAMO]** Collezionismo e hobby — Sinonimi: collecting, hobbies
+- **[RAMO]** Collezionismo e hobby > Collezioni
+- **[FOGLIA]** Collezionismo e hobby > Collezioni > Numismatica
+- **[FOGLIA]** Collezionismo e hobby > Collezioni > Filatelia
+- **[FOGLIA]** Collezionismo e hobby > Collezioni > Orologeria
+- **[FOGLIA]** Collezionismo e hobby > Collezioni > Vinili
+- **[FOGLIA]** Collezionismo e hobby > Collezioni > Fumetti da collezione
+- **[FOGLIA]** Collezionismo e hobby > Collezioni > Carte da collezione
+- **[FOGLIA]** Collezionismo e hobby > Collezioni > Giocattoli vintage
+- **[FOGLIA]** Collezionismo e hobby > Collezioni > Minerali
+- **[FOGLIA]** Collezionismo e hobby > Collezioni > Memorabilia sportive
+- **[RAMO]** Collezionismo e hobby > Modellismo
+- **[FOGLIA]** Collezionismo e hobby > Modellismo > Modellismo ferroviario
+- **[FOGLIA]** Collezionismo e hobby > Modellismo > Modellismo navale
+- **[FOGLIA]** Collezionismo e hobby > Modellismo > Modellismo aeronautico
+- **[FOGLIA]** Collezionismo e hobby > Modellismo > Modellismo automobilistico
+- **[FOGLIA]** Collezionismo e hobby > Modellismo > Diorami
+- **[FOGLIA]** Collezionismo e hobby > Modellismo > Miniature storiche
+- **[FOGLIA]** Collezionismo e hobby > Modellismo > Gunpla
+- **[FOGLIA]** Collezionismo e hobby > Modellismo > Radiomodellismo
+- **[RAMO]** Collezionismo e hobby > Passatempi creativi
+- **[FOGLIA]** Collezionismo e hobby > Passatempi creativi > Costruzioni a mattoncini
+- **[FOGLIA]** Collezionismo e hobby > Passatempi creativi > Puzzle meccanici
+- **[FOGLIA]** Collezionismo e hobby > Passatempi creativi > Aquilonismo
+- **[FOGLIA]** Collezionismo e hobby > Passatempi creativi > Giocoleria
+- **[FOGLIA]** Collezionismo e hobby > Passatempi creativi > Hobby scientifici
+### Fantasia e mondi creativi
+
+- **[RAMO]** Fantasia e mondi creativi
+- **[RAMO]** Fantasia e mondi creativi > Generi immaginativi
+- **[FOGLIA]** Fantasia e mondi creativi > Generi immaginativi > High fantasy
+- **[FOGLIA]** Fantasia e mondi creativi > Generi immaginativi > Dark fantasy
+- **[FOGLIA]** Fantasia e mondi creativi > Generi immaginativi > Urban fantasy
+- **[FOGLIA]** Fantasia e mondi creativi > Generi immaginativi > Science fantasy
+- **[FOGLIA]** Fantasia e mondi creativi > Generi immaginativi > Cyberpunk
+- **[FOGLIA]** Fantasia e mondi creativi > Generi immaginativi > Steampunk
+- **[FOGLIA]** Fantasia e mondi creativi > Generi immaginativi > Solarpunk
+- **[FOGLIA]** Fantasia e mondi creativi > Generi immaginativi > Dieselpunk
+- **[FOGLIA]** Fantasia e mondi creativi > Generi immaginativi > Space opera
+- **[RAMO]** Fantasia e mondi creativi > Creazione di mondi
+- **[FOGLIA]** Fantasia e mondi creativi > Creazione di mondi > Worldbuilding
+- **[FOGLIA]** Fantasia e mondi creativi > Creazione di mondi > Cartografia fantastica
+- **[FOGLIA]** Fantasia e mondi creativi > Creazione di mondi > Creature fantastiche
+- **[FOGLIA]** Fantasia e mondi creativi > Creazione di mondi > Personaggi originali
+- **[FOGLIA]** Fantasia e mondi creativi > Creazione di mondi > Lingue inventate
+- **[FOGLIA]** Fantasia e mondi creativi > Creazione di mondi > Architetture immaginarie
+### Informazione e vita civica
+
+- **[RAMO]** Informazione e vita civica — Sinonimi: news, attualità, notizie, giornalismo
+- **[RAMO]** Informazione e vita civica > Politica italiana
+- **[RAMO]** Informazione e vita civica > Politica italiana > Istituzioni
+- **[FOGLIA]** Informazione e vita civica > Politica italiana > Istituzioni > Governo e Presidenza del Consiglio
+- **[FOGLIA]** Informazione e vita civica > Politica italiana > Istituzioni > Parlamento e attività legislativa
+- **[FOGLIA]** Informazione e vita civica > Politica italiana > Istituzioni > Presidenza della Repubblica
+- **[FOGLIA]** Informazione e vita civica > Politica italiana > Istituzioni > Corte costituzionale
+- **[FOGLIA]** Informazione e vita civica > Politica italiana > Istituzioni > Ministeri e amministrazione centrale
+- **[FOGLIA]** Informazione e vita civica > Politica italiana > Istituzioni > Riforme costituzionali
+- **[FOGLIA]** Informazione e vita civica > Politica italiana > Istituzioni > Rapporti Stato e Regioni
+- **[RAMO]** Informazione e vita civica > Politica italiana > Elezioni e rappresentanza
+- **[FOGLIA]** Informazione e vita civica > Politica italiana > Elezioni e rappresentanza > Elezioni politiche
+- **[FOGLIA]** Informazione e vita civica > Politica italiana > Elezioni e rappresentanza > Elezioni regionali
+- **[FOGLIA]** Informazione e vita civica > Politica italiana > Elezioni e rappresentanza > Elezioni comunali
+- **[FOGLIA]** Informazione e vita civica > Politica italiana > Elezioni e rappresentanza > Referendum
+- **[FOGLIA]** Informazione e vita civica > Politica italiana > Elezioni e rappresentanza > Leggi elettorali
+- **[FOGLIA]** Informazione e vita civica > Politica italiana > Elezioni e rappresentanza > Partiti e movimenti
+- **[FOGLIA]** Informazione e vita civica > Politica italiana > Elezioni e rappresentanza > Campagne elettorali
+- **[FOGLIA]** Informazione e vita civica > Politica italiana > Elezioni e rappresentanza > Partecipazione al voto
+- **[RAMO]** Informazione e vita civica > Politica italiana > Politiche pubbliche
+- **[FOGLIA]** Informazione e vita civica > Politica italiana > Politiche pubbliche > Politiche fiscali
+- **[FOGLIA]** Informazione e vita civica > Politica italiana > Politiche pubbliche > Politiche del lavoro
+- **[FOGLIA]** Informazione e vita civica > Politica italiana > Politiche pubbliche > Politiche industriali
+- **[FOGLIA]** Informazione e vita civica > Politica italiana > Politiche pubbliche > Politiche familiari
+- **[FOGLIA]** Informazione e vita civica > Politica italiana > Politiche pubbliche > Politiche migratorie
+- **[FOGLIA]** Informazione e vita civica > Politica italiana > Politiche pubbliche > Politiche abitative
+- **[FOGLIA]** Informazione e vita civica > Politica italiana > Politiche pubbliche > Politiche giovanili
+- **[FOGLIA]** Informazione e vita civica > Politica italiana > Politiche pubbliche > Politiche culturali
+- **[FOGLIA]** Informazione e vita civica > Politica italiana > Politiche pubbliche > Politiche di sicurezza
+- **[RAMO]** Informazione e vita civica > Politica italiana > Territori e amministrazione
+- **[FOGLIA]** Informazione e vita civica > Politica italiana > Territori e amministrazione > Regioni e autonomie
+- **[FOGLIA]** Informazione e vita civica > Politica italiana > Territori e amministrazione > Comuni e città metropolitane
+- **[FOGLIA]** Informazione e vita civica > Politica italiana > Territori e amministrazione > Amministrazione digitale
+- **[FOGLIA]** Informazione e vita civica > Politica italiana > Territori e amministrazione > Servizi municipali
+- **[FOGLIA]** Informazione e vita civica > Politica italiana > Territori e amministrazione > Finanza locale
+- **[FOGLIA]** Informazione e vita civica > Politica italiana > Territori e amministrazione > Appalti pubblici
+- **[RAMO]** Informazione e vita civica > Esteri e geopolitica
+- **[RAMO]** Informazione e vita civica > Esteri e geopolitica > Europa
+- **[FOGLIA]** Informazione e vita civica > Esteri e geopolitica > Europa > Unione europea e istituzioni
+- **[FOGLIA]** Informazione e vita civica > Esteri e geopolitica > Europa > Elezioni europee
+- **[FOGLIA]** Informazione e vita civica > Esteri e geopolitica > Europa > Politiche europee
+- **[FOGLIA]** Informazione e vita civica > Esteri e geopolitica > Europa > Allargamento europeo
+- **[FOGLIA]** Informazione e vita civica > Esteri e geopolitica > Europa > Regno Unito e Irlanda
+- **[FOGLIA]** Informazione e vita civica > Esteri e geopolitica > Europa > Balcani
+- **[FOGLIA]** Informazione e vita civica > Esteri e geopolitica > Europa > Europa orientale
+- **[FOGLIA]** Informazione e vita civica > Esteri e geopolitica > Europa > Paesi nordici
+- **[RAMO]** Informazione e vita civica > Esteri e geopolitica > Americhe
+- **[FOGLIA]** Informazione e vita civica > Esteri e geopolitica > Americhe > Politica degli Stati Uniti
+- **[FOGLIA]** Informazione e vita civica > Esteri e geopolitica > Americhe > Politica del Canada
+- **[FOGLIA]** Informazione e vita civica > Esteri e geopolitica > Americhe > Messico e America centrale
+- **[FOGLIA]** Informazione e vita civica > Esteri e geopolitica > Americhe > America meridionale
+- **[FOGLIA]** Informazione e vita civica > Esteri e geopolitica > Americhe > Caraibi
+- **[FOGLIA]** Informazione e vita civica > Esteri e geopolitica > Americhe > Relazioni interamericane
+- **[RAMO]** Informazione e vita civica > Esteri e geopolitica > Medio Oriente e Nord Africa
+- **[FOGLIA]** Informazione e vita civica > Esteri e geopolitica > Medio Oriente e Nord Africa > Israele e Palestina
+- **[FOGLIA]** Informazione e vita civica > Esteri e geopolitica > Medio Oriente e Nord Africa > Iran e Golfo
+- **[FOGLIA]** Informazione e vita civica > Esteri e geopolitica > Medio Oriente e Nord Africa > Levante e Mesopotamia
+- **[FOGLIA]** Informazione e vita civica > Esteri e geopolitica > Medio Oriente e Nord Africa > Turchia
+- **[FOGLIA]** Informazione e vita civica > Esteri e geopolitica > Medio Oriente e Nord Africa > Maghreb
+- **[FOGLIA]** Informazione e vita civica > Esteri e geopolitica > Medio Oriente e Nord Africa > Egitto
+- **[FOGLIA]** Informazione e vita civica > Esteri e geopolitica > Medio Oriente e Nord Africa > Diplomazia mediorientale
+- **[RAMO]** Informazione e vita civica > Esteri e geopolitica > Africa subsahariana
+- **[FOGLIA]** Informazione e vita civica > Esteri e geopolitica > Africa subsahariana > Africa occidentale e Sahel
+- **[FOGLIA]** Informazione e vita civica > Esteri e geopolitica > Africa subsahariana > Corno d'Africa
+- **[FOGLIA]** Informazione e vita civica > Esteri e geopolitica > Africa subsahariana > Africa centrale
+- **[FOGLIA]** Informazione e vita civica > Esteri e geopolitica > Africa subsahariana > Africa australe
+- **[FOGLIA]** Informazione e vita civica > Esteri e geopolitica > Africa subsahariana > Grandi Laghi
+- **[FOGLIA]** Informazione e vita civica > Esteri e geopolitica > Africa subsahariana > Unione africana
+- **[RAMO]** Informazione e vita civica > Esteri e geopolitica > Asia e Pacifico
+- **[FOGLIA]** Informazione e vita civica > Esteri e geopolitica > Asia e Pacifico > Cina
+- **[FOGLIA]** Informazione e vita civica > Esteri e geopolitica > Asia e Pacifico > Giappone e Corea
+- **[FOGLIA]** Informazione e vita civica > Esteri e geopolitica > Asia e Pacifico > India e Asia meridionale
+- **[FOGLIA]** Informazione e vita civica > Esteri e geopolitica > Asia e Pacifico > Sud-est asiatico
+- **[FOGLIA]** Informazione e vita civica > Esteri e geopolitica > Asia e Pacifico > Asia centrale
+- **[FOGLIA]** Informazione e vita civica > Esteri e geopolitica > Asia e Pacifico > Oceania
+- **[FOGLIA]** Informazione e vita civica > Esteri e geopolitica > Asia e Pacifico > Relazioni nell'Indo-Pacifico
+- **[RAMO]** Informazione e vita civica > Esteri e geopolitica > Relazioni internazionali
+- **[FOGLIA]** Informazione e vita civica > Esteri e geopolitica > Relazioni internazionali > Diplomazia e negoziati
+- **[FOGLIA]** Informazione e vita civica > Esteri e geopolitica > Relazioni internazionali > Nazioni Unite
+- **[FOGLIA]** Informazione e vita civica > Esteri e geopolitica > Relazioni internazionali > NATO e alleanze
+- **[FOGLIA]** Informazione e vita civica > Esteri e geopolitica > Relazioni internazionali > Cooperazione allo sviluppo
+- **[FOGLIA]** Informazione e vita civica > Esteri e geopolitica > Relazioni internazionali > Sanzioni internazionali
+- **[FOGLIA]** Informazione e vita civica > Esteri e geopolitica > Relazioni internazionali > Commercio internazionale
+- **[FOGLIA]** Informazione e vita civica > Esteri e geopolitica > Relazioni internazionali > Diritti umani nel mondo
+- **[FOGLIA]** Informazione e vita civica > Esteri e geopolitica > Relazioni internazionali > Aiuti umanitari
+- **[RAMO]** Informazione e vita civica > Esteri e geopolitica > Conflitti e sicurezza
+- **[FOGLIA]** Informazione e vita civica > Esteri e geopolitica > Conflitti e sicurezza > Guerre e conflitti armati
+- **[FOGLIA]** Informazione e vita civica > Esteri e geopolitica > Conflitti e sicurezza > Cessate il fuoco e processi di pace
+- **[FOGLIA]** Informazione e vita civica > Esteri e geopolitica > Conflitti e sicurezza > Difesa e armamenti
+- **[FOGLIA]** Informazione e vita civica > Esteri e geopolitica > Conflitti e sicurezza > Terrorismo internazionale
+- **[FOGLIA]** Informazione e vita civica > Esteri e geopolitica > Conflitti e sicurezza > Sicurezza marittima
+- **[FOGLIA]** Informazione e vita civica > Esteri e geopolitica > Conflitti e sicurezza > Sicurezza nucleare
+- **[FOGLIA]** Informazione e vita civica > Esteri e geopolitica > Conflitti e sicurezza > Rifugiati e sfollati
+- **[RAMO]** Informazione e vita civica > Economia e finanza — Sinonimi: economics, finance, fintech
+- **[RAMO]** Informazione e vita civica > Economia e finanza > Macroeconomia
+- **[FOGLIA]** Informazione e vita civica > Economia e finanza > Macroeconomia > Crescita e recessione
+- **[FOGLIA]** Informazione e vita civica > Economia e finanza > Macroeconomia > Inflazione e prezzi
+- **[FOGLIA]** Informazione e vita civica > Economia e finanza > Macroeconomia > Tassi di interesse
+- **[FOGLIA]** Informazione e vita civica > Economia e finanza > Macroeconomia > Debito pubblico
+- **[FOGLIA]** Informazione e vita civica > Economia e finanza > Macroeconomia > Bilanci dello Stato
+- **[FOGLIA]** Informazione e vita civica > Economia e finanza > Macroeconomia > Banche centrali
+- **[FOGLIA]** Informazione e vita civica > Economia e finanza > Macroeconomia > Occupazione e disoccupazione
+- **[FOGLIA]** Informazione e vita civica > Economia e finanza > Macroeconomia > Produttività
+- **[FOGLIA]** Informazione e vita civica > Economia e finanza > Macroeconomia > Commercio estero
+- **[RAMO]** Informazione e vita civica > Economia e finanza > Imprese e industria
+- **[FOGLIA]** Informazione e vita civica > Economia e finanza > Imprese e industria > Imprese italiane
+- **[FOGLIA]** Informazione e vita civica > Economia e finanza > Imprese e industria > Piccole e medie imprese
+- **[FOGLIA]** Informazione e vita civica > Economia e finanza > Imprese e industria > Manifattura
+- **[FOGLIA]** Informazione e vita civica > Economia e finanza > Imprese e industria > Energia e utility
+- **[FOGLIA]** Informazione e vita civica > Economia e finanza > Imprese e industria > Automotive e filiere
+- **[FOGLIA]** Informazione e vita civica > Economia e finanza > Imprese e industria > Agroalimentare
+- **[FOGLIA]** Informazione e vita civica > Economia e finanza > Imprese e industria > Turismo e ospitalità
+- **[FOGLIA]** Informazione e vita civica > Economia e finanza > Imprese e industria > Commercio e distribuzione
+- **[FOGLIA]** Informazione e vita civica > Economia e finanza > Imprese e industria > Logistica e trasporti
+- **[FOGLIA]** Informazione e vita civica > Economia e finanza > Imprese e industria > Telecomunicazioni
+- **[FOGLIA]** Informazione e vita civica > Economia e finanza > Imprese e industria > Fusioni e acquisizioni
+- **[FOGLIA]** Informazione e vita civica > Economia e finanza > Imprese e industria > Crisi aziendali
+- **[RAMO]** Informazione e vita civica > Economia e finanza > Mercati finanziari
+- **[FOGLIA]** Informazione e vita civica > Economia e finanza > Mercati finanziari > Borse e azioni
+- **[FOGLIA]** Informazione e vita civica > Economia e finanza > Mercati finanziari > Obbligazioni
+- **[FOGLIA]** Informazione e vita civica > Economia e finanza > Mercati finanziari > Valute
+- **[FOGLIA]** Informazione e vita civica > Economia e finanza > Mercati finanziari > Materie prime
+- **[FOGLIA]** Informazione e vita civica > Economia e finanza > Mercati finanziari > Fondi ed ETF
+- **[FOGLIA]** Informazione e vita civica > Economia e finanza > Mercati finanziari > Criptoattività
+- **[FOGLIA]** Informazione e vita civica > Economia e finanza > Mercati finanziari > Infrastrutture dei mercati
+- **[FOGLIA]** Informazione e vita civica > Economia e finanza > Mercati finanziari > Vigilanza finanziaria
+- **[RAMO]** Informazione e vita civica > Economia e finanza > Finanza personale
+- **[FOGLIA]** Informazione e vita civica > Economia e finanza > Finanza personale > Risparmio
+- **[FOGLIA]** Informazione e vita civica > Economia e finanza > Finanza personale > Conti e pagamenti
+- **[FOGLIA]** Informazione e vita civica > Economia e finanza > Finanza personale > Mutui
+- **[FOGLIA]** Informazione e vita civica > Economia e finanza > Finanza personale > Prestiti e credito al consumo
+- **[FOGLIA]** Informazione e vita civica > Economia e finanza > Finanza personale > Pensioni
+- **[FOGLIA]** Informazione e vita civica > Economia e finanza > Finanza personale > Assicurazioni
+- **[FOGLIA]** Informazione e vita civica > Economia e finanza > Finanza personale > Educazione finanziaria
+- **[FOGLIA]** Informazione e vita civica > Economia e finanza > Finanza personale > Truffe finanziarie
+- **[RAMO]** Informazione e vita civica > Economia e finanza > Casa fisco e consumi
+- **[FOGLIA]** Informazione e vita civica > Economia e finanza > Casa fisco e consumi > Mercato immobiliare
+- **[FOGLIA]** Informazione e vita civica > Economia e finanza > Casa fisco e consumi > Affitti
+- **[FOGLIA]** Informazione e vita civica > Economia e finanza > Casa fisco e consumi > Tasse e dichiarazioni
+- **[FOGLIA]** Informazione e vita civica > Economia e finanza > Casa fisco e consumi > Bollette
+- **[FOGLIA]** Informazione e vita civica > Economia e finanza > Casa fisco e consumi > Costo della vita
+- **[FOGLIA]** Informazione e vita civica > Economia e finanza > Casa fisco e consumi > Diritti dei consumatori
+- **[FOGLIA]** Informazione e vita civica > Economia e finanza > Casa fisco e consumi > Acquisti e contratti
+- **[FOGLIA]** Informazione e vita civica > Economia e finanza > Casa fisco e consumi > Povertà e disuguaglianze
+- **[RAMO]** Informazione e vita civica > Cronaca e giustizia
+- **[RAMO]** Informazione e vita civica > Cronaca e giustizia > Cronaca italiana
+- **[FOGLIA]** Informazione e vita civica > Cronaca e giustizia > Cronaca italiana > Cronaca nazionale
+- **[FOGLIA]** Informazione e vita civica > Cronaca e giustizia > Cronaca italiana > Cronaca cittadina
+- **[FOGLIA]** Informazione e vita civica > Cronaca e giustizia > Cronaca italiana > Incidenti stradali
+- **[FOGLIA]** Informazione e vita civica > Cronaca e giustizia > Cronaca italiana > Incidenti sul lavoro
+- **[FOGLIA]** Informazione e vita civica > Cronaca e giustizia > Cronaca italiana > Persone scomparse
+- **[FOGLIA]** Informazione e vita civica > Cronaca e giustizia > Cronaca italiana > Truffe e frodi
+- **[FOGLIA]** Informazione e vita civica > Cronaca e giustizia > Cronaca italiana > Criminalità organizzata
+- **[FOGLIA]** Informazione e vita civica > Cronaca e giustizia > Cronaca italiana > Corruzione
+- **[FOGLIA]** Informazione e vita civica > Cronaca e giustizia > Cronaca italiana > Violenza di genere
+- **[FOGLIA]** Informazione e vita civica > Cronaca e giustizia > Cronaca italiana > Violenza domestica
+- **[RAMO]** Informazione e vita civica > Cronaca e giustizia > Giustizia
+- **[FOGLIA]** Informazione e vita civica > Cronaca e giustizia > Giustizia > Indagini e procedimenti
+- **[FOGLIA]** Informazione e vita civica > Cronaca e giustizia > Giustizia > Processi penali
+- **[FOGLIA]** Informazione e vita civica > Cronaca e giustizia > Giustizia > Giustizia civile
+- **[FOGLIA]** Informazione e vita civica > Cronaca e giustizia > Giustizia > Giustizia amministrativa
+- **[FOGLIA]** Informazione e vita civica > Cronaca e giustizia > Giustizia > Carceri ed esecuzione penale
+- **[FOGLIA]** Informazione e vita civica > Cronaca e giustizia > Giustizia > Giustizia minorile
+- **[FOGLIA]** Informazione e vita civica > Cronaca e giustizia > Giustizia > Ordinamento giudiziario
+- **[FOGLIA]** Informazione e vita civica > Cronaca e giustizia > Giustizia > Riforme della giustizia
+- **[RAMO]** Informazione e vita civica > Cronaca e giustizia > Emergenze
+- **[FOGLIA]** Informazione e vita civica > Cronaca e giustizia > Emergenze > Terremoti
+- **[FOGLIA]** Informazione e vita civica > Cronaca e giustizia > Emergenze > Alluvioni
+- **[FOGLIA]** Informazione e vita civica > Cronaca e giustizia > Emergenze > Incendi
+- **[FOGLIA]** Informazione e vita civica > Cronaca e giustizia > Emergenze > Frane
+- **[FOGLIA]** Informazione e vita civica > Cronaca e giustizia > Emergenze > Emergenze industriali
+- **[FOGLIA]** Informazione e vita civica > Cronaca e giustizia > Emergenze > Soccorso e protezione civile
+- **[FOGLIA]** Informazione e vita civica > Cronaca e giustizia > Emergenze > Ricostruzione
+- **[RAMO]** Informazione e vita civica > Società e diritti
+- **[RAMO]** Informazione e vita civica > Società e diritti > Persone e trasformazioni
+- **[FOGLIA]** Informazione e vita civica > Società e diritti > Persone e trasformazioni > Demografia
+- **[FOGLIA]** Informazione e vita civica > Società e diritti > Persone e trasformazioni > Invecchiamento
+- **[FOGLIA]** Informazione e vita civica > Società e diritti > Persone e trasformazioni > Natalità e genitorialità
+- **[FOGLIA]** Informazione e vita civica > Società e diritti > Persone e trasformazioni > Migrazioni e integrazione
+- **[FOGLIA]** Informazione e vita civica > Società e diritti > Persone e trasformazioni > Condizione giovanile
+- **[FOGLIA]** Informazione e vita civica > Società e diritti > Persone e trasformazioni > Vita nelle periferie
+- **[FOGLIA]** Informazione e vita civica > Società e diritti > Persone e trasformazioni > Solitudine
+- **[FOGLIA]** Informazione e vita civica > Società e diritti > Persone e trasformazioni > Mobilità sociale
+- **[RAMO]** Informazione e vita civica > Società e diritti > Uguaglianza e libertà
+- **[FOGLIA]** Informazione e vita civica > Società e diritti > Uguaglianza e libertà > Parità di genere
+- **[FOGLIA]** Informazione e vita civica > Società e diritti > Uguaglianza e libertà > Diritti LGBTQIA+
+- **[FOGLIA]** Informazione e vita civica > Società e diritti > Uguaglianza e libertà > Disabilità e accessibilità
+- **[FOGLIA]** Informazione e vita civica > Società e diritti > Uguaglianza e libertà > Razzismo e discriminazioni
+- **[FOGLIA]** Informazione e vita civica > Società e diritti > Uguaglianza e libertà > Libertà di espressione
+- **[FOGLIA]** Informazione e vita civica > Società e diritti > Uguaglianza e libertà > Libertà religiosa
+- **[FOGLIA]** Informazione e vita civica > Società e diritti > Uguaglianza e libertà > Privacy e dati personali — Sinonimi: data privacy, privacy
+- **[FOGLIA]** Informazione e vita civica > Società e diritti > Uguaglianza e libertà > Diritti digitali
+- **[FOGLIA]** Informazione e vita civica > Società e diritti > Uguaglianza e libertà > Cittadinanza
+- **[RAMO]** Informazione e vita civica > Società e diritti > Lavoro e welfare
+- **[FOGLIA]** Informazione e vita civica > Società e diritti > Lavoro e welfare > Salari
+- **[FOGLIA]** Informazione e vita civica > Società e diritti > Lavoro e welfare > Contratti e relazioni sindacali
+- **[FOGLIA]** Informazione e vita civica > Società e diritti > Lavoro e welfare > Scioperi
+- **[FOGLIA]** Informazione e vita civica > Società e diritti > Lavoro e welfare > Sicurezza sul lavoro
+- **[FOGLIA]** Informazione e vita civica > Società e diritti > Lavoro e welfare > Lavoro precario
+- **[FOGLIA]** Informazione e vita civica > Società e diritti > Lavoro e welfare > Lavoro autonomo
+- **[FOGLIA]** Informazione e vita civica > Società e diritti > Lavoro e welfare > Lavoro da remoto
+- **[FOGLIA]** Informazione e vita civica > Società e diritti > Lavoro e welfare > Assistenza sociale
+- **[FOGLIA]** Informazione e vita civica > Società e diritti > Lavoro e welfare > Terzo settore
+- **[RAMO]** Informazione e vita civica > Società e diritti > Scuola e università
+- **[FOGLIA]** Informazione e vita civica > Società e diritti > Scuola e università > Scuola dell'infanzia
+- **[FOGLIA]** Informazione e vita civica > Società e diritti > Scuola e università > Scuola primaria
+- **[FOGLIA]** Informazione e vita civica > Società e diritti > Scuola e università > Scuola secondaria
+- **[FOGLIA]** Informazione e vita civica > Società e diritti > Scuola e università > Esami e valutazione
+- **[FOGLIA]** Informazione e vita civica > Società e diritti > Scuola e università > Università
+- **[FOGLIA]** Informazione e vita civica > Società e diritti > Scuola e università > Diritto allo studio
+- **[FOGLIA]** Informazione e vita civica > Società e diritti > Scuola e università > Edilizia scolastica
+- **[FOGLIA]** Informazione e vita civica > Società e diritti > Scuola e università > Inclusione scolastica
+- **[FOGLIA]** Informazione e vita civica > Società e diritti > Scuola e università > Formazione professionale
+- **[RAMO]** Informazione e vita civica > Salute e sanità
+- **[RAMO]** Informazione e vita civica > Salute e sanità > Sistema sanitario
+- **[FOGLIA]** Informazione e vita civica > Salute e sanità > Sistema sanitario > Servizio sanitario nazionale
+- **[FOGLIA]** Informazione e vita civica > Salute e sanità > Sistema sanitario > Sanità regionale
+- **[FOGLIA]** Informazione e vita civica > Salute e sanità > Sistema sanitario > Ospedali
+- **[FOGLIA]** Informazione e vita civica > Salute e sanità > Sistema sanitario > Medicina territoriale
+- **[FOGLIA]** Informazione e vita civica > Salute e sanità > Sistema sanitario > Liste d'attesa
+- **[FOGLIA]** Informazione e vita civica > Salute e sanità > Sistema sanitario > Professioni sanitarie
+- **[FOGLIA]** Informazione e vita civica > Salute e sanità > Sistema sanitario > Spesa sanitaria
+- **[FOGLIA]** Informazione e vita civica > Salute e sanità > Sistema sanitario > Accesso alle cure
+- **[FOGLIA]** Informazione e vita civica > Salute e sanità > Sistema sanitario > Sanità digitale
+- **[RAMO]** Informazione e vita civica > Salute e sanità > Salute pubblica
+- **[FOGLIA]** Informazione e vita civica > Salute e sanità > Salute pubblica > Prevenzione
+- **[FOGLIA]** Informazione e vita civica > Salute e sanità > Salute pubblica > Vaccini
+- **[FOGLIA]** Informazione e vita civica > Salute e sanità > Salute pubblica > Epidemie e malattie infettive
+- **[FOGLIA]** Informazione e vita civica > Salute e sanità > Salute pubblica > Salute ambientale
+- **[FOGLIA]** Informazione e vita civica > Salute e sanità > Salute pubblica > Sicurezza alimentare
+- **[FOGLIA]** Informazione e vita civica > Salute e sanità > Salute pubblica > Dipendenze
+- **[FOGLIA]** Informazione e vita civica > Salute e sanità > Salute pubblica > Salute mentale
+- **[FOGLIA]** Informazione e vita civica > Salute e sanità > Salute pubblica > Salute materna e infantile
+- **[FOGLIA]** Informazione e vita civica > Salute e sanità > Salute pubblica > Invecchiamento e cronicità
+- **[RAMO]** Informazione e vita civica > Salute e sanità > Ricerca e trattamenti
+- **[FOGLIA]** Informazione e vita civica > Salute e sanità > Ricerca e trattamenti > Ricerca clinica
+- **[FOGLIA]** Informazione e vita civica > Salute e sanità > Ricerca e trattamenti > Farmaci e autorizzazioni
+- **[FOGLIA]** Informazione e vita civica > Salute e sanità > Ricerca e trattamenti > Dispositivi medici
+- **[FOGLIA]** Informazione e vita civica > Salute e sanità > Ricerca e trattamenti > Oncologia
+- **[FOGLIA]** Informazione e vita civica > Salute e sanità > Ricerca e trattamenti > Malattie rare
+- **[FOGLIA]** Informazione e vita civica > Salute e sanità > Ricerca e trattamenti > Trapianti e donazioni
+- **[FOGLIA]** Informazione e vita civica > Salute e sanità > Ricerca e trattamenti > Antimicrobico-resistenza
+- **[FOGLIA]** Informazione e vita civica > Salute e sanità > Ricerca e trattamenti > Bioetica
+- **[RAMO]** Informazione e vita civica > Ambiente e territorio
+- **[RAMO]** Informazione e vita civica > Ambiente e territorio > Clima ed energia
+- **[FOGLIA]** Informazione e vita civica > Ambiente e territorio > Clima ed energia > Cambiamento climatico
+- **[FOGLIA]** Informazione e vita civica > Ambiente e territorio > Clima ed energia > Politiche climatiche
+- **[FOGLIA]** Informazione e vita civica > Ambiente e territorio > Clima ed energia > Transizione energetica
+- **[FOGLIA]** Informazione e vita civica > Ambiente e territorio > Clima ed energia > Rinnovabili
+- **[FOGLIA]** Informazione e vita civica > Ambiente e territorio > Clima ed energia > Combustibili fossili
+- **[FOGLIA]** Informazione e vita civica > Ambiente e territorio > Clima ed energia > Nucleare
+- **[FOGLIA]** Informazione e vita civica > Ambiente e territorio > Clima ed energia > Efficienza energetica
+- **[FOGLIA]** Informazione e vita civica > Ambiente e territorio > Clima ed energia > Reti elettriche
+- **[RAMO]** Informazione e vita civica > Ambiente e territorio > Ecosistemi e risorse
+- **[FOGLIA]** Informazione e vita civica > Ambiente e territorio > Ecosistemi e risorse > Biodiversità
+- **[FOGLIA]** Informazione e vita civica > Ambiente e territorio > Ecosistemi e risorse > Acqua e siccità
+- **[FOGLIA]** Informazione e vita civica > Ambiente e territorio > Ecosistemi e risorse > Inquinamento dell'aria
+- **[FOGLIA]** Informazione e vita civica > Ambiente e territorio > Ecosistemi e risorse > Inquinamento delle acque
+- **[FOGLIA]** Informazione e vita civica > Ambiente e territorio > Ecosistemi e risorse > Suolo e consumo di territorio
+- **[FOGLIA]** Informazione e vita civica > Ambiente e territorio > Ecosistemi e risorse > Rifiuti ed economia circolare
+- **[FOGLIA]** Informazione e vita civica > Ambiente e territorio > Ecosistemi e risorse > Foreste
+- **[FOGLIA]** Informazione e vita civica > Ambiente e territorio > Ecosistemi e risorse > Mari e coste
+- **[FOGLIA]** Informazione e vita civica > Ambiente e territorio > Ecosistemi e risorse > Benessere animale
+- **[RAMO]** Informazione e vita civica > Ambiente e territorio > Città e infrastrutture
+- **[FOGLIA]** Informazione e vita civica > Ambiente e territorio > Città e infrastrutture > Urbanistica
+- **[FOGLIA]** Informazione e vita civica > Ambiente e territorio > Città e infrastrutture > Trasporto pubblico
+- **[FOGLIA]** Informazione e vita civica > Ambiente e territorio > Città e infrastrutture > Ferrovie
+- **[FOGLIA]** Informazione e vita civica > Ambiente e territorio > Città e infrastrutture > Strade e ponti
+- **[FOGLIA]** Informazione e vita civica > Ambiente e territorio > Città e infrastrutture > Porti e aeroporti
+- **[FOGLIA]** Informazione e vita civica > Ambiente e territorio > Città e infrastrutture > Mobilità urbana
+- **[FOGLIA]** Informazione e vita civica > Ambiente e territorio > Città e infrastrutture > Infrastrutture idriche
+- **[FOGLIA]** Informazione e vita civica > Ambiente e territorio > Città e infrastrutture > Patrimonio pubblico
+- **[RAMO]** Informazione e vita civica > Tecnologia e attualità scientifica
+- **[RAMO]** Informazione e vita civica > Tecnologia e attualità scientifica > Innovazione e potere digitale
+- **[FOGLIA]** Informazione e vita civica > Tecnologia e attualità scientifica > Innovazione e potere digitale > Intelligenza artificiale e società — Sinonimi: responsibleai, responsible ai
+- **[FOGLIA]** Informazione e vita civica > Tecnologia e attualità scientifica > Innovazione e potere digitale > Piattaforme e social media
+- **[FOGLIA]** Informazione e vita civica > Tecnologia e attualità scientifica > Innovazione e potere digitale > Concorrenza nel digitale
+- **[FOGLIA]** Informazione e vita civica > Tecnologia e attualità scientifica > Innovazione e potere digitale > Cybersicurezza — Sinonimi: cybersecurity, cyber security
+- **[FOGLIA]** Informazione e vita civica > Tecnologia e attualità scientifica > Innovazione e potere digitale > Sovranità tecnologica
+- **[FOGLIA]** Informazione e vita civica > Tecnologia e attualità scientifica > Innovazione e potere digitale > Semiconduttori
+- **[FOGLIA]** Informazione e vita civica > Tecnologia e attualità scientifica > Innovazione e potere digitale > Reti e connettività
+- **[FOGLIA]** Informazione e vita civica > Tecnologia e attualità scientifica > Innovazione e potere digitale > Automazione e robotica
+- **[RAMO]** Informazione e vita civica > Tecnologia e attualità scientifica > Scoperte e ricerca
+- **[FOGLIA]** Informazione e vita civica > Tecnologia e attualità scientifica > Scoperte e ricerca > Spazio e missioni
+- **[FOGLIA]** Informazione e vita civica > Tecnologia e attualità scientifica > Scoperte e ricerca > Fisica e nuove scoperte
+- **[FOGLIA]** Informazione e vita civica > Tecnologia e attualità scientifica > Scoperte e ricerca > Biologia e biotecnologie
+- **[FOGLIA]** Informazione e vita civica > Tecnologia e attualità scientifica > Scoperte e ricerca > Ricerca sul clima
+- **[FOGLIA]** Informazione e vita civica > Tecnologia e attualità scientifica > Scoperte e ricerca > Finanziamento della ricerca
+- **[FOGLIA]** Informazione e vita civica > Tecnologia e attualità scientifica > Scoperte e ricerca > Università e centri di ricerca
+- **[FOGLIA]** Informazione e vita civica > Tecnologia e attualità scientifica > Scoperte e ricerca > Integrità della ricerca
+- **[RAMO]** Informazione e vita civica > Cultura e società contemporanea
+- **[RAMO]** Informazione e vita civica > Cultura e società contemporanea > Cultura e media
+- **[FOGLIA]** Informazione e vita civica > Cultura e società contemporanea > Cultura e media > Editoria e giornali
+- **[FOGLIA]** Informazione e vita civica > Cultura e società contemporanea > Cultura e media > Televisione e radio
+- **[FOGLIA]** Informazione e vita civica > Cultura e società contemporanea > Cultura e media > Cinema e audiovisivo
+- **[FOGLIA]** Informazione e vita civica > Cultura e società contemporanea > Cultura e media > Musica e industria culturale
+- **[FOGLIA]** Informazione e vita civica > Cultura e società contemporanea > Cultura e media > Musei e patrimonio
+- **[FOGLIA]** Informazione e vita civica > Cultura e società contemporanea > Cultura e media > Festival e premi culturali
+- **[FOGLIA]** Informazione e vita civica > Cultura e società contemporanea > Cultura e media > Libertà di stampa
+- **[FOGLIA]** Informazione e vita civica > Cultura e società contemporanea > Cultura e media > Economia dei creator
+- **[RAMO]** Informazione e vita civica > Cultura e società contemporanea > Sport e attualità
+- **[FOGLIA]** Informazione e vita civica > Cultura e società contemporanea > Sport e attualità > Politica sportiva
+- **[FOGLIA]** Informazione e vita civica > Cultura e società contemporanea > Sport e attualità > Grandi eventi sportivi
+- **[FOGLIA]** Informazione e vita civica > Cultura e società contemporanea > Sport e attualità > Economia dello sport
+- **[FOGLIA]** Informazione e vita civica > Cultura e società contemporanea > Sport e attualità > Diritti e inclusione nello sport
+- **[FOGLIA]** Informazione e vita civica > Cultura e società contemporanea > Sport e attualità > Doping e integrità sportiva
+- **[RAMO]** Informazione e vita civica > Religioni e pensiero
+- **[RAMO]** Informazione e vita civica > Religioni e pensiero > Vita religiosa
+- **[FOGLIA]** Informazione e vita civica > Religioni e pensiero > Vita religiosa > Cattolicesimo e Vaticano
+- **[FOGLIA]** Informazione e vita civica > Religioni e pensiero > Vita religiosa > Cristianesimi
+- **[FOGLIA]** Informazione e vita civica > Religioni e pensiero > Vita religiosa > Islam
+- **[FOGLIA]** Informazione e vita civica > Religioni e pensiero > Vita religiosa > Ebraismo
+- **[FOGLIA]** Informazione e vita civica > Religioni e pensiero > Vita religiosa > Religioni asiatiche
+- **[FOGLIA]** Informazione e vita civica > Religioni e pensiero > Vita religiosa > Laicità e secolarizzazione
+- **[FOGLIA]** Informazione e vita civica > Religioni e pensiero > Vita religiosa > Dialogo interreligioso
+
+## Dati riutilizzabili
+
+- `catalogo.v0.2.json`: tutti i nodi, parentela, tipo ramo/foglia e sinonimi.
+- `catalogo-foglie.csv`: una riga per foglia e percorso completo.
+- `conteggi.json`: conteggi calcolati dal generatore.
+- `catalogo-editoriale.txt` e `news-revision.txt`: sorgenti editoriali; `genera.mjs` rigenera gli artefatti. `bozza-gruppi.txt` conserva la prima stesura superata.

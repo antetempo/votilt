@@ -1,6 +1,18 @@
 # Avanzamento VOTILT
 
-Aggiornato: 2026-11-06. Checkout C:\APP\AI\VOTILT, branch main senza commit. Stato: **READY FOR LOCAL DEMO**. Docker escluso, nessun push/deploy/store.
+Aggiornato: 2026-11-08. Checkout C:\APP\AI\VOTILT, branch main. Stato: **READY FOR LOCAL DEMO**. Commit iniziale `a0d85bf7240beb73f18406b99ed494a167984816` e push completati sul repository privato [antetempo/votilt](https://github.com/antetempo/votilt). Docker escluso; nessun deploy applicativo o rilascio store.
+
+## Repository e documentazione · 8 novembre 2026
+
+Revisione navigazione/scorrimento PASS: [votilt-navigation-plan.md](votilt-navigation-plan.md). Categoria direttamente sulla classifica, rimossi Immagini/Classifica; tocco immagine → stesso Feed con ID iniziale e ordine/ metrica canonici. Barra originale unica nel contenitore comune, disponibile anche nelle route Stack; azioni media condivise a simboli per cuore, share, link e opzioni/report/ritiro. Navigazione da TILT con annullamento autorevole e invio protetto. Regressione: 106 unit/componenti in 17 suite, 46 integrazioni, otto prove Android PASS in [android-navigation-results.json](evidence/android-navigation-results.json). APK compilato/installato; formato/font ripristinati e app aperta su Classifiche. Nessun nuovo commit/push/deploy.
+
+Revisione Classifiche PASS: [votilt-rankings-plan.md](votilt-rankings-plan.md). Vetrina dei primi contenuti reali per foglia, ricerca diretta con breadcrumb, categoria vuota raggiungibile senza vincitore inventato. Estensione `category_rankings` e snapshot/migrazione `migrate_categories_leader_previews.sql`; API `ranking` riutilizzata per la scelta canonica. Regressione host aggiornata PASS: 99 unit/componenti in 12 suite, 46 integrazioni con spareggi/membership/blocchi. Nuovo APK compilato/installato; cinque percorsi Android PASS in [android-rankings-results.json](evidence/android-rankings-results.json), compresi 12 leader confrontati con la classifica canonica e due colonne a 320 dp/font 130%. Totale storico: 31 controlli Android precedenti + 5 di questa revisione, svolti su build diverse.
+
+PASS: commit iniziale `Initial import VOTILT`, autore Git `antetempo <antetempo@gmail.com>`, 477 file; `main` e `origin/main` verificati allo stesso hash dopo il push. Credenziali, `.local/`, APK e directory native esclusi. Regressione host ripetuta prima del commit: typecheck/lint/format, 96 unit/componenti e 46 integrazioni PASS; audit dei 123 asset PASS.
+
+README riprogettato con copertina Dark Neon, cinque screenshot reali e video TILT con manifesto, scopo e funzionalità, guida dal clone alla build/APK, sviluppo, architettura, test, manutenzione e troubleshooting. Validati rendering GitHub Markdown, 36 riferimenti locali, sei ancore, 13 script npm, otto blocchi PowerShell e integrità dei sette media. La regola Git `android/` era troppo ampia: ora ignora solo `/android/`, lasciando includibile `scripts/android/HierarchyDump.java`; acquisizioni grezze escluse esplicitamente e selezione curata in `docs/media/`. Sorgente Java compilato. Prova: [readme-results.json](evidence/readme-results.json).
+
+Questi aggiornamenti documentali e del memory bank sono locali, successivi al push iniziale: nessun secondo commit/push eseguito. Nessun dispositivo Android collegato durante questa revisione; prove UI del 6 novembre conservate, senza dichiarare nuove esecuzioni.
 
 | Step | Stato | Evidenza |
 |---|---|---|

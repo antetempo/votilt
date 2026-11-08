@@ -23,7 +23,19 @@ Data finale: 2026-11-06T19:41:07.271Z. Windows, Node 24.14.0, PostgreSQL 18.3 na
 
 31 controlli Android registrati PASS nei nove report JSON (18 iniziali + 6 revisione + 7 TILT). Matrice: 40/40 criteri della demo valutati PASS con le evidenze indicate; il quiz disabilitato è previsto dal contratto in assenza di fonti REAL. Non significa prontezza store.
 
+## Verifica host e documentazione · 8 novembre 2026
+
+Prima del commit iniziale `a0d85bf` e del push su `antetempo/votilt` è stata ripetuta `npm run verify:all`: typecheck/lint/format, 96 test unit/componenti in 11 suite e 46 integrazioni PASS. `audit-assets.mjs` conferma 123 hash distinti e assenza EXIF. I JSON host in `evidence/` hanno data 8 novembre; le prove Android riportate sopra restano del 6 novembre.
+
+La successiva revisione del README ha verificato il rendering attraverso l'API Markdown di GitHub, 36 riferimenti locali, sei ancore, 13 script npm, cinque screenshot originali e sette media con hash coerenti. Sintassi degli otto blocchi PowerShell controllata senza eseguirli; `HierarchyDump.java` compilato con JDK 21 e classpath Android 36. Il lettore era stato escluso da Git dalla regola generica `android/`, ora limitata alla directory nativa di radice. Confini di esclusione di segreti/build e acquisizioni grezze verificati. Evidenza: [readme-results.json](evidence/readme-results.json).
+
+Android UI **NOT_RUN** in questa revisione documentale: ADB non elenca dispositivi collegati. Nessuna nuova build o modifica del comportamento applicativo.
+
 ## Invarianti e regressioni
+
+Revisione navigazione/scorrimento dell'8 novembre: `verify:all` PASS, 106 unit/componenti in 17 suite e 46 integrazioni. Nuovo APK compilato/installato; `android-navigation-e2e.mjs`: otto percorsi PASS. Verificati classifica diretta senza selettori, posizione iniziale dal secondo risultato e swipe sul terzo, simboli senza pulsanti testuali, share sheet nativo, report raggiungibile senza invio, barra unica su classifica/contenuto/report/impostazioni/TILT, annullamento TILT cambiando tab con campione intatto, piccolo formato/font 130%. Stato originale schermo ripristinato. [Evidenza](evidence/android-navigation-results.json), screenshot 60–67 nelle acquisizioni locali. Le 31 prove iniziali, cinque Classifiche e otto di questa tranche sono eseguite su build/fasi diverse; non tutte ripetute sull'ultimo APK.
+
+Revisione Classifiche dell'8 novembre: `verify:all` PASS con 99 unit/componenti in 12 suite e 46 integrazioni, estese a anteprime canoniche/spareggi, ricerca nei percorsi/foglie vuote, membership pending e blocchi. APK ricompilato/installato; cinque percorsi di `android-rankings-e2e.mjs` PASS: 12 anteprime confrontate con le classifiche canoniche, apertura classifica, ricerca foglia/breadcrumb, nessun risultato, due colonne a 320 dp/font 130%. Dimensioni/font ripristinati, app lasciata su Classifiche. [Evidenza](evidence/android-rankings-results.json). Le 31 prove Android precedenti restano storiche, non tutte ripetute su questa build.
 
 T01–T24/T26–T28 coperti nelle integrazioni (alcuni gruppi condividono una prova); T25 coperto da cache Android/voti bloccati e retry incerto senza falso successo. Le prove concorrenti usano sessioni reali, DB separato e lock/barriere: doppio primo voto, venti resolve duplicati, receipt reuse, stale/superseded, hide/resolve e sospensione mentre un voto o una modifica è già in attesa. Le letture del pool non conservano identità.
 

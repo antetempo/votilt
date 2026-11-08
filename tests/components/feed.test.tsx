@@ -32,6 +32,7 @@ jest.mock('@tanstack/react-query', () => ({
               mediaUrl: '/media/test',
               provenance: 'ai_generated',
               kind: 'ai_art',
+              status: 'approved',
               caption: mockCaption,
             },
           ],

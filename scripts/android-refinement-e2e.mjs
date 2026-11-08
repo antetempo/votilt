@@ -88,7 +88,7 @@ try {
   assert.equal((await rpc('champions')).find((x) => x.categoryId === cat.id)?.id, challenger.id);
   results.push({ flow: 'Confronto compatto e trasferimento del like verificato', status: 'PASS' });
   await deepLink('rankings');
-  await waitFor('Le categorie pi');
+  await waitFor('Al primo posto');
   await fill('Cerca una categoria', 'Sguardi');
   await waitFor('Classifica Sguardi dolci');
   screenshot('32-category-leaderboards');
@@ -101,7 +101,7 @@ try {
   await waitFor(name);
   screenshot('33-search-inside-category');
   results.push({
-    flow: 'Categorie piu votate, ricerca categoria e ricerca nella relativa classifica',
+    flow: 'Immagini al primo posto, ricerca foglia e ricerca nella relativa classifica',
     status: 'PASS',
   });
   await deepLink('create');

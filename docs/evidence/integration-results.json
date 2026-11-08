@@ -1,5 +1,5 @@
 {
-  "date": "2026-11-08T09:57:55.365Z",
+  "date": "2026-11-08T17:26:52.654Z",
   "database": "votilt_test",
   "results": [
     {
@@ -179,7 +179,7 @@
       "status": "PASS"
     },
     {
-      "id": "Categorie piu votate reali, ricerca per categoria e posizione mantenuta",
+      "id": "Anteprime dei primi posti, ricerca foglia/percorso, spareggi e privacy",
       "status": "PASS"
     },
     {

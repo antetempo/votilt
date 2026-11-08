@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "curatedOn": "2026-11-08",
+  "notes": "Schermate originali della demo, dati fittizi di collaudo. I contenuti sintetici visibili appartengono al catalogo AI dichiarato; manifesto assets/seed-media/manifest.json. Sorgenti grezze locali, copie curate incluse nel repository.",
+  "assets": [
+    {
+      "path": "docs/media/cover.svg",
+      "title": "Copertina editoriale VOTILT",
+      "provenance": "original_vector_design",
+      "author": "antetempo",
+      "createdOn": "2026-11-08",
+      "brandSource": "assets/icons/mark.svg",
+      "notes": "Impaginazione editoriale vettoriale; non è uno screenshot dell’app e non è un’immagine AI.",
+      "sha256": "f2bb05865c0532f25511a8c5e7f82cfe166bbcadac79245ba47a030ac6422f7a"
+    },
+    {
+      "path": "docs/media/feed.png",
+      "title": "Feed immersivo",
+      "provenance": "android_screenshot",
+      "capturedOn": "2026-11-06",
+      "source": "docs/evidence/android/37-final-refined-feed.png",
+      "sourceAvailability": "local_qa_capture_ignored_by_git",
+      "sha256": "37f36a64e5cf8787b56c82f94e1956b52f7bf81e9fd1596b07d73532369eefd5",
+      "bytes": 3861418,
+      "transformations": "none"
+    },
+    {
+      "path": "docs/media/tilt.png",
+      "title": "Scena TILT dinamica",
+      "provenance": "android_screenshot",
+      "capturedOn": "2026-11-06",
+      "source": "docs/evidence/android/44-final-tilt-open.png",
+      "sourceAvailability": "local_qa_capture_ignored_by_git",
+      "sha256": "11843ee66b2ef9e17bb11df189e7f238f5d8358bc065c1be927f229ee5459649",
+      "bytes": 2038891,
+      "transformations": "none"
+    },
+    {
+      "path": "docs/media/explore.png",
+      "title": "Esplora e catalogo",
+      "provenance": "android_screenshot",
+      "capturedOn": "2026-11-06",
+      "source": "docs/evidence/android/27-large-explore.png",
+      "sourceAvailability": "local_qa_capture_ignored_by_git",
+      "sha256": "599ec3bf6c9819fbe61a004d002fe1ed55fb7e6dc88f0452b0f5038eb8b466f2",
+      "bytes": 380128,
+      "transformations": "none"
+    },
+    {
+      "path": "docs/media/rankings.png",
+      "title": "Immagini prime nelle categorie e ricerca diretta delle foglie",
+      "provenance": "android_screenshot",
+      "capturedOn": "2026-11-08",
+      "source": "docs/evidence/android/50-ranking-image-leaders.png",
+      "sourceAvailability": "local_qa_capture_ignored_by_git",
+      "sha256": "a95ccdb9e5808da6011399cf0a489311d228b03a61cb32ad06dbf86be81b2ace",
+      "bytes": 2409346,
+      "transformations": "none"
+    },
+    {
+      "path": "docs/media/publish.png",
+      "title": "Pubblicazione con categoria selezionata",
+      "provenance": "android_screenshot",
+      "capturedOn": "2026-11-06",
+      "source": "docs/evidence/android/35-draft-category-selected.png",
+      "sourceAvailability": "local_qa_capture_ignored_by_git",
+      "sha256": "171aa77b17912c79f2adac0f89fa868fc3c25963457fc5bb820f29625cafa019",
+      "bytes": 216600,
+      "transformations": "none"
+    },
+    {
+      "path": "docs/media/tilt-motion.mp4",
+      "title": "Video originale del TILT",
+      "provenance": "android_screen_recording",
+      "capturedOn": "2026-11-06",
+      "source": "docs/evidence/android/tilt-motion.mp4",
+      "sourceAvailability": "local_qa_capture_ignored_by_git",
+      "sha256": "e438d8dc978a9b8f9e3ab289ebb20b6763d88caa6cd6a10714af0cf045b02fb6",
+      "bytes": 11934748,
+      "transformations": "none"
+    }
+  ]
+}

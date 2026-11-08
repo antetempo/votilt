@@ -2,32 +2,35 @@
 
 ## Current Focus
 
-Giornata chiusa e consolidata da Fabrizio il 2026-11-06. VOTILT Android pronto per la prossima prova locale, senza Docker. Ultima sessione: [[01-votilt-android-brand-tilt]]. Prossimo lavoro: feedback sul prodotto e sul TILT dinamico; nessuna implementazione core rimasta aperta.
+Fabrizio · 8 novembre 2026: revisione creator/catalogo autorizzata in automatico fino a build e installazione Android. Il precedente gate preventivo sul piano è revocato. Piano autorevole [creator e catalogo](../docs/votilt-creator-catalog-plan.md); [ledger approvazioni](../docs/VOTILT_APPROVAL_LEDGER.md). Prove tecniche PASS rendono pronta da verificare una fase; approvazione finale solo dell’utente.
+
+Gerarchia completa [Markdown](../docs/research/catalogo-editoriale/GERARCHIA_COMPLETA.md), JSON/CSV e conteggi: BOZZA, 36 aree, 1216 foglie, profondità 5; 270 foglie news. Copia utente sotto Documents/Codex/2026-11-08/realtime-voice-chat/outputs/. Ricerca hashtag documentata con limiti d’accesso e nessun volume inventato. Non ancora importata al checkpoint di consolidamento. Decisione [[creator-per-foglia]]: cuore elegge autore per foglia, origine immagine, follow persona/categoria distinti, classificazione chiaramente visibile. Catalogo editoriale senza proposte utenti. Nessuna nuova immagine generata per questo piano; fase grafica esplicita da eseguire.
 
 ## Next Steps
 
-1. Alla ripresa verificare runtime/APK e seguire [README](../README.md); provare il prodotto e raccogliere il feedback di Fabrizio.
-2. Se richiesto, curare fotografie REAL con provenienza verificata per il quiz; nessuna AI deve essere etichettata REAL.
-3. Prima di distribuzione esterna, affrontare [readiness](../docs/RELEASE_READINESS.md) e [[stato-consegna-e-debito]]: HTTPS/firma, segreti/backup, moderazione, dipendenze, telefono/TalkBack, misure prestazioni e contesa del lock globale.
+1. Eseguire commit e push già autorizzati di README, revisioni Android, piano e memory bank su antetempo/votilt; verificare hash remoto, nessun deploy.
+2. Proseguire F1–F8 dal piano: catalogo profondo, grafica/immagini, motore creator, ricerca/upload, follow, profili e classifiche; test host e prova Android prima di dichiarare pronto.
+3. Alla ripresa verificare runtime/APK e seguire [README](../README.md); provare il prodotto e raccogliere il feedback di Fabrizio.
+4. Se richiesto, curare fotografie REAL con provenienza verificata per il quiz; nessuna AI deve essere etichettata REAL.
+5. Prima di distribuzione esterna, affrontare [readiness](../docs/RELEASE_READINESS.md) e [[stato-consegna-e-debito]]: HTTPS/firma, segreti/backup, moderazione, dipendenze, telefono/TalkBack, misure prestazioni e contesa del lock globale.
 
+Disposizioni diario chieste a Fabrizio, ancora pendenti; nessuna chiusura umana registrata.
 ## Stato verificato
 
-96 unit/componenti (11 suite), 46 integrazioni HTTP/PG e 31 controlli Android registrati PASS (18 iniziali + 6 revisione + 7 TILT). Ultimi sette percorsi TILT ripetuti sull'APK finale, inclusi movimento ridotto e formato piccolo/font 130%. Fonte: [TEST_REPORT](../docs/TEST_REPORT.md). FPS/memoria/throughput non misurati.
+Revisioni precedenti [Classifiche](../docs/votilt-rankings-plan.md) e [navigazione](../docs/votilt-navigation-plan.md): 106 unit/componenti, 46 integrazioni HTTP/PG, typecheck/lint/format PASS; 8 percorsi Android navigazione e 5 Classifiche su build rispettive. Il nuovo modello creator deve essere testato separatamente. Storiche 31 prove Android non rieseguite integralmente. Fonte [TEST_REPORT](../docs/TEST_REPORT.md).
 
-Brandbook MD/HTML/PDF, 23 icone originali e palette/contrasto approvati conservati. Feed con like compatto, categoria e sola descrizione autore espandibile. Centro solo simbolo pubblicazione; classifiche per categorie più votate con ricerca interna. Controlli testo/duplicati con revisione umana. TILT con sola scritta, due carte 3D animate e X. Metadati obbligatori per categoria preservati: [[prodotto-brand-e-tilt]], [[metadati-contenuti]].
-
-Piani PASS: [iniziale](../docs/votilt-plan.md), [revisione](../docs/votilt-refinement-plan.md), [TILT](../docs/votilt-tilt-plan.md). Catalogo base: 41 foglie, 123 immagini distinte (111 AI dichiarate + 12 tool card); bootstrap/rerun preservano credenziali e dati.
+Brandbook MD/HTML/PDF, 23 icone, palette conservati. Runtime precedente: 41 foglie, 123 immagini (111 AI dichiarate + 12 tool card). APK autonomo già installato per revisioni precedenti, non ancora aggiornato per creator/catalogo. Sessione consolidata [[03-creator-catalogo]], immutabile; successive prove in current-session.
 
 ## Runtime e repository
 
-Checkout C:/APP/AI/VOTILT, main senza commit, file untracked. Nessun commit/push/deploy autorizzato o eseguito. APK output/VOTILT-local-demo.apk autonomo con firma debug, arm64-v8a/x86_64. API loopback 4317; PostgreSQL VOTILT dedicato 55432, servizio esistente 5432 intatto. APK localhost via adb reverse; Metro non serve. Credenziali solo nel file privato .local/demo-credentials.json, mai nel vault. Alla chiusura operativa emulatore visibile con TILT aperto; non assumere runtime attivo al prossimo avvio.
+Checkout C:/APP/AI/VOTILT, unico worktree, main/upstream origin/main. Commit iniziale a0d85bf7240beb73f18406b99ed494a167984816 già pushato su repository privato https://github.com/antetempo/votilt.git. Nuovo commit/push autorizzato, da registrare soltanto dopo esecuzione. API 4317, PostgreSQL dedicato 55432, adb reverse; verificare processi prima della prova. Credenziali soltanto .local/. Docker vietato. Nessuna modifica ad altri progetti o credenziali.
 
 ## Blockers
 
-Nessuno per demo locale. Quiz pubblico intenzionalmente disabilitato senza dataset REAL documentato. Leaven-chain non eseguibile: fallback sequenziale richiesto, revisori solo per studio/audit. Debito di capacità e limiti di rilascio registrati nei Next Steps, senza bloccare la prova locale.
+Nessuno per sviluppo locale. Quiz pubblico senza dataset REAL resta disabilitato. Territori senza dati adeguati restano progetto, senza classifiche geografiche simulate. Prestazioni e hardening in [readiness](../docs/RELEASE_READINESS.md), [[stato-consegna-e-debito]].
 
 ## Recent Deploys
 
-Nessuno. Solo build, installazione e test locali; nessuna pubblicazione remota/store.
+Nessun deploy applicativo/store. Commit iniziale e push GitHub completati; pubblicazione successiva in corso di preparazione.
 
-> 🧑‍💻 Ultimo aggiornamento memory bank: **Fabrizio** · 2026-11-06
+> 🧑‍💻 Ultimo aggiornamento memory bank: **Fabrizio** · 2026-11-08

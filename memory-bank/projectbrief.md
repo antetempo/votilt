@@ -10,7 +10,7 @@ Obiettivi: app Android installabile e provata su emulatore Windows, backend mult
 
 Vincolo successivo prioritario: Docker vietato. PostgreSQL 18 nativo già installato e Node API; nessun Supabase cloud o container. Non modificare DB/credenziali di altri progetti. Login email/password senza Google. Asset generati dall'agente con provenienza dichiarata; nessuna foto sintetica dichiarata REAL.
 
-Autorizzato: sviluppo/test locale, inizializzazione e aggiornamento requisiti nel memory bank, studio agentico e piano per step. Commit/push/deploy non autorizzati. Leaven-chain non disponibile; lavoro sequenziale in chat madre con ledger persistente.
+Autorizzato: sviluppo/test locale, inizializzazione e aggiornamento requisiti nel memory bank, studio agentico e piano per step. Fabrizio ha autorizzato l'8 novembre 2026 il commit iniziale e il push su `antetempo/votilt`, entrambi completati (`a0d85bf`, main). Le azioni successive di commit/push richiedono un nuovo ok; nessun deploy applicativo o pubblicazione store autorizzato. Leaven-chain non disponibile; lavoro sequenziale in chat madre con ledger persistente. Riferimento repository: [[repository-github]].
 
 Requisiti prioritari di revisione (Fabrizio, 2026-11-06): conservare palette e contrasto; brandbook e tutte le icone originali; feed senza wordmark, CTA o didascalia generica, solo like/categoria e testo autore facoltativo in una riga espandibile. Centro solo simbolo per pubblicare, rimuovere il vecchio hub TILT. Classifiche dalle categorie più votate, ricerca categoria e ricerca dentro ogni categoria. Creazione categoria con controllo esteso parole/offuscamenti e duplicati, suggerendo quella esistente. Implementazione e prove nel piano docs/votilt-refinement-plan.md.
 

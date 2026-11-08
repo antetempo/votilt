@@ -8,6 +8,8 @@ tags: [database, migrations, local-runtime]
 
 # Risorse locali VOTILT
 
+Revisione Classifiche, Fabrizio · 2026-11-08 (PASS): `migrate_categories_leader_previews.sql`, snapshot completo idempotente generato con gli altri snapshot da `scripts/migrate.mjs` e `schema.sql`. Estende `category_rankings` con percorso pubblicato radice/foglia e primo contenuto della classifica canonica Like; nessun leader senza supporti. Home limitata a 12 anteprime, ricerca fino a 100 foglie anche per parole del percorso. Riusa `api.dispatch('ranking',...)` per preservare spareggi, permessi e privacy. Applicata solo al cluster VOTILT 55432 e ai test dedicati; 99 unit/componenti, 46 integrazioni e 5 percorsi Android PASS. Nessun reset o modifica credenziali.
+
 Nessun deploy remoto autorizzato. Docker vietato. Usare cluster dedicato su loopback con binari PostgreSQL 18 già installati, mai il servizio esistente su 5432. Migrazioni da eseguire solo sul database identificato VOTILT.
 
 Per ogni modifica DDL/seed/backfill: aggiornare schema.sql, migrazione idempotente migrate_<tabella>_<cosa>.sql e questa checklist nella stessa tranche. Testare fresh install e rerun. Reset distruttivi richiedono autorizzazione esplicita; preferire test fixture isolate e transazioni.

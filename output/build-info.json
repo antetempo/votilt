@@ -1,5 +1,5 @@
 {
-  "date": "2026-11-06T19:38:28.345Z",
+  "date": "2026-11-08T16:49:10.248Z",
   "package": "com.antetempo.votilt",
   "version": "0.1.0",
   "abis": [
@@ -8,6 +8,6 @@
   ],
   "api": "http://127.0.0.1:4317",
   "signing": "Android debug signing for local demo only",
-  "size": 63677721,
-  "sha256": "cc26f2c07d2eb6370efc158379487e912751a24116e77ffe405a75bda47b3f79"
+  "size": 63683633,
+  "sha256": "af5cfbef440460409574524ad88acff8298205131421f92adab8c08e9d2d6b38"
 }
