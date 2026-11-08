@@ -1,10 +1,13 @@
 {
-  "date": "2026-11-08T18:33:21.586Z",
-  "status": "IN_PROGRESS",
+  "date": "2026-11-08T18:36:39.763Z",
+  "status": "PASS",
   "repository": "https://github.com/antetempo/votilt",
   "visibility": "public",
   "branch": "main",
   "authorEmail": "antetempo@gmail.com",
-  "previousVerifiedCommit": "e9d78ab0923928e64648986e2ebf801e6eccac13",
-  "notes": "Consegna creator/catalogo pronta; sostituire con ricevuta solo dopo confronto hash remoto. Nessun deploy."
+  "authenticatedLogin": "antetempo",
+  "commit": "9ef7508b95b0c8ea57ab80de3cedb8b63288f5ee",
+  "remoteCommit": "9ef7508b95b0c8ea57ab80de3cedb8b63288f5ee",
+  "hashMatch": true,
+  "scope": "Authorized source commit/push; no application deployment"
 }

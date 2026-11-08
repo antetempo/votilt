@@ -5,11 +5,6 @@
       "firstSession": 4,
       "lastSession": 4
     },
-    "completare la pubblicazione git già autorizzata della nuova consegna e registrar": {
-      "text": "Completare la pubblicazione Git già autorizzata della nuova consegna e registrare hash remoto nella [ricevuta](../docs/evidence/github-publication.json). Nessun deploy.",
-      "firstSession": 4,
-      "lastSession": 4
-    },
     "fabrizio: dare disposizione sui tre punti del diario precedentemente segnalati, ": {
       "text": "Fabrizio: dare disposizione sui tre punti del diario precedentemente segnalati, ancora pendenti; trigger prossimo riscontro. Nessuna chiusura dedotta automaticamente.",
       "firstSession": 4,

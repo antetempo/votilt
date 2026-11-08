@@ -11,10 +11,9 @@ Gerarchia [completa](../docs/research/catalogo-editoriale/GERARCHIA_COMPLETA.md)
 ## Next Steps
 
 1. Fabrizio: provare la build installata e dare il riscontro di prodotto; trigger prossimo uso dell’app. Prove tecniche PASS non equivalgono ad approvazione umana.
-2. Completare la pubblicazione Git già autorizzata della nuova consegna e registrare hash remoto nella [ricevuta](../docs/evidence/github-publication.json). Nessun deploy.
-3. Fabrizio: dare disposizione sui tre punti del diario precedentemente segnalati, ancora pendenti; trigger prossimo riscontro. Nessuna chiusura dedotta automaticamente.
-4. Su richiesta di estendere il prodotto: pianificare separatamente proposte editoriali, video e territori con dati volontari; quiz solo dopo dataset REAL con provenienza verificata.
-5. Prima di distribuzione esterna: affrontare [readiness](../docs/RELEASE_READINESS.md), [[creator-catalog-delivery]] e debito lock globale; misure di contesa/performance, telefono/TalkBack, HTTPS/firma, backup/moderazione e dipendenze.
+2. Fabrizio: dare disposizione sui tre punti del diario precedentemente segnalati, ancora pendenti; trigger prossimo riscontro. Nessuna chiusura dedotta automaticamente.
+3. Su richiesta di estendere il prodotto: pianificare separatamente proposte editoriali, video e territori con dati volontari; quiz solo dopo dataset REAL con provenienza verificata.
+4. Prima di distribuzione esterna: affrontare [readiness](../docs/RELEASE_READINESS.md), [[creator-catalog-delivery]] e debito lock globale; misure di contesa/performance, telefono/TalkBack, HTTPS/firma, backup/moderazione e dipendenze.
 
 ## Stato verificato
 
@@ -22,7 +21,7 @@ Gerarchia [completa](../docs/research/catalogo-editoriale/GERARCHIA_COMPLETA.md)
 
 ## Runtime e repository
 
-Checkout C:/APP/AI/VOTILT, unico worktree, main/upstream origin/main. Repository **pubblico** https://github.com/antetempo/votilt.git per scelta esplicita, autore antetempo <antetempo@gmail.com>. Iniziale a0d85bf e successivo e9d78ab pushati/verificati. Stato pubblicazione corrente nella ricevuta; dettagli [[repository-github-public]]. API 4317, PostgreSQL dedicato 55432, AVD Medium_Phone_API_36.1/emulator-5554, adb reverse; verificare processi alla ripresa. APK autonomo senza Metro. Credenziali soltanto .local/. Docker vietato, servizio 5432 e altri progetti intatti.
+Checkout C:/APP/AI/VOTILT, unico worktree, main/upstream origin/main. Repository **pubblico** https://github.com/antetempo/votilt.git per scelta esplicita, autore antetempo <antetempo@gmail.com>. Iniziale a0d85bf, successivo e9d78ab e consegna creator 9ef7508b95b0c8ea57ab80de3cedb8b63288f5ee **pushati/verificati**, hash remoto identico. Ricevuta nel repository; dettagli [[repository-github-public]]. API 4317, PostgreSQL dedicato 55432, AVD Medium_Phone_API_36.1/emulator-5554, adb reverse; verificare processi alla ripresa. APK autonomo senza Metro. Credenziali soltanto .local/. Docker vietato, servizio 5432 e altri progetti intatti.
 
 ## Blockers
 
@@ -30,6 +29,6 @@ Nessuno per la demo locale. Quiz senza dataset REAL disabilitato. Nessun campion
 
 ## Recent Deploys
 
-Nessun deploy applicativo/store. Commit/push sorgenti su GitHub autorizzati; ricevuta effettiva separata dalle prove Android.
+Nessun deploy applicativo/store. Consegna creator 9ef7508 pubblicata su main; account antetempo, autore antetempo@gmail.com, repository pubblico. Hash remoto verificato nella ricevuta.
 
 > 🧑‍💻 Ultimo aggiornamento memory bank: **Fabrizio** · 2026-11-08

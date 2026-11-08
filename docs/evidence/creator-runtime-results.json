@@ -1,0 +1,11 @@
+{
+  "date": "2026-11-08T18:37:25.480Z",
+  "status": "PASS",
+  "apiHealth": 200,
+  "device": "emulator-5554",
+  "foregroundPackage": "com.antetempo.votilt",
+  "installedApkSha256": "69c1827ec1b1be1138e3c558731e96d2ed4c846680458ebef1b107dd0f85f45e",
+  "buildApkSha256": "69c1827ec1b1be1138e3c558731e96d2ed4c846680458ebef1b107dd0f85f45e",
+  "hashMatch": true,
+  "scope": "Local Android, no deployment"
+}
