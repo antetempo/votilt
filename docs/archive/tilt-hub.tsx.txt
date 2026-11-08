@@ -1,0 +1,140 @@
+import React, { useState } from 'react';
+import { View } from 'react-native';
+import { router } from 'expo-router';
+import { useQuery } from '@tanstack/react-query';
+import { LinearGradient } from 'expo-linear-gradient';
+import {
+  Button,
+  Card,
+  Chip,
+  Empty,
+  ErrorState,
+  Label,
+  Loading,
+  Screen,
+  Title,
+} from '../../src/components/ui';
+import { MediaGrid } from '../../src/components/MediaGrid';
+import { rpc } from '../../src/lib/api';
+import { useSession } from '../../src/lib/session';
+import type { MediaItem } from '../../src/types/domain';
+import { colors as c } from '../../src/theme/tokens';
+type History = {
+  id: string;
+  category_title: string;
+  status: string;
+  winner_side: string;
+  created_at: string;
+};
+export default function Tilt() {
+  const { user } = useSession();
+  const [history, setHistory] = useState(false);
+  const q = useQuery({
+    queryKey: ['champions', user?.id],
+    queryFn: () => rpc<MediaItem[]>('champions'),
+    enabled: !!user,
+  });
+  const daily = useQuery({
+    queryKey: ['daily'],
+    queryFn: () => rpc<{ categoryId: string; title: string }>('daily'),
+  });
+  const h = useQuery({
+    queryKey: ['history', user?.id],
+    queryFn: () => rpc<History[]>('history'),
+    enabled: !!user && history,
+  });
+  if (!user)
+    return (
+      <Screen>
+        <Empty
+          title="Il tuo trono ti aspetta."
+          body="Accedi per scegliere i campioni e sfidarli in TILT."
+          action="Accedi"
+          onPress={() => router.push('/(auth)/login')}
+        />
+      </Screen>
+    );
+  return (
+    <Screen>
+      <Label style={{ color: c.purple, fontSize: 11, letterSpacing: 2 }}>
+        UNO SOLO RESTA SUL TRONO
+      </Label>
+      <Title>Il tuo regno.</Title>
+      {daily.data && (
+        <LinearGradient
+          colors={['#3A2054', '#201B35']}
+          style={{ borderRadius: 24, padding: 22, gap: 12, borderWidth: 1, borderColor: '#70439D' }}
+        >
+          <Label style={{ fontSize: 11, color: c.cyan, letterSpacing: 2 }}>
+            ⚡ TILT DEL GIORNO
+          </Label>
+          <Title style={{ fontSize: 25 }}>{daily.data.title}</Title>
+          <Label style={{ color: c.muted }}>La stessa sfida, per tutti. Oggi scegli tu.</Label>
+          <Button
+            title="Entra nella sfida"
+            onPress={() => router.push(`/category/${daily.data!.categoryId}`)}
+          />
+        </LinearGradient>
+      )}
+      <Button
+        title="Friends Battle · Confronta i tuoi gusti"
+        secondary
+        icon="people-outline"
+        onPress={() => router.push('/friends')}
+      />
+      <View style={{ flexDirection: 'row', gap: 8 }}>
+        <Chip
+          title={`I miei campioni ${q.data?.length || 0}`}
+          selected={!history}
+          onPress={() => setHistory(false)}
+        />
+        <Chip title="I miei duelli" selected={history} onPress={() => setHistory(true)} />
+      </View>
+      {history ? (
+        h.isPending ? (
+          <Loading />
+        ) : h.error ? (
+          <ErrorState error={h.error} retry={() => void h.refetch()} />
+        ) : !h.data?.length ? (
+          <Empty
+            title="Il primo TILT deve ancora arrivare."
+            body="Sfida un tuo campione scegliendo un altro contenuto nella stessa categoria."
+          />
+        ) : (
+          h.data.map((x) => (
+            <Card key={x.id}>
+              <Label>{x.category_title}</Label>
+              <Label style={{ fontSize: 12, color: c.muted }}>
+                {x.status === 'resolved'
+                  ? x.winner_side === 'INCUMBENT'
+                    ? 'Il trono è salvo.'
+                    : 'Nuovo campione incoronato!'
+                  : {
+                      pending: 'In attesa',
+                      cancelled: 'Annullato',
+                      superseded: 'Superato',
+                      stale: 'Non più valido',
+                      expired: 'Scaduto',
+                    }[x.status] || x.status}{' '}
+                · {new Date(x.created_at).toLocaleDateString('it-IT')}
+              </Label>
+            </Card>
+          ))
+        )
+      ) : q.isPending ? (
+        <Loading />
+      ) : q.error ? (
+        <ErrorState error={q.error} retry={() => void q.refetch()} />
+      ) : !q.data.length ? (
+        <Empty
+          title="Nessun campione. Ancora."
+          body="Il primo contenuto che voti diventa il tuo campione in quella categoria."
+          action="Vai al feed"
+          onPress={() => router.push('/(tabs)')}
+        />
+      ) : (
+        <MediaGrid items={q.data} champions />
+      )}
+    </Screen>
+  );
+}

@@ -1,0 +1,26 @@
+{
+  "date": "2026-11-06T19:39:46.740Z",
+  "results": [
+    {
+      "flow": "TILT a schermo intero, due immagini accessibili e sola scritta TILT",
+      "status": "PASS"
+    },
+    {
+      "flow": "Animazione nativa attiva: fotogrammi della zona carte differenti",
+      "status": "PASS",
+      "changedChannels": 1885868
+    },
+    {
+      "flow": "X annulla e preserva il like originale",
+      "status": "PASS"
+    },
+    {
+      "flow": "Tocco immagine, animazione di conferma e trasferimento reale del like; registrazione MP4",
+      "status": "PASS"
+    },
+    {
+      "flow": "Indietro Android annulla senza trasferire la preferenza",
+      "status": "PASS"
+    }
+  ]
+}

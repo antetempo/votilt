@@ -1,0 +1,30 @@
+{
+  "date": "2026-11-08T09:57:55.420Z",
+  "results": [
+    {
+      "name": "typecheck",
+      "status": "PASS",
+      "durationMs": 8300
+    },
+    {
+      "name": "lint",
+      "status": "PASS",
+      "durationMs": 19507
+    },
+    {
+      "name": "format",
+      "status": "PASS",
+      "durationMs": 1691
+    },
+    {
+      "name": "unit/components",
+      "status": "PASS",
+      "durationMs": 16058
+    },
+    {
+      "name": "integration",
+      "status": "PASS",
+      "durationMs": 6836
+    }
+  ]
+}

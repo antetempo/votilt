@@ -1,0 +1,137 @@
+import assert from 'node:assert/strict';
+import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import {
+  command,
+  pause,
+  tap,
+  fill,
+  waitFor,
+  screenshot,
+  deepLink,
+  hierarchy,
+  scrollTo,
+} from './android-driver.mjs';
+const api = 'http://127.0.0.1:4317';
+const result = [];
+let token;
+async function call(action, body = {}) {
+  const r = await fetch(`${api}/rpc/${action}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+    },
+    body: JSON.stringify(body),
+  });
+  const data = await r.json();
+  if (!r.ok) throw new Error(data.code);
+  return data;
+}
+try {
+  assert.match(command(['devices']), /\tdevice\b/, 'Nessun emulatore Android pronto');
+  assert.match(
+    command(['shell', 'pm', 'list', 'packages', 'com.antetempo.votilt']),
+    /com.antetempo.votilt/,
+    'Prima compila e installa npm run android',
+  );
+  command(['reverse', 'tcp:8081', 'tcp:8081']);
+  command(['shell', 'am', 'force-stop', 'com.antetempo.votilt']);
+  if (process.argv.includes('--release')) {
+    command(['reverse', 'tcp:4317', 'tcp:4317']);
+    command(['shell', 'am', 'start', '-W', '-n', 'com.antetempo.votilt/.MainActivity']);
+  } else
+    command([
+      'shell',
+      "am start -W -a android.intent.action.VIEW -d 'exp+votilt://?__expo_url=http%3A%2F%2F127.0.0.1%3A8081&__expo_disable_fab=1&__expo_disable_auto_launch=1&__expo_disable_onboarding=1' com.antetempo.votilt",
+    ]);
+  await pause(1500);
+  const first = hierarchy();
+  if (first.some((n) => (n.text || '').includes('Continue'))) await tap('Continue');
+  await pause(1500);
+  if (
+    !hierarchy().some((n) => (n['content-desc'] || n.text || '').includes('Entra nel tuo universo'))
+  ) {
+    await deepLink('settings');
+    await scrollTo('Esci dall’account');
+    await tap('Esci dall’account');
+  }
+  await waitFor('Entra nel tuo universo', 90000);
+  screenshot('01-welcome');
+  result.push({ flow: 'Welcome e brand Android', status: 'PASS' });
+  await tap('Entra nel tuo universo');
+  await waitFor('Bentornato');
+  const credentials = JSON.parse(readFileSync('.local/demo-credentials.json', 'utf8'))[0];
+  await fill('Email', credentials.email);
+  await fill('Password', credentials.password);
+  await tap('Accedi');
+  await waitFor('Per te', 30000);
+  screenshot('02-feed');
+  const auth = await fetch(`${api}/auth/login`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(credentials),
+  });
+  assert.equal(auth.status, 200);
+  token = (await auth.json()).token;
+  result.push({ flow: 'Login reale Android e feed', status: 'PASS' });
+  const champions = await call('champions');
+  const categories = await call('categories');
+  const leaf = categories.find(
+    (x) => x.depth === 4 && !champions.some((c) => c.categoryId === x.id),
+  );
+  assert.ok(leaf, 'Occorre una foglia senza campione per il primo voto E2E');
+  await deepLink(`category/${leaf.id}`);
+  await waitFor('Scegli come campione');
+  await tap('Scegli come campione');
+  await waitFor('Hai scelto il tuo campione');
+  screenshot('03-first-vote');
+  await tap('OK');
+  const after = await call('champions');
+  const champion = after.find((x) => x.categoryId === leaf.id);
+  assert.ok(champion);
+  result.push({ flow: 'Primo voto Android persistito', status: 'PASS' });
+  const page = await call('feed', { categoryId: leaf.id, seed: 'android-e2e', limit: 12 });
+  const challenger = page.items.find((x) => x.id !== champion.id);
+  assert.ok(challenger);
+  await deepLink(`content/${challenger.id}?categoryId=${leaf.id}`);
+  await scrollTo('Scegli o sfida');
+  await tap('Scegli o sfida');
+  await waitFor('Uno solo resta');
+  screenshot('04-tilt');
+  await tap('Annulla');
+  await waitFor('Scegli o sfida');
+  assert.equal((await call('champions')).find((x) => x.categoryId === leaf.id).id, champion.id);
+  result.push({ flow: 'Annullamento TILT senza trasferimento', status: 'PASS' });
+  await tap('Scegli o sfida');
+  await waitFor('Uno solo resta');
+  await tap('Scelgo lui');
+  await waitFor('Nuovo campione incoronato');
+  screenshot('05-transfer');
+  await tap('OK');
+  assert.equal((await call('champions')).find((x) => x.categoryId === leaf.id).id, challenger.id);
+  result.push({ flow: 'TILT challenger salva il campione reale', status: 'PASS' });
+  await deepLink('rankings');
+  await waitFor('Chi tiene il trono');
+  screenshot('06-ranking');
+  result.push({ flow: 'Classifiche Android', status: 'PASS' });
+  await deepLink('ai-universe');
+  await waitFor('Oltre il possibile');
+  await tap('Real or AI?');
+  await waitFor('Il mistero merita');
+  screenshot('07-quiz-provenance');
+  result.push({ flow: 'Quiz disabilitato onestamente senza fonti REAL', status: 'PASS' });
+} catch (e) {
+  result.push({ flow: 'Percorso Android corrente', status: 'FAIL', detail: e.message });
+  try {
+    screenshot('failure');
+  } catch {}
+  console.error(e.message);
+  process.exitCode = 1;
+} finally {
+  mkdirSync('docs/evidence', { recursive: true });
+  writeFileSync(
+    'docs/evidence/android-results.json',
+    JSON.stringify({ date: new Date().toISOString(), results: result }, null, 2),
+  );
+  console.log(result.map((r) => `${r.status} ${r.flow}`).join('\n'));
+}

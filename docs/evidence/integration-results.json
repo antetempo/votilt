@@ -1,0 +1,190 @@
+{
+  "date": "2026-11-08T09:57:55.365Z",
+  "database": "votilt_test",
+  "results": [
+    {
+      "id": "AUTH login negativo, sessione persistente e health",
+      "status": "PASS"
+    },
+    {
+      "id": "T01 primo voto unico",
+      "status": "PASS"
+    },
+    {
+      "id": "T02 rivoto campione senza incremento",
+      "status": "PASS"
+    },
+    {
+      "id": "T03 sfidante non trasferisce supporto",
+      "status": "PASS"
+    },
+    {
+      "id": "T04 annullamento senza Elo",
+      "status": "PASS"
+    },
+    {
+      "id": "T05 conferma campione, Elo una volta",
+      "status": "PASS"
+    },
+    {
+      "id": "T06 trasferimento campione/versione",
+      "status": "PASS"
+    },
+    {
+      "id": "T07/T19 venti retry concorrenti, stessa ricevuta/Elo unico",
+      "status": "PASS"
+    },
+    {
+      "id": "T08 ricevuta intent originale e reuse diverso respinto",
+      "status": "PASS"
+    },
+    {
+      "id": "T09 due primi voti contemporanei",
+      "status": "PASS"
+    },
+    {
+      "id": "T10/T27 due dispositivi, vecchio duello superato",
+      "status": "PASS"
+    },
+    {
+      "id": "T11 pending respinto",
+      "status": "PASS"
+    },
+    {
+      "id": "T12 nodo non foglia respinto",
+      "status": "PASS"
+    },
+    {
+      "id": "T13 membership diversa respinta",
+      "status": "PASS"
+    },
+    {
+      "id": "T14 duello altrui respinto",
+      "status": "PASS"
+    },
+    {
+      "id": "T15 RLS/grants e nessuna escalation",
+      "status": "PASS"
+    },
+    {
+      "id": "T16 moderazione invalida campioni e duelli",
+      "status": "PASS"
+    },
+    {
+      "id": "T17 blocco autore e campione incompatibile",
+      "status": "PASS"
+    },
+    {
+      "id": "T18 pending media protetto guest/altro, accessibile autore/mod",
+      "status": "PASS"
+    },
+    {
+      "id": "T20 cooldown non impedisce preferenza",
+      "status": "PASS"
+    },
+    {
+      "id": "T21 truth quiz nascosta e primo tentativo unico",
+      "status": "PASS"
+    },
+    {
+      "id": "T22 confronto privato negato",
+      "status": "PASS"
+    },
+    {
+      "id": "T23 cancellazione account revoca sessione e supporti",
+      "status": "PASS"
+    },
+    {
+      "id": "T24 stessa immagine due foglie, slot indipendenti",
+      "status": "PASS"
+    },
+    {
+      "id": "T26 scadenza respinta",
+      "status": "PASS"
+    },
+    {
+      "id": "T28 resolve/moderazione simultanei senza campione rimosso",
+      "status": "PASS"
+    },
+    {
+      "id": "Auth guest voto, UUID malformato e moderatore falso",
+      "status": "PASS"
+    },
+    {
+      "id": "Pool non conserva identita tra utenti e rollback",
+      "status": "PASS"
+    },
+    {
+      "id": "Receipt simultaneo iniziale serializzato per operation ID",
+      "status": "PASS"
+    },
+    {
+      "id": "Social follow idempotente, amicizia reciproca e consenso distinto",
+      "status": "PASS"
+    },
+    {
+      "id": "Upload byte reali, pending privato, approvazione, EXIF rimosso",
+      "status": "PASS"
+    },
+    {
+      "id": "Metadati obbligatori: sito richiede nome e link normalizzato",
+      "status": "PASS"
+    },
+    {
+      "id": "Profilo privato non rompe la sessione e resta privato anche agli amici",
+      "status": "PASS"
+    },
+    {
+      "id": "Membership pending non perde nome o link via dettaglio, ricerca o RLS",
+      "status": "PASS"
+    },
+    {
+      "id": "Kind incompatibile rifiutato dal voto, tool usa lo stesso motore",
+      "status": "PASS"
+    },
+    {
+      "id": "Moderazione ripristino idempotente e sospensione atomica con revoca sessioni",
+      "status": "PASS"
+    },
+    {
+      "id": "Daily UTC stabile e pagine feed senza ripetere coppie",
+      "status": "PASS"
+    },
+    {
+      "id": "Ranking supporti attivi, Elo distinto e trend da snapshot reale",
+      "status": "PASS"
+    },
+    {
+      "id": "Proposta categoria con metadato approvata solo dal moderatore",
+      "status": "PASS"
+    },
+    {
+      "id": "Notifiche lette/eliminate solo dal destinatario",
+      "status": "PASS"
+    },
+    {
+      "id": "Sospensione vince contro voto e impostazioni gia in attesa del lock",
+      "status": "PASS"
+    },
+    {
+      "id": "Upload con commit riuscito ma conferma persa conserva media e ricevuta",
+      "status": "PASS"
+    },
+    {
+      "id": "Rate limit login reale: trentunesimo tentativo respinto",
+      "status": "PASS"
+    },
+    {
+      "id": "Logout reale revoca il solo token corrente e resta idempotente",
+      "status": "PASS"
+    },
+    {
+      "id": "Categorie piu votate reali, ricerca per categoria e posizione mantenuta",
+      "status": "PASS"
+    },
+    {
+      "id": "Controllo categorie esteso, duplicati pubblici e proposte concorrenti bloccati",
+      "status": "PASS"
+    }
+  ]
+}

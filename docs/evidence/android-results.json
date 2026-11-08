@@ -1,0 +1,33 @@
+{
+  "date": "2026-11-06T13:55:07.349Z",
+  "results": [
+    {
+      "flow": "Welcome e brand Android",
+      "status": "PASS"
+    },
+    {
+      "flow": "Login reale Android e feed",
+      "status": "PASS"
+    },
+    {
+      "flow": "Primo voto Android persistito",
+      "status": "PASS"
+    },
+    {
+      "flow": "Annullamento TILT senza trasferimento",
+      "status": "PASS"
+    },
+    {
+      "flow": "TILT challenger salva il campione reale",
+      "status": "PASS"
+    },
+    {
+      "flow": "Classifiche Android",
+      "status": "PASS"
+    },
+    {
+      "flow": "Quiz disabilitato onestamente senza fonti REAL",
+      "status": "PASS"
+    }
+  ]
+}

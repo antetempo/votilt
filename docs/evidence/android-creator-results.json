@@ -1,0 +1,13 @@
+{
+  "date": "2026-11-06T12:44:37.791Z",
+  "results": [
+    {
+      "flow": "Moderatore approva dalla UI con metadati visibili",
+      "status": "PASS"
+    },
+    {
+      "flow": "Secondo utente vede e vota contenuto approvato da Android",
+      "status": "PASS"
+    }
+  ]
+}

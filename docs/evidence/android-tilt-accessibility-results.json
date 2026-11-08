@@ -1,0 +1,14 @@
+{
+  "date": "2026-11-06T19:40:26.695Z",
+  "results": [
+    {
+      "flow": "TILT 320x569 dp, font 130%, immagini e X raggiungibili",
+      "status": "PASS"
+    },
+    {
+      "flow": "Preferenza riduci movimento: carte statiche, scelta e annullamento disponibili",
+      "status": "PASS",
+      "changedChannels": 0
+    }
+  ]
+}

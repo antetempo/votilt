@@ -1,0 +1,17 @@
+{
+  "date": "2026-11-06T15:13:54.114Z",
+  "status": "PASS",
+  "freshDatabase": false,
+  "counts": {
+    "leaves": 41,
+    "approved": 123,
+    "pending": 12,
+    "rejected": 3,
+    "hidden": 2,
+    "champions": 192,
+    "users": 6
+  },
+  "idempotent": true,
+  "passwordsUnchanged": true,
+  "database": "votilt_bootstrap_test"
+}

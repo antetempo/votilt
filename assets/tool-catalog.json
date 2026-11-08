@@ -1,0 +1,14 @@
+[
+ {"leaf":"Assistenti sviluppo","variant":0,"name":"GitHub Copilot","url":"https://github.com/features/copilot","description":"Assistente AI di GitHub per lo sviluppo software."},
+ {"leaf":"Assistenti sviluppo","variant":1,"name":"Cursor","url":"https://cursor.com/","description":"Ambiente di sviluppo con strumenti AI integrati."},
+ {"leaf":"Assistenti sviluppo","variant":2,"name":"Codex CLI","url":"https://github.com/openai/codex","description":"Agente di sviluppo OpenAI eseguibile nel terminale."},
+ {"leaf":"Generatori visuali","variant":0,"name":"Adobe Firefly","url":"https://www.adobe.com/products/firefly.html","description":"Strumenti Adobe per la creazione visuale con AI."},
+ {"leaf":"Generatori visuali","variant":1,"name":"ComfyUI","url":"https://comfy.org/","description":"Interfaccia a workflow per la creazione visuale con AI."},
+ {"leaf":"Generatori visuali","variant":2,"name":"Krita AI Diffusion","url":"https://github.com/Acly/krita-ai-diffusion","description":"Estensione per integrare la generazione AI nel lavoro in Krita."},
+ {"leaf":"Assistenti organizzazione","variant":0,"name":"Notion AI","url":"https://www.notion.com/product/ai","description":"Funzioni AI integrate nello spazio di lavoro Notion."},
+ {"leaf":"Assistenti organizzazione","variant":1,"name":"Gemini Notebook","url":"https://notebook.google/","description":"Strumento Google per lavorare e fare ricerca sulle proprie fonti."},
+ {"leaf":"Assistenti organizzazione","variant":2,"name":"Microsoft Copilot","url":"https://copilot.com/","description":"Assistente AI di Microsoft."},
+ {"leaf":"Tool musicali AI","variant":0,"name":"Suno","url":"https://suno.com/","description":"Strumento per creare musica con AI."},
+ {"leaf":"Tool musicali AI","variant":1,"name":"Udio","url":"https://www.udio.com/","description":"Strumento per creare musica con AI."},
+ {"leaf":"Tool musicali AI","variant":2,"name":"Stable Audio","url":"https://stability.ai/stable-audio","description":"Strumenti Stability AI per la generazione audio."}
+]

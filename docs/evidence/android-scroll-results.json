@@ -1,0 +1,13 @@
+{
+  "date": "2026-11-06T13:49:46.664Z",
+  "results": [
+    {
+      "flow": "100 elementi Android, lista paginata e nessun crash",
+      "status": "PASS",
+      "significantImpressions": 103,
+      "reverseGestures": 80,
+      "fps": "NOT_MEASURED",
+      "memory": "NOT_MEASURED"
+    }
+  ]
+}

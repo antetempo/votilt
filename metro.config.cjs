@@ -1,0 +1,10 @@
+const {getDefaultConfig}=require('expo/metro-config');
+const path=require('node:path');
+const config=getDefaultConfig(__dirname);
+const escape=s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+const root=path.resolve(__dirname).split(/[\\/]/).map(escape).join('[\\\\/]');
+const excluded=new RegExp('^'+root+'[\\\\/](?:\\.local|\\.scaffold|android|ios|docs|server|scripts|tests|migrations|assets[\\\\/]seed-media)(?:[\\\\/]|$)');
+const existing=config.resolver.blockList;
+config.resolver.blockList=[...(Array.isArray(existing)?existing:existing?[existing]:[]),excluded,/[\\/]android[\\/](?:build|\.cxx|\.gradle)[\\/]/];
+config.maxWorkers=4;
+module.exports=config;

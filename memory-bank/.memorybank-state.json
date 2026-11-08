@@ -1,0 +1,21 @@
+{
+  "nextSteps": {
+    "alla ripresa verificare runtime/apk e seguire readme../readme.md; provare il pro": {
+      "text": "Alla ripresa verificare runtime/APK e seguire [README](../README.md); provare il prodotto e raccogliere il feedback di Fabrizio.",
+      "firstSession": 1,
+      "lastSession": 1
+    },
+    "se richiesto, curare fotografie real con provenienza verificata per il quiz; nes": {
+      "text": "Se richiesto, curare fotografie REAL con provenienza verificata per il quiz; nessuna AI deve essere etichettata REAL.",
+      "firstSession": 1,
+      "lastSession": 1
+    },
+    "prima di distribuzione esterna, affrontare readiness../docs/releasereadiness.md ": {
+      "text": "Prima di distribuzione esterna, affrontare [readiness](../docs/RELEASE_READINESS.md) e [[stato-consegna-e-debito]]: HTTPS/firma, segreti/backup, moderazione, dipendenze, telefono/TalkBack, misure prestazioni e contesa del lock globale.",
+      "firstSession": 1,
+      "lastSession": 1
+    }
+  },
+  "updatedAt": "2026-11-06",
+  "session": 1
+}

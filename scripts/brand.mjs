@@ -1,0 +1,10 @@
+import sharp from 'sharp';
+import { Buffer } from 'node:buffer';
+import { mkdirSync, writeFileSync } from 'node:fs';
+mkdirSync('assets/icons', { recursive: true });
+const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#22D3EE"/><stop offset=".45" stop-color="#A855F7"/><stop offset="1" stop-color="#FF4DA6"/></linearGradient></defs><rect width="1024" height="1024" rx="230" fill="#090711"/><path d="M220 265h150l112 333 153-333h166L540 790H405z" fill="url(#g)"/><path d="M562 201 449 457h107l-54 192 232-314H609l83-134z" fill="#F8F6FF"/></svg>`;
+writeFileSync('assets/icons/mark.svg', svg);
+await sharp(Buffer.from(svg)).png().toFile('assets/icons/icon.png');
+await sharp(Buffer.from(svg)).png().toFile('assets/icons/adaptive.png');
+await sharp(Buffer.from(svg)).resize(512).png().toFile('assets/icons/splash.png');
+console.log('Brand originale VOTILT generato.');

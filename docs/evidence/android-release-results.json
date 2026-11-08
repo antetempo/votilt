@@ -1,0 +1,22 @@
+{
+  "date": "2026-11-06T15:17:45.837Z",
+  "results": [
+    {
+      "flow": "APK autonomo installato e avviato senza Metro",
+      "status": "PASS"
+    },
+    {
+      "flow": "Navigazione Android senza Internet pubblico, backend via USB locale",
+      "status": "PASS",
+      "externalRoute": "unreachable"
+    },
+    {
+      "flow": "Formato 320x569 dp, font 130%, voto raggiungibile",
+      "status": "PASS"
+    },
+    {
+      "flow": "Formato 411x914 dp e navigazione Esplora",
+      "status": "PASS"
+    }
+  ]
+}

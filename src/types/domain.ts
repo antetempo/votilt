@@ -1,0 +1,79 @@
+export type Category = {
+  id: string;
+  parent_id: string | null;
+  depth: number;
+  slug: string;
+  title: string;
+  description: string;
+  icon: string;
+  sort_order: number;
+  reference_kind: 'name' | 'person' | 'website' | 'place' | 'tool';
+  reference_label: string;
+  requires_url: boolean;
+  allowed_kinds?: string[];
+};
+export type MediaItem = {
+  id: string;
+  title: string;
+  caption: string;
+  kind: 'photo' | 'illustration' | 'ai_art' | 'ai_tool';
+  provenance: string;
+  status: string;
+  reviewReason?: string;
+  authorId: string;
+  handle: string;
+  displayName: string;
+  mediaUrl: string;
+  categoryId: string;
+  categoryTitle: string;
+  support?: number;
+  rating?: number;
+  matches?: number;
+  trend?: number;
+  slotVersion?: number;
+  reference?: { name: string; url: string | null; label: string; kind: string } | null;
+  references?: {
+    categoryId: string;
+    categoryTitle: string;
+    name: string;
+    url: string | null;
+    label: string;
+    kind: string;
+    status: string;
+  }[];
+};
+export type Settings = {
+  show_champions: 'owner' | 'friends' | 'public';
+  allow_comparison: boolean;
+  haptics: boolean;
+  reduce_motion: boolean;
+  onboarding_complete: boolean;
+};
+export type User = {
+  id: string;
+  handle: string;
+  display_name: string;
+  bio: string;
+  visibility: string;
+  settings: Settings;
+  role: 'user' | 'moderator' | 'admin';
+  interests: string[];
+};
+export type VoteResult = {
+  kind: 'INITIAL_VOTE' | 'ALREADY_CHAMPION' | 'TILT_REQUIRED' | 'TILT_RESOLVED' | 'TILT_CANCELLED';
+  championId?: string;
+  slotVersion?: number;
+  receiptId: string;
+  duelId?: string;
+  categoryId?: string;
+  rated?: boolean;
+  didChampionChange?: boolean;
+};
+export type Duel = {
+  id: string;
+  category_id: string;
+  status: string;
+  expires_at: string;
+  incumbent: MediaItem | null;
+  challenger: MediaItem | null;
+};

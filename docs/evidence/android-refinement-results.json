@@ -1,0 +1,29 @@
+{
+  "date": "2026-11-06T15:00:24.878Z",
+  "results": [
+    {
+      "flow": "Feed senza wordmark, CTA invasiva o riempitivi; navigazione alta e icone originali",
+      "status": "PASS"
+    },
+    {
+      "flow": "Like compatto salva una preferenza reale senza popup campione",
+      "status": "PASS"
+    },
+    {
+      "flow": "Confronto compatto e trasferimento del like verificato",
+      "status": "PASS"
+    },
+    {
+      "flow": "Categorie piu votate, ricerca categoria e ricerca nella relativa classifica",
+      "status": "PASS"
+    },
+    {
+      "flow": "Centro solo simbolo pubblicazione, duplicato suggerito e bozza preservata tornando al caricamento",
+      "status": "PASS"
+    },
+    {
+      "flow": "Testo categoria mascherato bloccato e invio disabilitato da Android",
+      "status": "PASS"
+    }
+  ]
+}

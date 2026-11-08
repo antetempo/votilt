@@ -1,0 +1,17 @@
+[
+ {"leaf":"Città del futuro","variant":0,"file":"future-city-1.png","prompt":"Futuristic Italian canal city at blue hour, violet glass towers, cyan canals and an orange autonomous boat. Portrait cinematic concept art, no text or logos."},
+ {"leaf":"Città del futuro","variant":1,"file":"future-city-2.png","prompt":"Rainy elevated street in a futuristic metropolis, magenta windows and cyan light, small fictional adult in a yellow coat. Portrait cinematic concept art, no readable text or logos."},
+ {"leaf":"Città del futuro","variant":2,"file":"future-city-3.png","prompt":"Utopian megacity above clouds at sunrise, pearl ceramic and violet spiralling towers, hanging gardens, cyan transportation ribbons. Portrait cinematic concept art, no text or logos."},
+ {"leaf":"Creature impossibili","variant":0,"file":"fantasy-1.png"},
+ {"leaf":"Creature impossibili","variant":1,"file":"fantasy-2.png"},
+ {"leaf":"Creature impossibili","variant":2,"file":"fantasy-3.png"},
+ {"leaf":"Personaggi immaginari","variant":0,"file":"synthetic-1.png"},
+ {"leaf":"Personaggi immaginari","variant":1,"file":"synthetic-2.png"},
+ {"leaf":"Personaggi immaginari","variant":2,"file":"synthetic-3.png"},
+ {"leaf":"Sogni digitali","variant":0,"file":"tilt-crystal.png","prompt":"Monumental lightning bolt of translucent violet crystal over a black mirrored monolith in a dark futuristic gallery, cyan refractions, magenta rim light, lavender mist. Original portrait digital artwork, no text/logos."},
+ {"leaf":"Sogni digitali","variant":1,"file":"dream-2.png"},
+ {"leaf":"Sogni digitali","variant":2,"file":"dream-3.png"},
+ {"leaf":"Megastrutture futuristiche","variant":0,"file":"mega-1.png"},
+ {"leaf":"Megastrutture futuristiche","variant":1,"file":"mega-2.png"},
+ {"leaf":"Megastrutture futuristiche","variant":2,"file":"mega-3.png"}
+]

@@ -1,0 +1,90 @@
+[
+  {
+    "file": "fantasy-1",
+    "leaf": "Creature impossibili",
+    "variant": 0,
+    "scene": "A majestic gentle moon-whale with translucent opal fins swimming between floating islands above a lavender cloud ocean, tiny warm lanterns hanging from its crystalline antlers",
+    "prompt": "Use case: stylized-concept. Original portrait 2:3 digital artwork for VOTILT's premium Android visual feed, category Creature impossibili. A majestic gentle moon-whale with translucent opal fins swimming between floating islands above a lavender cloud ocean, tiny warm lanterns hanging from its crystalline antlers. Extraordinary original visual composition, high detail and sophisticated materials, atmospheric depth, restrained jewel tones, polished cinematic digital art. Main subject visually readable on a phone, lower area suited for subtle app overlay. No text, no logos, no watermark, no UI. All humans are explicitly fictional adults.",
+    "generated": true
+  },
+  {
+    "file": "fantasy-2",
+    "leaf": "Creature impossibili",
+    "variant": 1,
+    "scene": "A luminous peacock-dragon with intricate indigo feathers and teal glass scales resting beside a black volcanic lake, blooming violet alien flowers and rose sunset",
+    "prompt": "Use case: stylized-concept. Original portrait 2:3 digital artwork for VOTILT's premium Android visual feed, category Creature impossibili. A luminous peacock-dragon with intricate indigo feathers and teal glass scales resting beside a black volcanic lake, blooming violet alien flowers and rose sunset. Extraordinary original visual composition, high detail and sophisticated materials, atmospheric depth, restrained jewel tones, polished cinematic digital art. Main subject visually readable on a phone, lower area suited for subtle app overlay. No text, no logos, no watermark, no UI. All humans are explicitly fictional adults.",
+    "generated": true
+  },
+  {
+    "file": "fantasy-3",
+    "leaf": "Creature impossibili",
+    "variant": 2,
+    "scene": "An enormous peaceful moss-covered turtle carrying a miniature dream forest and tiny luminous architectural pavilions on its shell, dawn mist, amber and emerald highlights",
+    "prompt": "Use case: stylized-concept. Original portrait 2:3 digital artwork for VOTILT's premium Android visual feed, category Creature impossibili. An enormous peaceful moss-covered turtle carrying a miniature dream forest and tiny luminous architectural pavilions on its shell, dawn mist, amber and emerald highlights. Extraordinary original visual composition, high detail and sophisticated materials, atmospheric depth, restrained jewel tones, polished cinematic digital art. Main subject visually readable on a phone, lower area suited for subtle app overlay. No text, no logos, no watermark, no UI. All humans are explicitly fictional adults.",
+    "generated": true
+  },
+  {
+    "file": "synthetic-1",
+    "leaf": "Personaggi immaginari",
+    "variant": 0,
+    "scene": "Editorial portrait of a clearly fictional adult woman explorer aged around 30, sculptural pearlescent helmet with violet translucent visor pushed back, expressive kind eyes, couture futuristic utility jacket, cyan and magenta cinematic rim lights, painterly realism",
+    "prompt": "Use case: stylized-concept. Original portrait 2:3 digital artwork for VOTILT's premium Android visual feed, category Personaggi immaginari. Editorial portrait of a clearly fictional adult woman explorer aged around 30, sculptural pearlescent helmet with violet translucent visor pushed back, expressive kind eyes, couture futuristic utility jacket, cyan and magenta cinematic rim lights, painterly realism. Extraordinary original visual composition, high detail and sophisticated materials, atmospheric depth, restrained jewel tones, polished cinematic digital art. Main subject visually readable on a phone, lower area suited for subtle app overlay. No text, no logos, no watermark, no UI. All humans are explicitly fictional adults.",
+    "generated": true
+  },
+  {
+    "file": "synthetic-2",
+    "leaf": "Personaggi immaginari",
+    "variant": 1,
+    "scene": "Editorial portrait of a clearly fictional adult man artist aged around 35 with dark curly hair, warm brown skin, asymmetrical indigo couture jacket with subtle glowing embroidery, abstract holographic sculpture floating near his shoulder, rich dramatic cinematic light",
+    "prompt": "Use case: stylized-concept. Original portrait 2:3 digital artwork for VOTILT's premium Android visual feed, category Personaggi immaginari. Editorial portrait of a clearly fictional adult man artist aged around 35 with dark curly hair, warm brown skin, asymmetrical indigo couture jacket with subtle glowing embroidery, abstract holographic sculpture floating near his shoulder, rich dramatic cinematic light. Extraordinary original visual composition, high detail and sophisticated materials, atmospheric depth, restrained jewel tones, polished cinematic digital art. Main subject visually readable on a phone, lower area suited for subtle app overlay. No text, no logos, no watermark, no UI. All humans are explicitly fictional adults.",
+    "generated": true
+  },
+  {
+    "file": "synthetic-3",
+    "leaf": "Personaggi immaginari",
+    "variant": 2,
+    "scene": "Editorial portrait of a clearly fictional adult androgynous botanical architect aged around 30, silver short hair, elegant violet collar surrounded by tiny floating luminous glass petals, warm confident expression, turquoise and amber edge lighting, fine textured materials",
+    "prompt": "Use case: stylized-concept. Original portrait 2:3 digital artwork for VOTILT's premium Android visual feed, category Personaggi immaginari. Editorial portrait of a clearly fictional adult androgynous botanical architect aged around 30, silver short hair, elegant violet collar surrounded by tiny floating luminous glass petals, warm confident expression, turquoise and amber edge lighting, fine textured materials. Extraordinary original visual composition, high detail and sophisticated materials, atmospheric depth, restrained jewel tones, polished cinematic digital art. Main subject visually readable on a phone, lower area suited for subtle app overlay. No text, no logos, no watermark, no UI. All humans are explicitly fictional adults.",
+    "generated": true
+  },
+  {
+    "file": "dream-2",
+    "leaf": "Sogni digitali",
+    "variant": 1,
+    "scene": "A surreal museum room filled with a vast ocean suspended vertically as a silk curtain, a small ivory staircase flowing into the water, violet dusk and sparkling cyan fish forming a spiral, impossible poetic architecture",
+    "prompt": "Use case: stylized-concept. Original portrait 2:3 digital artwork for VOTILT's premium Android visual feed, category Sogni digitali. A surreal museum room filled with a vast ocean suspended vertically as a silk curtain, a small ivory staircase flowing into the water, violet dusk and sparkling cyan fish forming a spiral, impossible poetic architecture. Extraordinary original visual composition, high detail and sophisticated materials, atmospheric depth, restrained jewel tones, polished cinematic digital art. Main subject visually readable on a phone, lower area suited for subtle app overlay. No text, no logos, no watermark, no UI. All humans are explicitly fictional adults.",
+    "generated": true
+  },
+  {
+    "file": "dream-3",
+    "leaf": "Sogni digitali",
+    "variant": 2,
+    "scene": "A giant chrome butterfly emerging from a black marble teacup in a surreal lavender desert, magenta dunes, a mirrored moon split into delicate concentric rings, luminous cinematic dreamscape",
+    "prompt": "Use case: stylized-concept. Original portrait 2:3 digital artwork for VOTILT's premium Android visual feed, category Sogni digitali. A giant chrome butterfly emerging from a black marble teacup in a surreal lavender desert, magenta dunes, a mirrored moon split into delicate concentric rings, luminous cinematic dreamscape. Extraordinary original visual composition, high detail and sophisticated materials, atmospheric depth, restrained jewel tones, polished cinematic digital art. Main subject visually readable on a phone, lower area suited for subtle app overlay. No text, no logos, no watermark, no UI. All humans are explicitly fictional adults.",
+    "generated": true
+  },
+  {
+    "file": "mega-1",
+    "leaf": "Megastrutture futuristiche",
+    "variant": 0,
+    "scene": "A monumental ring-shaped observatory spanning a deep snowy mountain canyon, titanium and violet glass, tiny warm interior windows conveying immense scale, crystalline blue dusk and low drifting fog",
+    "prompt": "Use case: stylized-concept. Original portrait 2:3 digital artwork for VOTILT's premium Android visual feed, category Megastrutture futuristiche. A monumental ring-shaped observatory spanning a deep snowy mountain canyon, titanium and violet glass, tiny warm interior windows conveying immense scale, crystalline blue dusk and low drifting fog. Extraordinary original visual composition, high detail and sophisticated materials, atmospheric depth, restrained jewel tones, polished cinematic digital art. Main subject visually readable on a phone, lower area suited for subtle app overlay. No text, no logos, no watermark, no UI. All humans are explicitly fictional adults.",
+    "generated": true
+  },
+  {
+    "file": "mega-2",
+    "leaf": "Megastrutture futuristiche",
+    "variant": 1,
+    "scene": "A magnificent futuristic vertical garden megastructure rising from a turquoise tropical sea, hundreds of elegant white ceramic terraces spiralling around a violet crystalline core, sunset, sublime architectural visualization",
+    "prompt": "Use case: stylized-concept. Original portrait 2:3 digital artwork for VOTILT's premium Android visual feed, category Megastrutture futuristiche. A magnificent futuristic vertical garden megastructure rising from a turquoise tropical sea, hundreds of elegant white ceramic terraces spiralling around a violet crystalline core, sunset, sublime architectural visualization. Extraordinary original visual composition, high detail and sophisticated materials, atmospheric depth, restrained jewel tones, polished cinematic digital art. Main subject visually readable on a phone, lower area suited for subtle app overlay. No text, no logos, no watermark, no UI. All humans are explicitly fictional adults.",
+    "generated": true
+  },
+  {
+    "file": "mega-3",
+    "leaf": "Megastrutture futuristiche",
+    "variant": 2,
+    "scene": "A colossal futuristic public library floating above a dark geometric plaza, layered copper and violet metallic origami shells, a radiant turquoise central atrium, tiny fictional adult silhouettes far below for scale, blue-hour architectural photography",
+    "prompt": "Use case: stylized-concept. Original portrait 2:3 digital artwork for VOTILT's premium Android visual feed, category Megastrutture futuristiche. A colossal futuristic public library floating above a dark geometric plaza, layered copper and violet metallic origami shells, a radiant turquoise central atrium, tiny fictional adult silhouettes far below for scale, blue-hour architectural photography. Extraordinary original visual composition, high detail and sophisticated materials, atmospheric depth, restrained jewel tones, polished cinematic digital art. Main subject visually readable on a phone, lower area suited for subtle app overlay. No text, no logos, no watermark, no UI. All humans are explicitly fictional adults.",
+    "generated": true
+  }
+]
